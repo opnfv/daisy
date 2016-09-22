@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_63409234",
+        "filename": "build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-09-22T09:36:58Z",
+      "side": 1,
+      "message": "Thanks for review.I will delete these spaces.",
+      "parentUuid": "1a76adc5_df64d823",
+      "revId": "cb5e56223fdf9e41ed1aa652203af1305854b26b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_9f6e6000",
         "filename": "build.sh",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2016-09-22T09:08:35Z",
       "side": 1,
       "message": "Should we use /home directory? Why not just use $WORKSPACE directory? If this enviroment is also used by other guys(I think so), then we need to use it harmoniously. So I prefer to using $WORKSPACE instead. What do you think?",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 13
+      },
+      "revId": "cb5e56223fdf9e41ed1aa652203af1305854b26b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_03499e5f",
+        "filename": "build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-09-22T09:36:58Z",
+      "side": 1,
+      "message": "OK.I will use $WORKSPACE instead of \"/home\".",
+      "parentUuid": "1a76adc5_9f6e6000",
       "range": {
         "startLine": 11,
         "startChar": 1,
@@ -99,6 +141,24 @@
       "writtenOn": "2016-09-22T09:08:35Z",
       "side": 1,
       "message": "Do not mix use space and tab. I suggest use 4 space to present a tab.",
+      "revId": "cb5e56223fdf9e41ed1aa652203af1305854b26b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_23461a50",
+        "filename": "build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-09-22T09:36:58Z",
+      "side": 1,
+      "message": "I will modify it.",
+      "parentUuid": "1a76adc5_ff675423",
       "revId": "cb5e56223fdf9e41ed1aa652203af1305854b26b",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
