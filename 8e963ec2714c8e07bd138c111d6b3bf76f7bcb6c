@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_5d461e25",
+        "filename": "ci/build_rpm/daisy_rpm_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 212
+      },
+      "writtenOn": "2016-10-13T04:53:22Z",
+      "side": 1,
+      "message": "please add license info in each file",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 11
+      },
+      "revId": "8e963ec2714c8e07bd138c111d6b3bf76f7bcb6c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
