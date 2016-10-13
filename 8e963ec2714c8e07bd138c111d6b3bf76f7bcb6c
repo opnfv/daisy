@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dad5f5cf_bd92aaf4",
+        "filename": "ci/build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-10-13T09:32:26Z",
+      "side": 1,
+      "message": "This build is for daisy and will produce bin file.The bin file will upload to gs within next phase.",
+      "parentUuid": "dad5f5cf_dd51aed9",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "8e963ec2714c8e07bd138c111d6b3bf76f7bcb6c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dad5f5cf_bdf06aca",
         "filename": "ci/build_rpm/Dockerfile",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-10-13T06:22:31Z",
       "side": 1,
       "message": "Not all these installed packages are really required by build process. Please trim it as much as possible. I suggest merge a small set first then enlarge it on demand.",
+      "range": {
+        "startLine": 5,
+        "startChar": 21,
+        "endLine": 5,
+        "endChar": 35
+      },
+      "revId": "8e963ec2714c8e07bd138c111d6b3bf76f7bcb6c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_1dff3636",
+        "filename": "ci/build_rpm/Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-10-13T09:32:26Z",
+      "side": 1,
+      "message": "Thanks for reminding,I will use a smallest set instead.",
+      "parentUuid": "dad5f5cf_bdf06aca",
       "range": {
         "startLine": 5,
         "startChar": 21,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dad5f5cf_ddf8ce4b",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-10-13T09:32:26Z",
+      "side": 1,
+      "message": "I will delete this.",
+      "parentUuid": "dad5f5cf_5de29e04",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "8e963ec2714c8e07bd138c111d6b3bf76f7bcb6c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dad5f5cf_5d461e25",
         "filename": "ci/build_rpm/daisy_rpm_build.sh",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2016-10-13T04:53:22Z",
       "side": 1,
       "message": "please add license info in each file",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 11
+      },
+      "revId": "8e963ec2714c8e07bd138c111d6b3bf76f7bcb6c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_bdfb8a46",
+        "filename": "ci/build_rpm/daisy_rpm_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-10-13T09:32:26Z",
+      "side": 1,
+      "message": "Thanks for reminding, I will add license info.",
+      "parentUuid": "dad5f5cf_5d461e25",
       "range": {
         "startLine": 1,
         "startChar": 0,
