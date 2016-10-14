@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dad5f5cf_b0e411ad",
+        "filename": "ci/build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-10-14T02:18:44Z",
+      "side": 1,
+      "message": "Thank for reminding,I gorget to call it.",
+      "parentUuid": "dad5f5cf_f03939d9",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 1
+      },
+      "revId": "73e889b56f54b2217a51d44a197e7690c0405f5c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dad5f5cf_b033b1f5",
         "filename": "ci/build_rpm/Dockerfile",
         "patchSetId": 3
@@ -82,6 +106,30 @@
       "writtenOn": "2016-10-13T11:45:32Z",
       "side": 1,
       "message": "preceding space.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "73e889b56f54b2217a51d44a197e7690c0405f5c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_d0e1959b",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-10-14T02:18:44Z",
+      "side": 1,
+      "message": "I will remove the space.",
+      "parentUuid": "dad5f5cf_d030b5ea",
       "range": {
         "startLine": 12,
         "startChar": 0,
