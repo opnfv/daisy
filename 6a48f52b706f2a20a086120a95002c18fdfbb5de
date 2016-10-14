@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dad5f5cf_5325afa9",
+        "filename": "ci/build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-10-14T04:02:45Z",
+      "side": 1,
+      "message": "This function will be deleted for not useful.",
+      "parentUuid": "dad5f5cf_7031c90a",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "6a48f52b706f2a20a086120a95002c18fdfbb5de",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dad5f5cf_105b9d55",
         "filename": "ci/build.sh",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-10-14T03:41:02Z",
       "side": 1,
       "message": "Ithink it is not nessesary to always show the usage",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "6a48f52b706f2a20a086120a95002c18fdfbb5de",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_7326b3bc",
+        "filename": "ci/build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-10-14T04:02:45Z",
+      "side": 1,
+      "message": "OK, I will delete it.",
+      "parentUuid": "dad5f5cf_105b9d55",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dad5f5cf_d3199f7a",
+        "filename": "ci/build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-10-14T04:02:45Z",
+      "side": 1,
+      "message": "Just back to $WORKSPACE.I can delete this line for misleading.",
+      "parentUuid": "dad5f5cf_b0573126",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "6a48f52b706f2a20a086120a95002c18fdfbb5de",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dad5f5cf_9036ad02",
         "filename": "ci/build_rpm/Dockerfile",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2016-10-14T03:41:02Z",
       "side": 1,
       "message": "delete it",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "6a48f52b706f2a20a086120a95002c18fdfbb5de",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_7018e984",
+        "filename": "ci/build_rpm/Dockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-10-14T04:02:45Z",
+      "side": 1,
+      "message": "OK.I will do that.",
+      "parentUuid": "dad5f5cf_9036ad02",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "dad5f5cf_f312a357",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-10-14T04:02:45Z",
+      "side": 1,
+      "message": "Thanks.I will use argument instead of $WORKSPACE.And I have to modify code in releng for this too.",
+      "parentUuid": "dad5f5cf_f024d9c7",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "6a48f52b706f2a20a086120a95002c18fdfbb5de",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dad5f5cf_303b41ed",
         "filename": "ci/build_rpm/build_rpms.sh",
         "patchSetId": 5
@@ -128,6 +248,30 @@
       "writtenOn": "2016-10-14T03:41:02Z",
       "side": 1,
       "message": "delete it",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "6a48f52b706f2a20a086120a95002c18fdfbb5de",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_10095d31",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-10-14T04:02:45Z",
+      "side": 1,
+      "message": "OK.I will delete them.",
+      "parentUuid": "dad5f5cf_303b41ed",
       "range": {
         "startLine": 9,
         "startChar": 0,
