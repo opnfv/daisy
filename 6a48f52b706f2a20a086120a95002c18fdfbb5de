@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_7031c90a",
+        "filename": "ci/build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-14T03:41:02Z",
+      "side": 1,
+      "message": "This usage info is missleading. Becasue this script do not take any parameters currently.",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "6a48f52b706f2a20a086120a95002c18fdfbb5de",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_105b9d55",
+        "filename": "ci/build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-14T03:41:02Z",
+      "side": 1,
+      "message": "Ithink it is not nessesary to always show the usage",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "6a48f52b706f2a20a086120a95002c18fdfbb5de",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_b0573126",
+        "filename": "ci/build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-14T03:41:02Z",
+      "side": 1,
+      "message": "What is the purpose  of this line? it cd to a directory but do nothing. I seems that it is not nessesary at all.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "6a48f52b706f2a20a086120a95002c18fdfbb5de",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_9036ad02",
+        "filename": "ci/build_rpm/Dockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-14T03:41:02Z",
+      "side": 1,
+      "message": "delete it",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "6a48f52b706f2a20a086120a95002c18fdfbb5de",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_f024d9c7",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-14T03:41:02Z",
+      "side": 1,
+      "message": "Please see Fatih\u0027s review for this. This will restrict your\u0027s script functional space. I suggest pass it as an argument from releng\u0027s namespace.",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "6a48f52b706f2a20a086120a95002c18fdfbb5de",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_303b41ed",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-14T03:41:02Z",
+      "side": 1,
+      "message": "delete it",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "6a48f52b706f2a20a086120a95002c18fdfbb5de",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
