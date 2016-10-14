@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad5f5cf_13dac778",
+        "filename": "ci/build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-14T07:13:40Z",
+      "side": 1,
+      "message": "Defined but not used?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "a4ea5030cad837f8cd3815e6c930c19126e70e81",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_b3e65b43",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-14T07:13:40Z",
+      "side": 1,
+      "message": "delete this",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "a4ea5030cad837f8cd3815e6c930c19126e70e81",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_d3e3df31",
+        "filename": "ci/build_rpm/build_rpms_docker.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-14T07:13:40Z",
+      "side": 1,
+      "message": "comment error",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "a4ea5030cad837f8cd3815e6c930c19126e70e81",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
