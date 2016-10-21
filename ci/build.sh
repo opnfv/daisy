@@ -11,6 +11,6 @@
 
 DAISYDIR = $1
 cd ci/build_rpm
-./build_rpms.sh DAISYDIR
+./build_rpms.sh &DAISYDIR
 
 
