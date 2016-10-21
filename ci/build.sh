@@ -9,8 +9,10 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
-DAISYDIR = $1
+# TODO: Let JJB to pass $WORKDIR instead of $BUILD_OUTPUT
+DAISYDIR=$1/../
+
 cd ci/build_rpm
-./build_rpms.sh DAISYDIR
+./build_rpms.sh $DAISYDIR
 
 
