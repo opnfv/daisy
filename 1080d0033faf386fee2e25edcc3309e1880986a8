@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_84367402",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1469
+      },
+      "writtenOn": "2016-10-21T23:26:51Z",
+      "side": 1,
+      "message": "If you use \"docker rm -f\", it doesnot need to stop container before.",
+      "revId": "1080d0033faf386fee2e25edcc3309e1880986a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_44408c56",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1469
+      },
+      "writtenOn": "2016-10-21T23:26:51Z",
+      "side": 1,
+      "message": "I think it should clean env before build to make sure build not effected by env.",
+      "revId": "1080d0033faf386fee2e25edcc3309e1880986a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
