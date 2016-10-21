@@ -9,11 +9,47 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 set -eux
-DAISYDIR = $1
+DAISYDIR=$1
 function build_rpm_pkg {
       sudo docker build -t daisy4nfv_rpm .
-      sudo docker run -v DAISYDIR:/opt/daisy4nfv -t  daisy4nfv_rpm \
+      sudo docker run --rm -v $DAISYDIR:/opt/daisy4nfv -t  daisy4nfv_rpm \
                       /opt/daisy4nfv/ci/build_rpm/build_rpms_docker.sh
 }
 
+function cleanup_container {
+        containers_to_kill=$(docker ps --filter "label=daisy_image_version" \
+                --format "{{.Names}}" -a)
+
+        if [[ -z "$containers_to_kill" ]]; then
+                echo "No containers to cleanup."
+        else
+                volumes_to_remove=$(docker inspect -f \
+                        '{{range .Mounts}} {{printf "%s\n" .Name }}{{end}}' \
+                        ${containers_to_kill} | egrep -v '(^\s*$)' | sort | uniq)
+        fi
+
+        echo "Stopping containers... $containers_to_kill"
+        docker stop -t 2 ${containers_to_kill} >/dev/null 2>&1
+
+        echo "Removing containers... $containers_to_kill"
+        docker rm -v -f ${containers_to_kill} >/dev/null 2>&1
+
+        echo "Removing volumes... $volumes_to_remove"
+        docker volume rm ${volumes_to_remove} >/dev/null 2>&1
+}
+
+function cleanup_docker_image {
+        images_to_delete=$(docker images -a --filter "label=daisy_image_version" \
+                --format "{{.ID}}")
+
+        echo "Removing images... $images_to_delete"
+        if [[ -z "$images_to_delete" ]]; then
+                echo "No images to cleanup"
+        else
+                docker rmi -f ${images_to_delete} >/dev/null 2>&1
+        fi
+}
+
+cleanup_container
 build_rpm_pkg
+cleanup_container
