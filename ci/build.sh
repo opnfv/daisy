@@ -9,8 +9,8 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
-DAISYDIR = $1
+DAISYDIR=$1
 cd ci/build_rpm
-./build_rpms.sh DAISYDIR
+./build_rpms.sh $DAISYDIR
 
 
