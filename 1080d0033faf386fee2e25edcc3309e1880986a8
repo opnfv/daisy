@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_98c1f4e6",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-24T01:33:27Z",
+      "side": 1,
+      "message": "It is trying to remove containers in a more graceful way than just simply SIGKILL it.",
+      "parentUuid": "9adffdf1_84367402",
+      "revId": "1080d0033faf386fee2e25edcc3309e1880986a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_f8ae00e7",
         "filename": "ci/build_rpm/build_rpms.sh",
         "patchSetId": 7
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_38b6c88b",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-24T01:33:27Z",
+      "side": 1,
+      "message": "Good catch, I will resent a patch to split out the \"docker rmi\" as a new function reserved for who need it and call it accordingly.",
+      "parentUuid": "9adffdf1_f8ae00e7",
+      "range": {
+        "startLine": 43,
+        "startChar": 14,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "1080d0033faf386fee2e25edcc3309e1880986a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_44408c56",
         "filename": "ci/build_rpm/build_rpms.sh",
         "patchSetId": 7
@@ -53,6 +95,24 @@
       "writtenOn": "2016-10-21T23:26:51Z",
       "side": 1,
       "message": "I think it should clean env before build to make sure build not effected by env.",
+      "revId": "1080d0033faf386fee2e25edcc3309e1880986a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_58bb8c72",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-24T01:33:27Z",
+      "side": 1,
+      "message": "How about call cleanup_container() no just after but also before calling build_rpm_pkg()?",
+      "parentUuid": "9adffdf1_44408c56",
       "revId": "1080d0033faf386fee2e25edcc3309e1880986a8",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
