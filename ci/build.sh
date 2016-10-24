@@ -1,7 +1,7 @@
 #!/bin/bash
 ##############################################################################
 # Copyright (c) 2016 ZTE Coreporation and others.
-# hu.zhijiang@zte.com.cn
+# hu.zaahijiang@zte.com.cn
 # sun.jing22@zte.com.cn
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Apache License, Version 2.0
