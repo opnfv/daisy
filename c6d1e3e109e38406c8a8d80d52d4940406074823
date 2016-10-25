@@ -45,6 +45,40 @@
       "revId": "c6d1e3e109e38406c8a8d80d52d4940406074823",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_ae80328c",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5719
+      },
+      "writtenOn": "2016-10-25T09:10:23Z",
+      "side": 1,
+      "message": "can we use \u0027-x\u0027 param of wget?\nor we can use \u0027mkdir -p $CACHE_PATH\u0027",
+      "revId": "c6d1e3e109e38406c8a8d80d52d4940406074823",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_0e74decd",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5719
+      },
+      "writtenOn": "2016-10-25T09:10:23Z",
+      "side": 1,
+      "message": "Here is a fix ip address.\nWhat\u0027s the ip mean?",
+      "revId": "c6d1e3e109e38406c8a8d80d52d4940406074823",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
