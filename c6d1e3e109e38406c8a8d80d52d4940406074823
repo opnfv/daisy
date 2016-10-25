@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_f1ae1be7",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-10-25T11:19:11Z",
+      "side": 1,
+      "message": "thanks,I will modify it!",
+      "parentUuid": "9adffdf1_ce8fb6cb",
+      "range": {
+        "startLine": 3,
+        "startChar": 15,
+        "endLine": 3,
+        "endChar": 44
+      },
+      "revId": "c6d1e3e109e38406c8a8d80d52d4940406074823",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_ae80328c",
         "filename": "code/makefile_patch.sh",
         "patchSetId": 5
@@ -65,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_51aa87d5",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-10-25T11:19:11Z",
+      "side": 1,
+      "message": "I will modify it,thanks!",
+      "parentUuid": "9adffdf1_ae80328c",
+      "revId": "c6d1e3e109e38406c8a8d80d52d4940406074823",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_0e74decd",
         "filename": "code/makefile_patch.sh",
         "patchSetId": 5
@@ -76,6 +118,24 @@
       "writtenOn": "2016-10-25T09:10:23Z",
       "side": 1,
       "message": "Here is a fix ip address.\nWhat\u0027s the ip mean?",
+      "revId": "c6d1e3e109e38406c8a8d80d52d4940406074823",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_11acffec",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-10-25T11:19:11Z",
+      "side": 1,
+      "message": "yes,it is where our kolla tar saved.The next step we consider of get it from kolla",
+      "parentUuid": "9adffdf1_0e74decd",
       "revId": "c6d1e3e109e38406c8a8d80d52d4940406074823",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
