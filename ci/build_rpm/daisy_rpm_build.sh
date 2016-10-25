@@ -30,7 +30,9 @@ do
     mkdir daisy-dir
     cd daisy-dir
     git clone https://git.openstack.org/openstack/daisycloud-core
-    cd daisycloud-core/tools
+    cp ../../../code/makefile_patch.sh daisycloud-core/tools/setup
+    cp ../../../code/install_interface_patch.sh daisycloud-core/tools/setup
+    cd daisycloud-core/make
     make allrpm
 
     echo "######################################################"
