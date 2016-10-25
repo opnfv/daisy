@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_ae9272f4",
+        "filename": "code/install_interface_patch.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-25T08:20:14Z",
+      "side": 1,
+      "message": "# Copyright (c) 2016 ZTE Corporation and others.",
+      "range": {
+        "startLine": 3,
+        "startChar": 16,
+        "endLine": 3,
+        "endChar": 44
+      },
+      "revId": "c6d1e3e109e38406c8a8d80d52d4940406074823",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_ce8fb6cb",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-25T08:20:14Z",
+      "side": 1,
+      "message": "# Copyright (c) 2016 ZTE Corporation and others.",
+      "range": {
+        "startLine": 3,
+        "startChar": 15,
+        "endLine": 3,
+        "endChar": 44
+      },
+      "revId": "c6d1e3e109e38406c8a8d80d52d4940406074823",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
