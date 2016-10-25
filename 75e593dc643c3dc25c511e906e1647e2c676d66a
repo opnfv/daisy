@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_2e268269",
+        "filename": "ci/build_rpm/daisy_rpm_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-10-25T01:53:57Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "9adffdf1_eef87ac6",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "75e593dc643c3dc25c511e906e1647e2c676d66a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_0ef61ed8",
         "filename": "ci/build_rpm/daisy_rpm_build.sh",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_ee1f1a08",
+        "filename": "ci/build_rpm/daisy_rpm_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-10-25T01:53:57Z",
+      "side": 1,
+      "message": "it is error ,need to modify it !",
+      "parentUuid": "9adffdf1_0ef61ed8",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "75e593dc643c3dc25c511e906e1647e2c676d66a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_ae0272b2",
         "filename": "code/install_interface_patch.sh",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-10-25T01:40:56Z",
       "side": 1,
       "message": "please add file head like this...\n\n#!/bin/bash\n##############################################################################\n# Copyright (c) 2015 Ericsson AB and others.\n# stefan.k.berg@ericsson.com\n# jonas.bjurel@ericsson.com\n# All rights reserved. This program and the accompanying materials\n# are made available under the terms of the Apache License, Version 2.0\n# which accompanies this distribution, and is available at\n# http://www.apache.org/licenses/LICENSE-2.0\n##############################################################################",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "75e593dc643c3dc25c511e906e1647e2c676d66a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_ae191224",
+        "filename": "code/install_interface_patch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-10-25T01:53:57Z",
+      "side": 1,
+      "message": "thanks,I will modify it",
+      "parentUuid": "9adffdf1_ae0272b2",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -105,6 +177,30 @@
       "writtenOn": "2016-10-25T01:40:56Z",
       "side": 1,
       "message": "Beware the right line margin.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 130
+      },
+      "revId": "75e593dc643c3dc25c511e906e1647e2c676d66a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_0e1dbe0f",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-10-25T01:53:57Z",
+      "side": 1,
+      "message": "ok,I will modify it",
+      "parentUuid": "9adffdf1_6e2c8a4b",
       "range": {
         "startLine": 5,
         "startChar": 0,
