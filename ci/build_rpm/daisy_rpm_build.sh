@@ -9,15 +9,12 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 output_dir = "$1"
-
+_BUILD_DIR=`pwd`
 echo "#########################################################"
 echo "               systemctl info:                   "
 echo "#########################################################"
-echo "###Uname:"
-uname
-echo "###Hostname:"
-hostname
-
+echo "###Uname: $(uname)"
+echo "###Hostname: $(hostname)"
 
 maxcount=3
 cnt=0
@@ -27,10 +24,10 @@ do
     cnt=$[cnt + 1]
     echo -e "\n\n\n*** Starting build attempt # $cnt"
 
-    mkdir daisy-dir
-    cd daisy-dir
     git clone https://git.openstack.org/openstack/daisycloud-core
-    cd daisycloud-core/tools
+    cp $_BUILD_DIR/code/makefile_patch.sh daisycloud-core/tools/setup
+    cp $_BUILD_DIR/code/install_interface_patch.sh daisycloud-core/tools/setup
+    cd daisycloud-core/make
     make allrpm
 
     echo "######################################################"
@@ -43,6 +40,6 @@ do
         echo "### Build successful at attempt # $cnt"
     fi
 done
-cd daisy-dir
-mv daisycloud-core/target/el7/noarch/installdaisy_el7_noarch.bin output_dir
+cd ..
+mv target/el7/noarch/installdaisy_el7_noarch.bin $output_dir
 exit $rc
