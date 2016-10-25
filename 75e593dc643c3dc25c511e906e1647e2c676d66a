@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_4ed666c7",
+        "filename": "code/install_interface_patch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-10-25T07:53:36Z",
+      "side": 1,
+      "message": "\u003e thanks,I will modify it",
+      "parentUuid": "9adffdf1_ae191224",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "75e593dc643c3dc25c511e906e1647e2c676d66a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_ceffb6a9",
         "filename": "code/install_interface_patch.sh",
         "patchSetId": 1
