@@ -1,0 +1,61 @@
+##############################################################################
+# Copyright (c) 2016 ZTE Coreporation and others.
+# hu.zhijiang@zte.com.cn
+# sun.jing22@zte.com.cn
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Apache License, Version 2.0
+# which accompanies this distribution, and is available at
+# http://www.apache.org/licenses/LICENSE-2.0
+##############################################################################
+
+--- Tenant Networking Considerations ---
+
+By default, tenant_network_types in ml2_conf.ini only has one item 'vxlan'.
+In order to support other types of network (such as vlan), create a file
+'/etc/kolla/config/neutron/ml2_conf.ini' on the jump server with content:
+
+    [ml2]
+    tenant_network_types = vxlan,vlan
+
+    [ml2_type_vlan]
+    network_vlan_ranges = physnet1:1100:1110
+
+
+The operator can make these changes even after services were already deployed
+by using following command:
+
+    kolla-ansible reconfigure
+
+Then, if it helps, create a temporary network just to make sure:
+
+[root@tanabata kolla]# neutron net-create demo-net2 --provider:network_type vlan
+Created a new network:
++---------------------------+--------------------------------------+
+| Field                     | Value                                |
++---------------------------+--------------------------------------+
+| admin_state_up            | True                                 |
+| availability_zone_hints   |                                      |
+| availability_zones        |                                      |
+| created_at                | 2016-10-25T12:13:56Z                 |
+| description               |                                      |
+| id                        | d65cf29c-efd9-4516-ba4b-0229519dabcf |
+| ipv4_address_scope        |                                      |
+| ipv6_address_scope        |                                      |
+| mtu                       | 1500                                 |
+| name                      | demo-net2                            |
+| project_id                | 79c351662fcf4b02bd184ddc58417218     |
+| provider:network_type     | vlan                                 |
+| provider:physical_network | physnet1                             |
+| provider:segmentation_id  | 1103                                 |
+| revision_number           | 2                                    |
+| router:external           | False                                |
+| shared                    | False                                |
+| status                    | ACTIVE                               |
+| subnets                   |                                      |
+| tags                      |                                      |
+| tenant_id                 | 79c351662fcf4b02bd184ddc58417218     |
+| updated_at                | 2016-10-25T12:13:57Z                 |
++---------------------------+--------------------------------------+
+
+Please see http://docs.openstack.org/developer/kolla/advanced-configuration.html
+for more details about reconfiguration.
