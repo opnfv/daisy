@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_2d720de6",
+        "filename": "ci/build_rpm/daisy_rpm_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-10-26T09:36:55Z",
+      "side": 1,
+      "message": "thanks,I will modify it",
+      "parentUuid": "5ac10518_0db6318b",
+      "revId": "c9d6f7f873dd05140798c8c16d087328526ab66f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_2dbbed73",
         "filename": "ci/build_rpm/daisy_rpm_build.sh",
         "patchSetId": 14
@@ -30,6 +48,24 @@
       "writtenOn": "2016-10-26T09:29:24Z",
       "side": 1,
       "message": "I think we should add rc\u003d$? below this mv statement to ensure that we have successfully move bin file to output_dir?Or this rc is just the result of while statement above.",
+      "revId": "c9d6f7f873dd05140798c8c16d087328526ab66f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_0d6dd104",
+        "filename": "ci/build_rpm/daisy_rpm_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-10-26T09:36:55Z",
+      "side": 1,
+      "message": "I think rc is just judge make allrpm command?mv commond may not need",
+      "parentUuid": "5ac10518_2dbbed73",
       "revId": "c9d6f7f873dd05140798c8c16d087328526ab66f",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
