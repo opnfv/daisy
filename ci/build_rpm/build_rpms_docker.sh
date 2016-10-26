@@ -8,6 +8,8 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
+mkdir -p /root/daisy4nfv/build_output
+mkdir -p /opt/daisy4nfv/build_output
 tmp_rpm_build_dir=/root/daisy4nfv
 rpm_build_dir=/opt/daisy4nfv
 tmp_rpm_output_dir=$tmp_rpm_build_dir/build_output
@@ -16,7 +18,6 @@ cp -r $rpm_build_dir $tmp_rpm_build_dir
 
 # Build daisy rpm packages
 cd $tmp_rpm_build_dir/
-make clean
 ./ci/build_rpm/daisy_rpm_build.sh build_output
 
 

@@ -10,7 +10,9 @@
 ##############################################################################
 
 DAISYDIR = $1
-cd ci/build_rpm
-./build_rpms.sh DAISYDIR
+chmod +x ci/build_rpm/build_rpms_docker.sh
+chmod +x ci/build_rpm/build_rpms.sh
+chmod +x ci/build_rpm/daisy_rpm_build.sh
+./ci/build_rpm/build_rpms.sh $DAISYDIR
 
 
