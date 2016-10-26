@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_ed22c500",
+        "filename": "deploy/README",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-26T08:32:47Z",
+      "side": 1,
+      "message": "Done, Thx!",
+      "parentUuid": "5ac10518_ed3ba536",
+      "revId": "a7144ab98bfc305f414fb401424dff18c79692bf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_cd3ee929",
         "filename": "deploy/README",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2016-10-26T08:23:37Z",
       "side": 1,
       "message": "Maybe a spelling mistake: \"temprary\" should be \"temporary\"?",
+      "revId": "a7144ab98bfc305f414fb401424dff18c79692bf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_8d1f81b7",
+        "filename": "deploy/README",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-26T08:32:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_cd3ee929",
       "revId": "a7144ab98bfc305f414fb401424dff18c79692bf",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
