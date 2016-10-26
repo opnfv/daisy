@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_0d5ab183",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-10-26T08:44:43Z",
+      "side": 1,
+      "message": "Can we change this CentOS-7-x86_64-Minimal-1511.iso as a variable?So when we update the iso will only change one variable?",
+      "revId": "23d272f98dda250a13663076fd71e161cb91d75e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_2d5f6d74",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-10-26T08:44:43Z",
+      "side": 1,
+      "message": "The same as before.",
+      "revId": "23d272f98dda250a13663076fd71e161cb91d75e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_cd53496b",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-10-26T08:44:43Z",
+      "side": 1,
+      "message": "The same as before.",
+      "revId": "23d272f98dda250a13663076fd71e161cb91d75e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
