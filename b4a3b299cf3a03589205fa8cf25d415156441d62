@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_0d41510b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-10-26T07:28:20Z",
+      "side": 1,
+      "message": "Plese see https://wiki.openstack.org/wiki/GitCommitMessages for how to write good commit message. Thanks.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 79
+      },
+      "revId": "b4a3b299cf3a03589205fa8cf25d415156441d62",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
