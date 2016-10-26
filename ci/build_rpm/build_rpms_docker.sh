@@ -16,7 +16,7 @@ cp -r $rpm_build_dir $tmp_rpm_build_dir
 
 # Build daisy rpm packages
 cd $tmp_rpm_build_dir/
-make clean
+#make clean
 ./ci/build_rpm/daisy_rpm_build.sh build_output
 
 
