@@ -22,6 +22,30 @@
       "revId": "d5e79f6b77733444b1cd6bc1db03ab4f9cf7fff2",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_ad303de9",
+        "filename": "ci/build_rpm/daisy_rpm_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-10-26T02:54:34Z",
+      "side": 1,
+      "message": "thanks, I will modify it",
+      "parentUuid": "5ac10518_0d09512c",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "d5e79f6b77733444b1cd6bc1db03ab4f9cf7fff2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
