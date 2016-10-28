@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_333a7037",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 15
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1469
+      },
+      "writtenOn": "2016-10-28T08:37:51Z",
+      "side": 1,
+      "message": "Not suggest use this repo? please use an offical one.\nBecause this repo maybe good for POD in China, but not good for POD in foreign. Please refer to my last comment.\n\nsame with line 18 and line 21.",
+      "revId": "7031a49925f95a2998248734ed02b0147bf279d2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
