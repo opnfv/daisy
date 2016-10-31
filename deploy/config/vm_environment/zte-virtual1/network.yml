@@ -1,0 +1,52 @@
+##############################################################################
+# Copyright (c) 2016 ZTE Coreporation and others.
+# hu.zhijiang@zte.com.cn
+# sun.jing22@zte.com.cn
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Apache License, Version 2.0
+# which accompanies this distribution, and is available at
+# http://www.apache.org/licenses/LICENSE-2.0
+##############################################################################
+
+network-config-metadata:
+  title: 'zte-virtual1 network config'
+  version: '0.1'
+  created: 'Mon Oct 31 2016'
+  comment:
+networks:
+- cidr: 192.168.122.0/24
+  gateway: 192.168.122.1
+  ip_ranges:
+  - - 192.168.122.1
+    - 192.168.122.254
+  name: management
+- cidr: 192.168.122.0/24
+  gateway: 192.168.122.1
+  ip_ranges:
+  - - 192.168.122.1
+    - 192.168.122.254
+  name: storage
+- cidr: 192.168.2.0/24
+  gateway: 192.168.122.1
+  ip_ranges:
+  - - 192.168.122.1
+    - 192.168.122.254
+  name: external
+- cidr: 192.168.122.0/24
+  gateway: 192.168.122.1
+  ip_ranges:
+  - - 192.168.122.1
+    - 192.168.122.
+  name: public
+- cidr: 192.168.122.0/24
+  gateway: 192.168.122.1
+  ip_ranges:
+  - - 192.168.122.1
+    - 192.168.122.254
+  name: private
+
+internal_vip:
+  ip: 192.168.122.144
+
+public_vip:
+  ip: 172.16.0.222
