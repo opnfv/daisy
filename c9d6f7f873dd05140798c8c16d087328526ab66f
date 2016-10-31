@@ -86,6 +86,24 @@
       "revId": "c9d6f7f873dd05140798c8c16d087328526ab66f",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_964d52c7",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-10-31T02:33:32Z",
+      "side": 1,
+      "message": "thanks, I will modify it",
+      "parentUuid": "5ac10518_4d9519e3",
+      "revId": "c9d6f7f873dd05140798c8c16d087328526ab66f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
