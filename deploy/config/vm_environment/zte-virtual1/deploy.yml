@@ -1,0 +1,20 @@
+hosts:
+  - name: host1
+    roles:
+      - controller
+
+  - name: host2
+    roles:
+      - controller
+
+  - name: host3
+    roles:
+      - controller
+
+  - name: host4
+    roles:
+      - compute
+
+  - name: host5
+    roles:
+      - compute
