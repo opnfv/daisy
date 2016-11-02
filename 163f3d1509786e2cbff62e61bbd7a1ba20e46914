@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_e7717e78",
+        "filename": "code/install_interface_patch.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-02T02:46:06Z",
+      "side": 1,
+      "message": "Please use the latest image for mitaka",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "163f3d1509786e2cbff62e61bbd7a1ba20e46914",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
