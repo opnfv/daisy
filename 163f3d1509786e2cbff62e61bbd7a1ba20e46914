@@ -22,6 +22,30 @@
       "revId": "163f3d1509786e2cbff62e61bbd7a1ba20e46914",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_a70296b2",
+        "filename": "code/install_interface_patch.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-11-02T02:59:40Z",
+      "side": 1,
+      "message": "ok,I will change it to registry-2.0.3-mitaka-latest.tgz after discuss with sunjing",
+      "parentUuid": "5ac10518_e7717e78",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "163f3d1509786e2cbff62e61bbd7a1ba20e46914",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
