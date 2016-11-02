@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_70946e37",
+        "filename": "ci/build_rpm/daisy_rpm_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-02T00:48:16Z",
+      "side": 1,
+      "message": "you can use set -eux, see ci/build_rpm/build_rpms.sh for example.",
+      "parentUuid": "5ac10518_0d6dd104",
+      "revId": "c9d6f7f873dd05140798c8c16d087328526ab66f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_4d9519e3",
         "filename": "code/makefile_patch.sh",
         "patchSetId": 14
