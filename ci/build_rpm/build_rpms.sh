@@ -16,7 +16,7 @@ function build_rpm_pkg {
         mkdir -p $DAISYDIR/build_output
 
         sudo docker build -t daisy4nfv_rpm .
-        sudo docker run --rm -v $DAISYDIR:/opt/daisy4nfv -t  daisy4nfv_rpm \
+        sudo docker run -v $DAISYDIR:/opt/daisy4nfv -t  daisy4nfv_rpm \
                       /opt/daisy4nfv/ci/build_rpm/build_rpms_docker.sh
 
 	# Here to collect build result from $DAISYDIR/build_output
