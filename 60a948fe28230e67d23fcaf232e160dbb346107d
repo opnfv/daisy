@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_87a0baf5",
+        "filename": "deploy/config/vm_environment/zte-virtual1/network.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-02T00:42:42Z",
+      "side": 1,
+      "message": "Oct ?",
+      "range": {
+        "startLine": 14,
+        "startChar": 16,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "60a948fe28230e67d23fcaf232e160dbb346107d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_27a54604",
+        "filename": "deploy/config/vm_environment/zte-virtual1/network.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-02T00:42:42Z",
+      "side": 1,
+      "message": "it does not match the current network settings?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "60a948fe28230e67d23fcaf232e160dbb346107d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
