@@ -12,6 +12,11 @@
 # TODO: Let JJB to pass $WORKDIR instead of $BUILD_OUTPUT
 DAISYDIR=$1/../
 
+
+which md5sm
+which md5
+which digest
+
 cd ci/build_rpm
 ./build_rpms.sh $DAISYDIR
 
