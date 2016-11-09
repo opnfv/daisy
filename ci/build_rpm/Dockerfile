@@ -4,6 +4,7 @@ RUN yum -y update
 RUN yum -y install centos-release-openstack-mitaka
 RUN yum -y install \
   coreutils \
+  which \
   git \
   intltool \
   make \
@@ -44,5 +45,4 @@ RUN yum -y install \
   python-lesscpy \
   python-migrate \
   python-pint \
-  python-routes \
-  coreutils
+  python-routes

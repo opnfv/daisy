@@ -9,6 +9,30 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
+###
+MD5_PATH=`exec <&- 2>&-; which md5sum || type md5sum`
+echo $MD5_PATH
+
+which test
+
+test -x $MD5_PATH || MD5_PATH=`exec <&- 2>&-; which md5 || type md5`
+echo $MD5_PATH
+
+test -x $MD5_PATH || MD5_PATH=`exec <&- 2>&-; which digest || type digest`RG=
+
+echo $MD5_PATH
+
+MD5_ARG=
+
+tmpfile="${TMPDIR:=/tmp}/mkself$$"
+echo "test" > $tmpfile
+md5sum=`cat "$tmpfile" | eval "$MD5_PATH $MD5_ARG" | cut -b-32`;
+rm -f "$tmpfile"
+
+echo $md5sum
+###
+
+
 rpm_build_dir=/opt/daisy4nfv
 rpm_output_dir=$rpm_build_dir/build_output
 tmp_rpm_build_dir=/root/daisy4nfv
