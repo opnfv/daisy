@@ -12,6 +12,16 @@
 # TODO: Let JJB to pass $WORKDIR instead of $BUILD_OUTPUT
 DAISYDIR=$1/../
 
+
+MD5_PATH=`exec <&- 2>&-; which md5sum || type md5sum`
+echo $MD5_PATH
+
+test -x $MD5_PATH || MD5_PATH=`exec <&- 2>&-; which md5 || type md5`
+echo $MD5_PATH
+
+test -x $MD5_PATH || MD5_PATH=`exec <&- 2>&-; which digest || type digest`
+echo $MD5_PATH
+
 cd ci/build_rpm
 ./build_rpms.sh $DAISYDIR
 
