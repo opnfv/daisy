@@ -9,6 +9,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
+OPNFV_ARTIFACT_VERSION=$1
 rpm_build_dir=/opt/daisy4nfv
 rpm_output_dir=$rpm_build_dir/build_output
 tmp_rpm_build_dir=/root/daisy4nfv
@@ -47,5 +48,6 @@ do
     fi
 done
 cd ..
-cp target/el7/noarch/installdaisy_el7_noarch.bin $rpm_output_dir
+mv cp target/el7/noarch/installdaisy_el7_noarch.bin opnfv-$OPNFV_ARTIFACT_VERSION.bin
+cp target/el7/noarch/opnfv-$OPNFV_ARTIFACT_VERSION.bin $rpm_output_dir
 exit $rc
