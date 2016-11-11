@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_6157b003",
+        "filename": "deploy/config/vm_environment/zte-virtual1/template.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-11T06:54:49Z",
+      "side": 1,
+      "message": "This is a config file exported from a already existed cluster which created by using web UI. But DO NOT assume all users will do in this way. It is far to complex for a user to create a config file like this.",
+      "revId": "eae39dc488f7fa57eac0a449125ee4a368c9fa35",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
