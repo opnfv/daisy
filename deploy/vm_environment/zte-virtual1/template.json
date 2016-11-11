@@ -1,0 +1,367 @@
+{
+  "description": "", 
+  "content": {
+    "cluster": {
+      "description": "", 
+      "routers": [], 
+      "logic_networks": [], 
+      "networking_parameters": {
+        "vni_range": [
+          null, 
+          null
+        ], 
+        "public_vip": null, 
+        "net_l23_provider": null, 
+        "base_mac": "", 
+        "gre_id_range": [
+          null, 
+          null
+        ], 
+        "vlan_range": [
+          null, 
+          null
+        ], 
+        "segmentation_type": null
+      }, 
+      "auto_scale": 0, 
+      "use_dns": 0, 
+      "owner": null
+    }, 
+    "cinder_volumes": [], 
+    "networks": [
+      {
+        "segmentation_type": null, 
+        "vlan_start": 1, 
+        "description": "For deploy the infrastructure", 
+        "alias": null, 
+        "ip": null, 
+        "ip_ranges": [], 
+        "vni_start": null, 
+        "mtu": 1500, 
+        "capability": "high", 
+        "physnet_name": null, 
+        "gre_id_end": null, 
+        "ml2_type": null, 
+        "vlan_end": 4094, 
+        "vni_end": null, 
+        "gre_id_start": null, 
+        "cidr": "99.99.1.1/24", 
+        "network_type": "DEPLOYMENT", 
+        "type": "default", 
+        "gateway": null, 
+        "vlan_id": null, 
+        "name": "DEPLOYMENT"
+      }, 
+      {
+        "segmentation_type": "vlan", 
+        "vlan_start": 1, 
+        "description": "", 
+        "alias": null, 
+        "ip": null, 
+        "ip_ranges": [], 
+        "vni_start": null, 
+        "mtu": 1500, 
+        "capability": "high", 
+        "physnet_name": "physnet_ens3", 
+        "gre_id_end": null, 
+        "ml2_type": "ovs", 
+        "vlan_end": 4094, 
+        "vni_end": null, 
+        "gre_id_start": null, 
+        "cidr": null, 
+        "network_type": "DATAPLANE", 
+        "type": "default", 
+        "gateway": null, 
+        "vlan_id": null, 
+        "name": "physnet1"
+      }, 
+      {
+        "segmentation_type": null, 
+        "vlan_start": 1, 
+        "description": "", 
+        "alias": null, 
+        "ip": null, 
+        "ip_ranges": [], 
+        "vni_start": null, 
+        "mtu": 1500, 
+        "capability": "high", 
+        "physnet_name": "physnet_ens3", 
+        "gre_id_end": null, 
+        "ml2_type": null, 
+        "vlan_end": 4094, 
+        "vni_end": null, 
+        "gre_id_start": null, 
+        "cidr": "192.168.1.1/24", 
+        "network_type": "PUBLICAPI", 
+        "type": "default", 
+        "gateway": "", 
+        "vlan_id": null, 
+        "name": "PUBLICAPI"
+      }, 
+      {
+        "segmentation_type": null, 
+        "vlan_start": 1, 
+        "description": "", 
+        "alias": null, 
+        "ip": null, 
+        "ip_ranges": [], 
+        "vni_start": null, 
+        "mtu": 1500, 
+        "capability": "high", 
+        "physnet_name": "physnet_ens8", 
+        "gre_id_end": null, 
+        "ml2_type": null, 
+        "vlan_end": 4094, 
+        "vni_end": null, 
+        "gre_id_start": null, 
+        "cidr": "192.168.1.1/24", 
+        "network_type": "EXTERNAL", 
+        "type": "default", 
+        "gateway": "", 
+        "vlan_id": null, 
+        "name": "EXTERNAL"
+      }, 
+      {
+        "segmentation_type": null, 
+        "vlan_start": 1, 
+        "description": "", 
+        "alias": null, 
+        "ip": null, 
+        "ip_ranges": [
+          {
+            "start": "192.168.122.152",
+            "end": "92.168.122.153"
+          }
+        ],
+        "vni_start": null, 
+        "mtu": 1500, 
+        "capability": "high", 
+        "physnet_name": "physnet_ens3", 
+        "gre_id_end": null, 
+        "ml2_type": null, 
+        "vlan_end": 4094, 
+        "vni_end": null, 
+        "gre_id_start": null, 
+        "cidr": "192.168.122.1/24", 
+        "network_type": "MANAGEMENT", 
+        "type": "default", 
+        "gateway": "", 
+        "vlan_id": null, 
+        "name": "MANAGEMENT"
+      }, 
+      {
+        "segmentation_type": null, 
+        "vlan_start": 1, 
+        "description": "", 
+        "alias": null, 
+        "ip": null, 
+        "ip_ranges": [], 
+        "vni_start": null, 
+        "mtu": 1500, 
+        "capability": "high", 
+        "physnet_name": "physnet_ens3", 
+        "gre_id_end": null, 
+        "ml2_type": null, 
+        "vlan_end": 4094, 
+        "vni_end": null, 
+        "gre_id_start": null, 
+        "cidr": "192.168.1.1/24", 
+        "network_type": "STORAGE", 
+        "type": "default", 
+        "gateway": "", 
+        "vlan_id": null, 
+        "name": "STORAGE"
+      }
+    ], 
+    "roles": [
+      {
+        "db_vip": null, 
+        "config_set_id": "testluCONTROLLER_LB", 
+        "deployment_backend": "kolla", 
+        "description": "Controller Role for kolla.", 
+        "mongodb_vip": null, 
+        "public_vip": null, 
+        "glance_lv_size": 0, 
+        "vip": "192.168.122.199", 
+        "role_type": "CONTROLLER_LB", 
+        "db_lv_size": 0, 
+        "ntp_server": null, 
+        "disk_location": "local", 
+        "type": "default", 
+        "nova_lv_size": 0, 
+        "glance_vip": null, 
+        "name": "CONTROLLER_LB"
+      }, 
+      {
+        "db_vip": null, 
+        "config_set_id": "testluCOMPUTER", 
+        "deployment_backend": "kolla", 
+        "description": "Computer Role for kolla.", 
+        "mongodb_vip": null, 
+        "public_vip": null, 
+        "glance_lv_size": 0, 
+        "vip": null, 
+        "role_type": "COMPUTER", 
+        "db_lv_size": 0, 
+        "ntp_server": null, 
+        "disk_location": "local", 
+        "type": "default", 
+        "nova_lv_size": 0, 
+        "glance_vip": null, 
+        "name": "COMPUTER"
+      }
+    ], 
+    "services_disk": []
+  }, 
+  "hosts": [
+    {
+      "os_version_id": null, 
+      "root_disk": null, 
+      "isolcpus": null, 
+      "cluster": "testlu", 
+      "devices": {
+        "0000:00:08.0": {
+          "0000:00:08.0": "-1"
+        }, 
+        "0000:00:06.7": {
+          "0000:00:06.7": "-1"
+        }, 
+        "0000:00:06.0": {
+          "0000:00:06.0": "-1"
+        }, 
+        "0000:00:06.1": {
+          "0000:00:06.1": "-1"
+        }, 
+        "0000:00:06.2": {
+          "0000:00:06.2": "-1"
+        }, 
+        "0000:00:02.0": {
+          "0000:00:02.0": "-1"
+        }, 
+        "0000:00:07.0": {
+          "0000:00:07.0": "-1"
+        }, 
+        "0000:00:03.0": {
+          "0000:00:03.0": "-1"
+        }, 
+        "0000:00:04.0": {
+          "0000:00:04.0": "-1"
+        }, 
+        "0000:00:00.0": {
+          "0000:00:00.0": "-1"
+        }, 
+        "0000:00:05.0": {
+          "0000:00:05.0": "-1"
+        }, 
+        "0000:00:01.3": {
+          "0000:00:01.3": "-1"
+        }, 
+        "0000:00:01.1": {
+          "0000:00:01.1": "-1"
+        }, 
+        "0000:00:01.0": {
+          "0000:00:01.0": "-1"
+        }
+      }, 
+      "description": "", 
+      "os_version_file": null, 
+      "deployment_backends": [
+        "kolla"
+      ], 
+      "pci": {
+        "00:01.1": "00:01.1 IDE interface: Intel Corporation 82371SB PIIX3 IDE [Natoma/Triton II]", 
+        "00:00.0": "00:00.0 Host bridge: Intel Corporation 440FX - 82441FX PMC [Natoma] (rev 02)", 
+        "00:06.1": "00:06.1 USB controller: Intel Corporation 82801I (ICH9 Family) USB UHCI Controller #2 (rev 03)", 
+        "00:06.0": "00:06.0 USB controller: Intel Corporation 82801I (ICH9 Family) USB UHCI Controller #1 (rev 03)", 
+        "00:06.2": "00:06.2 USB controller: Intel Corporation 82801I (ICH9 Family) USB UHCI Controller #3 (rev 03)", 
+        "00:07.0": "00:07.0 Unclassified device [00ff]: Red Hat, Inc Virtio memory balloon", 
+        "00:06.7": "00:06.7 USB controller: Intel Corporation 82801I (ICH9 Family) USB2 EHCI Controller #1 (rev 03)", 
+        "00:08.0": "00:08.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL-8100/8101L/8139 PCI Fast Ethernet Adapter (rev 20)", 
+        "00:03.0": "00:03.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL-8100/8101L/8139 PCI Fast Ethernet Adapter (rev 20)", 
+        "00:02.0": "00:02.0 VGA compatible controller: Red Hat, Inc. QXL paravirtual graphic card (rev 04)", 
+        "00:01.3": "00:01.3 Bridge: Intel Corporation 82371AB/EB/MB PIIX4 ACPI (rev 03)", 
+        "00:01.0": "00:01.0 ISA bridge: Intel Corporation 82371SB PIIX3 ISA [Natoma/Triton II]", 
+        "00:04.0": "00:04.0 Audio device: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) High Definition Audio Controller (rev 01)", 
+        "00:05.0": "00:05.0 Communication controller: Red Hat, Inc Virtio console"
+      }, 
+      "role": [
+        "CONTROLLER_LB",
+        "COMPUTER"
+      ], 
+      "dvs_high_cpuset": null, 
+      "pci_high_cpuset": null, 
+      "config_set_id": null, 
+      "vcpu_pin_set": null, 
+      "dmi_uuid": "BB361BBE-B932-46A7-BD6D-DD133F4980D3", 
+      "interfaces": [
+        {
+          "name": "ens3", 
+          "is_deployment": false, 
+          "ip": "192.168.122.152", 
+          "slave2": null, 
+          "netmask": "255.255.255.0", 
+          "vswitch_type": "", 
+          "mac": "52:54:00:9b:a8:9d", 
+          "pci": "0000:00:03.0", 
+          "slave1": null, 
+          "mode": null, 
+          "assigned_networks": [
+            {
+              "ip": "192.168.122.152", 
+              "name": "MANAGEMENT"
+            }, 
+            {
+              "ip": "", 
+              "name": "PUBLICAPI"
+            }, 
+            {
+              "ip": "", 
+              "name": "STORAGE"
+            },
+            {
+              "ip": "",
+              "name": "physnet1"
+            }
+          ], 
+          "type": "ether", 
+          "gateway": null
+        }, 
+        {
+          "name": "ens8", 
+          "is_deployment": false, 
+          "ip": "", 
+          "slave2": null, 
+          "netmask": "", 
+          "vswitch_type": "", 
+          "mac": "52:54:00:02:04:81", 
+          "pci": "0000:00:08.0", 
+          "slave1": null, 
+          "mode": null, 
+          "assigned_networks": [
+            {
+              "ip": "",
+              "name": "EXTERNAL"
+            }
+          ], 
+          "type": "ether", 
+          "gateway": null
+        }
+      ], 
+      "os_progress": 0, 
+      "ipmi_passwd": null, 
+      "dvs_cpus": null, 
+      "ipmi_user": null, 
+      "hugepagesize": null, 
+      "name": "DaisyNode", 
+      "hugepages": 0, 
+      "os_cpus": null, 
+      "root_pwd": null, 
+      "resource_type": "baremetal", 
+      "position": "", 
+      "swap_lv_size": 4096, 
+      "root_lv_size": 102400
+    }
+  ], 
+  "type": "kolla", 
+  "name": "test_template"
+}
