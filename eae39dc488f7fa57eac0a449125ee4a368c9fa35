@@ -16,6 +16,24 @@
       "revId": "eae39dc488f7fa57eac0a449125ee4a368c9fa35",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_21dd2871",
+        "filename": "deploy/config/vm_environment/zte-virtual1/template.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-11-11T07:51:07Z",
+      "side": 1,
+      "message": "yes,it is too complex .maybe we nedd simplify it",
+      "parentUuid": "5ac10518_6157b003",
+      "revId": "eae39dc488f7fa57eac0a449125ee4a368c9fa35",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
