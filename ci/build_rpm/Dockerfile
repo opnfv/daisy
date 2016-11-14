@@ -3,6 +3,7 @@ LABEL daisy_image_version=1.0
 RUN yum -y update
 RUN yum -y install centos-release-openstack-mitaka
 RUN yum -y install \
+  wget \
   coreutils \
   which \
   gawk \
