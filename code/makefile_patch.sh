@@ -18,7 +18,7 @@ if [ ! -f $CACHE_PATH/registry-mitaka-latest.tgz ]; then
     wget -P $CACHE_PATH "http://daisycloud.org/static/files/registry-mitaka-latest.tgz"
 fi
 if [ ! -f $CACHE_PATH/registry-server.tar ]; then
-    wget -P $CACHE_PATH "wget http://daisycloud.org/static/files/registry-server.tar"
+    wget -P $CACHE_PATH "http://daisycloud.org/static/files/registry-server.tar"
 fi
 cp $CACHE_PATH/CentOS-7-x86_64-Minimal-1511.iso $TOOLS_PATH/setup/bin_temp/
 cp $CACHE_PATH/registry-mitaka-latest.tgz $TOOLS_PATH/setup/bin_temp/
