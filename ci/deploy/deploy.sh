@@ -9,7 +9,11 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 #daisy host discover
-DAISYDIR=
+######exit before finish test#######
+exit 0
+
+##########TODO after test#########################
+DAISYDIR=$WORKSPACE
 json_file=$DAISYDIR/deploy/config/vm_environment/zte-virtual/template.json
 source ~/daisyrc_admin
 daisy discover-host-add 192.168.122.152 ossdbg1
