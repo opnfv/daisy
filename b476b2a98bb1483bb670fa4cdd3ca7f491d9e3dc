@@ -169,6 +169,24 @@
       "revId": "b476b2a98bb1483bb670fa4cdd3ca7f491d9e3dc",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_07aa7719",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-11-18T09:37:14Z",
+      "side": 1,
+      "message": "maybe python file do not need license",
+      "parentUuid": "5ac10518_6751fb61",
+      "revId": "b476b2a98bb1483bb670fa4cdd3ca7f491d9e3dc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
