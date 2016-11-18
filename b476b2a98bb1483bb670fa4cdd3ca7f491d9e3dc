@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_a7a4c357",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 23
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-11-18T09:04:10Z",
+      "side": 1,
+      "message": "maybe  I can add - before ens8, and just modify tempest.py to get it,thanks!",
+      "parentUuid": "5ac10518_07e597a7",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "b476b2a98bb1483bb670fa4cdd3ca7f491d9e3dc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_4754ff53",
         "filename": "deploy/get_conf.py",
         "patchSetId": 23
