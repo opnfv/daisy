@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_47db9fed",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 23
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-11-18T08:48:09Z",
+      "side": 1,
+      "message": "the name is based on the zte-virtul ,I use DaisyNode5 node as zet-virtula1.  maybe I can rename DaisyNode5,thanks!",
+      "parentUuid": "5ac10518_c760ef37",
+      "range": {
+        "startLine": 2,
+        "startChar": 9,
+        "endLine": 2,
+        "endChar": 19
+      },
+      "revId": "b476b2a98bb1483bb670fa4cdd3ca7f491d9e3dc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_875ae781",
         "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
         "patchSetId": 23
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_07e597a7",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 23
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-11-18T08:48:09Z",
+      "side": 1,
+      "message": "because I  want use form with {{ens3:xx},{ens8:xx}},so I do not use -",
+      "parentUuid": "5ac10518_875ae781",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "b476b2a98bb1483bb670fa4cdd3ca7f491d9e3dc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_4754ff53",
         "filename": "deploy/get_conf.py",
         "patchSetId": 23
@@ -59,6 +107,24 @@
       "writtenOn": "2016-11-18T08:28:28Z",
       "side": 1,
       "message": "please add license header.",
+      "revId": "b476b2a98bb1483bb670fa4cdd3ca7f491d9e3dc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_27e213a0",
+        "filename": "deploy/get_conf.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-11-18T08:48:09Z",
+      "side": 1,
+      "message": "thanks, I will add it",
+      "parentUuid": "5ac10518_4754ff53",
       "revId": "b476b2a98bb1483bb670fa4cdd3ca7f491d9e3dc",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
