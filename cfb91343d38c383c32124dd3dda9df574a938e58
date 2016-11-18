@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_a7b043f5",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-11-18T05:46:51Z",
+      "side": 1,
+      "message": "thanks,I will modify it?",
+      "parentUuid": "5ac10518_671d7b0f",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "cfb91343d38c383c32124dd3dda9df574a938e58",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_071a7717",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 17
