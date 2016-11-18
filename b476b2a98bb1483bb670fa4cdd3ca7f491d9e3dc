@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_c760ef37",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 23
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1469
+      },
+      "writtenOn": "2016-11-18T08:28:28Z",
+      "side": 1,
+      "message": "Maybe Node5 is enough.",
+      "range": {
+        "startLine": 2,
+        "startChar": 9,
+        "endLine": 2,
+        "endChar": 19
+      },
+      "revId": "b476b2a98bb1483bb670fa4cdd3ca7f491d9e3dc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_875ae781",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 23
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1469
+      },
+      "writtenOn": "2016-11-18T08:28:28Z",
+      "side": 1,
+      "message": "I guess you miss \"-\" before ens8.\nAnd no need to add quote to ens3 and ens8",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "b476b2a98bb1483bb670fa4cdd3ca7f491d9e3dc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_4754ff53",
+        "filename": "deploy/get_conf.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1469
+      },
+      "writtenOn": "2016-11-18T08:28:28Z",
+      "side": 1,
+      "message": "please add license header.",
+      "revId": "b476b2a98bb1483bb670fa4cdd3ca7f491d9e3dc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_6751fb61",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1469
+      },
+      "writtenOn": "2016-11-18T08:28:28Z",
+      "side": 1,
+      "message": "please add license header.",
+      "revId": "b476b2a98bb1483bb670fa4cdd3ca7f491d9e3dc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
