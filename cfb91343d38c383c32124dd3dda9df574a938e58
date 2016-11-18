@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_671d7b0f",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-18T01:41:58Z",
+      "side": 1,
+      "message": "Please move it out of code and get it from DHA/DEA",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "cfb91343d38c383c32124dd3dda9df574a938e58",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_071a7717",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-18T01:41:58Z",
+      "side": 1,
+      "message": "See above",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 35
+      },
+      "revId": "cfb91343d38c383c32124dd3dda9df574a938e58",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
