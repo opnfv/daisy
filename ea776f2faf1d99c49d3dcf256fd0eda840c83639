@@ -22,6 +22,98 @@
       "revId": "ea776f2faf1d99c49d3dcf256fd0eda840c83639",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_7ddd0c42",
+        "filename": "deploy/config/vm_environment/zte-virtual1/network.yml",
+        "patchSetId": 36
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-21T07:25:14Z",
+      "side": 1,
+      "message": "Try using different cidr to illustrate network usage.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "ea776f2faf1d99c49d3dcf256fd0eda840c83639",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_1dee48ed",
+        "filename": "deploy/config/vm_environment/zte-virtual1/network.yml",
+        "patchSetId": 36
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-21T07:25:14Z",
+      "side": 1,
+      "message": "This will be used in the following cmds to allocate float ip to the vms:\n    neutron net-create public1 --router:external --provider:physical_network physnet1 --provider:network_type flat\n    neutron subnet-create --name 1-subnet --disable-dhcp --allocation-pool start\u003dxxx,end\u003dxxx public1 xxx/24 --gateway xxx",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "ea776f2faf1d99c49d3dcf256fd0eda840c83639",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_3de78414",
+        "filename": "deploy/config/vm_environment/zte-virtual1/network.yml",
+        "patchSetId": 36
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-21T07:25:14Z",
+      "side": 1,
+      "message": "This will be used for vxlan end point ip. Try using different cidr to illustrate network usage.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 28
+      },
+      "revId": "ea776f2faf1d99c49d3dcf256fd0eda840c83639",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_9de23802",
+        "filename": "deploy/config/vm_environment/zte-virtual1/network.yml",
+        "patchSetId": 36
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-21T07:25:14Z",
+      "side": 1,
+      "message": "rename it to TENANT to make it more clear to the user",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "ea776f2faf1d99c49d3dcf256fd0eda840c83639",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
