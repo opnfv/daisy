@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_dd79a094",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 36
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-11-21T05:42:21Z",
+      "side": 1,
+      "message": "move to a specific sub dir",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "ea776f2faf1d99c49d3dcf256fd0eda840c83639",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
