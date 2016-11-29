@@ -1,20 +1,5 @@
 hosts:
-- name: 'Node5'
+- name: 'all_in_one'
   roles:
   - 'CONTROLLER_LB'
   - 'COMPUTER'
-  ip: '192.168.122.152'
-  password: 'ossdbg1'
-  interface:
-  - 'ens3':
-    - name: 'MANAGEMENT'
-      ip: '192.168.122.152'
-    - name: 'PUBLICAPI'
-      ip:
-    - name: 'physnet1'
-      ip:
-    - name: 'STORAGE'
-      ip:
-    'ens8':
-    - name: 'EXTERNAL'
-      ip:
