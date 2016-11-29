@@ -10,23 +10,89 @@
 ##############################################################################
 #daisy host discover
 ######exit before finish test#######
-exit 0
+# exit 0
 
 ##########TODO after test##########
-DHA=$1
-NETWORK=$2
-tempest_path=$WORKSPACE/deploy
+DHA=$WORKSPACE/$1
+NETWORK=$WORKSPACE/$2
+deploy_path=$WORKSPACE/deploy
+create_qcow2_path=$WORKSPACE/tools
+net_daisy1=$WORKSPACE/templates/virtual_environment/networks/daisy.xml
+net_daisy2=$WORKSPACE/templates/virtual_environment/networks/os-all_in_one.xml
+pod_daisy=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
+pod_all_in_one=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
 
-echo "====== clean && install daisy==========="
-.$WORKSPACE/opnfv.bin  clean
-rc=$?
-if [ $rc -ne 0 ]; then
-    echo "daisy clean failed"
-    exit 1
-else
-    echo "daisy clean successfully"
-fi
-.$WORKSPACE/opnfv.bin  install
+parameter_from_deploy=`python $WORKSPACE/deploy/get_para_from_deploy.py --dha $DHA`
+
+daisyserver_size=`echo $parameter_from_deploy | cut -d " " -f 1`
+controller_node_size=`echo $parameter_from_deploy | cut -d " " -f 2`
+compute_node_size=`echo $parameter_from_deploy | cut -d " " -f 3`
+daisy_passwd=`echo $parameter_from_deploy | cut -d " " -f 4`
+daisy_ip=`echo $parameter_from_deploy | cut -d " " -f 5`
+daisy_gateway=`echo $parameter_from_deploy | cut -d " " -f 6`
+
+function execute_on_jumpserver
+{
+    ssh $1 -o UserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no $2
+}
+
+function create_node
+{
+    virsh net-define $1
+    virsh net-autostart $2
+    virsh net-start $2
+    virsh define $3
+    virsh start $4
+}
+
+#update key = value config option in an conf or ini file
+function update_config
+{
+    local file=$1
+    local key=$2
+    local value=$3
+
+    [ ! -e $file ] && return
+
+    #echo update key $key to value $value in file $file ...
+    local exist=`grep "^[[:space:]]*[^#]" $file | grep -c "$key[[:space:]]*=[[:space:]]*.*"`
+    #action：If a line is a comment, the beginning of the first character must be a #!!!
+    local comment=`grep -c "^[[:space:]]*#[[:space:]]*$key[[:space:]]*=[[:space:]]*.*"  $file`
+
+    if [[ $value == "#" ]];then
+        if [ $exist -gt 0 ];then
+            sed  -i "/^[^#]/s/$key[[:space:]]*=/\#$key=/" $file
+        fi
+        return
+    fi
+
+    if [ $exist -gt 0 ];then
+        #if there have been a effective configuration line did not comment, update value directly
+        sed  -i "/^[^#]/s#$key[[:space:]]*=.*#$key=$value#" $file
+
+    elif [ $comment -gt 0 ];then
+        #if there is a configuration line has been commented out, then remove the comments, update the value
+        sed -i "s@^[[:space:]]*#[[:space:]]*$key[[:space:]]*=[[:space:]]*.*@$key=$value@" $file
+    else
+        #add effective configuration line at the end
+        echo "$key=$value" >> $file
+    fi
+}
+
+echo "=======create daisy node================"
+$create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $daisy_ip -g $daisy_gateway -s $daisyserver_size
+#qemu-img resize centos7.qcow2 100G
+create_node $net_daisy1 daisy1 $pod_daisy daisy
+sleep 20
+
+echo "====== install daisy==========="
+$deploy_path/trustme.sh $daisy_ip $daisy_passwd
+scp -r $WORKSPACE root@$daisy_ip:/home
+
+execute_on_jumpserver $daisy_ip "mkdir -p /home/daisy_install"
+scp $WORKSPACE/deploy/daisy.conf root@$daisy_ip:/home/daisy_install
+update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $daisy_ip
+execute_on_jumpserver $daisy_ip "$WORKSPACE/opnfv.bin  install"
 rc=$?
 if [ $rc -ne 0 ]; then
     echo "daisy install failed"
@@ -35,29 +101,28 @@ else
     echo "daisy install successfully"
 fi
 
-source ~/daisyrc_admin
+echo "====== add relate config of kolla==========="
+execute_on_jumpserver $daisy_ip "mkdir -p /etc/kolla/config/nova"
+execute_on_jumpserver $daisy_ip "echo -e "[libvirt]\nvirt_type=qemu" > /etc/kolla/config/nova/nova-compute.conf"
 
-echo "======prepare install openstack==========="
-python $tempest_path/tempest.py --dha $DHA --network $NETWORK
+echo "===prepare cluster and pxe==="
+execute_on_jumpserver $daisy_ip "python $WORKSPACE/deploy/tempest.py --dha $DHA --network $NETWORK --cluster "yes""
 
-echo "======daisy install kolla(openstack)==========="
-cluster_id=`daisy cluster-list | awk -F "|" '{print $2}' | sed -n '4p'`
-daisy install $cluster_id
-echo "check installing process..."
-var=1
-while [ $var -eq 1 ]; do
-    echo "loop for judge openstack installing  progress..."
-    openstack_install_active=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $12}' | grep -c "active" `
-    openstack_install_failed=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $12}' | grep -c "install-failed" `
-    if [ $openstack_install_active -eq 1 ]; then
-        echo "openstack installing successful ..."
-        break
-    elif [ $openstack_install_failed -gt 0 ]; then
-        echo "openstack installing have failed..."
-        tail -n 200 /var/log/daisy/kolla_$cluster_id*
-        exit 1
-    else
-        echo " openstack in installing , please waiting ..."
-    fi
-done
+echo "=====create all-in-one node======"
+qemu-img create -f qcow2 $WORKSPACE/../qemu/vms/all_in_one.qcow2 200G
+create_node $net_daisy2 daisy2 $pod_all_in_one all_in_one
+sleep 20
+
+echo "======prepare host and pxe==========="
+execute_on_jumpserver $daisy_ip "python $WORKSPACE/deploy/tempest.py  --dha $DHA --network $NETWORK --host "yes""
+
+echo "======daisy deploy os and openstack==========="
+virsh destroy all_in_one
+virsh start all_in_one
+
+echo "===========check install progress==========="
+execute_on_jumpserver $daisy_ip "$WORKSPACE/deploy/check_os_progress.sh"
+virsh reboot all_in_one
+execute_on_jumpserver $daisy_ip "$WORKSPACE/deploy/check_openstack_progress.sh"
+
 exit 0
