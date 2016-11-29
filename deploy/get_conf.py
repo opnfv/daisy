@@ -33,6 +33,8 @@ def decorator_mk(types):
 @decorator_mk('networks')
 def network(network=None):
     net_plane = network.get('name', '')
+    if net_plane == "TENANT":
+        net_plane = "physnet1"
     network.pop('name')
     map = {}
     map[net_plane] = network
@@ -69,7 +71,8 @@ def host(host=None):
 def network_config_parse(s, dha_file):
     network_map = network(s)
     vip = s.get('internal_vip')
-    return network_map, vip
+    interface_map = interface(s, ',')
+    return network_map, vip, interface_map
 
 
 def dha_config_parse(s, dha_file):
@@ -81,9 +84,7 @@ def dha_config_parse(s, dha_file):
 
 def config(dha_file, network_file):
     data = init(dha_file)
-    host_interface_map, host_role_map, host_ip_passwd_map = \
-        dha_config_parse(data, dha_file)
+    hosts_name = dha_config_parse(data, dha_file)
     data = init(network_file)
-    network_map, vip = network_config_parse(data, network_file)
-    return host_interface_map, host_role_map, \
-        host_ip_passwd_map, network_map, vip
+    network_map, vip, interface_map = network_config_parse(data, network_file)
+    return interface_map, hosts_name, network_map, vip
