@@ -13,20 +13,36 @@
 exit 0
 
 ##########TODO after test##########
-DHA=$1
-NETWORK=$2
-tempest_path=$WORKSPACE/deploy
+DHA=/home/daisy/$1
+NETWORK=/home/daisy/$2
+deploy_path=$WORKSPACE/deploy
+create_qcow2_path=$WORKSPACE/tools
+net_daisy1=$WORKSPACE/templates/virtual_environment/networks/daisy1.xml
+net_daisy2=$WORKSPACE/templates/virtual_environment/networks/daisy2.xml
+pod_daisy=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
+pod_all_in_one=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
 
-echo "====== clean && install daisy==========="
-.$WORKSPACE/opnfv.bin  clean
-rc=$?
-if [ $rc -ne 0 ]; then
-    echo "daisy clean failed"
-    exit 1
-else
-    echo "daisy clean successfully"
-fi
-.$WORKSPACE/opnfv.bin  install
+daisy_ip=10.20.11.2
+daisy_gateway=10.20.11.1
+daisy_passwd=r00tme
+
+echo "=======create daisy node================"
+$create_qcow2_path/daisy-img-modify.sh $create_qcow2_path/centos-img-modify.sh $daisy_ip $daisy_gateway
+qemu-img resize centos7.qcow2 100G
+virsh net-define $net_daisy1
+virsh net-autostart daisy1
+virsh net-start daisy1
+virsh define $pod_daisy
+virsh start daisy
+sleep 20
+
+echo "====== install daisy==========="
+$deploy_path/trustme.sh $daisy_ip $daisy_passwd
+scp -r $WORKSPACE root@$daisy_ip:/home
+
+ssh $daisy_ip -o UserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no "mkdir -p /home/daisy_install"
+scp $WORKSPACE/deploy/daisy.conf root@$daisy_ip:/home/daisy_install
+ssh $daisy_ip -o UserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no "/home/daisy/opnfv.bin  install"
 rc=$?
 if [ $rc -ne 0 ]; then
     echo "daisy install failed"
@@ -35,29 +51,32 @@ else
     echo "daisy install successfully"
 fi
 
-source ~/daisyrc_admin
+echo "====== add relate config of kolla==========="
+ssh $daisy_ip -o UserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no "mkdir -p /etc/kolla/config/nova"
+ssh $daisy_ip -o UserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no "echo -e "[libvirt]\nvirt_type=qemu" > /etc/kolla/config/nova/nova-compute.conf"
 
-echo "======prepare install openstack==========="
-python $tempest_path/tempest.py --dha $DHA --network $NETWORK
+echo "===prepare cluster and pxe==="
+ssh $daisy_ip -o UserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no "python /home/daisy/deploy/tempest.py --dha $DHA --network $NETWORK --cluster "yes""
 
-echo "======daisy install kolla(openstack)==========="
-cluster_id=`daisy cluster-list | awk -F "|" '{print $2}' | sed -n '4p'`
-daisy install $cluster_id
-echo "check installing proess..."
-var=1
-while [ $var -eq 1 ]; do
-    echo "loop for judge openstack installing  progress..."
-    openstack_install_active=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $12}' | grep -c "active" `
-    openstack_install_failed=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $12}' | grep -c "install-failed" `
-    if [ $openstack_install_active -eq 1 ]; then
-        echo "openstack installing successful ..."
-        break
-    elif [ $openstack_install_failed -gt 0 ]; then
-        echo "openstack installing have failed..."
-        tail -n 200 /var/log/daisy/kolla_$cluster_id*
-        exit 1
-    else
-        echo " openstack in installing , please waiting ..."
-    fi
-done
+echo "=====create all-in-one node======"
+qemu-img create -f qcow2 /home/qemu/vms/all_in_one.qcow2 200G
+virsh net-define $net_daisy2
+virsh net-autostart daisy2
+virsh net-start daisy2
+virsh define $pod_all_in_one
+virsh start all_in_one
+sleep 20
+
+echo "======prepare host and pxe==========="
+ssh $daisy_ip -o UserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no "python /home/daisy/deploy/tempest.py  --dha $DHA --network $NETWORK --host "yes""
+
+echo "======daisy deploy os and openstack==========="
+virsh destroy all_in_one
+virsh start all_in_one
+
+echo "===========check install progress==========="
+ssh $daisy_ip -o UserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no "/home/daisy/deploy/check_os_progress.sh"
+virsh reboot all_in_one
+ssh $daisy_ip -o UserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no "/home/daisy/deploy/check_openstack_progress.sh"
+
 exit 0
