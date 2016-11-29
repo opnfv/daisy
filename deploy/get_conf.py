@@ -32,6 +32,25 @@ def networkdecorator(func):
     return wrapter
 
 
+def interfacedecorator(func):
+    def wrapter(s, seq):
+        interface_list = s.get('interfaces', [])
+        result = {}
+        for interface in interface_list:
+            s = func(s, seq, interface)
+            if not s:
+                continue
+            if s.keys()[0] in result:
+                result[s.keys()[0]].append(s.values()[0][0])
+            else:
+                result.update(s)
+        if len(result) == 0:
+            return ""
+        else:
+            return result
+    return wrapter
+
+
 def hostdecorator(func):
     def wrapter(s, seq):
         host_list = s.get('hosts', [])
@@ -73,13 +92,14 @@ def network(s, seq, network=None):
     return map
 
 
-@hostdecorator
-def interface(s, seq, host=None):
-    hostname = host.get('name', '')
-    interface = host.get('interface', '')[0]
-    map = {}
-    map[hostname] = interface
-    return map
+@interfacedecorator
+def interface(s, seq, interface=None):
+    name = interface.get('name', '')
+    interface = interface.get('interface', '')
+    map2 = {}
+    map = {'ip': '', 'name': name}
+    map2[interface] = [map]
+    return map2
 
 
 @hostdecorator
@@ -92,32 +112,26 @@ def role(s, seq, host=None):
 
 
 @decorator
-def host(s, seq, host=None):
-    hostip = host.get('ip', [])
-    passwd = host.get('password', [])
-    map = {}
-    map = {'ip': hostip, 'passwd': passwd}
-    return map
+def name(s, seq, host=None):
+    hostname = host.get('name', '')
+    return hostname
 
 
 def network_config_parse(s, dha_file):
     network_map = network(s, ',')
     vip = s.get('internal_vip')
-    return network_map, vip
+    interface_map = interface(s, ',')
+    return network_map, vip, interface_map
 
 
 def dha_config_parse(s, dha_file):
-    host_interface_map = interface(s, ',')
-    host_role_map = role(s, ',')
-    host_ip_passwd_map = host(s, ',')
-    return host_interface_map, host_role_map, host_ip_passwd_map
+    hosts_name = name(s, ',')
+    return hosts_name
 
 
 def config(dha_file, network_file):
     data = init(dha_file)
-    host_interface_map, host_role_map, host_ip_passwd_map = \
-        dha_config_parse(data, dha_file)
+    hosts_name = dha_config_parse(data, dha_file)
     data = init(network_file)
-    network_map, vip = network_config_parse(data, network_file)
-    return host_interface_map, host_role_map, \
-        host_ip_passwd_map, network_map, vip
+    network_map, vip, interface_map = network_config_parse(data, network_file)
+    return interface_map, hosts_name, network_map, vip

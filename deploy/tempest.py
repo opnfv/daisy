@@ -19,8 +19,11 @@ import subprocess
 daisy_version = 1.0
 daisy_endpoint = "http://127.0.0.1:19292"
 client = daisy_client.Client(version=daisy_version, endpoint=daisy_endpoint)
-
+iso_path = "/var/lib/daisy/kolla/CentOS-7-x86_64-DVD-1511.iso"
+deployment_interface = "virbr2"
 cluster_name = "clustertest"
+# ###todo###
+yaml_file = ""
 
 _CLI_OPTS = [
     cfg.StrOpt('dha',
@@ -47,13 +50,8 @@ def foo():
         print("get config...")
         conf = cfg.ConfigOpts()
         parse(conf, sys.argv[1:])
-        host_interface_map, host_role_map, \
-            host_ip_passwd_map, network_map, vip = \
+        host_interface_map, hosts_name, network_map, vip = \
             get_conf.config(conf['dha'], conf['network'])
-        print("clean deploy host...")
-        clean_deploy_host(host_ip_passwd_map)
-        print("discover host...")
-        discover_host(host_ip_passwd_map)
         print("add cluster...")
         cluster_meta = {'name': cluster_name, 'description': ''}
         clusters_info = client.clusters.add(**cluster_meta)
@@ -61,43 +59,44 @@ def foo():
         print("cluster_id=%s." % cluster_id)
         print("update network...")
         update_network(cluster_id, network_map)
+        print("build pxe...")
+        build_pxe(cluster_id)
+        print("create host...")
+        create_host(cluster_id)
+        print("discover host...")
+        discover_host(hosts_name)
         print("update hosts interface...")
         hosts_info = get_hosts()
-        add_hosts_interface(cluster_id, hosts_info, host_interface_map,
-                            host_role_map, vip)
+        add_hosts_interface(cluster_id, hosts_info, host_interface_map, vip)
     except Exception:
         print("Deploy failed!!!.%s." % traceback.format_exc())
     else:
         print_bar("Everything is done!")
 
 
-def clean_deploy_host(host_ip_passwd_map):
-    for host_ip_passwd in host_ip_passwd_map:
-        command = 'sshpass -p %s ssh %s -o UserKnownHostsFile=/dev/null \
-                  -oStrictHostKeyChecking=no \
-                  "/home/daisy/forDel/tools/cleanup-containers"' % \
-                  (host_ip_passwd['passwd'], host_ip_passwd['ip'])
-        subprocess.call(command,
-                        shell=True,
-                        stdout=open('/dev/null', 'w'),
-                        stderr=subprocess.STDOUT)
-        command = 'sshpass -p %s ssh %s -o UserKnownHostsFile=/dev/null \
-                  -oStrictHostKeyChecking=no \
-                  "/home/daisy/forDel/tools/cleanup-images"' % \
-                  (host_ip_passwd['passwd'], host_ip_passwd['ip'])
-        subprocess.call(command,
-                        shell=True,
-                        stdout=open('/dev/null', 'w'),
-                        stderr=subprocess.STDOUT)
+def build_pxe(cluster_id):
+    cluster_meta = {'cluster_id': cluster_id,
+                    'deployment_interface': deployment_interface}
+    client.install.install(**cluster_meta)
 
 
-def discover_host(host_ip_passwd_map):
-    for host_ip_passwd in host_ip_passwd_map:
-        client.hosts.add_discover_host(**host_ip_passwd)
-        client.hosts.discover_host()
+def create_host(cluster_id):
+    command = 'virsh define %s' % yaml_file
+    subprocess.call(command,
+                    shell=True,
+                    stdout=open('/dev/null', 'w'),
+                    stderr=subprocess.STDOUT)
+    command = 'virsh start DaisyNode'
+    subprocess.call(command,
+                    shell=True,
+                    stdout=open('/dev/null', 'w'),
+                    stderr=subprocess.STDOUT)
+
+
+def discover_host(hosts_name):
     while True:
         hosts_info = get_hosts()
-        if len(hosts_info) == len(host_ip_passwd_map):
+        if len(hosts_info) == len(hosts_name):
             print('discover hosts success!')
             break
         else:
@@ -127,22 +126,21 @@ def get_hosts():
 
 
 def add_hosts_interface(cluster_id, hosts_info, host_interface_map,
-                        host_role_map, vip):
+                        vip):
     for host in hosts_info:
         host = host.to_dict()
         host['cluster'] = cluster_id
-        host_name = host['name']
         for interface in host['interfaces']:
             interface_name = interface['name']
             interface['assigned_networks'] = \
-                host_interface_map[host_name][interface_name]
+                host_interface_map[interface_name]
+        host['os_version'] = iso_path
         client.hosts.update(host['id'], **host)
         print("update role...")
-        add_host_role(cluster_id, host['id'], host['name'],
-                      host_role_map, vip)
+        add_host_role(cluster_id, host['id'], host['name'], vip)
 
 
-def add_host_role(cluster_id, host_id, host_name, host_role_map, vip):
+def add_host_role(cluster_id, host_id, host_name, vip):
     role_meta = {'filters': {'cluster_id': cluster_id}}
     role_list_generator = client.roles.list(**role_meta)
     role_list = [role for role in role_list_generator]
@@ -150,14 +148,12 @@ def add_host_role(cluster_id, host_id, host_name, host_role_map, vip):
                   role.name == "CONTROLLER_LB"][0]
     computer_role_id = [role.id for role in role_list if
                         role.name == "COMPUTER"][0]
-    if "CONTROLLER_LB" in host_role_map[host_name]:
-        role_lb_update_meta = {'nodes': [host_id],
-                               'cluster_id': cluster_id, 'vip': vip}
-        client.roles.update(lb_role_id, **role_lb_update_meta)
-    if "COMPUTER" in host_role_map[host_name]:
-        role_computer_update_meta = {'nodes': [host_id],
-                                     'cluster_id': cluster_id}
-        client.roles.update(computer_role_id, **role_computer_update_meta)
+    role_lb_update_meta = {'nodes': [host_id],
+                           'cluster_id': cluster_id, 'vip': vip}
+    client.roles.update(lb_role_id, **role_lb_update_meta)
+    role_computer_update_meta = {'nodes': [host_id],
+                                 'cluster_id': cluster_id}
+    client.roles.update(computer_role_id, **role_computer_update_meta)
 
 
 if __name__ == "__main__":
