@@ -17,7 +17,7 @@ networks:
 - cidr: '192.168.122.0/24'
   gateway: '192.168.122.1'
   ip_ranges:
-  - 'start': '192.168.122.1'
+  - 'start': '192.168.122.10'
     'end': '192.168.122.254'
   name: 'MANAGEMENT'
 - cidr: '192.168.122.0/24'
@@ -26,11 +26,11 @@ networks:
   - start: '192.168.122.1'
     end: '192.168.122.254'
   name: 'STORAGE'
-- cidr: '192.168.2.0/24'
-  gateway: '192.168.2.1'
+- cidr: '172.10.101.0/24'
+  gateway: '172.10.101.0'
   ip_ranges:
-  - 'start': '192.168.2.1'
-    'end': '192.168.2.254'
+  - 'start': '172.10.101.1'
+    'end': '172.10.101.10'
   'name': 'EXTERNAL'
 - cidr: '192.168.122.0/24'
   gateway: '192.168.122.1'
@@ -44,7 +44,16 @@ networks:
   - 'start': '192.168.122.1'
     'end': '192.168.122.254'
   name: 'physnet1'
-
+interfaces:
+  - name: 'EXTERNAL'
+    interface: 'ens3'
+  - name: 'MANAGEMENT'
+    interface: 'ens8'
+  - name: 'PUBLICAPI'
+    interface: 'ens8'
+  - name: 'STORAGE'
+    interface: 'ens8'
+  - name: 'physnet1'
+    interface: 'ens8'
 internal_vip: '192.168.122.144'
-
 public_vip: '192.168.122.144'
