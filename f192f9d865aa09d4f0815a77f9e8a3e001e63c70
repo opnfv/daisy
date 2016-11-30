@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_b0d62dc4",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-30T00:34:03Z",
+      "side": 1,
+      "message": "If you want to use daisy command on host side. You should Install daisyclient on host side. Or your deploy.sh should be exectued on jump server but I can not find the clue that your code would do that.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 13
+      },
+      "revId": "f192f9d865aa09d4f0815a77f9e8a3e001e63c70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_304b1db2",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-30T00:34:03Z",
+      "side": 1,
+      "message": "You probably should install daisyclient on host first(ont only on jump server vm). Becasue this tempest.py runs on host instead of jump server vm.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 49
+      },
+      "revId": "f192f9d865aa09d4f0815a77f9e8a3e001e63c70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_d0c73911",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-30T00:34:03Z",
+      "side": 1,
+      "message": "You need to point to jump server",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "f192f9d865aa09d4f0815a77f9e8a3e001e63c70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_f0ccb537",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-30T00:34:03Z",
+      "side": 1,
+      "message": "This is actually a path on host not on jump server, is it OK?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 62
+      },
+      "revId": "f192f9d865aa09d4f0815a77f9e8a3e001e63c70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_7051a561",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-30T00:34:03Z",
+      "side": 1,
+      "message": "make it a meaningful name",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 7
+      },
+      "revId": "f192f9d865aa09d4f0815a77f9e8a3e001e63c70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_5054a953",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-30T00:34:03Z",
+      "side": 1,
+      "message": "Kill useless spaces, there are also other spaces in the following code to be deleted",
+      "range": {
+        "startLine": 61,
+        "startChar": 47,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "f192f9d865aa09d4f0815a77f9e8a3e001e63c70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
