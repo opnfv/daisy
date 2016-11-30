@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5ac10518_10e5c1a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-30T00:37:10Z",
+      "side": 1,
+      "message": "I suggest: Implement deplying on virtual pod",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "f192f9d865aa09d4f0815a77f9e8a3e001e63c70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_b0d62dc4",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 4
