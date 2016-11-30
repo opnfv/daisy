@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_73652fe0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-11-30T02:17:38Z",
+      "side": 1,
+      "message": "thanks,I will modify it!",
+      "parentUuid": "5ac10518_10e5c1a7",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "f192f9d865aa09d4f0815a77f9e8a3e001e63c70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_b0d62dc4",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_500ca942",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-11-30T02:17:38Z",
+      "side": 1,
+      "message": "thanks,I will modify it",
+      "parentUuid": "5ac10518_b0d62dc4",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 13
+      },
+      "revId": "f192f9d865aa09d4f0815a77f9e8a3e001e63c70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_f09a7513",
         "filename": "deploy/config/vm_environment/zte-virtual1/network.yml",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2016-11-30T00:47:48Z",
       "side": 1,
       "message": "Please use a meaninful name such as TENANT",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "f192f9d865aa09d4f0815a77f9e8a3e001e63c70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_536833ba",
+        "filename": "deploy/config/vm_environment/zte-virtual1/network.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-11-30T02:17:38Z",
+      "side": 1,
+      "message": "I supply the analysis xml to daisy,and daisy use physnet1.If I rename TENENT,I will alse modify the analysis xml file(get_conf.py),thanks!",
+      "parentUuid": "5ac10518_f09a7513",
       "range": {
         "startLine": 56,
         "startChar": 11,
