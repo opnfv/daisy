@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_4ee4063b",
+        "filename": "tools/centos-img-modify.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-11-30T10:18:15Z",
+      "side": 1,
+      "message": "add PasswordAuthentication yes",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 74
+      },
+      "revId": "a429c45322cd86ffa39325ea7e11a24cbb799203",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
