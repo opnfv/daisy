@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_f09a7513",
+        "filename": "deploy/config/vm_environment/zte-virtual1/network.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-11-30T00:47:48Z",
+      "side": 1,
+      "message": "Please use a meaninful name such as TENANT",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "f192f9d865aa09d4f0815a77f9e8a3e001e63c70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_304b1db2",
         "filename": "deploy/tempest.py",
         "patchSetId": 4
