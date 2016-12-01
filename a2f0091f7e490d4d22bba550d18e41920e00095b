@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_2993b4fb",
+        "filename": "tools/centos-img-modify.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1469
+      },
+      "writtenOn": "2016-12-01T00:31:37Z",
+      "side": 1,
+      "message": "Hard code is not good. I suggest these parameters should be writen as a yaml config file in securedlab.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "a2f0091f7e490d4d22bba550d18e41920e00095b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
