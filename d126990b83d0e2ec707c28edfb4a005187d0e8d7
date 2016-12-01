@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_04501f31",
+        "filename": "templates/virtual_environment/networks/daisy1.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2016-12-01T09:12:22Z",
+      "side": 1,
+      "message": "it\u0027s better to change the bridge\u0027s name to the network\u0027s name",
+      "range": {
+        "startLine": 8,
+        "startChar": 16,
+        "endLine": 8,
+        "endChar": 22
+      },
+      "revId": "d126990b83d0e2ec707c28edfb4a005187d0e8d7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_a444ab74",
+        "filename": "templates/virtual_environment/networks/daisy2.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2016-12-01T09:12:22Z",
+      "side": 1,
+      "message": "it\u0027s better to change the bridge\u0027s name to the network\u0027s name",
+      "range": {
+        "startLine": 8,
+        "startChar": 16,
+        "endLine": 8,
+        "endChar": 22
+      },
+      "revId": "d126990b83d0e2ec707c28edfb4a005187d0e8d7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_c449b78c",
+        "filename": "templates/virtual_environment/vms/all_in_one.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2016-12-01T09:12:22Z",
+      "side": 1,
+      "message": "it\u0027s better to change the bridge\u0027s name to the network\u0027s name",
+      "range": {
+        "startLine": 74,
+        "startChar": 39,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "d126990b83d0e2ec707c28edfb4a005187d0e8d7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_645ec347",
+        "filename": "templates/virtual_environment/vms/all_in_one.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2016-12-01T09:12:22Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 78,
+        "startChar": 39,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "d126990b83d0e2ec707c28edfb4a005187d0e8d7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_845baf53",
+        "filename": "templates/virtual_environment/vms/daisy.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2016-12-01T09:12:22Z",
+      "side": 1,
+      "message": "it\u0027s better to change the bridge\u0027s name to the network\u0027s name",
+      "range": {
+        "startLine": 73,
+        "startChar": 39,
+        "endLine": 73,
+        "endChar": 45
+      },
+      "revId": "d126990b83d0e2ec707c28edfb4a005187d0e8d7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
