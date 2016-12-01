@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5ac10518_c949d08c",
+        "filename": "tools/centos-img-modify.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2016-12-01T00:54:42Z",
+      "side": 1,
+      "message": "why do not you add PasswordAuthentication?because I can not ssh to the virtual if it is no",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 55
+      },
+      "revId": "a2f0091f7e490d4d22bba550d18e41920e00095b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_2993b4fb",
         "filename": "tools/centos-img-modify.sh",
         "patchSetId": 3
