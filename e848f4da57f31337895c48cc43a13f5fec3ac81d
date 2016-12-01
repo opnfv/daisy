@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_c473f7af",
+        "filename": "templates/virtual_environment/vms/controller.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-12-01T01:49:58Z",
+      "side": 1,
+      "message": "As we use one node for both controller and compute, I suggest change this file name into allinone.xml.",
+      "revId": "e848f4da57f31337895c48cc43a13f5fec3ac81d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
