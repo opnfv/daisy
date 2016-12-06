@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_99eeb1eb",
+        "filename": "tools/centos-img-modify.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-06T16:19:58Z",
+      "side": 1,
+      "message": "does it mean \"the default user is root\"? if yes, can we add the verify steps?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "c809cdb70878afcea9fc0b50422558481816c9a0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_79f185cc",
+        "filename": "tools/centos-img-modify.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-06T16:19:58Z",
+      "side": 1,
+      "message": "what \"10.20.11.1\" mean? please delete this line",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "c809cdb70878afcea9fc0b50422558481816c9a0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_19bac1de",
+        "filename": "tools/daisy-img-modify.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-06T16:19:58Z",
+      "side": 1,
+      "message": "can filename support as a parameter with a default value as others?\n\nand why not use the latestest one?",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "c809cdb70878afcea9fc0b50422558481816c9a0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_39bbfde6",
+        "filename": "tools/daisy-img-modify.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-06T16:19:58Z",
+      "side": 1,
+      "message": "suggest to use \n${filename}$",
+      "range": {
+        "startLine": 54,
+        "startChar": 32,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "c809cdb70878afcea9fc0b50422558481816c9a0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_f9b495f3",
+        "filename": "tools/daisy-img-modify.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-06T16:19:58Z",
+      "side": 1,
+      "message": "use ${filename}.xz",
+      "range": {
+        "startLine": 59,
+        "startChar": 17,
+        "endLine": 59,
+        "endChar": 59
+      },
+      "revId": "c809cdb70878afcea9fc0b50422558481816c9a0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_59c04950",
+        "filename": "tools/daisy-img-modify.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-06T16:19:58Z",
+      "side": 1,
+      "message": "if possible we can have several tries for download and verify",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 52
+      },
+      "revId": "c809cdb70878afcea9fc0b50422558481816c9a0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_b9ce0d82",
+        "filename": "tools/daisy-img-modify.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-06T16:19:58Z",
+      "side": 1,
+      "message": "-e ?\n\u003d\u003e\n[[ -e /dev/loop$i ]] \nthere are some difference between [] and [[ ]]",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "c809cdb70878afcea9fc0b50422558481816c9a0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
