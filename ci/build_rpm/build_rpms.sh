@@ -58,6 +58,5 @@ function cleanup_docker_image {
 }
 
 cleanup_container
+cleanup_docker_image
 build_rpm_pkg
-cleanup_container
-
