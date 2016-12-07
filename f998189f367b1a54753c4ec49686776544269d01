@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_54efb01e",
+        "filename": ".gitignore",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-07T03:10:18Z",
+      "side": 1,
+      "message": "Are these files unnecessary for daisy?\nSuch as daisy.spec and python-daisyclient.spec.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "f998189f367b1a54753c4ec49686776544269d01",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
