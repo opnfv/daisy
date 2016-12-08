@@ -14,36 +14,36 @@ network-config-metadata:
   created: 'Mon Oct 31 2016'
   comment:
 networks:
-- cidr: '192.168.122.0/24'
-  gateway: '192.168.122.1'
-  ip_ranges:
-  - 'start': '192.168.122.1'
-    'end': '192.168.122.254'
-  name: 'MANAGEMENT'
-- cidr: '192.168.122.0/24'
-  gateway: '192.168.122.1'
-  ip_ranges:
-  - start: '192.168.122.1'
-    end: '192.168.122.254'
-  name: 'STORAGE'
-- cidr: '192.168.2.0/24'
-  gateway: '192.168.2.1'
-  ip_ranges:
-  - 'start': '192.168.2.1'
-    'end': '192.168.2.254'
-  'name': 'EXTERNAL'
-- cidr: '192.168.122.0/24'
-  gateway: '192.168.122.1'
-  ip_ranges:
-  - 'start': '192.168.122.1'
-    'end': '192.168.122.254'
-  name: 'PUBLICAPI'
-- cidr: '192.168.122.0/24'
-  gateway: '192.168.122.1'
-  ip_ranges:
-  - 'start': '192.168.122.1'
-    'end': '192.168.122.254'
-  name: 'physnet1'
+  - cidr: '192.168.122.0/24'
+    gateway: '192.168.122.1'
+    ip_ranges:
+    - 'start': '192.168.122.1'
+      'end': '192.168.122.254'
+    name: 'MANAGEMENT'
+  - cidr: '192.168.122.0/24'
+    gateway: '192.168.122.1'
+    ip_ranges:
+    - start: '192.168.122.1'
+      end: '192.168.122.254'
+    name: 'STORAGE'
+  - cidr: '192.168.2.0/24'
+    gateway: '192.168.2.1'
+    ip_ranges:
+    - 'start': '192.168.2.1'
+      'end': '192.168.2.254'
+    'name': 'EXTERNAL'
+  - cidr: '192.168.122.0/24'
+    gateway: '192.168.122.1'
+    ip_ranges:
+    - 'start': '192.168.122.1'
+      'end': '192.168.122.254'
+    name: 'PUBLICAPI'
+  - cidr: '192.168.122.0/24'
+    gateway: '192.168.122.1'
+    ip_ranges:
+    - 'start': '192.168.122.1'
+      'end': '192.168.122.254'
+    name: 'physnet1'
 
 internal_vip: '192.168.122.144'
 
