@@ -43,7 +43,7 @@ python $tempest_path/tempest.py --dha $DHA --network $NETWORK
 echo "======daisy install kolla(openstack)==========="
 cluster_id=`daisy cluster-list | awk -F "|" '{print $2}' | sed -n '4p'`
 daisy install $cluster_id
-echo "check installing proess..."
+echo "check installing process..."
 var=1
 while [ $var -eq 1 ]; do
     echo "loop for judge openstack installing  progress..."
