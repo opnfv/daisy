@@ -76,7 +76,7 @@ def network(s, seq, network=None):
 @hostdecorator
 def interface(s, seq, host=None):
     hostname = host.get('name', '')
-    interface = host.get('interface', '')[0]
+    interface = host.get('interface', '')
     map = {}
     map[hostname] = interface
     return map
