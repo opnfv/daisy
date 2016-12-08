@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_7e8de67a",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-12-08T09:11:11Z",
+      "side": 1,
+      "message": "leave images is for accelerating build speed of next round. Discussed with Zhihui.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "5462d85881ce3ef5a0b026a9f3e1aca2a62d0b5e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}

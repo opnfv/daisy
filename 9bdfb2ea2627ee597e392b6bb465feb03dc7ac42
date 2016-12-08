@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_def3ba08",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-12-08T09:11:11Z",
+      "side": 0,
+      "message": "This is to releasing space. Discussed with Zhihui.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "9bdfb2ea2627ee597e392b6bb465feb03dc7ac42",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
