@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_c122fbb8",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T06:58:35Z",
+      "side": 1,
+      "message": "we can use a set -o here for debug",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "faf6a17cd0e7bec9cf907ee05ef63e0439fcbb84",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_8155d31e",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T06:58:35Z",
+      "side": 1,
+      "message": "suggest not use /home director,\n/opt, /tmp",
+      "range": {
+        "startLine": 14,
+        "startChar": 15,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "faf6a17cd0e7bec9cf907ee05ef63e0439fcbb84",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_2132df10",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T06:58:35Z",
+      "side": 1,
+      "message": "suggest to support KOLLA_BRANCH passed by a parameter",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "faf6a17cd0e7bec9cf907ee05ef63e0439fcbb84",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_014a4380",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T06:58:35Z",
+      "side": 1,
+      "message": "suggest to use \u00274 header spaces\u0027",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "faf6a17cd0e7bec9cf907ee05ef63e0439fcbb84",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_0141e359",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T06:58:35Z",
+      "side": 1,
+      "message": "when not exist, do we plan to install the package?\n\nthis function is pre_setup no pre_check :)",
+      "range": {
+        "startLine": 51,
+        "startChar": 24,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "faf6a17cd0e7bec9cf907ee05ef63e0439fcbb84",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_a1256fc3",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T06:58:35Z",
+      "side": 1,
+      "message": "suggest to use a loop here",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 32
+      },
+      "revId": "faf6a17cd0e7bec9cf907ee05ef63e0439fcbb84",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_41504b32",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T06:58:35Z",
+      "side": 1,
+      "message": "shall we use another name daisy-registry?\navoid to interference with other registry server",
+      "range": {
+        "startLine": 117,
+        "startChar": 55,
+        "endLine": 117,
+        "endChar": 70
+      },
+      "revId": "faf6a17cd0e7bec9cf907ee05ef63e0439fcbb84",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_e144d775",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T06:58:35Z",
+      "side": 1,
+      "message": "why use 2? not latest?",
+      "range": {
+        "startLine": 117,
+        "startChar": 80,
+        "endLine": 117,
+        "endChar": 81
+      },
+      "revId": "faf6a17cd0e7bec9cf907ee05ef63e0439fcbb84",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_612f87a2",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T06:58:35Z",
+      "side": 1,
+      "message": "suggest add a parameter",
+      "range": {
+        "startLine": 134,
+        "startChar": 26,
+        "endLine": 134,
+        "endChar": 67
+      },
+      "revId": "faf6a17cd0e7bec9cf907ee05ef63e0439fcbb84",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
