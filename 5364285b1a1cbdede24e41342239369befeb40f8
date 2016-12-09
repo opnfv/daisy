@@ -1,0 +1,510 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_a10c8f43",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "suggest to use name: daisy.xml",
+      "range": {
+        "startLine": 20,
+        "startChar": 61,
+        "endLine": 20,
+        "endChar": 71
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_9c13fa5b",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "file not existed in repo",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 71
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_8103930e",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "suggest to use name: os-all_in_one.xml",
+      "range": {
+        "startLine": 21,
+        "startChar": 61,
+        "endLine": 21,
+        "endChar": 71
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_bc10364f",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "suggest to fetch the ip from the yaml file",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_7c1ace6f",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "same as last",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_1c270ab8",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "define a function, same with openstack node ?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_7c316eeb",
+        "filename": "deploy/check_openstack_progress.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "while true\ndo\ndone",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_1c4e2a70",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "while true;\ndo",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_dc574201",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 18,
+        "startChar": 31,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_3c53e618",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "deleted",
+      "range": {
+        "startLine": 18,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_fc5c7e27",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 16
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "2 header space relative to roles:",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_9c41ba3b",
+        "filename": "deploy/config/vm_environment/zte-virtual1/network.yml",
+        "patchSetId": 16
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "suggest to use name as the fir keywork, not cidr\n\n2 shift spaces",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_fc731eaf",
+        "filename": "deploy/get_conf.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "please update the yaml file and update these code",
+      "range": {
+        "startLine": 43,
+        "startChar": 15,
+        "endLine": 44,
+        "endChar": 60
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_bc6596e2",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "where is daisyclient? how to run the test?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 49
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_5c6272d9",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "add as a parameter",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 62
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_7c5f2e0f",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "add as a parameter",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_bcda7676",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "bash or sh?\n\nwhy not use \u0027set -o\u0027 to avoid too many debug lines",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 73
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_dca50205",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "red trailing space",
+      "range": {
+        "startLine": 15,
+        "startChar": 48,
+        "endLine": 15,
+        "endChar": 49
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_fcaa3ed3",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "red trailing space",
+      "range": {
+        "startLine": 19,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_dcf3c208",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "how about to use echo \u0027n\\n\u0027 |",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 52
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_9cdd3a73",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "why not try use sshkey",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 69
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_bcc11682",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:01:35Z",
+      "side": 1,
+      "message": "suggest to use\n\nsshpass xxx ssh-copy-id xxx to avoid so many lines",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 69
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
