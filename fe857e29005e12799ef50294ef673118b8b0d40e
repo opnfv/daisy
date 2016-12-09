@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_c1099b32",
+        "filename": "deploy/get_conf.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-09T07:11:17Z",
+      "side": 1,
+      "message": "the same as below.",
+      "revId": "fe857e29005e12799ef50294ef673118b8b0d40e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_6106a722",
+        "filename": "deploy/get_conf.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-09T07:11:17Z",
+      "side": 1,
+      "message": "Is this parameter uncessary for this function?",
+      "revId": "fe857e29005e12799ef50294ef673118b8b0d40e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
