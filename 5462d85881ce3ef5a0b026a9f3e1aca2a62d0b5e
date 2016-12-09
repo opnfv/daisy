@@ -22,6 +22,30 @@
       "revId": "5462d85881ce3ef5a0b026a9f3e1aca2a62d0b5e",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_6176a740",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T00:40:02Z",
+      "side": 1,
+      "message": "That\u0027s correct.\nwe should also clean older images in the image-list. when tag a new image, the olders will not keep the same tag.",
+      "parentUuid": "5ac10518_7e8de67a",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "5462d85881ce3ef5a0b026a9f3e1aca2a62d0b5e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
