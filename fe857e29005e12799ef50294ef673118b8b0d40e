@@ -33,6 +33,24 @@
       "revId": "fe857e29005e12799ef50294ef673118b8b0d40e",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_dc0f42e0",
+        "filename": "deploy/get_conf.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-09T08:35:56Z",
+      "side": 1,
+      "message": "I also think so. I don\u0027t delete this parameter for I wonder there is any requirement to show the file_name?\nI don\u0027t have enough implementation for me to review and understand:)\n\nIf agreed I will delete the parameters later.",
+      "parentUuid": "5ac10518_6106a722",
+      "revId": "fe857e29005e12799ef50294ef673118b8b0d40e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
