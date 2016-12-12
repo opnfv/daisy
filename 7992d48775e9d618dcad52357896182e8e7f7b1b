@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_72b6773f",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-12T03:17:57Z",
+      "side": 1,
+      "message": "why delete others\u0027 dockers and images, only to clear \ndockers relevant to **daisy**",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 37
+      },
+      "revId": "7992d48775e9d618dcad52357896182e8e7f7b1b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_52b9fb2c",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-12T03:17:57Z",
+      "side": 1,
+      "message": "4000, 5000 either is OK.",
+      "range": {
+        "startLine": 113,
+        "startChar": 26,
+        "endLine": 113,
+        "endChar": 30
+      },
+      "revId": "7992d48775e9d618dcad52357896182e8e7f7b1b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_12837357",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-12T03:17:57Z",
+      "side": 1,
+      "message": "It\u0027s better now.\nsuggest to use $(xx) not `xx`",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 57
+      },
+      "revId": "7992d48775e9d618dcad52357896182e8e7f7b1b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_3288ef70",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-12T03:17:57Z",
+      "side": 1,
+      "message": "what about:\ntar czf kolla-image-$version-$datetag.tgz $REGISTRY_VOLUME_DIR registry-$version-$datetag.version",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 42
+      },
+      "revId": "7992d48775e9d618dcad52357896182e8e7f7b1b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
