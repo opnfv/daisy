@@ -16,56 +16,22 @@ def init(file):
         return yaml.safe_load(fd)
 
 
-def networkdecorator(func):
-    def wrapter(s, seq):
-        network_list = s.get('networks', [])
-        result = {}
-        for network in network_list:
-            s = func(s, seq, network)
-            if not s:
-                continue
-            result.update(s)
-        if len(result) == 0:
-            return ""
-        else:
+def decorator_mk(types):
+    def decorator(func):
+        def wrapter(s):
+            item_list = s.get(types, [])
+            result = {}
+            for item in item_list:
+                ret = func(item)
+                if ret:
+                    result.update(ret)
             return result
-    return wrapter
+        return wrapter
+    return decorator
 
 
-def hostdecorator(func):
-    def wrapter(s, seq):
-        host_list = s.get('hosts', [])
-        result = {}
-        for host in host_list:
-            s = func(s, seq, host)
-            if not s:
-                continue
-            result.update(s)
-        if len(result) == 0:
-            return ""
-        else:
-            return result
-    return wrapter
-
-
-def decorator(func):
-    def wrapter(s, seq):
-        host_list = s.get('hosts', [])
-        result = []
-        for host in host_list:
-            s = func(s, seq, host)
-            if not s:
-                continue
-            result.append(s)
-        if len(result) == 0:
-            return ""
-        else:
-            return result
-    return wrapter
-
-
-@networkdecorator
-def network(s, seq, network=None):
+@decorator_mk('networks')
+def network(network=None):
     net_plane = network.get('name', '')
     network.pop('name')
     map = {}
@@ -73,8 +39,8 @@ def network(s, seq, network=None):
     return map
 
 
-@hostdecorator
-def interface(s, seq, host=None):
+@decorator_mk('hosts')
+def interface(host=None):
     hostname = host.get('name', '')
     interface = host.get('interface', '')
     map = {}
@@ -82,8 +48,8 @@ def interface(s, seq, host=None):
     return map
 
 
-@hostdecorator
-def role(s, seq, host=None):
+@decorator_mk('hosts')
+def role(host=None):
     hostname = host.get('name', '')
     role = host.get('roles', '')
     map = {}
@@ -91,8 +57,8 @@ def role(s, seq, host=None):
     return map
 
 
-@decorator
-def host(s, seq, host=None):
+@decorator_mk('hosts')
+def host(host=None):
     hostip = host.get('ip', [])
     passwd = host.get('password', [])
     map = {}
@@ -101,15 +67,15 @@ def host(s, seq, host=None):
 
 
 def network_config_parse(s, dha_file):
-    network_map = network(s, ',')
+    network_map = network(s)
     vip = s.get('internal_vip')
     return network_map, vip
 
 
 def dha_config_parse(s, dha_file):
-    host_interface_map = interface(s, ',')
-    host_role_map = role(s, ',')
-    host_ip_passwd_map = host(s, ',')
+    host_interface_map = interface(s)
+    host_role_map = role(s)
+    host_ip_passwd_map = host(s)
     return host_interface_map, host_role_map, host_ip_passwd_map
 
 
