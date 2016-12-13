@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_c503e2b6",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-12-13T07:20:36Z",
+      "side": 1,
+      "message": "Forgot to do it. Thanks!",
+      "parentUuid": "5ac10518_c56c429f",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 37
+      },
+      "revId": "71e615ecbb72b28413617fd635b30d84470248f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_e567feb5",
         "filename": "ci/kolla-build.sh",
         "patchSetId": 9
