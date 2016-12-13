@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_6510eea8",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-13T08:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_bef6eed5",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "881dff7f2023faa26b712e9fb9927a61916c4f68",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_5e034ab8",
         "filename": "deploy/config/vm_environment/zte-virtual1/network.yml",
         "patchSetId": 15
@@ -83,6 +107,30 @@
       "writtenOn": "2016-12-08T10:38:35Z",
       "side": 1,
       "message": "Use it in the deploy.sh",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "881dff7f2023faa26b712e9fb9927a61916c4f68",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_0527aa13",
+        "filename": "deploy/config/vm_environment/zte-virtual1/network.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-13T08:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_5e034ab8",
       "range": {
         "startLine": 60,
         "startChar": 0,
