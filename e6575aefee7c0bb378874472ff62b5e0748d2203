@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_65b46ed1",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-13T08:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_992c71ad",
+      "revId": "e6575aefee7c0bb378874472ff62b5e0748d2203",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_792f45a2",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 13
@@ -30,6 +48,24 @@
       "writtenOn": "2016-12-07T00:32:05Z",
       "side": 1,
       "message": "blank on tail",
+      "revId": "e6575aefee7c0bb378874472ff62b5e0748d2203",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_05cb2a54",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-13T08:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_792f45a2",
       "revId": "e6575aefee7c0bb378874472ff62b5e0748d2203",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
