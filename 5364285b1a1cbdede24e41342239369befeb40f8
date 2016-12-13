@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_e5a85e79",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-13T08:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_9c13fa5b",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 71
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_8103930e",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 16
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_259f4652",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-13T08:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_bc10364f",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_7c1ace6f",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 16
@@ -105,6 +153,30 @@
       "writtenOn": "2016-12-09T08:01:35Z",
       "side": 1,
       "message": "same as last",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_c5ad228a",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-13T08:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_7c1ace6f",
       "range": {
         "startLine": 26,
         "startChar": 14,
