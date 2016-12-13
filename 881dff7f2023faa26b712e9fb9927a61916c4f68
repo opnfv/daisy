@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_a516d6a5",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 15
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-13T08:28:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_fe1476f6",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "881dff7f2023faa26b712e9fb9927a61916c4f68",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_bef6eed5",
         "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
         "patchSetId": 15
