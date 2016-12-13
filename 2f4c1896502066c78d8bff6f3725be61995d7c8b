@@ -57,6 +57,30 @@
       "revId": "2f4c1896502066c78d8bff6f3725be61995d7c8b",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_25698625",
+        "filename": "deploy/get_conf.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-13T08:45:59Z",
+      "side": 1,
+      "message": "Sorry,I don\u0027t very familiar with your opinion.\nCould you explain this a little detail?\nThank you.",
+      "parentUuid": "5ac10518_e5fe1eae",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 68
+      },
+      "revId": "2f4c1896502066c78d8bff6f3725be61995d7c8b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
