@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_65b8eee5",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-13T07:31:21Z",
+      "side": 1,
+      "message": "please leave your opinions when you submit a new patchset:\naccept, decline, done or something else. otherwise, it not convenient for tracking.\n\nplease refer to patchset 16.",
+      "revId": "2f4c1896502066c78d8bff6f3725be61995d7c8b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_e5fe1eae",
+        "filename": "deploy/get_conf.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-13T07:31:21Z",
+      "side": 1,
+      "message": "the code is wrong based on the wrong yml file defined.",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 68
+      },
+      "revId": "2f4c1896502066c78d8bff6f3725be61995d7c8b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
