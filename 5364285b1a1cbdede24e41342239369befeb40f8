@@ -304,6 +304,54 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_8ed17759",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-14T03:41:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_3c53e618",
+      "range": {
+        "startLine": 18,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_aed47347",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-14T03:41:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_dc574201",
+      "range": {
+        "startLine": 18,
+        "startChar": 31,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_fc5c7e27",
         "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
         "patchSetId": 16
@@ -373,6 +421,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_eee27b2e",
+        "filename": "deploy/get_conf.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-14T03:41:10Z",
+      "side": 1,
+      "message": "Could you please spell out what you mean, I don\u0027t quite understand.",
+      "parentUuid": "5ac10518_fc731eaf",
+      "range": {
+        "startLine": 43,
+        "startChar": 15,
+        "endLine": 44,
+        "endChar": 60
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_bc6596e2",
         "filename": "deploy/tempest.py",
         "patchSetId": 16
@@ -384,6 +456,30 @@
       "writtenOn": "2016-12-09T08:01:35Z",
       "side": 1,
       "message": "where is daisyclient? how to run the test?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 49
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_2ed96383",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-14T03:41:10Z",
+      "side": 1,
+      "message": "daisyclient is on jumper server,we just run this test on jumper server.",
+      "parentUuid": "5ac10518_bc6596e2",
       "range": {
         "startLine": 13,
         "startChar": 5,
@@ -488,6 +584,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_6ef76bf6",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-14T03:41:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_dca50205",
+      "range": {
+        "startLine": 15,
+        "startChar": 48,
+        "endLine": 15,
+        "endChar": 49
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_fcaa3ed3",
         "filename": "deploy/trustme.sh",
         "patchSetId": 16
@@ -499,6 +619,30 @@
       "writtenOn": "2016-12-09T08:01:35Z",
       "side": 1,
       "message": "red trailing space",
+      "range": {
+        "startLine": 19,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_0edee76d",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-14T03:41:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_fcaa3ed3",
       "range": {
         "startLine": 19,
         "startChar": 26,
