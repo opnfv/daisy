@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_4e7dcf6d",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-14T03:32:02Z",
+      "side": 1,
+      "message": "tempest.py file is just runs on jump server,so we do not have to install daisyclient on target node.",
+      "parentUuid": "5ac10518_304b1db2",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 49
+      },
+      "revId": "f192f9d865aa09d4f0815a77f9e8a3e001e63c70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_d0c73911",
         "filename": "deploy/tempest.py",
         "patchSetId": 4
@@ -235,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_0e97c791",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-14T03:32:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_7051a561",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 7
+      },
+      "revId": "f192f9d865aa09d4f0815a77f9e8a3e001e63c70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_5054a953",
         "filename": "deploy/tempest.py",
         "patchSetId": 4
@@ -246,6 +294,30 @@
       "writtenOn": "2016-11-30T00:34:03Z",
       "side": 1,
       "message": "Kill useless spaces, there are also other spaces in the following code to be deleted",
+      "range": {
+        "startLine": 61,
+        "startChar": 47,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "f192f9d865aa09d4f0815a77f9e8a3e001e63c70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_2e92c39f",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-14T03:32:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_5054a953",
       "range": {
         "startLine": 61,
         "startChar": 47,
