@@ -495,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_5f425b11",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 16
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-15T08:44:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_fc5c7e27",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_9c41ba3b",
         "filename": "deploy/config/vm_environment/zte-virtual1/network.yml",
         "patchSetId": 16
@@ -506,6 +530,30 @@
       "writtenOn": "2016-12-09T08:01:35Z",
       "side": 1,
       "message": "suggest to use name as the fir keywork, not cidr\n\n2 shift spaces",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_3f474f1f",
+        "filename": "deploy/config/vm_environment/zte-virtual1/network.yml",
+        "patchSetId": 16
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-15T08:44:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_9c41ba3b",
       "range": {
         "startLine": 17,
         "startChar": 2,
