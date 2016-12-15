@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_7fce37b6",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-15T08:36:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_a10c8f43",
+      "range": {
+        "startLine": 20,
+        "startChar": 61,
+        "endLine": 20,
+        "endChar": 71
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_8103930e",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 16
@@ -83,6 +107,30 @@
       "writtenOn": "2016-12-09T08:01:35Z",
       "side": 1,
       "message": "suggest to use name: os-all_in_one.xml",
+      "range": {
+        "startLine": 21,
+        "startChar": 61,
+        "endLine": 21,
+        "endChar": 71
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_5fcb3ba5",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-15T08:36:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_8103930e",
       "range": {
         "startLine": 21,
         "startChar": 61,
@@ -200,6 +248,30 @@
       "writtenOn": "2016-12-09T08:01:35Z",
       "side": 1,
       "message": "define a function, same with openstack node ?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "5364285b1a1cbdede24e41342239369befeb40f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_9fd1a359",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-15T08:36:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_1c270ab8",
       "range": {
         "startLine": 32,
         "startChar": 0,
