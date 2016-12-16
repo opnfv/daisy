@@ -39,6 +39,29 @@
       "revId": "34250bd0a06aa9795a70f75969b3f024e5bc9db9",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_7a396540",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-12-16T02:06:44Z",
+      "side": 1,
+      "message": "Why this embeded in add_hosts_interface? Can we move it out? It is horizontal related to add_hosts_interface.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 64
+      },
+      "revId": "34250bd0a06aa9795a70f75969b3f024e5bc9db9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
