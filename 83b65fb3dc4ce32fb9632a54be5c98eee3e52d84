@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_3a08bd2c",
+        "filename": "code/install_interface_patch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-16T07:17:30Z",
+      "side": 1,
+      "message": "maybe this dir could write like above?\nJust my opinion.",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 57
+      },
+      "revId": "83b65fb3dc4ce32fb9632a54be5c98eee3e52d84",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
