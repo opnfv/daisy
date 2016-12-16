@@ -16,6 +16,29 @@
       "revId": "34250bd0a06aa9795a70f75969b3f024e5bc9db9",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_ba2fcdf5",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 28
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2016-12-16T01:59:34Z",
+      "side": 1,
+      "message": "We see a lot of this line of code. Why not make it a function called something like execute_on_jumpserver...",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 72
+      },
+      "revId": "34250bd0a06aa9795a70f75969b3f024e5bc9db9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
