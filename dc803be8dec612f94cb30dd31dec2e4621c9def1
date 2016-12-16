@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_2e42be3e",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-16T07:34:06Z",
+      "side": 1,
+      "message": "there",
+      "range": {
+        "startLine": 187,
+        "startChar": 12,
+        "endLine": 187,
+        "endChar": 16
+      },
+      "revId": "dc803be8dec612f94cb30dd31dec2e4621c9def1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
