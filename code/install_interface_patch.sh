@@ -8,9 +8,14 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
+imagebranch="newton"
+imageversion="latest"
+imageserver="http://120.24.17.215"
+imagedir="/home/kolla_install/docker/"
+imagename="kolla-image-$imagebranch-$imageversion.tgz"
 mkdir -p /home/kolla_install/docker
-if [ ! -e "/home/kolla_install/docker/registry-mitaka-latest.tgz" ];then
-    cp registry-mitaka-latest.tgz /home/kolla_install/docker
+if [ ! -e "$imagedir/$imagename" ];then
+    cp $imagename $imagedir
 fi
 if [ ! -e "/home/kolla_install/docker/registry-server.tar" ];then
     cp registry-server.tar /home/kolla_install/docker
