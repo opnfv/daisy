@@ -1,5 +1,6 @@
 FROM centos:7
 LABEL daisy_image_version=1.0
+ENV BRANCH=$BRANCH
 RUN yum -y update
 RUN yum -y install centos-release-openstack-newton
 RUN yum -y install \
