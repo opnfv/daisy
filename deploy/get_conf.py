@@ -41,10 +41,11 @@ def network(network=None):
 
 @decorator_mk('hosts')
 def interface(host=None):
-    hostname = host.get('name', '')
     interface = host.get('interface', '')
     map = {}
-    map[hostname] = interface
+    for k in interface:
+        for v in k['logic']:
+            map[v['name']] = {'ip': v['ip'], 'phynic': k['phynic']}
     return map
 
 
@@ -85,5 +86,7 @@ def config(dha_file, network_file):
         dha_config_parse(data, dha_file)
     data = init(network_file)
     network_map, vip = network_config_parse(data, network_file)
+    for k in host_interface_map:
+        host_interface_map[k].update(network_map[k])
     return host_interface_map, host_role_map, \
         host_ip_passwd_map, network_map, vip
