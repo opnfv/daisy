@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_e4be17ff",
+        "filename": "deploy/get_conf.py",
+        "patchSetId": 29
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-19T01:22:39Z",
+      "side": 1,
+      "message": "The data and format I want to get from network.yml file and deploy.yml is like below,and this data is return from line 93(hosts_name \u003d dha_config_parse(data, dha_file)) and line 95(network_map, vip, interface_map \u003d network_config_parse(data, network_file)):\nthis is hosts_name:\n[\u0027all_in_one\u0027]\n\nthis is network_map:\n{\u0027PUBLICAPI\u0027: {\u0027cidr\u0027: \u002710.20.11.0/24\u0027, \u0027ip_ranges\u0027: [{\u0027start\u0027: \u002710.20.11.3\u0027, \u0027end\u0027: \u002710.20.11.10\u0027}], \u0027gateway\u0027: \u002710.20.11.1\u0027}, \u0027physnet1\u0027: {\u0027cidr\u0027: \u002710.20.11.0/24\u0027, \u0027ip_ranges\u0027: [{\u0027start\u0027: \u002710.20.11.3\u0027, \u0027end\u0027: \u002710.20.11.10\u0027}], \u0027gateway\u0027: \u002710.20.11.1\u0027}, \u0027MANAGEMENT\u0027: {\u0027cidr\u0027: \u002710.20.11.0/24\u0027, \u0027ip_ranges\u0027: [{\u0027start\u0027: \u002710.20.11.3\u0027, \u0027end\u0027: \u002710.20.11.10\u0027}], \u0027gateway\u0027: \u002710.20.11.1\u0027}, \u0027STORAGE\u0027: {\u0027cidr\u0027: \u002710.20.11.0/24\u0027, \u0027ip_ranges\u0027: [{\u0027start\u0027: \u002710.20.11.3\u0027, \u0027end\u0027: \u002710.20.11.10\u0027}], \u0027gateway\u0027: \u002710.20.11.1\u0027}, \u0027EXTERNAL\u0027: {\u0027cidr\u0027: \u0027172.10.101.0/24\u0027, \u0027ip_ranges\u0027: [{\u0027start\u0027: \u0027172.10.101.1\u0027, \u0027end\u0027: \u0027172.10.101.10\u0027}], \u0027gateway\u0027: \u0027172.10.101.0\u0027}}\n\nthis is vip:\n10.20.11.11\n\nthis is interface_map:\n{\u0027ens8\u0027: [{\u0027ip\u0027: \u0027\u0027, \u0027name\u0027: \u0027EXTERNAL\u0027}], \u0027ens3\u0027: [{\u0027ip\u0027: \u0027\u0027, \u0027name\u0027: \u0027MANAGEMENT\u0027}, {\u0027ip\u0027: \u0027\u0027, \u0027name\u0027: \u0027PUBLICAPI\u0027}, {\u0027ip\u0027: \u0027\u0027, \u0027name\u0027: \u0027STORAGE\u0027}, {\u0027ip\u0027: \u0027\u0027, \u0027name\u0027: \u0027physnet1\u0027}]}\nIt would be very nice of you to refactor this type of interface.\nThank you very much.",
+      "parentUuid": "5ac10518_9102f76d",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 68
+      },
+      "revId": "26f75bac28170518621cdba696c0658df95c46b2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_11a60754",
         "filename": "deploy/get_conf.py",
         "patchSetId": 29
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-18T15:08:37Z",
       "side": 1,
       "message": "same as to line 38,\nwhere are \"TENANT\" from? it is not in the yaml file.",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "26f75bac28170518621cdba696c0658df95c46b2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_44c04b7c",
+        "filename": "deploy/get_conf.py",
+        "patchSetId": 29
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-19T01:22:39Z",
+      "side": 1,
+      "message": "This TENANT is read from line 46 of https://gerrit.opnfv.org/gerrit/#/c/25153/29/deploy/config/vm_environment/zte-virtual1/network.yml file\nwe change it in patchset 4 of https://gerrit.opnfv.org/gerrit/#/c/25153/4/deploy/config/vm_environment/zte-virtual1/network.yml",
+      "parentUuid": "5ac10518_11a60754",
       "range": {
         "startLine": 49,
         "startChar": 4,
