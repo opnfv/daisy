@@ -23,8 +23,9 @@ def decorator_mk(types):
             result = {}
             for item in item_list:
                 ret = func(item)
-                if ret.keys()[0] in result:
-                    result[ret.keys()[0]].append(ret.values()[0][0])
+                item_name = item.get('interface')
+                if result is not None and item_name in result:
+                    result[item_name] = result[item_name] + ret[item_name]
                 else:
                     result.update(ret)
             return result
