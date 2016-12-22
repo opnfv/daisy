@@ -93,10 +93,4 @@ def config(dha_file, network_file):
     hosts_name = dha_config_parse(data, dha_file)
     data = init(network_file)
     network_map, vip, interface_map = network_config_parse(data, network_file)
-    for interface_name in interface_map:
-        for name in interface_map[interface_name]:
-            if name.get('name', None) == 'MANAGEMENT':
-                name['ip'] = network_map.get(
-                    'MANAGEMENT', None).get(
-                    'ip_ranges', None)[0].get('start', None)
     return interface_map, hosts_name, network_map, vip
