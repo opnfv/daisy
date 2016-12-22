@@ -14,11 +14,12 @@ from daisyclient.v1 import client as daisy_client
 import get_conf
 import traceback
 import time
+import os
 
 daisy_version = 1.0
 daisy_endpoint = "http://127.0.0.1:19292"
 client = daisy_client.Client(version=daisy_version, endpoint=daisy_endpoint)
-iso_path = "/var/lib/daisy/kolla/CentOS-7-x86_64-DVD-1511.iso"
+iso_path = "/var/lib/daisy/kolla/"
 deployment_interface = "ens3"
 cluster_name = "clustertest"
 
@@ -141,7 +142,12 @@ def add_hosts_interface(cluster_id, hosts_info, host_interface_map,
             interface_name = interface['name']
             interface['assigned_networks'] = \
                 host_interface_map[interface_name]
-        host['os_version'] = iso_path
+        pathlist = os.listdir(iso_path)
+        for filename in pathlist:
+            if filename.endswith('iso'):
+                host['os_version'] = iso_path + filename
+        if host['os_version'] == iso_path:
+            print("do not have os iso file in /var/lib/daisy/kolla/.")
         client.hosts.update(host['id'], **host)
         print("update role...")
         add_host_role(cluster_id, host['id'], host['name'], vip)
