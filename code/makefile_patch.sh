@@ -14,7 +14,7 @@ imagebranch="newton"
 imageversion="latest"
 imageserver="http://120.24.17.215"
 imagename="kolla-image-$imagebranch-$imageversion.tgz"
-isoname="CentOS-7-x86_64-Minimal-1511.iso"
+isoname="CentOS-7-x86_64-Minimal-1611.iso"
 isourl="http://buildlogs.centos.org/rolling/7/isos/x86_64/${isoname}"
 if [ ! -d $CACHE_PATH ]; then mkdir -p $CACHE_PATH ; fi
 if [ ! -f $CACHE_PATH/${isoname} ]; then
