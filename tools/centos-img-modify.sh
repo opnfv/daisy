@@ -11,7 +11,7 @@
 
 set -x
 
-echo "r00tme" | passwd --stdin root
+echo "ossdbg1" | passwd --stdin root
 
 sed -i 's/^SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
 
