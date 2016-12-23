@@ -13,6 +13,7 @@
 # exit 0
 
 ##########TODO after test##########
+WORKDIR="/tmp/workdir"
 DHA=$WORKSPACE/$1
 NETWORK=$WORKSPACE/$2
 deploy_path=$WORKSPACE/deploy
@@ -79,9 +80,26 @@ function update_config
     fi
 }
 
+function clean_up
+{
+    local vm_name="$1"
+    local network_name="$2"
+    virsh destroy $vm_name
+    virsh undefine $vm_name
+    virsh net-destroy $network_name
+    virsh net-undefine $network_name
+}
+
+echo "=====clean up all node and network======"
+clean_up all_in_one daisy2
+clean_up daisy daisy1
+if [ -f $WORKDIR ]; then
+    rm -rf $WORKDIR
+fi
+
+clean_up
 echo "=======create daisy node================"
 $create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $daisy_ip -g $daisy_gateway -s $daisyserver_size
-#qemu-img resize centos7.qcow2 100G
 create_node $net_daisy1 daisy1 $pod_daisy daisy
 sleep 20
 
