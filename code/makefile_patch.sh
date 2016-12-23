@@ -16,7 +16,7 @@ imageserver="http://120.24.17.215"
 imagename="kolla-image-$imagebranch-$imageversion.tgz"
 if [ ! -d $CACHE_PATH ]; then mkdir -p $CACHE_PATH ; fi
 if [ ! -f $CACHE_PATH/CentOS-7-x86_64-Minimal-1511.iso ]; then
-    wget -P $CACHE_PATH "http://ftp.osuosl.org/pub/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1511.iso"
+    wget -P $CACHE_PATH "http://ftp.osuosl.org/pub/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso"
 fi
 if [ ! -f $CACHE_PATH/$imagename ]; then
     wget -P $CACHE_PATH "$imageserver/$imagename"

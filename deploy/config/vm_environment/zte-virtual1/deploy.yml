@@ -4,9 +4,9 @@ hosts:
     - 'CONTROLLER_LB'
     - 'COMPUTER'
 disks:
-  daisy: 100G
-  controller: 100G
-  compute: 100G
-daisy_passwd: 'r00tme'
+  daisy: 50
+  controller: 50
+  compute: 50
+daisy_passwd: 'ossdbg1'
 daisy_ip: '10.20.11.2'
 daisy_gateway: '10.20.11.1'

@@ -13,6 +13,7 @@
 # exit 0
 
 ##########TODO after test##########
+WORKDIR=/tmp/workdir
 DHA=$WORKSPACE/$1
 NETWORK=$WORKSPACE/$2
 deploy_path=$WORKSPACE/deploy
@@ -33,16 +34,22 @@ daisy_gateway=`echo $parameter_from_deploy | cut -d " " -f 6`
 
 function execute_on_jumpserver
 {
-    ssh $1 -o UserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no $2
+    local jumpserver_ip=$1
+    local cmd=$2
+    ssh $jumpserver_ip -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $cmd
 }
 
 function create_node
 {
-    virsh net-define $1
-    virsh net-autostart $2
-    virsh net-start $2
-    virsh define $3
-    virsh start $4
+    local net_template=$1
+    local net_name=$2
+    local vms_template=$3
+    local vms_name=$4
+    virsh net-define $net_template
+    virsh net-autostart $net_name
+    virsh net-start $net_name
+    virsh define $vms_template
+    virsh start $vms_name
 }
 
 #update key = value config option in an conf or ini file
@@ -79,16 +86,31 @@ function update_config
     fi
 }
 
+function clean_up
+{
+    local vm_name=$1
+    local network_name=$2
+    virsh destroy $vm_name
+    virsh undefine $vm_name
+    virsh net-destroy $network_name
+    virsh net-undefine $network_name
+}
+
+echo "=====clean up all node and network======"
+clean_up all_in_one daisy2
+clean_up daisy daisy1
+if [ -f $WORKDIR/daisy ]; then
+    rm -rf $WORKDIR
+fi
+
 echo "=======create daisy node================"
 $create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $daisy_ip -g $daisy_gateway -s $daisyserver_size
-#qemu-img resize centos7.qcow2 100G
 create_node $net_daisy1 daisy1 $pod_daisy daisy
 sleep 20
 
 echo "====== install daisy==========="
 $deploy_path/trustme.sh $daisy_ip $daisy_passwd
 scp -r $WORKSPACE root@$daisy_ip:/home
-
 execute_on_jumpserver $daisy_ip "mkdir -p /home/daisy_install"
 update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $daisy_ip
 scp $WORKSPACE/deploy/daisy.conf root@$daisy_ip:/home/daisy_install
@@ -103,7 +125,8 @@ fi
 
 echo "====== add relate config of kolla==========="
 execute_on_jumpserver $daisy_ip "mkdir -p /etc/kolla/config/nova"
-execute_on_jumpserver $daisy_ip "echo -e "[libvirt]\nvirt_type=qemu" > /etc/kolla/config/nova/nova-compute.conf"
+echo -e "[libvirt]\nvirt_type=qemu" > $WORKSPACE/nova-compute.conf
+scp $WORKSPACE/nova-compute.conf root@$daisy_ip:/etc/kolla/config/nova/
 
 echo "===prepare cluster and pxe==="
 execute_on_jumpserver $daisy_ip "python $WORKSPACE/deploy/tempest.py --dha $DHA --network $NETWORK --cluster "yes""
