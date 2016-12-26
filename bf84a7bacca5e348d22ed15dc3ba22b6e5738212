@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_82f29a98",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-12-26T02:54:02Z",
+      "side": 1,
+      "message": "If there is no os version in the iso_path,should be some warning showing or throwing exception?",
+      "revId": "bf84a7bacca5e348d22ed15dc3ba22b6e5738212",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
