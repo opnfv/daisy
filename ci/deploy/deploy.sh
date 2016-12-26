@@ -83,6 +83,7 @@ echo "=======create daisy node================"
 $create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $daisy_ip -g $daisy_gateway -s $daisyserver_size
 #qemu-img resize centos7.qcow2 100G
 create_node $net_daisy1 daisy1 $pod_daisy daisy
+execute_on_jumpserver $daisy_ip "touch /root/.ssh/known_hosts"
 sleep 20
 
 echo "====== install daisy==========="
