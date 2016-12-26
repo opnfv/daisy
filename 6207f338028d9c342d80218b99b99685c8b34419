@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_42903243",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-12-26T01:58:43Z",
+      "side": 1,
+      "message": "How to make sure the iso exist there? When the web modify ,should we change the specified iso file by manual?",
+      "revId": "6207f338028d9c342d80218b99b99685c8b34419",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
