@@ -16,6 +16,24 @@
       "revId": "857aeb6e98c386dd969eddc37f706734d229a423",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_2d5b972f",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-26T09:32:35Z",
+      "side": 1,
+      "message": "I don\u0027t know very clearly about this comment?could you please make it a little clearly?",
+      "parentUuid": "5ac10518_023c6ae1",
+      "revId": "857aeb6e98c386dd969eddc37f706734d229a423",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
