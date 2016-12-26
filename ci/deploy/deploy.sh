@@ -88,7 +88,7 @@ sleep 20
 echo "====== install daisy==========="
 $deploy_path/trustme.sh $daisy_ip $daisy_passwd
 scp -r $WORKSPACE root@$daisy_ip:/home
-
+ssh root@daisy_ip "touch /root/.ssh/know_hosts"
 execute_on_jumpserver $daisy_ip "mkdir -p /home/daisy_install"
 update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $daisy_ip
 scp $WORKSPACE/deploy/daisy.conf root@$daisy_ip:/home/daisy_install
