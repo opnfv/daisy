@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_023c6ae1",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3911
+      },
+      "writtenOn": "2016-12-26T07:53:09Z",
+      "side": 1,
+      "message": "SSH parameter could be consistent :\n  ssh $jumpserver_ip -o UserKnownHostsFile\u003d/dev/null -o StrictHostKeyChecking\u003dno $cmd",
+      "revId": "857aeb6e98c386dd969eddc37f706734d229a423",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
