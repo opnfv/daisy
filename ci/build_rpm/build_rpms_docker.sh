@@ -12,9 +12,12 @@
 OPNFV_ARTIFACT_VERSION=$1
 rpm_build_dir=/opt/daisy4nfv
 rpm_output_dir=$rpm_build_dir/build_output
-tmp_rpm_build_dir=/root/daisy4nfv
+tmp_rpm_build_dir=/home/cache/daisy4nfv
 
-cp -r $rpm_build_dir $tmp_rpm_build_dir
+if [[ -d $tmp_rpm_build_dir ]]; then
+    rm -fr $tmp_rpm_build_dir
+fi
+mkdir -p $tmp_rpm_build_dir
 cd $tmp_rpm_build_dir
 
 echo "#########################################################"
@@ -32,8 +35,8 @@ do
     echo -e "\n\n\n*** Starting build attempt # $cnt"
 
     git clone https://git.openstack.org/openstack/daisycloud-core
-    cp $tmp_rpm_build_dir/code/makefile_patch.sh daisycloud-core/tools/setup
-    cp $tmp_rpm_build_dir/code/install_interface_patch.sh daisycloud-core/tools/setup
+    cp $rpm_build_dir/code/makefile_patch.sh daisycloud-core/tools/setup
+    cp $rpm_build_dir/code/install_interface_patch.sh daisycloud-core/tools/setup
     cd daisycloud-core/make
     make allrpm
     rc=$?
@@ -48,6 +51,6 @@ do
     fi
 done
 cd ..
-mv target/el7/noarch/installdaisy_el7_noarch.bin target/el7/noarch/opnfv-$OPNFV_ARTIFACT_VERSION.bin
-cp target/el7/noarch/opnfv-$OPNFV_ARTIFACT_VERSION.bin $rpm_output_dir
+mv target/el7/noarch/installdaisy_el7_noarch.bin target/el7/noarch/opnfv-${OPNFV_ARTIFACT_VERSION}.bin
+cp target/el7/noarch/opnfv-${OPNFV_ARTIFACT_VERSION}.bin $rpm_output_dir
 exit $rc
