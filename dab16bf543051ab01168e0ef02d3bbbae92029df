@@ -22,6 +22,30 @@
       "revId": "dab16bf543051ab01168e0ef02d3bbbae92029df",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_5f024870",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2016-12-30T02:14:17Z",
+      "side": 1,
+      "message": "OK?thank you for your advice.\nI will have a try.",
+      "parentUuid": "5ac10518_9c93de4e",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 53
+      },
+      "revId": "dab16bf543051ab01168e0ef02d3bbbae92029df",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
