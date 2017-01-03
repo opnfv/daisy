@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_75b725d9",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-01-03T08:36:47Z",
+      "side": 1,
+      "message": "This is also my confusion.\nWhen I use execute_on_jumpserver,I got \"[libvirt]virt_type\u003dqemu\"\nin nova-compute.conf and the \"\\n\"is ignored by this statement.If you have some idea of how to solve this problem,I am pleasure to discuss with you.",
+      "parentUuid": "5ac10518_159fc151",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 71
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_f57c7522",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 10
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_95bad1be",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-01-03T08:36:47Z",
+      "side": 1,
+      "message": "Each time I debug the code of daisy,I have to restart daisy-api and daisy-registry service.\nBefore I debug the code of daisy,it can\u0027t ping the targetnode,But after I restart daisy-api and daisy-registry service,it can ping targetnode.I can\u0027t find any problem in daisy code.Therefore I conclude the only difference I did in this progress is to restart the service.",
+      "parentUuid": "5ac10518_359afd63",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 66
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_f5a3159c",
         "filename": "code/makefile_patch.sh",
         "patchSetId": 10
@@ -107,6 +155,30 @@
       "writtenOn": "2017-01-03T08:21:22Z",
       "side": 1,
       "message": "Why we need 1611?",
+      "range": {
+        "startLine": 17,
+        "startChar": 33,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_d5a85979",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-01-03T08:36:47Z",
+      "side": 1,
+      "message": "both is ok,I just test here whether 1611 will be ok for our deploy.",
+      "parentUuid": "5ac10518_f5a3159c",
       "range": {
         "startLine": 17,
         "startChar": 33,
