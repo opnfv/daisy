@@ -33,7 +33,7 @@ function cleanup_container {
     if [[ ! -z "$containers_to_kill" ]]; then
         ops='{{range .Mounts}} {{printf "%s\n" .Name }}{{end}}'
         volumes_to_remove=$(sudo docker inspect -f \
-                                                $ops ${containers_to_kill} \
+                                                "$ops" ${containers_to_kill} \
                                                 | egrep -v '(^\s*$)' \
                                                 | sort | uniq)
 
@@ -47,8 +47,7 @@ function cleanup_container {
 }
 
 function cleanup_docker_image {
-    images_to_delete=$(sudo docker images -a \
-                                          --format "{{.ID}}" \
+    images_to_delete=$(sudo docker images -q \
                                           --filter "label=daisy_image_version")
 
     echo "Removing images... $images_to_delete"
