@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5ac10518_9003bf0c",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-01-03T16:04:06Z",
+      "side": 1,
+      "message": "why just not use $1 and $2 and then the new function execute_on_jumpserver is not necessary",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 87
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_159fc151",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 10
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "This is also my confusion.\nWhen I use execute_on_jumpserver,I got \"[libvirt]virt_type\u003dqemu\"\nin nova-compute.conf and the \"\\n\"is ignored by this statement.If you have some idea of how to solve this problem,I am pleasure to discuss with you.",
       "parentUuid": "5ac10518_159fc151",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 71
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_500d5736",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-01-03T16:04:06Z",
+      "side": 1,
+      "message": "for you use wrong \",\ntry this one:\nexecute_on_jumpserver $daisy_ip \"echo -e \u0027[libvirt]\\nvirt_type\u003dqemu\u0027 \u003e /etc/kolla/config/nova/nova-compute.conf\"",
+      "parentUuid": "5ac10518_75b725d9",
       "range": {
         "startLine": 129,
         "startChar": 0,
@@ -184,6 +231,76 @@
         "startChar": 33,
         "endLine": 17,
         "endChar": 36
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_f013235a",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-01-03T16:04:06Z",
+      "side": 1,
+      "message": "I suggest to use the newest ones.\n\nI will submit a new patch to get the newest one automatically instead of hard coding here.",
+      "parentUuid": "5ac10518_d5a85979",
+      "range": {
+        "startLine": 17,
+        "startChar": 33,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_100fcf2f",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-01-03T16:04:06Z",
+      "side": 1,
+      "message": "not 50G?",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_b01d9b68",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-01-03T16:04:06Z",
+      "side": 1,
+      "message": "the older one is better for ossdbg1 not meet the passwd requirement.",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 22
       },
       "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
