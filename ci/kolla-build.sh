@@ -21,6 +21,7 @@ set -o pipefail
 KOLLA_GIT=$1
 KOLLA_BRANCH=$2
 KOLLA_GIT_VERSION=
+KOLLA_IMAGE_VERSION=
 KOLLA_GIT_DIR=/tmp/kolla-git
 REGISTRY_VOLUME_DIR=/tmp/registry
 BUILD_OUTPUT_DIR=/tmp/kolla-build-output
@@ -106,7 +107,7 @@ function cleanup_registry_data {
 
 function cleanup_kolla_image {
     echo "Cleaning Kolla images"
-    if [ -d $KOLLA_GIT_DIR ] ; then
+    if [ -d $KOLLA_GIT_DIR/kolla ] ; then
         pushd $KOLLA_GIT_DIR/kolla
         (./tools/cleanup-images 2>&1) || true > /dev/null;
         popd
@@ -132,6 +133,9 @@ function pack_registry_data {
 
     pushd $BUILD_OUTPUT_DIR
     echo $KOLLA_GIT_VERSION > registry-$version-$datetag.version
+    echo "branch = $KOLLA_BRANCH" >> registry-$version-$datetag.version
+    echo "tag = $KOLLA_IMAGE_VERSION" >> registry-$version-$datetag.version
+    echo "date = $datetag" >> registry-$version-$datetag.version
     tar czf kolla-image-$version-$datetag.tgz $REGISTRY_VOLUME_DIR \
         registry-$version-$datetag.version
     rm -rf registry-$version-$datetag.version
@@ -147,7 +151,9 @@ function update_kolla_code {
     if [ ! -d $KOLLA_GIT_DIR/kolla ] ; then
         pushd $KOLLA_GIT_DIR
         git clone $KOLLA_GIT
+        pushd $KOLLA_GIT_DIR/kolla
         git checkout $KOLLA_BRANCH
+        popd
         popd
     else
         pushd $KOLLA_GIT_DIR/kolla
@@ -158,8 +164,10 @@ function update_kolla_code {
     fi
 
     pushd $KOLLA_GIT_DIR/kolla
-    KOLLA_GIT_VERSION=`git log -1 --pretty="%H"`
+    KOLLA_GIT_VERSION=$(git log -1 --pretty="%H")
     tox -e genconfig
+    KOLLA_IMAGE_VERSION=$(cat $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf \
+        | grep "#tag" | gawk -F' = ' '{print $2}')
     popd
 }
 
@@ -189,6 +197,7 @@ pre_check
 # Try to cleanup images of the last failed run, if any.
 cleanup_kolla_image
 update_kolla_code
+cleanup_kolla_image
 
 # Make sure there is no garbage in the registry server.
 cleanup_registry_server
