@@ -335,6 +335,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_d0edc7b8",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-01-04T03:25:55Z",
+      "side": 1,
+      "message": "can not ping or can not install openstack?these are two different issue. I\u0027ll work with you to deal with it. Seems a serious problem.",
+      "parentUuid": "5ac10518_90089f92",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 66
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_f5a3159c",
         "filename": "code/makefile_patch.sh",
         "patchSetId": 10
