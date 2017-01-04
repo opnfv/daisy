@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_3010cb00",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-01-04T02:05:25Z",
+      "side": 1,
+      "message": "For we have to execute many times below.\nSo I think this function is necessary.",
+      "parentUuid": "5ac10518_9003bf0c",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 87
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_159fc151",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 10
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "for you use wrong \",\ntry this one:\nexecute_on_jumpserver $daisy_ip \"echo -e \u0027[libvirt]\\nvirt_type\u003dqemu\u0027 \u003e /etc/kolla/config/nova/nova-compute.conf\"",
       "parentUuid": "5ac10518_75b725d9",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 71
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_90097fdf",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-01-04T02:05:25Z",
+      "side": 1,
+      "message": "OK,thank you for your advice,I will try this.",
+      "parentUuid": "5ac10518_500d5736",
       "range": {
         "startLine": 129,
         "startChar": 0,
@@ -285,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_70d41320",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-01-04T02:05:25Z",
+      "side": 1,
+      "message": "It is 50.\nFor yangyang has add \u0027G\u0027in daisy-img-modify.sh L143.",
+      "parentUuid": "5ac10518_100fcf2f",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_b01d9b68",
         "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
         "patchSetId": 10
@@ -296,6 +368,30 @@
       "writtenOn": "2017-01-03T16:04:06Z",
       "side": 1,
       "message": "the older one is better for ossdbg1 not meet the passwd requirement.",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_90d73f23",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-01-04T02:05:25Z",
+      "side": 1,
+      "message": "OK,thank you for your suggestion,and I will modify daisyserver password back to r00tme.",
+      "parentUuid": "5ac10518_b01d9b68",
       "range": {
         "startLine": 10,
         "startChar": 15,
