@@ -311,6 +311,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_90089f92",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-01-04T03:16:43Z",
+      "side": 1,
+      "message": "It is no use to sleep 30 after virsh destroy.\nAnd after we install os successfully,we just can\u0027t install openstack without restart daisy-api.",
+      "parentUuid": "5ac10518_90be5fd3",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 66
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_f5a3159c",
         "filename": "code/makefile_patch.sh",
         "patchSetId": 10
