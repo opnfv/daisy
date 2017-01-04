@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_70bbb3e5",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-01-04T03:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_500d5736",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 71
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_f57c7522",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 10
@@ -263,6 +287,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_50b8f7e4",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-01-04T03:11:05Z",
+      "side": 1,
+      "message": "Thank you for your advice.\nI will have a try.",
+      "parentUuid": "5ac10518_90be5fd3",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 66
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_f5a3159c",
         "filename": "code/makefile_patch.sh",
         "patchSetId": 10
@@ -368,6 +416,30 @@
       "writtenOn": "2017-01-04T02:05:25Z",
       "side": 1,
       "message": "It is 50.\nFor yangyang has add \u0027G\u0027in daisy-img-modify.sh L143.",
+      "parentUuid": "5ac10518_100fcf2f",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_10ca6f6e",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-01-04T03:11:05Z",
+      "side": 1,
+      "message": "50,For yangyang has post",
       "parentUuid": "5ac10518_100fcf2f",
       "range": {
         "startLine": 7,
