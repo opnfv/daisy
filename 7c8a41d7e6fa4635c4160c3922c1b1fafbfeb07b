@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_b077db01",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-01-04T05:33:18Z",
+      "side": 1,
+      "message": "according to others\u0027 installers implementation in ssh, suggest to just use the ssh xxx.\n\nI will submit a patchset for review about how to write a simple ssh command",
+      "parentUuid": "5ac10518_3010cb00",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 87
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_159fc151",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 10
@@ -489,6 +513,30 @@
       "side": 1,
       "message": "50,For yangyang has post",
       "parentUuid": "5ac10518_100fcf2f",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_d072a710",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-01-04T05:33:18Z",
+      "side": 1,
+      "message": "if it is compatible for 50 or 50G, it will be great.",
+      "parentUuid": "5ac10518_10ca6f6e",
       "range": {
         "startLine": 7,
         "startChar": 9,
