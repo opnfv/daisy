@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_90be5fd3",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-01-04T02:12:36Z",
+      "side": 1,
+      "message": "Maybe it is all about waiting for a while since you did virsh destroy all_in_one and virsh start all_in_one before.",
+      "parentUuid": "5ac10518_95bad1be",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 66
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_f5a3159c",
         "filename": "code/makefile_patch.sh",
         "patchSetId": 10
