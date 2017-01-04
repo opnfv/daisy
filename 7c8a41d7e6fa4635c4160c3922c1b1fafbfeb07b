@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_b04efbbf",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-01-04T06:16:51Z",
+      "side": 1,
+      "message": "OK,thank you for your help.",
+      "parentUuid": "5ac10518_b077db01",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 87
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_159fc151",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 10
@@ -371,6 +395,30 @@
       "side": 1,
       "message": "can not ping or can not install openstack?these are two different issue. I\u0027ll work with you to deal with it. Seems a serious problem.",
       "parentUuid": "5ac10518_90089f92",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 66
+      },
+      "revId": "7c8a41d7e6fa4635c4160c3922c1b1fafbfeb07b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_10502f5d",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-01-04T06:16:51Z",
+      "side": 1,
+      "message": "we just stuck in get_config_from_database step;and do not go on to next step ping host ${ip}.After restart daisy-api,this problem is solved.",
+      "parentUuid": "5ac10518_d0edc7b8",
       "range": {
         "startLine": 148,
         "startChar": 0,
