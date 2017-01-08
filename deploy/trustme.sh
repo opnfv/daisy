@@ -1,5 +1,5 @@
 #!/bin/sh
-#to be trusted by other host£¬and no password needed when use ssh command
+#to be trusted by other host and no password needed when use ssh command
 
 #check parameters legality
 logfile=/var/log/trustme.log
@@ -37,7 +37,7 @@ fi
 #generate ssh pubkey
 if [ ! -e ~/.ssh/id_dsa.pub ]; then
   print_log "generating ssh public key ..."
-  ssh-keygen -t dsa -f /root/.ssh/id_dsa -N "" <<EOF
+  ssh-keygen -t dsa -f ~/.ssh/id_dsa -N "" <<EOF
 n
 EOF
   if [ $? != 0 ]; then
@@ -47,51 +47,16 @@ EOF
 fi
 
 #clear old public key
-user=`whoami`
-host=`hostname`
-keyend="$user@$host"
-print_log "my keyend = $keyend"
-cmd="sed '/$keyend$/d'  -i ~/.ssh/authorized_keys"
-local_host="127.0.0.1"
-print_log "clear my old pub key on $local_host ..."
-sshpass -p $passwd ssh -o StrictHostKeyChecking=no $local_host "test -f  ~/.ssh/known_hosts"
-if [ $? = 0 ]; then
-    sshpass -p $passwd ssh -o StrictHostKeyChecking=no $local_host "sed -i '/${ip} /d' ~/.ssh/known_hosts"
-    if [ $? != 0 ]; then
-       print_log "delete pub key of $ip from $local_host known_hosts failed"
-       exit 1
-    fi
-fi
-sshpass -p $passwd ssh -o StrictHostKeyChecking=no $ip "mkdir -p ~/.ssh && touch ~/.ssh/authorized_keys"
-if [ $? != 0 ]; then
-    print_log "ssh $ip to create file authorized_keys failed"
-    exit 1
-fi
-sshpass -p $passwd ssh -o StrictHostKeyChecking=no $ip "$cmd"
-if [ $? != 0 ]; then
-    print_log "ssh $ip to edit authorized_keys failed"
-    exit 1
-fi
+print_log "clear old info in known_hosts file on localhost ..."
+ssh-keygen -R $ip
+
 #copy new public key
 print_log "copy my public key to $ip ..."
-tmpfile=/tmp/`hostname`.key.pub
-sshpass -p $passwd scp -o StrictHostKeyChecking=no ~/.ssh/id_dsa.pub  $ip:$tmpfile
+sshpass -p $passwd ssh-copy-id -i ~/.ssh/id_dsa.pub -o StrictHostKeyChecking=no root@$ip
 if [ $? != 0 ]; then
-    print_log "scp file to $ip failed"
+    print_log "ssh-copy-id failed"
     exit 1
 fi
-#copy public key to authorized_keys
-print_log "on $ip, append my public key to ~/.ssh/authorized_keys ..."
-sshpass -p $passwd ssh -o StrictHostKeyChecking=no $ip "cat $tmpfile >> ~/.ssh/authorized_keys"
-if [ $? != 0 ]; then
-    print_log "ssh $ip to add public key for authorized_keys failed"
-    exit 1
-fi
-print_log "rm tmp file $ip:$tmpfile"
-sshpass -p $passwd ssh -o StrictHostKeyChecking=no $ip "rm $tmpfile" 
-if [ $? != 0 ]; then
-    print_log "ssh $ip to delete tmp file failed"
-    exit 1
-fi
+
 print_log "trustme ok!"
 
