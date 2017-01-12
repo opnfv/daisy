@@ -13,9 +13,13 @@
 # exit 0
 
 ##########TODO after test##########
+REMOTE_SPACE=/home/daisy
+DHA=${REMOTE_SPACE}/$1
+NETWORK=${REMOTE_SPACE}/$2
+
 WORKDIR=/tmp/workdir
-DHA=$WORKSPACE/$1
-NETWORK=$WORKSPACE/$2
+SCRIPT_PATH=$(readlink -f $(dirname $0))
+WORKSPACE=$(cd ${SCRIPT_PATH}/../..; pwd)
 deploy_path=$WORKSPACE/deploy
 create_qcow2_path=$WORKSPACE/tools
 net_daisy1=$WORKSPACE/templates/virtual_environment/networks/daisy.xml
@@ -23,7 +27,7 @@ net_daisy2=$WORKSPACE/templates/virtual_environment/networks/os-all_in_one.xml
 pod_daisy=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
 pod_all_in_one=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
 
-parameter_from_deploy=`python $WORKSPACE/deploy/get_para_from_deploy.py --dha $DHA`
+parameter_from_deploy=`python $WORKSPACE/deploy/get_para_from_deploy.py --dha $WORKSPACE/$1`
 
 daisyserver_size=`echo $parameter_from_deploy | cut -d " " -f 1`
 controller_node_size=`echo $parameter_from_deploy | cut -d " " -f 2`
@@ -31,6 +35,9 @@ compute_node_size=`echo $parameter_from_deploy | cut -d " " -f 3`
 daisy_passwd=`echo $parameter_from_deploy | cut -d " " -f 4`
 daisy_ip=`echo $parameter_from_deploy | cut -d " " -f 5`
 daisy_gateway=`echo $parameter_from_deploy | cut -d " " -f 6`
+
+VM_STORAGE=/home/qemu/vms
+test -d ${VM_STORAGE} || mkdir -p ${VM_STORAGE}
 
 function execute_on_jumpserver
 {
@@ -110,12 +117,12 @@ sleep 20
 
 echo "====== install daisy==========="
 $deploy_path/trustme.sh $daisy_ip $daisy_passwd
-scp -r $WORKSPACE root@$daisy_ip:/home
-ssh root@$daisy_ip "touch /root/.ssh/know_hosts"
+execute_on_jumpserver $daisy_ip "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE}; then rm -fr ${REMOTE_SPACE}; fi"
+scp -r $WORKSPACE root@$daisy_ip:${REMOTE_SPACE}
 execute_on_jumpserver $daisy_ip "mkdir -p /home/daisy_install"
 update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $daisy_ip
 scp $WORKSPACE/deploy/daisy.conf root@$daisy_ip:/home/daisy_install
-execute_on_jumpserver $daisy_ip "$WORKSPACE/opnfv.bin  install"
+execute_on_jumpserver $daisy_ip "${REMOTE_SPACE}/opnfv.bin  install"
 rc=$?
 if [ $rc -ne 0 ]; then
     echo "daisy install failed"
@@ -129,15 +136,15 @@ execute_on_jumpserver $daisy_ip "mkdir -p /etc/kolla/config/nova"
 execute_on_jumpserver $daisy_ip "echo -e '[libvirt]\nvirt_type=qemu' > /etc/kolla/config/nova/nova-compute.conf"
 
 echo "===prepare cluster and pxe==="
-execute_on_jumpserver $daisy_ip "python $WORKSPACE/deploy/tempest.py --dha $DHA --network $NETWORK --cluster "yes""
+execute_on_jumpserver $daisy_ip "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --cluster 'yes'"
 
 echo "=====create all-in-one node======"
-qemu-img create -f qcow2 $WORKSPACE/../qemu/vms/all_in_one.qcow2 200G
+qemu-img create -f qcow2 ${VM_STORAGE}/all_in_one.qcow2 200G
 create_node $net_daisy2 daisy2 $pod_all_in_one all_in_one
 sleep 20
 
 echo "======prepare host and pxe==========="
-execute_on_jumpserver $daisy_ip "python $WORKSPACE/deploy/tempest.py  --dha $DHA --network $NETWORK --host "yes""
+execute_on_jumpserver $daisy_ip "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA --network $NETWORK --host 'yes'"
 
 echo "======daisy deploy os and openstack==========="
 virsh destroy all_in_one
@@ -146,8 +153,8 @@ virsh start all_in_one
 echo "===========check install progress==========="
 execute_on_jumpserver $daisy_ip "systemctl restart daisy-api"
 execute_on_jumpserver $daisy_ip "systemctl restart daisy-registry"
-execute_on_jumpserver $daisy_ip "$WORKSPACE/deploy/check_os_progress.sh"
+execute_on_jumpserver $daisy_ip "${REMOTE_SPACE}/deploy/check_os_progress.sh"
 virsh reboot all_in_one
-execute_on_jumpserver $daisy_ip "$WORKSPACE/deploy/check_openstack_progress.sh"
+execute_on_jumpserver $daisy_ip "${REMOTE_SPACE}/deploy/check_openstack_progress.sh"
 
 exit 0
