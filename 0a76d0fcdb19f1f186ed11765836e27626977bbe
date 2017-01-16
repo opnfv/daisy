@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_cbf428f4",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-01-16T12:13:53Z",
+      "side": 1,
+      "message": "On what condition it will fail? Please describe what you experienced, thanks.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 10
+      },
+      "revId": "0a76d0fcdb19f1f186ed11765836e27626977bbe",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
