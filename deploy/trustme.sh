@@ -46,9 +46,16 @@ EOF
   fi
 fi
 
-#clear old public key
-print_log "clear old info in known_hosts file on localhost ..."
-ssh-keygen -R $ip
+local_host="127.0.0.1"
+print_log "clear my old pub key on $local_host ..."
+sshpass -p $passwd ssh -o StrictHostKeyChecking=no $local_host "test -f  ~/.ssh/known_hosts"
+if [ $? = 0 ]; then
+    ssh-keygen -R $ip
+    if [ $? != 0 ]; then
+       print_log "delete pub key of $ip from $local_host known_hosts failed"
+       exit 1
+    fi
+fi
 
 #copy new public key
 print_log "copy my public key to $ip ..."
