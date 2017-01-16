@@ -46,6 +46,29 @@
       "revId": "b40b7d7c6770fc3f1f39f9b7b576a88c1ce87864",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_ababdcd4",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 6263
+      },
+      "writtenOn": "2017-01-16T11:56:26Z",
+      "side": 1,
+      "message": "I think we should add a judgment here to check whether this code runs successful, if it is failure, the script will exit with 1",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "b40b7d7c6770fc3f1f39f9b7b576a88c1ce87864",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
