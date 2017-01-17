@@ -22,6 +22,30 @@
       "revId": "0a76d0fcdb19f1f186ed11765836e27626977bbe",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_eb480489",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 6263
+      },
+      "writtenOn": "2017-01-17T01:24:27Z",
+      "side": 1,
+      "message": "When I modify the public key in known_hosts on localhost, clear old info in known_hosts will fail",
+      "parentUuid": "5ac10518_cbf428f4",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 10
+      },
+      "revId": "0a76d0fcdb19f1f186ed11765836e27626977bbe",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
