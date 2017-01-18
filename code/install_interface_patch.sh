@@ -20,5 +20,5 @@ fi
 if [ ! -e "$imagedir/registry-server.tar" ];then
     cp registry-server.tar $imagedir
 fi
-cp CentOS-7-x86_64-Minimal-1511.iso /var/lib/daisy/kolla
+cp CentOS*.iso /var/lib/daisy/kolla
 
