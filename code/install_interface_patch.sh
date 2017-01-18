@@ -20,5 +20,6 @@ fi
 if [ ! -e "$imagedir/registry-server.tar" ];then
     cp registry-server.tar $imagedir
 fi
-cp CentOS-7-x86_64-Minimal-1511.iso /var/lib/daisy/kolla
+centos_version=`ls |grep CentOS`
+cp $centos_version /var/lib/daisy/kolla
 
