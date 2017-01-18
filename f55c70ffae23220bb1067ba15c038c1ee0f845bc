@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_77b1568e",
+        "filename": "code/install_interface_patch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-01-18T23:59:46Z",
+      "side": 1,
+      "message": "To this change, I think cp CentOS*.iso is enough, atleast no need to use grep.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 39
+      },
+      "revId": "f55c70ffae23220bb1067ba15c038c1ee0f845bc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
