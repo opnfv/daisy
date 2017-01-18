@@ -106,8 +106,8 @@ function clean_up
 echo "=====clean up all node and network======"
 clean_up all_in_one daisy2
 clean_up daisy daisy1
-if [ -f $WORKDIR/daisy ]; then
-    rm -rf $WORKDIR
+if [ -f $WORKDIR/daisy/centos7.qcow2 ]; then
+    rm -rf $WORKDIR/daisy/centos7.qcow2
 fi
 
 echo "=======create daisy node================"
