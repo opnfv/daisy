@@ -10,6 +10,11 @@
 ##############################################################################
 TOOLS_PATH=$1
 CACHE_PATH=/home/cache
+ls
+print "before"
+rm -rf /home/cache/*
+ls
+print "after"
 imagebranch="newton"
 imageversion="latest"
 imageserver="http://120.24.17.215"
