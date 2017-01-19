@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_e00d7a38",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-01-19T11:22:03Z",
+      "side": 1,
+      "message": "lcal_host -\u003e local_host?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 9
+      },
+      "revId": "7c2372cef31544dc3e6ade3ad87e1040eb8d14d5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
