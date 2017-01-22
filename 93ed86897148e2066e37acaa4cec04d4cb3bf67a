@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_d1b4d2d2",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-01-22T06:28:24Z",
+      "side": 1,
+      "message": "Commands on localhost can execute directly, don\u0027t need ssh.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 62
+      },
+      "revId": "93ed86897148e2066e37acaa4cec04d4cb3bf67a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_51c0e229",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-01-22T06:28:24Z",
+      "side": 1,
+      "message": "I think \u0027test ! -f ~/.ssh/known_hosts || ssh-keygen -R $ip\u0027 is enough.\nIf the public key in known_hosts is modified manually, \u0027ssh-keygen -R $ip\u0027 will fail. But a new key will be added in known_hosts when you login the target server next-time. And the error messages don\u0027t prevent you from logging on the target server.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "93ed86897148e2066e37acaa4cec04d4cb3bf67a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
