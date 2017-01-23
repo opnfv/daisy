@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_8c92ad9d",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 6263
+      },
+      "writtenOn": "2017-01-23T01:49:59Z",
+      "side": 1,
+      "message": "The main purpose of this line is that when known_hosts is not exist, it can generate the file and add localhost pub key to it.\nif we don\u0027t use sshpass, it only test whether file exists, cann\u0027t generate the file. So we need use sshpass.",
+      "parentUuid": "5ac10518_d1b4d2d2",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 62
+      },
+      "revId": "93ed86897148e2066e37acaa4cec04d4cb3bf67a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_51c0e229",
         "filename": "deploy/trustme.sh",
         "patchSetId": 3
