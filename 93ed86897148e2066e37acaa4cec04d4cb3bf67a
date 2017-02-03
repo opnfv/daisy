@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1acb0d3e_604d7872",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-03T03:09:00Z",
+      "side": 1,
+      "message": "if the target is localhost, no ssh is required. \u0027know_hosts\u0027 is not required either when we use StrictHostKeyChecking\u003dno for no new items will be appended into it.",
+      "parentUuid": "5ac10518_8c92ad9d",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 62
+      },
+      "revId": "93ed86897148e2066e37acaa4cec04d4cb3bf67a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_51c0e229",
         "filename": "deploy/trustme.sh",
         "patchSetId": 3
