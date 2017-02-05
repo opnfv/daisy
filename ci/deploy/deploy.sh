@@ -7,27 +7,116 @@
 # are made available under the terms of the Apache License, Version 2.0
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
+# TODO
+# [ ] 1. Pass full path for parameter for -d and -n
+# [ ] 2. Refactor para fetching procedure of parameter_from_deploy
+# [ ] 3. Refacotr execute_on_jumpserver
+# [ ] 4. Refacotr for names for var such like net_daisy1, net_daisy2
+# [ ] 5. Store PODs' configruation files into securelab
+# [ ] 6. Use POD name as the parameter instead of files
 ##############################################################################
 #daisy host discover
-######exit before finish test#######
-# exit 0
 
-##########TODO after test##########
-REMOTE_SPACE=/home/daisy
-DHA=${REMOTE_SPACE}/$1
-NETWORK=${REMOTE_SPACE}/$2
+############################################################################
+# BEGIN of usage description
+#
+usage ()
+{
+cat << EOF
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+`basename $0`: Deploys the Daisy4NFV
 
-WORKDIR=/tmp/workdir
+usage: `basename $0` -d dha_conf -n network_con -p pod_name
+                     -r remote_workspace -w workdir
+
+OPTIONS:
+  -d  Configuration yaml file of DHA
+  -n  Configuration yaml file of network
+  -p  POD name, not used yet
+  -r  Remote workspace in target server
+  -w  Workdir for temporary usage
+  -h  Print this message and exit
+
+Description:
+Deploys the Daisy4NFV on the indicated lab resource
+
+Examples:
+sudo `basename $0` -d ./deploy/config/vm_environment/zte-virtual1/deploy.yml
+                   -n ./deploy/config/vm_environment/zte-virtual1/network.yml
+                   -r /opt/daisy -w /opt/daisy
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+EOF
+}
+
+#
+# END of usage description
+############################################################################
+
+
+############################################################################
+# BEGIN of variables for internal use
+#
 SCRIPT_PATH=$(readlink -f $(dirname $0))
 WORKSPACE=$(cd ${SCRIPT_PATH}/../..; pwd)
+VM_STORAGE=/home/qemu/vms
+DHA_CONF=''
+NETWORK_CONF=''
+#
+# END of variables to customize
+############################################################################
+
+############################################################################
+# BEGIN of main
+#
+while getopts "d:n:p:r:w:h" OPTION
+do
+    case $OPTION in
+        d)
+            DHA_CONF=${OPTARG}
+            ;;
+        n)
+            NETWORK_CONF=${OPTARG}
+            ;;
+        p)
+            POD_NAME=${OPTARG}
+            ;;
+        r)
+            REMOTE_SPACE=${OPTARG}
+            ;;
+        w)
+            WORKDIR=${OPTARG}
+            ;;
+        h)
+            usage
+            exit 0
+            ;;
+        *)
+            echo "${OPTION} is not a valid argument"
+            usage
+            exit 0
+            ;;
+    esac
+done
+
+## Check for these configuations file existing
+[[ ! -z ${DHA_CONF} ]] && [[ -f ${WORKSPACE}/${DHA_CONF} ]]
+[[ ! -z ${NETWORK_CONF} ]] && [[ -f ${WORKSPACE}/${NETWORK_CONF} ]]
+
+##########TODO after test##########
+REMOTE_SPACE=${REMOTE_SPACE:-/home/daisy}
+WORKDIR=${WORKDIR:-/tmp/workdir}
+
 deploy_path=$WORKSPACE/deploy
+DHA=${REMOTE_SPACE}/${DHA_CONF}
+NETWORK=${REMOTE_SPACE}/${NETWORK_CONF}
+
 create_qcow2_path=$WORKSPACE/tools
 net_daisy1=$WORKSPACE/templates/virtual_environment/networks/daisy.xml
 net_daisy2=$WORKSPACE/templates/virtual_environment/networks/os-all_in_one.xml
 pod_daisy=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
 pod_all_in_one=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
 
-parameter_from_deploy=`python $WORKSPACE/deploy/get_para_from_deploy.py --dha $WORKSPACE/$1`
+parameter_from_deploy=`python $WORKSPACE/deploy/get_para_from_deploy.py --dha $WORKSPACE/$DHA_CONF`
 
 daisyserver_size=`echo $parameter_from_deploy | cut -d " " -f 1`
 controller_node_size=`echo $parameter_from_deploy | cut -d " " -f 2`
@@ -36,7 +125,6 @@ daisy_passwd=`echo $parameter_from_deploy | cut -d " " -f 4`
 daisy_ip=`echo $parameter_from_deploy | cut -d " " -f 5`
 daisy_gateway=`echo $parameter_from_deploy | cut -d " " -f 6`
 
-VM_STORAGE=/home/qemu/vms
 test -d ${VM_STORAGE} || mkdir -p ${VM_STORAGE}
 
 function execute_on_jumpserver
@@ -159,3 +247,7 @@ virsh reboot all_in_one
 execute_on_jumpserver $daisy_ip "${REMOTE_SPACE}/deploy/check_openstack_progress.sh"
 
 exit 0
+
+#
+# END of main
+############################################################################
