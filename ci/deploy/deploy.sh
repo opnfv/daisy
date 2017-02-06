@@ -26,24 +26,30 @@ cat << EOF
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 `basename $0`: Deploys the Daisy4NFV
 
-usage: `basename $0` -d dha_conf -n network_con -p pod_name
+usage: `basename $0` -d dha_conf -n network_con -l lab_name -p pod_name
                      -r remote_workspace -w workdir
 
 OPTIONS:
-  -d  Configuration yaml file of DHA
-  -n  Configuration yaml file of network
-  -p  POD name, not used yet
-  -r  Remote workspace in target server
-  -w  Workdir for temporary usage
+  -b  Base configuration path, necessary
+  -B  PXE Bridge for booting Daisy Master, optional
+  -d  Configuration yaml file of DHA, optional, will be deleted later
+  -D  Dry-run, does not perform deployment, will be deleted later
+  -n  Configuration yaml file of network, optional
+  -l  LAB name, necessary
+  -p  POD name, necessary
+  -r  Remote workspace in target server, optional
+  -w  Workdir for temporary usage, optional
   -h  Print this message and exit
 
 Description:
 Deploys the Daisy4NFV on the indicated lab resource
 
 Examples:
-sudo `basename $0` -d ./deploy/config/vm_environment/zte-virtual1/deploy.yml
+sudo `basename $0` -b base_path
+                   -l zte -p pod2 -B pxebr0
+                   -d ./deploy/config/vm_environment/zte-virtual1/deploy.yml
                    -n ./deploy/config/vm_environment/zte-virtual1/network.yml
-                   -r /opt/daisy -w /opt/daisy
+                   -r /opt/daisy -w /opt/daisy -l zte -p pod2
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 EOF
 }
@@ -61,6 +67,10 @@ WORKSPACE=$(cd ${SCRIPT_PATH}/../..; pwd)
 VM_STORAGE=/home/qemu/vms
 DHA_CONF=''
 NETWORK_CONF=''
+LAB_NAME=''
+POD_NAME=''
+DRY_RUN=0
+IS_BARE=1
 #
 # END of variables to customize
 ############################################################################
@@ -68,14 +78,26 @@ NETWORK_CONF=''
 ############################################################################
 # BEGIN of main
 #
-while getopts "d:n:p:r:w:h" OPTION
+while getopts "b:B:Dd:n:l:p:r:w:h" OPTION
 do
     case $OPTION in
+        b)
+            BASE_PATH=${OPTARG}
+            ;;
+        B)
+            BRIDGE=${OPTARG}
+            ;;
         d)
             DHA_CONF=${OPTARG}
             ;;
+        D)
+            DRY_RUN=1
+            ;;
         n)
             NETWORK_CONF=${OPTARG}
+            ;;
+        l)
+            LAB_NAME=${OPTARG}
             ;;
         p)
             POD_NAME=${OPTARG}
@@ -98,17 +120,33 @@ do
     esac
 done
 
-## Check for these configuations file existing
-[[ ! -z ${DHA_CONF} ]] && [[ -f ${WORKSPACE}/${DHA_CONF} ]]
-[[ ! -z ${NETWORK_CONF} ]] && [[ -f ${WORKSPACE}/${NETWORK_CONF} ]]
+if [ -z $BASE_PATH ] || [ ! -d $BASE_PATH ] || [ -z LAB_NAME ] || [ -z $POD_NAME ] ; then
+    echo """Please check
+    BASE_PATH: $BASE_PATH
+    LAB_NAME: $LAB_NAME
+    POD_NAME: $POD_NAME
+    """
+    usage
+    echo "exit abnormal"
+    exit 0
+fi
 
-##########TODO after test##########
+BRIDGE={BRIDGE:-pxebr0}
+
+# read parameters from lab configuration file
+DHA_CONF=$BASE_PATH/labs/$LAB_NAME/$POD_NAME/daisy/config/deploy.yml
+
+# set work space in daisy master node
 REMOTE_SPACE=${REMOTE_SPACE:-/home/daisy}
+DHA=$REMOTE_SPACE/labs/$LAB_NAME/$POD_NAME/daisy/config/deploy.yml
+NETWORK=$REMOTE_SPACE/labs/$LAB_NAME/$POD_NAME/daisy/config/network.yml
+
+# set temporay workdir
 WORKDIR=${WORKDIR:-/tmp/workdir}
 
+[[ $POD_NAME =~ (virtual) ]] && IS_BARE=0
+
 deploy_path=$WORKSPACE/deploy
-DHA=${REMOTE_SPACE}/${DHA_CONF}
-NETWORK=${REMOTE_SPACE}/${NETWORK_CONF}
 
 create_qcow2_path=$WORKSPACE/tools
 net_daisy1=$WORKSPACE/templates/virtual_environment/networks/daisy.xml
@@ -116,7 +154,7 @@ net_daisy2=$WORKSPACE/templates/virtual_environment/networks/os-all_in_one.xml
 pod_daisy=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
 pod_all_in_one=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
 
-parameter_from_deploy=`python $WORKSPACE/deploy/get_para_from_deploy.py --dha $WORKSPACE/$DHA_CONF`
+parameter_from_deploy=`python $WORKSPACE/deploy/get_para_from_deploy.py --dha $DHA_CONF`
 
 daisyserver_size=`echo $parameter_from_deploy | cut -d " " -f 1`
 controller_node_size=`echo $parameter_from_deploy | cut -d " " -f 2`
@@ -124,6 +162,26 @@ compute_node_size=`echo $parameter_from_deploy | cut -d " " -f 3`
 daisy_passwd=`echo $parameter_from_deploy | cut -d " " -f 4`
 daisy_ip=`echo $parameter_from_deploy | cut -d " " -f 5`
 daisy_gateway=`echo $parameter_from_deploy | cut -d " " -f 6`
+
+if [ $DRY_RUN -eq 1 ]; then
+    echo """
+    BASE_PATH: $BASE_PATH
+    LAB_NAME: $LAB_NAME
+    POD_NAME: $POD_NAME
+    IS_BARE: $IS_BARE
+    daiserver_size: $daisyserver_size
+    controller_node_size: $controller_node_size
+    compute_node_size: $compute_node_size
+    daisy_ip: $daisy_ip
+    daisy_gateway: $daisy_gateway
+    daisy_passwd: $daisy_passwd
+    net_daisy1: $net_daisy1
+    net_daisy2: $net_daisy2
+    pod_daisy: $pod_daisy
+    pod_all_in_one: $pod_all_in_one
+    """
+    exit 1
+fi
 
 test -d ${VM_STORAGE} || mkdir -p ${VM_STORAGE}
 
