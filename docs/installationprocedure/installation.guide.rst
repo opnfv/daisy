@@ -1,0 +1,157 @@
+.. This work is licensed under a Creative Commons Attribution 4.0 International License.
+.. http://creativecommons.org/licenses/by/4.0
+
+Daisy4nfv configuration
+=======================
+
+This document provides guidelines on how to install and configure the Danube
+release of OPNFV when using Daisy as a deployment tool including required
+software and hardware configurations.
+
+Installation and configuration of host OS, OpenStack etc. can be supported by
+Daisy on Virtual nodes and Bare Metal nodes.
+
+The audience of this document is assumed to have good knowledge in
+networking and Unix/Linux administration.
+
+Prerequisites
+-------------
+
+Before starting the installation of the Danube release of OPNFV, some planning
+must be done.
+
+
+Retrieving the installation BIN image
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First of all, The installation BIN is needed for deploying your OPNFV
+environment, it included packages of Daisy, OS, OpenStack, and so on.
+
+The stable release ISO can be retrieved via `OPNFV software download page <https://www.opnfv.org/software>`_
+
+The daily build ISO can be retrieved via OPNFV artifacts repository:
+
+http://artifacts.opnfv.org/daisy.html
+
+NOTE: Search the keyword "daisy/Danube" to locate the ISO image.
+
+E.g.
+daisy/opnfv-gerrit-27155.bin
+
+The git url and sha1 of BIn image are recorded in properties files,
+According these, the corresponding deployment scripts can be retrieved.
+
+
+Getting the deployment scripts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To retrieve the repository of Daisy on Jumphost use the following command:
+
+- git clone https://gerrit.opnfv.org/gerrit/daisy
+
+NOTE: PLEASE DO NOT GIT CLONE COMPASS4NFV IN ROOT DIRECTORY(INCLUDE SUBFOLDERS).
+
+To get stable /danube release, you can use the following command:
+
+- git checkout danube.1.0
+
+
+Setup Requirements
+------------------
+
+If you have only 1 Bare Metal server, Virtual deployment is recommended. if more
+than or equal to 3 servers, the Bare Metal deployment is recommended. The minimum number of
+servers for Bare metal deployment is 3, 1 for JumpServer(Jumphost), 1 for controller,
+1 for compute.
+
+
+Jumphost Requirements
+~~~~~~~~~~~~~~~~~~~~~
+
+The Jumphost requirements are outlined below:
+
+1.     CentOS 7.2 (Pre-installed).
+
+2.     Root access.
+
+3.     libvirt virtualization support(For virtual deployment).
+
+4.     Minimum 1 NIC(or 2 NICs for virtual deployment).
+
+       -  PXE installation Network (Receiving PXE request from nodes and providing OS provisioning)
+
+       -  IPMI Network (Nodes power control and set boot PXE first via IPMI interface)
+
+       -  Internet access (For getting latest OS updates)
+
+       -  External Interface(For virtual deployment, exclusively used by instance traffic to access the rest of the Internet)
+
+5.     16 GB of RAM for a Bare Metal deployment, 64 GB of RAM for a Virtual deployment.
+
+6.     CPU cores: 32, Memory: 64 GB, Hard Disk: 500 GB, (Virtual deployment needs 1 TB Hard Disk)
+
+
+Bare Metal Node Requirements
+----------------------------
+
+Bare Metal nodes require:
+
+1.     IPMI enabled on OOB interface for power control.
+
+2.     BIOS boot priority should be PXE first then local hard disk.
+
+3.     Minimum 1 NIC for Compute nodes, 2 NICs for Controller nodes.
+
+       -  PXE installation Network (Broadcasting PXE request)
+
+       -  IPMI Network (Receiving IPMI command from Jumphost)
+
+       -  Internet access (For getting latest OS updates)
+
+       -  External Interface(For virtual deployment, exclusively used by instance traffic to access the rest of the Internet)
+
+
+
+
+Network Requirements
+--------------------
+
+Network requirements include:
+
+1.     No DHCP or TFTP server running on networks used by OPNFV.
+
+2.     2-7 separate networks with connectivity between Jumphost and nodes.
+
+       -  PXE installation Network
+
+       -  IPMI Network
+
+       -  Internet access Network
+
+       -  Openstack Public API Network
+
+       -  Openstack Private API Network
+
+       -  Openstack External Network
+
+       -  Openstack Tenant Network(currently, VxLAN only)
+
+
+3.     Lights out OOB network access from Jumphost with IPMI node enabled (Bare Metal deployment only).
+
+4.     Internet access Network has Internet access, meaning a gateway and DNS availability.
+
+5.     Openstack External Network has Internet access too, if you want instances to access the internet.
+
+**All networks except Openstack External Network can be share one NIC(Default configuration) or use an exclusive**
+**NIC(Reconfigurated in network.yml).**
+
+
+Execution Requirements (Bare Metal Only)
+----------------------------------------
+
+In order to execute a deployment, one must gather the following information:
+
+1.     IPMI IP addresses of the nodes.
+
+2.     IPMI login information for the nodes (user/password).
