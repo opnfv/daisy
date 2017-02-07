@@ -48,7 +48,11 @@ fi
 
 #clear old public key
 print_log "clear old info in known_hosts file on localhost ..."
-ssh-keygen -R $ip
+test ! -f ~/.ssh/known_hosts || ssh-keygen -R $ip
+if [ $? != 0 ]; then
+  print_log "clear old info in known_hosts file on localhost failed"
+  exit 1
+fi
 
 #copy new public key
 print_log "copy my public key to $ip ..."
