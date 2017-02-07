@@ -1,0 +1,343 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1acb0d3e_233e95b9",
+        "filename": "docs/installationprocedure/installation.guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "it\u0027s better to change the filename to \ninstallation_guide.rst or\ninstallationguide.rst",
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_c34a3155",
+        "filename": "docs/installationprocedure/installation.guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "~~bin~~",
+      "range": {
+        "startLine": 24,
+        "startChar": 28,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_e3472d4a",
+        "filename": "docs/installationprocedure/installation.guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "bin image file",
+      "range": {
+        "startLine": 27,
+        "startChar": 31,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_a3792595",
+        "filename": "docs/installationprocedure/installation.guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "which includes",
+      "range": {
+        "startLine": 28,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_436e41cb",
+        "filename": "docs/installationprocedure/installation.guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "image",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_63733db2",
+        "filename": "docs/installationprocedure/installation.guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "~~ISO~~",
+      "range": {
+        "startLine": 36,
+        "startChar": 54,
+        "endLine": 36,
+        "endChar": 57
+      },
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_e35e4d12",
+        "filename": "docs/installationprocedure/installation.guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "Retrieving",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 7
+      },
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_839bc9c8",
+        "filename": "docs/installationprocedure/installation.guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "~~",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 80
+      },
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_a3a045f5",
+        "filename": "docs/installationprocedure/installation.guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "Danube",
+      "range": {
+        "startLine": 54,
+        "startChar": 14,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_43a5e102",
+        "filename": "docs/installationprocedure/installation.guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "If you have more than",
+      "range": {
+        "startLine": 62,
+        "startChar": 73,
+        "endLine": 63,
+        "endChar": 16
+      },
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_63aa5dd6",
+        "filename": "docs/installationprocedure/installation.guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "use a list more be better",
+      "range": {
+        "startLine": 64,
+        "startChar": 38,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_e3b5ed31",
+        "filename": "docs/installationprocedure/installation.guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "NOTE: **All",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 5
+      },
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_c3b8f12c",
+        "filename": "docs/installationprocedure/installation.guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "~~be~~",
+      "range": {
+        "startLine": 146,
+        "startChar": 53,
+        "endLine": 146,
+        "endChar": 55
+      },
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_2393f5a4",
+        "filename": "docs/installationprocedure/vmdeploy.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "duplicated",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 44
+      },
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_e38c0d82",
+        "filename": "docs/installationprocedure/vmdeploy.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-07T05:31:26Z",
+      "side": 1,
+      "message": "Daisy",
+      "range": {
+        "startLine": 70,
+        "startChar": 25,
+        "endLine": 70,
+        "endChar": 36
+      },
+      "revId": "0ab2e5a44b1955ddf521c99da31deebb71775d03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
