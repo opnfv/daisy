@@ -28,6 +28,7 @@ function build_rpm_pkg {
 function cleanup_docker_image {
     if [ ! -z "$(sudo docker images -q opnfv/daisy)" ]; then
         sudo docker rmi opnfv/daisy >/dev/null 2>&1
+        echo $?
     fi
 }
 
