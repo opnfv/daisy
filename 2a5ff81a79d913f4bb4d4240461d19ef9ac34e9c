@@ -22,6 +22,30 @@
       "revId": "2a5ff81a79d913f4bb4d4240461d19ef9ac34e9c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_e04ddec5",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-08T11:46:30Z",
+      "side": 1,
+      "message": "there is a TODO for this in line 2.\nit is not introduced by this patch.\nI wonder how to execute once?",
+      "parentUuid": "1acb0d3e_a3bfe5cf",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 61
+      },
+      "revId": "2a5ff81a79d913f4bb4d4240461d19ef9ac34e9c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
