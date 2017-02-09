@@ -31,6 +31,8 @@ _CLI_OPTS = [
                help='Config cluster'),
     cfg.StrOpt('host',
                help='Config host'),
+    cfg.StrOpt('env',
+               help='deploy environment'),
 ]
 
 
@@ -82,9 +84,10 @@ def prepare_install():
             hosts_info = get_hosts()
             cluster_info = get_cluster()
             cluster_id = cluster_info.id
-            add_hosts_interface(cluster_id, hosts_info,
+            add_hosts_interface(cluster_id, hosts_info, hosts_name,
                                 host_interface_map, vip)
-            build_pxe_for_os(cluster_id)
+            if conf['env'] and conf['env'] == 0:
+                build_pxe_for_os(cluster_id)
     except Exception:
         print("Deploy failed!!!.%s." % traceback.format_exc())
     else:
@@ -143,15 +146,16 @@ def get_cluster():
     return cluster_info
 
 
-def add_hosts_interface(cluster_id, hosts_info, host_interface_map,
+def add_hosts_interface(cluster_id, hosts_info, hosts_name, host_interface_map,
                         vip):
-    for host in hosts_info:
+    for host_name, host in zip(hosts_name, hosts_info):
         host = host.to_dict()
         host['cluster'] = cluster_id
         for interface in host['interfaces']:
             interface_name = interface['name']
-            interface['assigned_networks'] = \
-                host_interface_map[interface_name]
+            if interface_name in host_interface_map:
+                interface['assigned_networks'] = \
+                    host_interface_map[interface_name]
         pathlist = os.listdir(iso_path)
         for filename in pathlist:
             if filename.endswith('iso'):
@@ -160,10 +164,10 @@ def add_hosts_interface(cluster_id, hosts_info, host_interface_map,
             print("do not have os iso file in /var/lib/daisy/kolla/.")
         client.hosts.update(host['id'], **host)
         print("update role...")
-        add_host_role(cluster_id, host['id'], host['name'], vip)
+        add_host_role(cluster_id, host['id'], host_name, host['name'], vip)
 
 
-def add_host_role(cluster_id, host_id, host_name, vip):
+def add_host_role(cluster_id, host_id, host_exp_name, host_real_name, vip):
     role_meta = {'filters': {'cluster_id': cluster_id}}
     role_list_generator = client.roles.list(**role_meta)
     role_list = [role for role in role_list_generator]
@@ -171,12 +175,21 @@ def add_host_role(cluster_id, host_id, host_name, vip):
                   role.name == "CONTROLLER_LB"][0]
     computer_role_id = [role.id for role in role_list if
                         role.name == "COMPUTER"][0]
-    role_lb_update_meta = {'nodes': [host_id],
-                           'cluster_id': cluster_id, 'vip': vip}
-    client.roles.update(lb_role_id, **role_lb_update_meta)
-    role_computer_update_meta = {'nodes': [host_id],
-                                 'cluster_id': cluster_id}
-    client.roles.update(computer_role_id, **role_computer_update_meta)
+    if host_exp_name in ['all_in_one']:
+        role_lb_update_meta = {'nodes': [host_id],
+                               'cluster_id': cluster_id, 'vip': vip}
+        client.roles.update(lb_role_id, **role_lb_update_meta)
+        role_computer_update_meta = {'nodes': [host_id],
+                                     'cluster_id': cluster_id}
+        client.roles.update(computer_role_id, **role_computer_update_meta)
+    if host_exp_name in ['controller01', 'controller02', 'controller03']:
+        role_lb_update_meta = {'nodes': [host_id],
+                               'cluster_id': cluster_id, 'vip': vip}
+        client.roles.update(lb_role_id, **role_lb_update_meta)
+    if host_exp_name in ['computer01', 'computer02']:
+        role_computer_update_meta = {'nodes': [host_id],
+                                     'cluster_id': cluster_id}
+        client.roles.update(computer_role_id, **role_computer_update_meta)
 
 
 if __name__ == "__main__":
