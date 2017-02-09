@@ -1,7 +1,12 @@
 #!/bin/bash
 source /root/daisyrc_admin
 cluster_id=`daisy cluster-list | awk -F "|" '{print $2}' | sed -n '4p'`
-daisy install $cluster_id --skip-pxe-ipmi true
+deploy_env=$1
+if [ $DEPLOY_ENV == "virtual" ];then
+    daisy install $cluster_id --skip-pxe-ipmi true
+else
+    daisy install $cluster_id
+fi
 echo "check os installing progress..."
 while true; do
     os_install_active=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $8}' | grep -c "active" `

@@ -7,6 +7,6 @@
   </forward>
   <bridge name='daisy1' stp='on' delay='0'/>
   <domain name='daisy1'/>
-  <ip address='10.20.11.1' netmask='255.255.255.0'>
+  <ip address='10.20.7.1' netmask='255.255.255.0'>
   </ip>
 </network>
