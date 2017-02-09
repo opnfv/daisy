@@ -1,0 +1,59 @@
+##############################################################################
+# Copyright (c) 2016 ZTE Coreporation and others.
+# hu.zhijiang@zte.com.cn
+# sun.jing22@zte.com.cn
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Apache License, Version 2.0
+# which accompanies this distribution, and is available at
+# http://www.apache.org/licenses/LICENSE-2.0
+##############################################################################
+
+network-config-metadata:
+  title: 'zte-virtual1 network config'
+  version: '0.1'
+  created: 'Mon Oct 31 2016'
+  comment:
+networks:
+  - cidr: '10.20.7.0/24'
+    gateway: '10.20.7.1'
+    ip_ranges:
+    - 'start': '10.20.7.4'
+      'end': '10.20.7.11'
+    name: 'MANAGEMENT'
+  - cidr: '10.20.7.0/24'
+    gateway: '10.20.7.1'
+    ip_ranges:
+    - start: '10.20.7.4'
+      end: '10.20.7.11'
+    name: 'STORAGE'
+  - cidr: '172.10.101.0/24'
+    gateway: '172.10.101.0'
+    ip_ranges:
+    - 'start': '172.10.101.1'
+      'end': '172.10.101.10'
+    'name': 'EXTERNAL'
+  - cidr: '10.20.7.0/24'
+    gateway: '10.20.7.1'
+    ip_ranges:
+    - 'start': '10.20.7.4'
+      'end': '10.20.7.11'
+    name: 'PUBLICAPI'
+  - cidr: '10.20.7.0/24'
+    gateway: '10.20.7.1'
+    ip_ranges:
+    - 'start': '10.20.7.4'
+      'end': '10.20.7.11'
+    name: 'TENANT'
+interfaces:
+  - name: 'EXTERNAL'
+    interface: 'ens12f1'
+  - name: 'MANAGEMENT'
+    interface: 'ens12f0'
+  - name: 'PUBLICAPI'
+    interface: 'ens12f0'
+  - name: 'STORAGE'
+    interface: 'ens12f0'
+  - name: 'TENANT'
+    interface: 'ens12f0'
+internal_vip: '10.20.7.12'
+public_vip: '10.20.7.12'

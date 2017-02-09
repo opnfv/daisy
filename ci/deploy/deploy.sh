@@ -149,10 +149,14 @@ WORKDIR=${WORKDIR:-/tmp/workdir}
 deploy_path=$WORKSPACE/deploy
 
 create_qcow2_path=$WORKSPACE/tools
+
 net_daisy1=$WORKSPACE/templates/virtual_environment/networks/daisy.xml
 net_daisy2=$WORKSPACE/templates/virtual_environment/networks/os-all_in_one.xml
 pod_daisy=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
 pod_all_in_one=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
+
+phy_net_daisy=$WORKSPACE/templates/physical_environment/networks/daisy.xml
+phy_pod_daisy=$WORKSPACE/templates/physical_environment/vms/daisy.xml
 
 parameter_from_deploy=`python $WORKSPACE/deploy/get_para_from_deploy.py --dha $DHA_CONF`
 
@@ -162,6 +166,7 @@ compute_node_size=`echo $parameter_from_deploy | cut -d " " -f 3`
 daisy_passwd=`echo $parameter_from_deploy | cut -d " " -f 4`
 daisy_ip=`echo $parameter_from_deploy | cut -d " " -f 5`
 daisy_gateway=`echo $parameter_from_deploy | cut -d " " -f 6`
+deploy_env=`echo $parameter_from_deploy | cut -d " " -f 7`
 
 if [ $DRY_RUN -eq 1 ]; then
     echo """
@@ -250,15 +255,24 @@ function clean_up
 }
 
 echo "=====clean up all node and network======"
-clean_up all_in_one daisy2
+if [ $deploy_env == "virtual" ];then
+    clean_up all_in_one daisy2
+fi
 clean_up daisy daisy1
 if [ -f $WORKDIR/daisy/centos7.qcow2 ]; then
     rm -rf $WORKDIR/daisy/centos7.qcow2
 fi
 
 echo "=======create daisy node================"
-$create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $daisy_ip -g $daisy_gateway -s $daisyserver_size
-create_node $net_daisy1 daisy1 $pod_daisy daisy
+
+if [ $deploy_env == "virtual" ];then
+    $create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $daisy_ip -g $daisy_gateway -s $daisyserver_size
+    create_node $net_daisy1 daisy1 $pod_daisy daisy
+else
+    $create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $daisy_ip -g $daisy_gateway -s $daisyserver_size
+    create_node $phy_net_daisy daisy1 $phy_pod_daisy daisy
+fi
+    #statements
 sleep 20
 
 echo "====== install daisy==========="
@@ -284,24 +298,41 @@ execute_on_jumpserver $daisy_ip "echo -e '[libvirt]\nvirt_type=qemu' > /etc/koll
 echo "===prepare cluster and pxe==="
 execute_on_jumpserver $daisy_ip "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --cluster 'yes'"
 
-echo "=====create all-in-one node======"
-qemu-img create -f qcow2 ${VM_STORAGE}/all_in_one.qcow2 200G
-create_node $net_daisy2 daisy2 $pod_all_in_one all_in_one
-sleep 20
+echo "=====create and find node======"
+if [ $deploy_env == "virtual" ];then
+    qemu-img create -f qcow2 ${VM_STORAGE}/all_in_one.qcow2 200G
+    create_node $net_daisy2 daisy2 $pod_all_in_one all_in_one
+    sleep 20
+else
+    ipmitool -I lanplus -H 192.168.1.106 -U zteroot -P superuser -R 1 chassis bootdev pxe
+    ipmitool -I lanplus -H 192.168.1.106 -U zteroot -P superuser -R 1 chassis  power reset
+    ipmitool -I lanplus -H 192.168.1.107 -U zteroot -P superuser -R 1 chassis bootdev pxe
+    ipmitool -I lanplus -H 192.168.1.107 -U zteroot -P superuser -R 1 chassis  power reset
+    ipmitool -I lanplus -H 192.168.1.108 -U zteroot -P superuser -R 1 chassis bootdev pxe
+    ipmitool -I lanplus -H 192.168.1.108 -U zteroot -P superuser -R 1 chassis  power reset
+    ipmitool -I lanplus -H 192.168.1.109 -U zteroot -P superuser -R 1 chassis bootdev pxe
+    ipmitool -I lanplus -H 192.168.1.109 -U zteroot -P superuser -R 1 chassis  power reset
+    ipmitool -I lanplus -H 192.168.1.110 -U zteroot -P superuser -R 1 chassis bootdev pxe
+    ipmitool -I lanplus -H 192.168.1.110 -U zteroot -P superuser -R 1 chassis  power reset
+fi
 
 echo "======prepare host and pxe==========="
 execute_on_jumpserver $daisy_ip "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA --network $NETWORK --host 'yes'"
 
 echo "======daisy deploy os and openstack==========="
-virsh destroy all_in_one
-virsh start all_in_one
+if [ $deploy_env == "virtual" ];then
+    virsh destroy all_in_one
+    virsh start all_in_one
+fi
 
 echo "===========check install progress==========="
 execute_on_jumpserver $daisy_ip "systemctl restart daisy-api"
 execute_on_jumpserver $daisy_ip "systemctl restart daisy-registry"
 execute_on_jumpserver $daisy_ip "${REMOTE_SPACE}/deploy/check_os_progress.sh"
 sleep 10
-virsh reboot all_in_one
+if [ $deploy_env == "virtual" ];then
+    virsh reboot all_in_one
+fi
 execute_on_jumpserver $daisy_ip "${REMOTE_SPACE}/deploy/check_openstack_progress.sh"
 
 exit 0

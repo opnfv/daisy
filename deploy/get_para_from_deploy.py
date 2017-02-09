@@ -32,15 +32,18 @@ def get_yml_para(dha_file):
     daisy_passwd = data.get("daisy_passwd", "")
     daisy_ip = data.get("daisy_ip", "")
     daisy_gateway = data.get("daisy_gateway", "")
+    deploy_env = data.get("deploy_env", "")
     return daisyserver_size, controller_node_size,\
-        compute_node_size, daisy_passwd, daisy_ip, daisy_gateway
+        compute_node_size, daisy_passwd, daisy_ip, daisy_gateway,\
+        deploy_env
 
 
 def get_conf_from_deploy():
     conf = cfg.ConfigOpts()
     parse(conf, sys.argv[1:])
     daisyserver_size, controller_node_size, compute_node_size,\
-        daisy_passwd, daisy_ip, daisy_gateway = get_yml_para(conf['dha'])
+        daisy_passwd, daisy_ip, daisy_gateway,\
+        deploy_env = get_yml_para(conf['dha'])
     print daisyserver_size
     print controller_node_size
     print compute_node_size
