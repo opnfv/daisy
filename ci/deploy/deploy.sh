@@ -11,7 +11,7 @@
 # [x] 1. Pass full path for parameter for -d and -n
 # [x] 2. Refactor para fetching procedure of paras_from_deploy
 # [x] 3. Refactor execute_on_jumpserver
-# [ ] 4. Refactor for names for var such like net_daisy1, net_daisy2
+# [ ] 4. Refactor for names for var such like daisy_server_net, target_node_net
 # [ ] 5. Store PODs' configruation files into securelab
 # [ ] 6. Use POD name as the parameter instead of files
 ##############################################################################
@@ -152,15 +152,22 @@ SSH_PARAS="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 deploy_path=$WORKSPACE/deploy
 
 create_qcow2_path=$WORKSPACE/tools
-net_daisy1=$WORKSPACE/templates/virtual_environment/networks/daisy.xml
-net_daisy2=$WORKSPACE/templates/virtual_environment/networks/os-all_in_one.xml
-pod_daisy=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
-pod_all_in_one=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
+
+daisy_server_net=$WORKSPACE/templates/virtual_environment/networks/daisy.xml
+target_node_net=$WORKSPACE/templates/virtual_environment/networks/os-all_in_one.xml
+vmdeploy_daisy_server_vm=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
+vmdeploy_target_node_vm=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
+
+
+bmdeploy_daisy_server_net=$WORKSPACE/templates/physical_environment/networks/daisy.xml
+bmdeploy_daisy_server_vm=$WORKSPACE/templates/physical_environment/vms/daisy.xml
 
 PARAS_FROM_DEPLOY=`python $WORKSPACE/deploy/get_para_from_deploy.py --dha $DHA_CONF`
-DAISY_IP=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 1`
-DAISY_PASSWD=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 2`
+DEPLOY_ENV=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 1`
+DAISY_IP=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 2`
+DAISY_PASSWD=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 3`
 PARAS_IMAGE=${PARAS_FROM_DEPLOY#* * }
+
 
 if [ $DRY_RUN -eq 1 ]; then
     echo """
@@ -171,10 +178,10 @@ if [ $DRY_RUN -eq 1 ]; then
     DAISY_IP: $DAISY_IP
     DAISY_PASSWD: $DAISY_PASSWD
     PARAS_IMAGE: $PARAS_IMAGE
-    net_daisy1: $net_daisy1
-    net_daisy2: $net_daisy2
-    pod_daisy: $pod_daisy
-    pod_all_in_one: $pod_all_in_one
+    daisy_server_net: $daisy_server_net
+    target_node_net: $target_node_net
+    vmdeploy_daisy_server_vm: $vmdeploy_daisy_server_vm
+    vmdeploy_target_node_vm: $vmdeploy_target_node_vm
     """
     exit 1
 fi
@@ -239,15 +246,22 @@ function clean_up
 }
 
 echo "=====clean up all node and network======"
-clean_up all_in_one daisy2
+if [ $DEPLOY_ENV == "virtual" ];then
+    clean_up all_in_one daisy2
+fi
 clean_up daisy daisy1
 if [ -f $WORKDIR/daisy/centos7.qcow2 ]; then
     rm -rf $WORKDIR/daisy/centos7.qcow2
 fi
 
 echo "=======create daisy node================"
-$create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $DAISY_IP $PARAS_IMAGE
-create_node $net_daisy1 daisy1 $pod_daisy daisy
+if [ $DEPLOY_ENV == "virtual" ];then
+    $create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $DAISY_IP $PARAS_IMAGE
+    create_node $daisy_server_net daisy1 $vmdeploy_daisy_server_vm daisy
+else
+    $create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $DAISY_IP $PARAS_IMAGE
+    create_node $bmdeploy_daisy_server_net daisy1 $bmdeploy_daisy_server_vm daisy
+fi
 sleep 20
 
 echo "====== install daisy==========="
@@ -273,24 +287,38 @@ ssh $SSH_PARAS $DAISY_IP "echo -e '[libvirt]\nvirt_type=qemu' > /etc/kolla/confi
 echo "===prepare cluster and pxe==="
 ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --cluster 'yes'"
 
-echo "=====create all-in-one node======"
-qemu-img create -f qcow2 ${VM_STORAGE}/all_in_one.qcow2 200G
-create_node $net_daisy2 daisy2 $pod_all_in_one all_in_one
-sleep 20
+echo "=====create and find node======"
+if [ $DEPLOY_ENV == "virtual" ];then
+    qemu-img create -f qcow2 ${VM_STORAGE}/all_in_one.qcow2 200G
+    create_node $target_node_net daisy2 $vmdeploy_target_node_vm all_in_one
+    sleep 20
+else
+    for i in $(seq 106 110); do
+        ipmitool -I lanplus -H 192.168.1.$i -U zteroot -P superuser -R 1 chassis bootdev pxe
+        ipmitool -I lanplus -H 192.168.1.$i -U zteroot -P superuser -R 1 chassis  power reset
+    done
+fi
 
 echo "======prepare host and pxe==========="
-ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA --network $NETWORK --host 'yes'"
+ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA --network $NETWORK --host 'yes' --env $DEPLOY_ENV"
 
 echo "======daisy deploy os and openstack==========="
-virsh destroy all_in_one
-virsh start all_in_one
+if [ $DEPLOY_ENV == "virtual" ];then
+    virsh destroy all_in_one
+    virsh start all_in_one
+fi
 
-echo "===========check install progress==========="
+echo "============restart daisy service==========="
 ssh $SSH_PARAS $DAISY_IP "systemctl restart daisy-api"
 ssh $SSH_PARAS $DAISY_IP "systemctl restart daisy-registry"
+
+echo "===========check install progress==========="
 ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/deploy/check_os_progress.sh"
 sleep 10
-virsh reboot all_in_one
+
+if [ $DEPLOY_ENV == "virtual" ];then
+    virsh reboot all_in_one
+fi
 ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/deploy/check_openstack_progress.sh"
 
 exit 0

@@ -150,8 +150,9 @@ def add_hosts_interface(cluster_id, hosts_info, host_interface_map,
         host['cluster'] = cluster_id
         for interface in host['interfaces']:
             interface_name = interface['name']
-            interface['assigned_networks'] = \
-                host_interface_map[interface_name]
+            if interface_name in host_interface_map:
+                interface['assigned_networks'] = \
+                    host_interface_map[interface_name]
         pathlist = os.listdir(iso_path)
         for filename in pathlist:
             if filename.endswith('iso'):
