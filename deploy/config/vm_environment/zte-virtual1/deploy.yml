@@ -10,3 +10,4 @@ disks:
 daisy_passwd: 'r00tme'
 daisy_ip: '10.20.11.2'
 daisy_gateway: '10.20.11.1'
+deploy_env: 'virtual'
