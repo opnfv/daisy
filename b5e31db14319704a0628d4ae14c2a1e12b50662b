@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1acb0d3e_529fe003",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-02-11T03:15:42Z",
+      "side": 1,
+      "message": "Write it in a new line, see others example",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "b5e31db14319704a0628d4ae14c2a1e12b50662b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1acb0d3e_52d120cc",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 1
