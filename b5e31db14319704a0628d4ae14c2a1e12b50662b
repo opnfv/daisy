@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1acb0d3e_52d120cc",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-02-11T01:49:26Z",
+      "side": 1,
+      "message": "Can this be read out from yml?",
+      "range": {
+        "startLine": 150,
+        "startChar": 27,
+        "endLine": 150,
+        "endChar": 40
+      },
+      "revId": "b5e31db14319704a0628d4ae14c2a1e12b50662b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_12db98ee",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-02-11T01:49:26Z",
+      "side": 1,
+      "message": "Just remind, if we solved the problem in daisycloude-core, then we do not need this any more.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 66
+      },
+      "revId": "b5e31db14319704a0628d4ae14c2a1e12b50662b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
