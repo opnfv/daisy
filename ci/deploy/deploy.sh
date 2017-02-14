@@ -9,7 +9,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 # TODO
 # [x] 1. Pass full path for parameter for -d and -n
-# [ ] 2. Refactor para fetching procedure of parameter_from_deploy
+# [x] 2. Refactor para fetching procedure of paras_from_deploy
 # [x] 3. Refacotr execute_on_jumpserver
 # [ ] 4. Refacotr for names for var such like net_daisy1, net_daisy2
 # [ ] 5. Store PODs' configruation files into securelab
@@ -157,14 +157,10 @@ net_daisy2=$WORKSPACE/templates/virtual_environment/networks/os-all_in_one.xml
 pod_daisy=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
 pod_all_in_one=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
 
-parameter_from_deploy=`python $WORKSPACE/deploy/get_para_from_deploy.py --dha $DHA_CONF`
-
-daisyserver_size=`echo $parameter_from_deploy | cut -d " " -f 1`
-controller_node_size=`echo $parameter_from_deploy | cut -d " " -f 2`
-compute_node_size=`echo $parameter_from_deploy | cut -d " " -f 3`
-daisy_passwd=`echo $parameter_from_deploy | cut -d " " -f 4`
-daisy_ip=`echo $parameter_from_deploy | cut -d " " -f 5`
-daisy_gateway=`echo $parameter_from_deploy | cut -d " " -f 6`
+PARAS_FROM_DEPLOY=`python $WORKSPACE/deploy/get_para_from_deploy.py --dha $DHA_CONF`
+DAISY_IP=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 1`
+DAISY_PASSWD=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 2`
+PARAS_IMAGE=${PARAS_FROM_DEPLOY#* * }
 
 if [ $DRY_RUN -eq 1 ]; then
     echo """
@@ -172,12 +168,9 @@ if [ $DRY_RUN -eq 1 ]; then
     LAB_NAME: $LAB_NAME
     POD_NAME: $POD_NAME
     IS_BARE: $IS_BARE
-    daiserver_size: $daisyserver_size
-    controller_node_size: $controller_node_size
-    compute_node_size: $compute_node_size
-    daisy_ip: $daisy_ip
-    daisy_gateway: $daisy_gateway
-    daisy_passwd: $daisy_passwd
+    DAISY_IP: $DAISY_IP
+    DAISY_PASSWD: $DAISY_PASSWD
+    PARAS_IMAGE: $PARAS_IMAGE
     net_daisy1: $net_daisy1
     net_daisy2: $net_daisy2
     pod_daisy: $pod_daisy
@@ -253,18 +246,18 @@ if [ -f $WORKDIR/daisy/centos7.qcow2 ]; then
 fi
 
 echo "=======create daisy node================"
-$create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $daisy_ip -g $daisy_gateway -s $daisyserver_size
+$create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $DAISY_IP $PARAS_IMAGE
 create_node $net_daisy1 daisy1 $pod_daisy daisy
 sleep 20
 
 echo "====== install daisy==========="
-$deploy_path/trustme.sh $daisy_ip $daisy_passwd
-ssh $SSH_PARAS $daisy_ip "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE}; then rm -fr ${REMOTE_SPACE}; fi"
-scp -r $WORKSPACE root@$daisy_ip:${REMOTE_SPACE}
-ssh $SSH_PARAS $daisy_ip "mkdir -p /home/daisy_install"
-update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $daisy_ip
-scp $WORKSPACE/deploy/daisy.conf root@$daisy_ip:/home/daisy_install
-ssh $SSH_PARAS $daisy_ip "${REMOTE_SPACE}/opnfv.bin  install"
+$deploy_path/trustme.sh $DAISY_IP $DAISY_PASSWD
+ssh $SSH_PARAS $DAISY_IP "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE}; then rm -fr ${REMOTE_SPACE}; fi"
+scp -r $WORKSPACE root@$DAISY_IP:${REMOTE_SPACE}
+ssh $SSH_PARAS $DAISY_IP "mkdir -p /home/daisy_install"
+update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $DAISY_IP
+scp $WORKSPACE/deploy/daisy.conf root@$DAISY_IP:/home/daisy_install
+ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/opnfv.bin  install"
 rc=$?
 if [ $rc -ne 0 ]; then
     echo "daisy install failed"
@@ -274,11 +267,11 @@ else
 fi
 
 echo "====== add relate config of kolla==========="
-ssh $SSH_PARAS $daisy_ip "mkdir -p /etc/kolla/config/nova"
-ssh $SSH_PARAS $daisy_ip "echo -e '[libvirt]\nvirt_type=qemu' > /etc/kolla/config/nova/nova-compute.conf"
+ssh $SSH_PARAS $DAISY_IP "mkdir -p /etc/kolla/config/nova"
+ssh $SSH_PARAS $DAISY_IP "echo -e '[libvirt]\nvirt_type=qemu' > /etc/kolla/config/nova/nova-compute.conf"
 
 echo "===prepare cluster and pxe==="
-ssh $SSH_PARAS $daisy_ip "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --cluster 'yes'"
+ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --cluster 'yes'"
 
 echo "=====create all-in-one node======"
 qemu-img create -f qcow2 ${VM_STORAGE}/all_in_one.qcow2 200G
@@ -286,19 +279,19 @@ create_node $net_daisy2 daisy2 $pod_all_in_one all_in_one
 sleep 20
 
 echo "======prepare host and pxe==========="
-ssh $SSH_PARAS $daisy_ip "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA --network $NETWORK --host 'yes'"
+ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA --network $NETWORK --host 'yes'"
 
 echo "======daisy deploy os and openstack==========="
 virsh destroy all_in_one
 virsh start all_in_one
 
 echo "===========check install progress==========="
-ssh $SSH_PARAS $daisy_ip "systemctl restart daisy-api"
-ssh $SSH_PARAS $daisy_ip "systemctl restart daisy-registry"
-ssh $SSH_PARAS $daisy_ip "${REMOTE_SPACE}/deploy/check_os_progress.sh"
+ssh $SSH_PARAS $DAISY_IP "systemctl restart daisy-api"
+ssh $SSH_PARAS $DAISY_IP "systemctl restart daisy-registry"
+ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/deploy/check_os_progress.sh"
 sleep 10
 virsh reboot all_in_one
-ssh $SSH_PARAS $daisy_ip "${REMOTE_SPACE}/deploy/check_openstack_progress.sh"
+ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/deploy/check_openstack_progress.sh"
 
 exit 0
 
