@@ -8,9 +8,9 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 # TODO
-# [ ] 1. Pass full path for parameter for -d and -n
+# [x] 1. Pass full path for parameter for -d and -n
 # [ ] 2. Refactor para fetching procedure of parameter_from_deploy
-# [ ] 3. Refacotr execute_on_jumpserver
+# [x] 3. Refacotr execute_on_jumpserver
 # [ ] 4. Refacotr for names for var such like net_daisy1, net_daisy2
 # [ ] 5. Store PODs' configruation files into securelab
 # [ ] 6. Use POD name as the parameter instead of files
@@ -146,6 +146,9 @@ WORKDIR=${WORKDIR:-/tmp/workdir}
 
 [[ $POD_NAME =~ (virtual) ]] && IS_BARE=0
 
+# set extra ssh paramters
+SSH_PARAS="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+
 deploy_path=$WORKSPACE/deploy
 
 create_qcow2_path=$WORKSPACE/tools
@@ -184,13 +187,6 @@ if [ $DRY_RUN -eq 1 ]; then
 fi
 
 test -d ${VM_STORAGE} || mkdir -p ${VM_STORAGE}
-
-function execute_on_jumpserver
-{
-    local jumpserver_ip=$1
-    local cmd=$2
-    ssh $jumpserver_ip -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $cmd
-}
 
 function create_node
 {
@@ -263,12 +259,12 @@ sleep 20
 
 echo "====== install daisy==========="
 $deploy_path/trustme.sh $daisy_ip $daisy_passwd
-execute_on_jumpserver $daisy_ip "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE}; then rm -fr ${REMOTE_SPACE}; fi"
+ssh $SSH_PARAS $daisy_ip "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE}; then rm -fr ${REMOTE_SPACE}; fi"
 scp -r $WORKSPACE root@$daisy_ip:${REMOTE_SPACE}
-execute_on_jumpserver $daisy_ip "mkdir -p /home/daisy_install"
+ssh $SSH_PARAS $daisy_ip "mkdir -p /home/daisy_install"
 update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $daisy_ip
 scp $WORKSPACE/deploy/daisy.conf root@$daisy_ip:/home/daisy_install
-execute_on_jumpserver $daisy_ip "${REMOTE_SPACE}/opnfv.bin  install"
+ssh $SSH_PARAS $daisy_ip "${REMOTE_SPACE}/opnfv.bin  install"
 rc=$?
 if [ $rc -ne 0 ]; then
     echo "daisy install failed"
@@ -278,11 +274,11 @@ else
 fi
 
 echo "====== add relate config of kolla==========="
-execute_on_jumpserver $daisy_ip "mkdir -p /etc/kolla/config/nova"
-execute_on_jumpserver $daisy_ip "echo -e '[libvirt]\nvirt_type=qemu' > /etc/kolla/config/nova/nova-compute.conf"
+ssh $SSH_PARAS $daisy_ip "mkdir -p /etc/kolla/config/nova"
+ssh $SSH_PARAS $daisy_ip "echo -e '[libvirt]\nvirt_type=qemu' > /etc/kolla/config/nova/nova-compute.conf"
 
 echo "===prepare cluster and pxe==="
-execute_on_jumpserver $daisy_ip "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --cluster 'yes'"
+ssh $SSH_PARAS $daisy_ip "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --cluster 'yes'"
 
 echo "=====create all-in-one node======"
 qemu-img create -f qcow2 ${VM_STORAGE}/all_in_one.qcow2 200G
@@ -290,19 +286,19 @@ create_node $net_daisy2 daisy2 $pod_all_in_one all_in_one
 sleep 20
 
 echo "======prepare host and pxe==========="
-execute_on_jumpserver $daisy_ip "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA --network $NETWORK --host 'yes'"
+ssh $SSH_PARAS $daisy_ip "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA --network $NETWORK --host 'yes'"
 
 echo "======daisy deploy os and openstack==========="
 virsh destroy all_in_one
 virsh start all_in_one
 
 echo "===========check install progress==========="
-execute_on_jumpserver $daisy_ip "systemctl restart daisy-api"
-execute_on_jumpserver $daisy_ip "systemctl restart daisy-registry"
-execute_on_jumpserver $daisy_ip "${REMOTE_SPACE}/deploy/check_os_progress.sh"
+ssh $SSH_PARAS $daisy_ip "systemctl restart daisy-api"
+ssh $SSH_PARAS $daisy_ip "systemctl restart daisy-registry"
+ssh $SSH_PARAS $daisy_ip "${REMOTE_SPACE}/deploy/check_os_progress.sh"
 sleep 10
 virsh reboot all_in_one
-execute_on_jumpserver $daisy_ip "${REMOTE_SPACE}/deploy/check_openstack_progress.sh"
+ssh $SSH_PARAS $daisy_ip "${REMOTE_SPACE}/deploy/check_openstack_progress.sh"
 
 exit 0
 
