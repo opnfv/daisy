@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_3eec7dc7",
+        "filename": "code/makefile_patch.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-15T15:22:37Z",
+      "side": 1,
+      "message": "what does this meaning?\n\nmissing rm /home/cache?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "cb1ad16ec7ca02528389a2859457584f0a35a084",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
