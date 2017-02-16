@@ -1,6 +1,6 @@
 #!/bin/bash
 ##############################################################################
-# Copyright (c) 2016 ZTE Coreporation and others.
+# Copyright (c) 2016 ZTE Corporation and others.
 # hu.zhijiang@zte.com.cn
 # lu.yao135@zte.com.cn
 # All rights reserved. This program and the accompanying materials
@@ -10,8 +10,8 @@
 # TODO
 # [ ] 1. Pass full path for parameter for -d and -n
 # [ ] 2. Refactor para fetching procedure of parameter_from_deploy
-# [ ] 3. Refacotr execute_on_jumpserver
-# [ ] 4. Refacotr for names for var such like net_daisy1, net_daisy2
+# [ ] 3. Refactor execute_on_jumpserver
+# [ ] 4. Refactor for names for var such like net_daisy1, net_daisy2
 # [ ] 5. Store PODs' configruation files into securelab
 # [ ] 6. Use POD name as the parameter instead of files
 ##############################################################################

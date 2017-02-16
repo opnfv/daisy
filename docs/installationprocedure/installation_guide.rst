@@ -59,21 +59,21 @@ Setup Requirements
 
 If you have only 1 Bare Metal server, Virtual deployment is recommended. if you have more
 than 3 servers, the Bare Metal deployment is recommended. The minimum number of
-servers for each role in Bare metal deployment is listed down below.
+servers for each role in Bare metal deployment is listed below.
 
-+------------+-----------------------+
-| **Role**   | **Number of Severs**  |
-|            |                       |
-+------------+-----------------------+
-| Jump Host  | 1                     |
-|            |                       |
-+------------+-----------------------+
-| Controller | 1                     |
-|            |                       |
-+------------+-----------------------+
-| Compute    | 1                     |
-|            |                       |
-+------------+-----------------------+
++------------+------------------------+
+| **Role**   | **Number of Servers**  |
+|            |                        |
++------------+------------------------+
+| Jump Host  | 1                      |
+|            |                        |
++------------+------------------------+
+| Controller | 1                      |
+|            |                        |
++------------+------------------------+
+| Compute    | 1                      |
+|            |                        |
++------------+------------------------+
 
 
 Jumphost Requirements
