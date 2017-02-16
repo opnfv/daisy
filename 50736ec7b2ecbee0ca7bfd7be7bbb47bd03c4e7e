@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_b5f08bca",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/deploy.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-16T03:32:34Z",
+      "side": 1,
+      "message": "The repo of project securedlab is null?",
+      "parentUuid": "dabed58f_7ebbd5c4",
+      "revId": "50736ec7b2ecbee0ca7bfd7be7bbb47bd03c4e7e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_1eb099dc",
         "filename": "deploy/config/bm_environment/zte-baremetal1/network.yml",
         "patchSetId": 2
