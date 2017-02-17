@@ -130,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_01203548",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/deploy.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-17T01:24:46Z",
+      "side": 1,
+      "message": "refer to?https://gerrit.opnfv.org/gerrit/#/c/28489/",
+      "parentUuid": "dabed58f_b5f08bca",
+      "revId": "50736ec7b2ecbee0ca7bfd7be7bbb47bd03c4e7e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_1eb099dc",
         "filename": "deploy/config/bm_environment/zte-baremetal1/network.yml",
         "patchSetId": 2
