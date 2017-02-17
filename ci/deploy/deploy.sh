@@ -252,7 +252,7 @@ sleep 20
 
 echo "====== install daisy==========="
 $deploy_path/trustme.sh $DAISY_IP $DAISY_PASSWD
-ssh $SSH_PARAS $DAISY_IP "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE}; then rm -fr ${REMOTE_SPACE}; fi"
+ssh $SSH_PARAS $DAISY_IP "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE} ]]; then rm -fr ${REMOTE_SPACE}; fi"
 scp -r $WORKSPACE root@$DAISY_IP:${REMOTE_SPACE}
 ssh $SSH_PARAS $DAISY_IP "mkdir -p /home/daisy_install"
 update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $DAISY_IP
