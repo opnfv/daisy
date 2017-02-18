@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_5a3b73eb",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-18T08:25:10Z",
+      "side": 1,
+      "message": "this parameter is not configured , it is parsed through pod\u0027s name.\n\nplease use IS_BARE instead, which is updated in line 147",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 10
+      },
+      "revId": "209f838219210dfb8e58d5b0fcef99320aa2c348",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_7a40b756",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-18T08:25:10Z",
+      "side": 1,
+      "message": "refer to line 166",
+      "range": {
+        "startLine": 291,
+        "startChar": 6,
+        "endLine": 291,
+        "endChar": 16
+      },
+      "revId": "209f838219210dfb8e58d5b0fcef99320aa2c348",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_1a25fbc1",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-18T08:25:10Z",
+      "side": 1,
+      "message": "in the future get the seq from configuration file",
+      "range": {
+        "startLine": 296,
+        "startChar": 19,
+        "endLine": 296,
+        "endChar": 26
+      },
+      "revId": "209f838219210dfb8e58d5b0fcef99320aa2c348",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_3a223fba",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-18T08:25:10Z",
+      "side": 1,
+      "message": "use parameters instead not rely on the sequence.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 13
+      },
+      "revId": "209f838219210dfb8e58d5b0fcef99320aa2c348",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_da2e83a5",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-18T08:25:10Z",
+      "side": 1,
+      "message": "if only this line is different, just pass it as a parameter or export it as a macro, such as \"EXTRA-PARAS\u003d\u0027--skip-pxe-ipmi true\u0027\"",
+      "range": {
+        "startLine": 6,
+        "startChar": 30,
+        "endLine": 6,
+        "endChar": 50
+      },
+      "revId": "209f838219210dfb8e58d5b0fcef99320aa2c348",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
