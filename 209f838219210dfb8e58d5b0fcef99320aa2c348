@@ -114,6 +114,121 @@
       "revId": "209f838219210dfb8e58d5b0fcef99320aa2c348",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_40f5c281",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-02-20T08:02:44Z",
+      "side": 1,
+      "message": "In multi-node deployment, $os_install_active may be bigger than 1, is this judgment suitable?",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "209f838219210dfb8e58d5b0fcef99320aa2c348",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_60356645",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-02-20T08:02:44Z",
+      "side": 1,
+      "message": "In multi-node deployment, $progress may be a list, not only an integer.",
+      "range": {
+        "startLine": 22,
+        "startChar": 48,
+        "endLine": 22,
+        "endChar": 57
+      },
+      "revId": "209f838219210dfb8e58d5b0fcef99320aa2c348",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_0046eabf",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/deploy.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-02-20T08:02:44Z",
+      "side": 1,
+      "message": "Every controller node has a role \u0027COMPUTER\u0027, is it necessary?",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 15
+      },
+      "revId": "209f838219210dfb8e58d5b0fcef99320aa2c348",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_a0127eb2",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/deploy.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-02-20T08:02:44Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "209f838219210dfb8e58d5b0fcef99320aa2c348",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_c01772a2",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/deploy.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-02-20T08:02:44Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "209f838219210dfb8e58d5b0fcef99320aa2c348",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
