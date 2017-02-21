@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_31da6279",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-21T04:11:47Z",
+      "side": 1,
+      "message": "ok,and what is the name of bm_deploy pod?",
+      "parentUuid": "dabed58f_5a3b73eb",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 10
+      },
+      "revId": "209f838219210dfb8e58d5b0fcef99320aa2c348",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_7a40b756",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 7
@@ -59,6 +83,30 @@
       "writtenOn": "2017-02-18T08:25:10Z",
       "side": 1,
       "message": "in the future get the seq from configuration file",
+      "range": {
+        "startLine": 296,
+        "startChar": 19,
+        "endLine": 296,
+        "endChar": 26
+      },
+      "revId": "209f838219210dfb8e58d5b0fcef99320aa2c348",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_b1d5f244",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-21T04:11:47Z",
+      "side": 1,
+      "message": "ok,this can configured in deploy.yml file",
+      "parentUuid": "dabed58f_1a25fbc1",
       "range": {
         "startLine": 296,
         "startChar": 19,
@@ -174,6 +222,30 @@
       "writtenOn": "2017-02-20T08:02:44Z",
       "side": 1,
       "message": "Every controller node has a role \u0027COMPUTER\u0027, is it necessary?",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 15
+      },
+      "revId": "209f838219210dfb8e58d5b0fcef99320aa2c348",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_66725ee7",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/deploy.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-21T04:11:47Z",
+      "side": 1,
+      "message": "It is not necessary?thank you for your advice.",
+      "parentUuid": "dabed58f_0046eabf",
       "range": {
         "startLine": 5,
         "startChar": 7,
