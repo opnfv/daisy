@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_0377cf03",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-22T01:53:30Z",
+      "side": 1,
+      "message": "OK,thank you for your advice.",
+      "parentUuid": "dabed58f_aca6f5bf",
+      "range": {
+        "startLine": 170,
+        "startChar": 12,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "56fa6d2842f3382d14f158a780f0b54147e780ec",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_ecc4ed60",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 9
@@ -59,6 +83,30 @@
       "writtenOn": "2017-02-21T12:51:27Z",
       "side": 1,
       "message": "missing $DEPLOY_ENV",
+      "range": {
+        "startLine": 304,
+        "startChar": 117,
+        "endLine": 304,
+        "endChar": 126
+      },
+      "revId": "56fa6d2842f3382d14f158a780f0b54147e780ec",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_034eefc1",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-22T01:53:30Z",
+      "side": 1,
+      "message": "[[ $POD_NAME \u003d~ (virtual) ]] \u0026\u0026 IS_BARE\u003d0\n\nrefer to code before\n$DEPLOY_ENV is replaced by $IS_BARE\nwhen deploy on POD_NAME which is not virtual,IS_BARE is 0",
+      "parentUuid": "dabed58f_ecc4ed60",
       "range": {
         "startLine": 304,
         "startChar": 117,
