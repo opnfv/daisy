@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_f69efb62",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-22T08:14:59Z",
+      "side": 1,
+      "message": "here is prepare cluster and pxe,do not need to pass env parameter.",
+      "parentUuid": "dabed58f_7658cbfa",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 113
+      },
+      "revId": "910b98723accba1fb35b3c79b7b8bf221aae9b56",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_b674039d",
         "filename": "deploy/check_os_progress.sh",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_169cef68",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-22T08:14:59Z",
+      "side": 1,
+      "message": "It is a integer.\nOK,thank you for your advice.",
+      "parentUuid": "dabed58f_b674039d",
+      "range": {
+        "startLine": 8,
+        "startChar": 33,
+        "endLine": 8,
+        "endChar": 53
+      },
+      "revId": "910b98723accba1fb35b3c79b7b8bf221aae9b56",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_f6e6fb43",
         "filename": "deploy/check_os_progress.sh",
         "patchSetId": 10
@@ -59,6 +107,30 @@
       "writtenOn": "2017-02-22T06:54:54Z",
       "side": 1,
       "message": "\u0027-c shell_example.sh\u0027 is not used in the following lines",
+      "range": {
+        "startLine": 12,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 42
+      },
+      "revId": "910b98723accba1fb35b3c79b7b8bf221aae9b56",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_b6888323",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-22T08:14:59Z",
+      "side": 1,
+      "message": "OK,I will delete this useless parameter.\nThank you.",
+      "parentUuid": "dabed58f_f6e6fb43",
       "range": {
         "startLine": 12,
         "startChar": 23,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_d68df732",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-22T08:14:59Z",
+      "side": 1,
+      "message": "It is helpful of you to give me advice.",
+      "parentUuid": "dabed58f_364b332d",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "910b98723accba1fb35b3c79b7b8bf221aae9b56",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_f6bd9b03",
         "filename": "deploy/config/bm_environment/zte-baremetal1/deploy.yml",
         "patchSetId": 10
@@ -128,6 +224,30 @@
       "writtenOn": "2017-02-22T06:42:07Z",
       "side": 1,
       "message": "this line is not useful",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "910b98723accba1fb35b3c79b7b8bf221aae9b56",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_76820b02",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/deploy.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-22T08:14:59Z",
+      "side": 1,
+      "message": "I will delete it",
+      "parentUuid": "dabed58f_f6bd9b03",
       "range": {
         "startLine": 24,
         "startChar": 0,
