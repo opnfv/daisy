@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_e3c15be5",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-22T02:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dabed58f_aca6f5bf",
+      "range": {
+        "startLine": 170,
+        "startChar": 12,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "56fa6d2842f3382d14f158a780f0b54147e780ec",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_ecc4ed60",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 9
@@ -142,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_a3bb6371",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-22T02:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dabed58f_acbfd5cf",
+      "range": {
+        "startLine": 16,
+        "startChar": 14,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "56fa6d2842f3382d14f158a780f0b54147e780ec",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_4cb419f2",
         "filename": "deploy/check_os_progress.sh",
         "patchSetId": 9
@@ -153,6 +201,30 @@
       "writtenOn": "2017-02-21T12:51:27Z",
       "side": 1,
       "message": "is it be better to set a max time to wait? is it possible in the deadloop?",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 43
+      },
+      "revId": "56fa6d2842f3382d14f158a780f0b54147e780ec",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_a37283e3",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-22T02:03:54Z",
+      "side": 1,
+      "message": "daisy code have set the time of wait.\nand if the time is over,daisy will set install-failed label to os_status line.\nso here just have to loop and check the os_status will be ok.",
+      "parentUuid": "dabed58f_4cb419f2",
       "range": {
         "startLine": 62,
         "startChar": 4,
