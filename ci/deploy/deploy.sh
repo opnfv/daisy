@@ -131,7 +131,7 @@ if [ -z $BASE_PATH ] || [ ! -d $BASE_PATH ] || [ -z LAB_NAME ] || [ -z $POD_NAME
     exit 0
 fi
 
-BRIDGE={BRIDGE:-pxebr}
+BRIDGE=${BRIDGE:-pxebr}
 
 # read parameters from lab configuration file
 DHA_CONF=$BASE_PATH/labs/$LAB_NAME/$POD_NAME/daisy/config/deploy.yml
