@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "dabed58f_7658cbfa",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-02-22T06:54:54Z",
+      "side": 1,
+      "message": "Is the new parameter \"--env\" missed?",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 113
+      },
+      "revId": "910b98723accba1fb35b3c79b7b8bf221aae9b56",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_b674039d",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-02-22T06:54:54Z",
+      "side": 1,
+      "message": "Is this value an integer or a string? line 48 shows that it is an integer. Please add some info about the value, as: (0: virtual, 1: baremetal)",
+      "range": {
+        "startLine": 8,
+        "startChar": 33,
+        "endLine": 8,
+        "endChar": 53
+      },
+      "revId": "910b98723accba1fb35b3c79b7b8bf221aae9b56",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_f6e6fb43",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-02-22T06:54:54Z",
+      "side": 1,
+      "message": "\u0027-c shell_example.sh\u0027 is not used in the following lines",
+      "range": {
+        "startLine": 12,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 42
+      },
+      "revId": "910b98723accba1fb35b3c79b7b8bf221aae9b56",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_56da6779",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-02-22T06:54:54Z",
+      "side": 1,
+      "message": "$cmd is not used in the following lines",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "910b98723accba1fb35b3c79b7b8bf221aae9b56",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_364b332d",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-02-22T06:54:54Z",
+      "side": 1,
+      "message": "$progress display multiple lines. Add `| sed \u0027:a;N;$ s/\\n/ /g;ba\u0027 ` to show in one line.",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "910b98723accba1fb35b3c79b7b8bf221aae9b56",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_f6bd9b03",
         "filename": "deploy/config/bm_environment/zte-baremetal1/deploy.yml",
         "patchSetId": 10
@@ -18,6 +133,29 @@
         "startChar": 0,
         "endLine": 24,
         "endChar": 23
+      },
+      "revId": "910b98723accba1fb35b3c79b7b8bf221aae9b56",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_1652afdd",
+        "filename": "templates/physical_environment/networks/daisy.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-02-22T06:54:54Z",
+      "side": 1,
+      "message": "The bridge\u0027s name \"daisy1\" is not the same with the bridge in vms/daisy.xml, which is \"br7\". Please make them consistent.\nLine 8, line 9, the same.",
+      "range": {
+        "startLine": 2,
+        "startChar": 8,
+        "endLine": 2,
+        "endChar": 14
       },
       "revId": "910b98723accba1fb35b3c79b7b8bf221aae9b56",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
