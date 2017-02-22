@@ -49,7 +49,7 @@ sudo `basename $0` -b base_path
                    -l zte -p pod2 -B pxebr
                    -d ./deploy/config/vm_environment/zte-virtual1/deploy.yml
                    -n ./deploy/config/vm_environment/zte-virtual1/network.yml
-                   -r /opt/daisy -w /opt/daisy -l zte -p pod2
+                   -r /opt/daisy -w /opt/daisy
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 EOF
 }
@@ -135,11 +135,17 @@ BRIDGE=${BRIDGE:-pxebr}
 
 # read parameters from lab configuration file
 DHA_CONF=$BASE_PATH/labs/$LAB_NAME/$POD_NAME/daisy/config/deploy.yml
+if [ ! $BASE_PATH == $WORKSPACE/securedlab ]; then
+    mkdir -p $WORKSPACE/securedlab/labs/$LAB_NAME/$POD_NAME/daisy/config
+    cp $BASE_PATH/labs/$LAB_NAME/$POD_NAME/daisy/config/deploy.yml \
+       $BASE_PATH/labs/$LAB_NAME/$POD_NAME/daisy/config/network.yml
+       $WORKSPACE/securedlab/labs/$LAB_NAME/$POD_NAME/daisy/config/
+fi
 
 # set work space in daisy master node
 REMOTE_SPACE=${REMOTE_SPACE:-/home/daisy}
-DHA=$REMOTE_SPACE/labs/$LAB_NAME/$POD_NAME/daisy/config/deploy.yml
-NETWORK=$REMOTE_SPACE/labs/$LAB_NAME/$POD_NAME/daisy/config/network.yml
+DHA=$REMOTE_SPACE/securedlab/labs/$LAB_NAME/$POD_NAME/daisy/config/deploy.yml
+NETWORK=$REMOTE_SPACE/securedlab/labs/$LAB_NAME/$POD_NAME/daisy/config/network.yml
 
 # set temporay workdir
 WORKDIR=${WORKDIR:-/tmp/workdir}
