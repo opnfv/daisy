@@ -52,5 +52,6 @@ do
 done
 cd ..
 mv target/el7/noarch/installdaisy_el7_noarch.bin target/el7/noarch/opnfv-${OPNFV_ARTIFACT_VERSION}.bin
+chmod +x target/el7/noarch/opnfv-${OPNFV_ARTIFACT_VERSION}.bin
 cp target/el7/noarch/opnfv-${OPNFV_ARTIFACT_VERSION}.bin $rpm_output_dir
 exit $rc

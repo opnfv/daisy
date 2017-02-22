@@ -179,6 +179,11 @@ if [ $DRY_RUN -eq 1 ]; then
     exit 1
 fi
 
+if [ ! -x ${WORKSPACE}/opnfv.bin ]; then
+    echo "opnfv.bin does not exist in WORKSPACE or is not executable, exit."
+    exit 1
+fi
+
 test -d ${VM_STORAGE} || mkdir -p ${VM_STORAGE}
 
 function create_node
