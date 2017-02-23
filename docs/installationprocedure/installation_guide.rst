@@ -29,7 +29,7 @@ OpenStack, and so on is needed for deploying your OPNFV environment.
 
 The stable release bin image can be retrieved via `OPNFV software download page <https://www.opnfv.org/software>`_
 
-The daily build bin image can be retrieved via OPNFV artifacts repository:
+The daily build bin image can be retrieved via OPNFV artifact repository:
 
 http://artifacts.opnfv.org/daisy.html
 
