@@ -16,6 +16,24 @@
       "revId": "74b723f9b1b6965e5bb5d9c1b50ba0419446e6a5",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_6ab458f2",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-02-24T03:56:33Z",
+      "side": 1,
+      "message": "agree with you.\nsame with:\nif conf[\u0027cluster\u0027] and conf[\u0027cluster\u0027] \u003d\u003d \u0027yes\u0027:\nelif conf[\u0027host\u0027] and conf[\u0027host\u0027] \u003d\u003d \u0027yes\u0027:",
+      "parentUuid": "dabed58f_6add3842",
+      "revId": "74b723f9b1b6965e5bb5d9c1b50ba0419446e6a5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
