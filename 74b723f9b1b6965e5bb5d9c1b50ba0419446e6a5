@@ -34,6 +34,24 @@
       "revId": "74b723f9b1b6965e5bb5d9c1b50ba0419446e6a5",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_aa8fb022",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-02-24T06:03:03Z",
+      "side": 1,
+      "message": "cfg.StrOpt was used in original code, so the value should be \"0\". That\u0027s a string. I changed it to \"cfg.IntOpt\". 0 is also a False expression?",
+      "parentUuid": "dabed58f_6ab458f2",
+      "revId": "74b723f9b1b6965e5bb5d9c1b50ba0419446e6a5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
