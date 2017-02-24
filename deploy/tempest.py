@@ -31,7 +31,7 @@ _CLI_OPTS = [
                help='Config cluster'),
     cfg.StrOpt('host',
                help='Config host'),
-    cfg.StrOpt('env',
+    cfg.IntOpt('env',
                help='deploy environment'),
 ]
 
@@ -86,7 +86,7 @@ def prepare_install():
             cluster_id = cluster_info.id
             add_hosts_interface(cluster_id, hosts_info, hosts_name,
                                 host_interface_map, vip)
-            if conf['env'] and conf['env'] == 0:
+            if conf['env'] is not None and conf['env'] == 0:
                 build_pxe_for_os(cluster_id)
     except Exception:
         print("Deploy failed!!!.%s." % traceback.format_exc())
