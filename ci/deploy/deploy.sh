@@ -187,9 +187,12 @@ if [ $DRY_RUN -eq 1 ]; then
     exit 1
 fi
 
-if [ ! -x ${WORKSPACE}/opnfv.bin ]; then
-    echo "opnfv.bin does not exist in WORKSPACE or is not executable, exit."
+if [ ! -f ${WORKSPACE}/opnfv.bin ]; then
+    echo "opnfv.bin does not exist in WORKSPACE, exit."
     exit 1
+elif [ ! -x ${WORKSPACE}/opnfv.bin ]; then
+    echo "opnfv.bin in WORKSPACE is not executable, chmod it and continue."
+    chmod +x ${WORKSPACE}/opnfv.bin
 fi
 
 test -d ${VM_STORAGE} || mkdir -p ${VM_STORAGE}
