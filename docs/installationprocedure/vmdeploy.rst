@@ -9,9 +9,9 @@ Nodes Configuration (Virtual Deployment)
 
 The below file is the inventory template of deployment nodes:
 
-"./deploy/conf/vm_environment/zte-virtual1/network.yml"
+"./deploy/conf/vm_environment/zte-virtual1/deploy.yml"
 
-You can write your own address/roles reference into it.
+You can write your own name/roles reference into it.
 
         - name -- Host name for deployment node after installation.
 
@@ -43,7 +43,7 @@ E.g. OpenStack only deployment roles setting
           - compute
 
 NOTE:
-IF YOU SELECT MUTIPLE NODES AS CONTROLLER, THE 'ha' role MUST BE SELECT, TOO.
+IF YOU SELECT MUTIPLE NODES AS CONTROLLER, THE 'ha' role MUST BE SELECTED, TOO.
 
 E.g. OpenStack and ceph deployment roles setting
 
@@ -64,7 +64,7 @@ E.g. OpenStack and ceph deployment roles setting
 Network Configuration (Virtual Deployment)
 ------------------------------------------
 
-Before deployment, there are some network configuration to be checked based
+Before deployment, there are some network configurations to be checked based
 on your network topology. The default network configuration file for Daisy is
 "daisy/deploy/config/vm_environment/zte-virtual1/network.yml".
 You can write your own reference into it.

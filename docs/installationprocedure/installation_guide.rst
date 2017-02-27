@@ -21,8 +21,8 @@ Before starting the installation of the Danube release of OPNFV, some plannings
 must be done.
 
 
-Retrieving the installation bin image
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Retrieve the installation bin image
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 First of all, the installation bin which includes packages of Daisy, OS,
 OpenStack, and so on is needed for deploying your OPNFV environment.
