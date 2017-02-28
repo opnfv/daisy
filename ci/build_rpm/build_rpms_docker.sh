@@ -14,6 +14,8 @@ rpm_build_dir=/opt/daisy4nfv
 rpm_output_dir=$rpm_build_dir/build_output
 tmp_rpm_build_dir=/home/cache/daisy4nfv
 
+DAISYCORE_TAG=1.3.0
+
 if [[ -d $tmp_rpm_build_dir ]]; then
     rm -fr $tmp_rpm_build_dir
 fi
@@ -35,6 +37,13 @@ do
     echo -e "\n\n\n*** Starting build attempt # $cnt"
 
     git clone https://git.openstack.org/openstack/daisycloud-core
+
+    if [[ ! -z "$DAISYCORE_TAG" ]]; then
+        pushd daisycloud-core
+        git checkout $DAISYCORE_TAG
+        popd
+    fi
+
     cp $rpm_build_dir/code/makefile_patch.sh daisycloud-core/tools/setup
     cp $rpm_build_dir/code/install_interface_patch.sh daisycloud-core/tools/setup
     cd daisycloud-core/make
