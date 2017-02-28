@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_796d1332",
+        "filename": "ci/build_rpm/build_rpms_docker.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-02-28T16:21:48Z",
+      "side": 1,
+      "message": "what about\nDAISYCORE_TAG\u003d${DAISYCORE_TAG:-1.3.0}",
+      "range": {
+        "startLine": 17,
+        "startChar": 14,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "f6a8df558e69139779cd7823b676f8856d358aa6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
