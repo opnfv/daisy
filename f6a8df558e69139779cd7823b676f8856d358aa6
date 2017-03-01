@@ -22,6 +22,29 @@
       "revId": "f6a8df558e69139779cd7823b676f8856d358aa6",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_345562c6",
+        "filename": "ci/build_rpm/build_rpms_docker.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-03-01T01:06:03Z",
+      "side": 1,
+      "message": "currently DAISYCORE_TAG is set to No NULL,the judge statement is redundant?think about DAISYCORE_TAG as argument?",
+      "range": {
+        "startLine": 41,
+        "startChar": 17,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "f6a8df558e69139779cd7823b676f8856d358aa6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
