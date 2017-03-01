@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_d4b966ea",
+        "filename": "ci/build_rpm/build_rpms_docker.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-01T02:19:51Z",
+      "side": 1,
+      "message": "Sorry for just seeing your comment. What is the meaning of this syntax? Not so familiar with this:)",
+      "parentUuid": "dabed58f_796d1332",
+      "range": {
+        "startLine": 17,
+        "startChar": 14,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "f6a8df558e69139779cd7823b676f8856d358aa6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_345562c6",
         "filename": "ci/build_rpm/build_rpms_docker.sh",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-01T01:06:03Z",
       "side": 1,
       "message": "currently DAISYCORE_TAG is set to No NULL,the judge statement is redundant?think about DAISYCORE_TAG as argument?",
+      "range": {
+        "startLine": 41,
+        "startChar": 17,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "f6a8df558e69139779cd7823b676f8856d358aa6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_14c05e4f",
+        "filename": "ci/build_rpm/build_rpms_docker.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-01T02:19:51Z",
+      "side": 1,
+      "message": "Good point, Let\u0027s rectify it in near future.",
+      "parentUuid": "dabed58f_345562c6",
       "range": {
         "startLine": 41,
         "startChar": 17,
