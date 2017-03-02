@@ -71,9 +71,8 @@
       <address type='pci' domain='0x0000' bus='0x00' slot='0x05' function='0x0'/>
     </controller>
     <interface type='bridge'>
-      <mac address='52:54:00:73:8b:50'/>
-      <source bridge='daisy1'/>
-      <target dev='vnet1'/>
+      <source bridge='br7'/>
+      <target dev='vnet0'/>
       <model type='rtl8139'/>
       <alias name='net0'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
