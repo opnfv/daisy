@@ -36,10 +36,21 @@ done
 
 source /root/daisyrc_admin
 cluster_id=`daisy cluster-list | awk -F "|" '{print $2}' | sed -n '4p'`
+hosts_id=`daisy host-list | awk -F "|" '{print $2}'| grep -o "[^ ]\+\( \+[^ ]\+\)*"`
 skip=false
 if [ $deploy_env == 0 ];then
     skip=true
 fi
+
+if [ $deploy_env != 0 ];then
+    for host_id in $hosts_id;do
+        if [ $host_id != 'ID' ];then
+            echo "update host $host_id ipmi user and passwd"
+            daisy host-update $host_id --ipmi-user zteroot --ipmi-passwd superuser
+        fi
+    done
+fi
+echo "update all hosts ipmi user and passwd ok!"
 
 echo "run daisy install command"
 daisy install $cluster_id --skip-pxe-ipmi $skip
