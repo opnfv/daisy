@@ -13,8 +13,8 @@ while true; do
         tail -n 200 /var/log/daisy/kolla_$cluster_id*
         exit 1
     else
-        progress=`daisy host-list --cluster-id $cluster_id |grep DISCOVERY_SUCCESSFUL |awk -F "|" '{print $11}'|sed s/[[:space:]]//g`
-        echo " openstack in installing , progress is $progress%"
+        progress=`daisy host-list --cluster-id $cluster_id |grep DISCOVERY_SUCCESSFUL |awk -F "|" '{print $11}'|sed s/[[:space:]]//g|sed ':a;N;$ s/\n/ /g;ba'`
+        echo " openstack in installing , progress of each node is $progress%"
         sleep 30
     fi
 done
