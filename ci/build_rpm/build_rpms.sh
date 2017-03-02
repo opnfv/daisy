@@ -40,7 +40,7 @@ function cleanup_container {
         echo "Removing containers... $containers_to_kill"
         (sudo docker rm -v -f ${containers_to_kill} 2>&1) > /dev/null
 
-        if [[ ! -z "$containers_to_kill" ]]; then
+        if [[ ! -z "$volumes_to_remove" ]]; then
             echo "Removing volumes... $volumes_to_remove"
             (sudo docker volume rm ${volumes_to_remove} 2>&1) || true > /dev/null
         fi
