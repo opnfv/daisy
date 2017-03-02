@@ -45,7 +45,15 @@ echo "run daisy install command"
 daisy install $cluster_id --skip-pxe-ipmi $skip
 
 echo "check os installing progress..."
+maxcount=180
+count=0
 while true; do
+    if [ $count -gt $maxcount ]; then
+        echo "It took too long to install the os, exit 1."
+        exit 1
+    fi
+    count=$[count + 1]
+
     os_install_active=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $8}' | grep -c "active" `
     os_install_failed=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $8}' | grep -c "install-failed" `
     if [ $os_install_active -eq $hosts_num ]; then
@@ -57,7 +65,7 @@ while true; do
     else
         progress=`daisy host-list --cluster-id $cluster_id |grep DISCOVERY_SUCCESSFUL |awk -F "|" '{print $7}'|sed s/[[:space:]]//g|sed ':a;N;$ s/\n/ /g;ba'`
         echo "os in installing, the progress of each node is $progress%"
-        sleep 10
+        sleep 30
     fi
 done
 systemctl disable dhcpd

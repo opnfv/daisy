@@ -49,7 +49,7 @@ sudo `basename $0` -b base_path
                    -l zte -p pod2 -B pxebr
                    -d ./deploy/config/vm_environment/zte-virtual1/deploy.yml
                    -n ./deploy/config/vm_environment/zte-virtual1/network.yml
-                   -r /opt/daisy -w /opt/daisy -l zte -p pod2
+                   -r /opt/daisy -w /opt/daisy
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 EOF
 }
@@ -323,12 +323,18 @@ ssh $SSH_PARAS $DAISY_IP "systemctl restart daisy-registry"
 
 echo "===========check install progress==========="
 ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/deploy/check_os_progress.sh -d $IS_BARE -n $TARGET_HOSTS_NUM"
+if [ $? -ne 0 ]; then
+    exit 1;
+fi
 sleep 10
 
 if [ $IS_BARE == 0 ];then
     virsh reboot all_in_one
 fi
 ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/deploy/check_openstack_progress.sh"
+if [ $? -ne 0 ]; then
+    exit 1;
+fi
 
 exit 0
 
