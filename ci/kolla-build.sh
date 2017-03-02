@@ -145,7 +145,7 @@ function pack_registry_data {
 function update_kolla_code {
     echo "Updating Kolla code"
     if [ ! -d $KOLLA_GIT_DIR ] ; then
-            mkdir -p $KOLLA_GIT_DIR
+        mkdir -p $KOLLA_GIT_DIR
     fi
 
     if [ ! -d $KOLLA_GIT_DIR/kolla ] ; then
