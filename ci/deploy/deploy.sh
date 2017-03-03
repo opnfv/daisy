@@ -327,6 +327,10 @@ if [ $IS_BARE == 0 ];then
 fi
 ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/deploy/check_openstack_progress.sh"
 
+
+echo "============post deploy====================="
+ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/post/execute.py"
+
 exit 0
 
 #
