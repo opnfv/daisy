@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_c7ba11e1",
+        "filename": "deploy/check_openstack_progress.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-03-03T01:05:06Z",
+      "side": 1,
+      "message": "put the statement to the while beginning,is it readable?",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "6aa0d065c6d8f341a7307cf69e6afec2e2bdc682",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
