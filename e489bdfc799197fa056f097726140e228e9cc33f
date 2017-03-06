@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_731a0619",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-06T09:12:47Z",
+      "side": 1,
+      "message": "sorry,I am wrong.\nthe skip will only execute one time.",
+      "parentUuid": "dabed58f_b372be7a",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 28
+      },
+      "revId": "e489bdfc799197fa056f097726140e228e9cc33f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_b1039f72",
         "filename": "deploy/check_os_progress.sh",
         "patchSetId": 2
