@@ -16,6 +16,24 @@
       "revId": "f4a256f5df9de9c2d4e1e109030cd2702f8e8e52",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_33d80f1d",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 2651
+      },
+      "writtenOn": "2017-03-06T01:10:47Z",
+      "side": 1,
+      "message": "for now add networks only, but we don\u0027t know what else will we need in the future, so post deploy means all necessary processes after the env is deployed, create resources or clear useless resources,,, etc.",
+      "parentUuid": "dabed58f_9858f8fb",
+      "revId": "f4a256f5df9de9c2d4e1e109030cd2702f8e8e52",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
