@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_9669a88d",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-03-06T15:05:57Z",
+      "side": 1,
+      "message": "if you want to use a counter, a *for loop* is more easier to avoid to deal with count",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 7
+      },
+      "revId": "dd3335128617003db15e46378ed0baf7941c369c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
