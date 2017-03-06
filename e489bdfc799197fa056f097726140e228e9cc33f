@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_f35836fc",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-06T08:57:24Z",
+      "side": 1,
+      "message": "OK,thank you for your advice.",
+      "parentUuid": "dabed58f_31d80f1d",
+      "range": {
+        "startLine": 39,
+        "startChar": 25,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "e489bdfc799197fa056f097726140e228e9cc33f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_91e77be4",
         "filename": "deploy/check_os_progress.sh",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-02T07:12:41Z",
       "side": 1,
       "message": "line 43-45: \u003d\u003e else",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 28
+      },
+      "revId": "e489bdfc799197fa056f097726140e228e9cc33f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_b372be7a",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-06T08:57:24Z",
+      "side": 1,
+      "message": "so the skip\u003dtrue will be execute five times(host numbers) ?",
+      "parentUuid": "dabed58f_91e77be4",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_135e2ae7",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-06T08:57:24Z",
+      "side": 1,
+      "message": "ok, I will modify it.",
+      "parentUuid": "dabed58f_b1039f72",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "e489bdfc799197fa056f097726140e228e9cc33f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_51f8237c",
         "filename": "deploy/check_os_progress.sh",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-03-02T07:25:09Z",
       "side": 1,
       "message": "if fix according to Alex, this condition can be deleted.",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 36
+      },
+      "revId": "e489bdfc799197fa056f097726140e228e9cc33f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_d36f3291",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-06T08:57:24Z",
+      "side": 1,
+      "message": "hosts_id\u003d`daisy host-list | awk -F \"|\" \u0027{print $2}\u0027| grep -o \"[^ ]\\+\\( \\+[^ ]\\+\\)*\"`\nthe hosts_id parameter I get from this shell statement is:\nID\nhost_id1\nhost_id2\nhost_id3\n...\nhost_idn\nso I have to filter out the ID from hosts_id.",
+      "parentUuid": "dabed58f_51f8237c",
       "range": {
         "startLine": 47,
         "startChar": 8,
