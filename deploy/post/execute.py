@@ -25,9 +25,29 @@ def _config_admin_external_network():
     return name, body
 
 
+def _config_admin_external_subnet(nid):
+    return {
+        'subnets': [
+            {
+                'name': 'admin_external_subnet',
+                'cidr': '172.10.101.0/24',
+                'ip_version': 4,
+                'network_id': nid,
+                'gateway_ip': '172.10.101.1',
+                'allocation_pools': [{
+                    'start': '172.10.101.2',
+                    'end': '172.10.101.12'
+                }],
+                'enable_dhcp': False
+            }
+        ]
+    }
+    
+
 def main():
-    neutron.Neutron().list_networks()
-    neutron.Neutron().create_network(*(_config_admin_external_network()))
+    neutronclient = neutron.Neutron()
+    nid = neutronclient.create_network(*(_config_admin_external_network()))
+    neutronclient.create_subnet(_config_admin_external_subnet(nid))
 
 if __name__ == '__main__':
     main()
