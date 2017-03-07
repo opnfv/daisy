@@ -257,8 +257,11 @@ function clean_up
 echo "=====clean up all node and network======"
 if [ $IS_BARE == 0 ];then
     clean_up all_in_one daisy2
+    clean_up daisy daisy1
+else
+    virsh destroy daisy
+    virsh undefine daisy
 fi
-clean_up daisy daisy1
 if [ -f $WORKDIR/daisy/centos7.qcow2 ]; then
     rm -rf $WORKDIR/daisy/centos7.qcow2
 fi
@@ -269,7 +272,8 @@ if [ $IS_BARE == 0 ];then
     create_node $daisy_server_net daisy1 $vmdeploy_daisy_server_vm daisy
 else
     $create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $DAISY_IP $PARAS_IMAGE
-    create_node $bmdeploy_daisy_server_net daisy1 $bmdeploy_daisy_server_vm daisy
+    virsh define $bmdeploy_daisy_server_vm
+    virsh start daisy
 fi
 sleep 20
 
@@ -316,10 +320,6 @@ if [ $IS_BARE == 0 ];then
     virsh destroy all_in_one
     virsh start all_in_one
 fi
-
-echo "============restart daisy service==========="
-ssh $SSH_PARAS $DAISY_IP "systemctl restart daisy-api"
-ssh $SSH_PARAS $DAISY_IP "systemctl restart daisy-registry"
 
 echo "===========check install progress==========="
 ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/deploy/check_os_progress.sh -d $IS_BARE -n $TARGET_HOSTS_NUM"
