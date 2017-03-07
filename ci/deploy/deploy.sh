@@ -336,6 +336,12 @@ if [ $? -ne 0 ]; then
     exit 1;
 fi
 
+
+if [ $IS_BARE == 0 ];then
+    echo "============post deploy====================="
+    ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/post/execute.py"
+fi
+
 exit 0
 
 #
