@@ -135,6 +135,21 @@ install_utils()
     fi
 }
 
+# Eliminate exceptions
+eliminate()
+{
+    if [ ! -z $loopdevice ]; then
+        if mount | grep "/dev/mapper/$loopdevice"; then
+            umount /dev/mapper/$loopdevice || true
+        fi
+
+        if dmsetup ls | grep $loopdevice; then
+            dmsetup remove $loopdevice || true
+        fi
+    fi
+    return 0
+}
+
 # resize image
 resize() {
     install_utils
@@ -149,7 +164,7 @@ resize() {
     fdisk -l /dev/${loopdevice:0:5} || true
     growpart /dev/${loopdevice:0:5} 1
     dmsetup clear $loopdevice
-    kpartx -dv $raw_imgfile
+    kpartx -dv $raw_imgfile || eliminate
 }
 
 # mount image
@@ -193,7 +208,7 @@ cleanup() {
     mount | grep $mountdir/proc && umount $mountdir/proc
     mount | grep $mountdir && umount $mountdir
     if [ -f $raw_imgfile ]; then
-        kpartx -dv $raw_imgfile || true
+        kpartx -dv $raw_imgfile || eliminate
     fi
     rm -f $raw_imgfile
     rm -rf $mountdir
