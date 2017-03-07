@@ -9,9 +9,25 @@
 import neutron
 
 
+def _config_admin_external_network():
+    name = 'admin_external'
+    body = {
+        'network': {
+            'name': name,
+            'admin_state_up': True,
+            'shared': True,
+            'provider:network_type': 'flat',
+            'provider:physical_network': 'physnet1',
+            'router:external': True
+        }
+    }
+
+    return name, body
+
+
 def main():
     neutron.Neutron().list_networks()
-
+    neutron.Neutron().create_network(*(_config_admin_external_network()))
 
 if __name__ == '__main__':
     main()
