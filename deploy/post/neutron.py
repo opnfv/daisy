@@ -17,9 +17,32 @@ class Neutron(object):
         self.client = neutronclient.Client(api_v, session=session)
 
     def list_networks(self):
-        networks = self.client.list_networks()['networks']
-        for network in networks:
-            print network
+        return self.client.list_networks()['networks']
 
-    def create_admin_ext_net(self):
+    def create_admin_ext_net(self, name='admin_external'):
+        if not self.is_network_exist(name):
+            self._create_admin_ext_net(name)
+        else:
+            print('admin_ext [{}] already exist'.format(name))
         pass
+
+    def is_network_exist(self, name):
+        return [] != filter(lambda n: n['name'] == name, self.list_networks())
+
+    def _create_admin_ext_net(self, name):
+        body = {
+            'network': {
+                'name': name,
+                'admin_state_up': True,
+                'shared': True,
+                'provider:network_type': 'flat',
+                'provider:physical_network': 'physnet1',
+            }
+        }
+        try:
+            nid = self.client.create_network(body=body)['network']['id']
+            print('_create_admin_ext_net [{}] with id: {}'.format(name, nid))
+            return nid
+        except Exception, e:
+            print('_create_admin_ext_net [{}] fail with: {}'.format(name, e))
+            return None

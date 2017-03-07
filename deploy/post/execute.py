@@ -11,7 +11,7 @@ import neutron
 
 def main():
     neutron.Neutron().list_networks()
-
+    neutron.Neutron().create_admin_ext_net()
 
 if __name__ == '__main__':
     main()
