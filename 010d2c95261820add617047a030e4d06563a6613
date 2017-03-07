@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_1973a9ea",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-07T07:05:00Z",
+      "side": 1,
+      "message": "Is this equivalent to neutron net-create? Don\u0027t we need neutron subnet-create in advance? For example : \nneutron subnet-create --name 1-subnet --disable-dhcp --allocation-pool start\u003d\u003cfloat ip start\u003e,end\u003d\u003cfloat ip end\u003e public1 \u003cfloat ip cidr\u003e --gateway \u003cfloat ip gateway\u003e",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "010d2c95261820add617047a030e4d06563a6613",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
