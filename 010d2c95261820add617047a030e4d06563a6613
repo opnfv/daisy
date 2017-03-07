@@ -22,6 +22,30 @@
       "revId": "010d2c95261820add617047a030e4d06563a6613",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_d922f1b8",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 2651
+      },
+      "writtenOn": "2017-03-07T07:50:21Z",
+      "side": 1,
+      "message": "No! network needs to be created first. subnet has to attach to a network when creating, no network no subnet!",
+      "parentUuid": "dabed58f_1973a9ea",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "010d2c95261820add617047a030e4d06563a6613",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
