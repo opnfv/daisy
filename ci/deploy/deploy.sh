@@ -293,9 +293,11 @@ else
     echo "daisy install successfully"
 fi
 
-echo "====== add relate config of kolla==========="
-ssh $SSH_PARAS $DAISY_IP "mkdir -p /etc/kolla/config/nova"
-ssh $SSH_PARAS $DAISY_IP "echo -e '[libvirt]\nvirt_type=qemu' > /etc/kolla/config/nova/nova-compute.conf"
+if [ $IS_BARE == 0 ];then
+    echo "====== add relate config of kolla==========="
+    ssh $SSH_PARAS $DAISY_IP "mkdir -p /etc/kolla/config/nova"
+    ssh $SSH_PARAS $DAISY_IP "echo -e '[libvirt]\nvirt_type=qemu\ncpu_mode=none' >> /etc/kolla/config/nova/nova-compute.conf"
+fi
 
 echo "===prepare cluster and pxe==="
 ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --cluster 'yes'"
