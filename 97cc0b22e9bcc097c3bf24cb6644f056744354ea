@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_82c5de5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-03-08T01:13:08Z",
+      "side": 1,
+      "message": "keep the first line less than 50",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 70
+      },
+      "revId": "97cc0b22e9bcc097c3bf24cb6644f056744354ea",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_22a2f2ae",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-03-08T01:13:08Z",
+      "side": 1,
+      "message": "\u003e\u003e is better ?",
+      "range": {
+        "startLine": 299,
+        "startChar": 81,
+        "endLine": 299,
+        "endChar": 82
+      },
+      "revId": "97cc0b22e9bcc097c3bf24cb6644f056744354ea",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_42a7e6bd",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-03-08T01:13:08Z",
+      "side": 1,
+      "message": "\u003e\u003e ?",
+      "range": {
+        "startLine": 301,
+        "startChar": 65,
+        "endLine": 301,
+        "endChar": 67
+      },
+      "revId": "97cc0b22e9bcc097c3bf24cb6644f056744354ea",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
