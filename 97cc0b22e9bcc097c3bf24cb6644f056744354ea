@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_42e366d9",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-08T01:55:40Z",
+      "side": 1,
+      "message": "ok,Thank you for your advice.",
+      "parentUuid": "dabed58f_22a2f2ae",
+      "range": {
+        "startLine": 299,
+        "startChar": 81,
+        "endLine": 299,
+        "endChar": 82
+      },
+      "revId": "97cc0b22e9bcc097c3bf24cb6644f056744354ea",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_42a7e6bd",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 2
