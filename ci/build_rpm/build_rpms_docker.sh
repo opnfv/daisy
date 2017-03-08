@@ -41,6 +41,7 @@ do
     if [[ ! -z "$DAISYCORE_TAG" ]]; then
         pushd daisycloud-core
         git checkout $DAISYCORE_TAG
+        git fetch https://git.openstack.org/openstack/daisycloud-core refs/changes/91/441791/1 && git cherry-pick FETCH_HEAD
         popd
     fi
 
