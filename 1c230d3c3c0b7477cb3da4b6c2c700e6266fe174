@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_02124eb1",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-08T02:24:39Z",
+      "side": 1,
+      "message": "It is wrong. BM do not need qemu at all.",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 110
+      },
+      "revId": "1c230d3c3c0b7477cb3da4b6c2c700e6266fe174",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
