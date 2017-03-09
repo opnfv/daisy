@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_7f03a00f",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-09T08:05:25Z",
+      "side": 1,
+      "message": "I think the cidr, gateway and start/end can be retrieved from network.yml",
+      "range": {
+        "startLine": 33,
+        "startChar": 15,
+        "endLine": 39,
+        "endChar": 42
+      },
+      "revId": "2a5cc313b0780bed2750229bf42eab39da6d49a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
