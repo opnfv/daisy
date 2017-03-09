@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_55e79d40",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-03-09T15:23:58Z",
+      "side": 1,
+      "message": "\"$deploy_env \u003d\u003d 0\" means virtual. in line 52, \"daisy host-update\" also prints the host info.",
+      "parentUuid": "dabed58f_329b1f1a",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "76c9548fcf239257b1cccf4057bf7b1268c53a49",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_72f9974c",
         "filename": "deploy/check_os_progress.sh",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-09T13:06:42Z",
       "side": 1,
       "message": "can we pass a yaml file to daisy installer, then it will be more efficient.",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "76c9548fcf239257b1cccf4057bf7b1268c53a49",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_15d12557",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-03-09T15:23:58Z",
+      "side": 1,
+      "message": "let\u0027s refactor all the deploy scripts into python style in the next version. then it will be easier to get these info.",
+      "parentUuid": "dabed58f_72f9974c",
       "range": {
         "startLine": 49,
         "startChar": 4,
