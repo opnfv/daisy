@@ -267,6 +267,8 @@ if [ -f $WORKDIR/daisy/centos7.qcow2 ]; then
 fi
 
 echo "=======create daisy node================"
+[ -x $create_qcow2_path/daisy-img-modify.sh ] || chmod +x $create_qcow2_path/daisy-img-modify.sh
+[ -x $create_qcow2_path/centos-img-modify.sh ] || chmod +x $create_qcow2_path/centos-img-modify.sh
 if [ $IS_BARE == 0 ];then
     $create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $DAISY_IP $PARAS_IMAGE
     create_node $daisy_server_net daisy1 $vmdeploy_daisy_server_vm daisy
