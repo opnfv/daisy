@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_d50f0de0",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-03-09T15:40:41Z",
+      "side": 1,
+      "message": "why add these lines now ? is there any issue?\n\nand keep +x for files when sumit them to gerrit",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 98
+      },
+      "revId": "b3c9c2c9d9097ffed27425b6ac460e1edf9b63ed",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
