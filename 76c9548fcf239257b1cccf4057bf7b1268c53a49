@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_356469b8",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-03-09T15:36:17Z",
+      "side": 1,
+      "message": "it is very unclear",
+      "parentUuid": "dabed58f_55e79d40",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "76c9548fcf239257b1cccf4057bf7b1268c53a49",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_72f9974c",
         "filename": "deploy/check_os_progress.sh",
         "patchSetId": 1
