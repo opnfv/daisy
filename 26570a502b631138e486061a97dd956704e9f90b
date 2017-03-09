@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_5f49fcce",
+        "filename": "ci/build_rpm/build_rpms_docker.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-09T06:39:02Z",
+      "side": 1,
+      "message": "we\u0027d better maintain patches in repo and use patch command in future, becasue it may not suitable for more than one patches by using this method.",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 98
+      },
+      "revId": "26570a502b631138e486061a97dd956704e9f90b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
