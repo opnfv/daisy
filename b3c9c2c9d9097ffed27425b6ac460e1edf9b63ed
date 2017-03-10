@@ -22,6 +22,30 @@
       "revId": "b3c9c2c9d9097ffed27425b6ac460e1edf9b63ed",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_b0a06791",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-03-10T05:34:26Z",
+      "side": 1,
+      "message": "shell script runs normally,add these lines just assure that it can run in abnormal scenes.",
+      "parentUuid": "dabed58f_d50f0de0",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 98
+      },
+      "revId": "b3c9c2c9d9097ffed27425b6ac460e1edf9b63ed",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
