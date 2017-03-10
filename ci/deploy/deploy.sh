@@ -293,6 +293,10 @@ else
     echo "daisy install successfully"
 fi
 
+echo "===== generate known_hosts file in daisy vm========"
+touch $WORKSPACE/known_hosts
+scp $WORKSPACE/known_hosts root@$DAISY_IP:/root/.ssh/
+
 if [ $IS_BARE == 0 ];then
     echo "====== add relate config of kolla==========="
     ssh $SSH_PARAS $DAISY_IP "mkdir -p /etc/kolla/config/nova"
