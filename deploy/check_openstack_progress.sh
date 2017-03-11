@@ -1,7 +1,7 @@
 #!/bin/bash
 source /root/daisyrc_admin
 echo "check openstack installing progress..."
-cluster_id=`daisy cluster-list | awk -F "|" '{print $2}' | sed -n '4p'`
+cluster_id=`daisy cluster-list | awk -F "|" '{print $2}' | sed -n '4p' | tr -d " "`
 
 maxcount=180
 count=0

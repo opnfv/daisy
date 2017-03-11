@@ -35,7 +35,7 @@ do
 done
 
 source /root/daisyrc_admin
-cluster_id=`daisy cluster-list | awk -F "|" '{print $2}' | sed -n '4p'`
+cluster_id=`daisy cluster-list | awk -F "|" '{print $2}' | sed -n '4p' | tr -d " "`
 hosts_id=`daisy host-list | awk -F "|" '{print $2}'| grep -o "[^ ]\+\( \+[^ ]\+\)*"|tail -n +2`
 skip=false
 if [ $deploy_env == 0 ];then
