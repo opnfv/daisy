@@ -7,6 +7,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 import neutron
+import nova
 
 
 def _config_admin_external_network():
@@ -44,10 +45,23 @@ def _config_admin_external_subnet(nid):
     }
 
 
+def _create_flavor_m1_micro():
+    name = 'm1.micro'
+    novaclient = nova.Nova()
+    if not novaclient.get_flavor_by_name(name):
+        try:
+            return novaclient.create_flavor(name, ram=64, vcpus=1, disk=0)
+        except Exception as error:
+            print ('_create_flavor_m1_micro failed: {}'.format(str(error)))
+    else:
+        print ('Use existing m1.micro flavor')
+
+
 def main():
     neutronclient = neutron.Neutron()
     nid = neutronclient.create_network(*(_config_admin_external_network()))
     neutronclient.create_subnet(_config_admin_external_subnet(nid))
+    _create_flavor_m1_micro()
 
 if __name__ == '__main__':
     main()
