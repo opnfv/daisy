@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_30810e4b",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-14T09:42:21Z",
+      "side": 1,
+      "message": "Why not take the current coding style to name the function such as \"_create_image_for_testvm\" ?",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 24
+      },
+      "revId": "efb338dfa55d7d48cbd8166e5430c1c37b1cc1c9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
