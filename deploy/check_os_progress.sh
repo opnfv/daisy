@@ -37,9 +37,7 @@ done
 source /root/daisyrc_admin
 cluster_id=`daisy cluster-list | awk -F "|" '{print $2}' | sed -n '4p' | tr -d " "`
 hosts_id=`daisy host-list | awk -F "|" '{print $2}'| grep -o "[^ ]\+\( \+[^ ]\+\)*"|tail -n +2`
-skip=false
 if [ $deploy_env == 0 ];then
-    skip=true
     for host_id in $hosts_id
     do
         echo "detail info of host $host_id:"
@@ -53,9 +51,6 @@ else
     done
     echo "update all hosts ipmi user and passwd ok!"
 fi
-
-echo "run daisy install command"
-daisy install $cluster_id --skip-pxe-ipmi $skip
 
 echo "check os installing progress..."
 maxcount=180

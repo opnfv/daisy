@@ -1,4 +1,35 @@
 #!/bin/bash
+usage()
+{
+    cat << EOF
+USAGE: `basename $0`  [-n hosts_num]
+
+OPTIONS:
+  -n target node numbers
+
+EXAMPLE:
+    sudo `basename $0` -d 1 -n 5
+EOF
+}
+
+while getopts "n:h" OPTION
+do
+    case $OPTION in
+        n)
+            hosts_num=${OPTARG}
+            ;;
+        h)
+            usage
+            exit 0
+            ;;
+        *)
+            echo "${OPTION} is not a valid argument"
+            usage
+            exit 0
+            ;;
+    esac
+done
+
 source /root/daisyrc_admin
 echo "check openstack installing progress..."
 cluster_id=`daisy cluster-list | awk -F "|" '{print $2}' | sed -n '4p' | tr -d " "`
@@ -15,7 +46,7 @@ while true; do
 
     openstack_install_active=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $12}' | grep -c "active" `
     openstack_install_failed=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $12}' | grep -c "install-failed" `
-    if [ $openstack_install_active -eq 1 ]; then
+    if [ $openstack_install_active -eq $hosts_num ]; then
         echo "openstack installing successful ..."
         break
     elif [ $openstack_install_failed -gt 0 ]; then

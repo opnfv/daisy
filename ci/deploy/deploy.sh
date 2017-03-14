@@ -337,7 +337,7 @@ sleep 10
 if [ $IS_BARE == 0 ];then
     virsh reboot all_in_one
 fi
-ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/deploy/check_openstack_progress.sh"
+ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/deploy/check_openstack_progress.sh -n $TARGET_HOSTS_NUM"
 if [ $? -ne 0 ]; then
     exit 1;
 fi

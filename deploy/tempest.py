@@ -87,7 +87,9 @@ def prepare_install():
             add_hosts_interface(cluster_id, hosts_info, hosts_name,
                                 host_interface_map, vip)
             if 'env' in conf and conf['env'] == 0:
-                build_pxe_for_os(cluster_id)
+                build_pxe_without_ipmi(cluster_id)
+            else:
+                build_pxe_with_ipmi(cluster_id)
     except Exception:
         print("Deploy failed!!!.%s." % traceback.format_exc())
     else:
@@ -100,9 +102,15 @@ def build_pxe_for_discover(cluster_id):
     client.install.install(**cluster_meta)
 
 
-def build_pxe_for_os(cluster_id):
+def build_pxe_without_ipmi(cluster_id):
     cluster_meta = {'cluster_id': cluster_id,
                     'pxe_only': "true"}
+    client.install.install(**cluster_meta)
+
+
+def build_pxe_with_ipmi(cluster_id):
+    cluster_meta = {'cluster_id': cluster_id,
+                    'pxe_only': "false"}
     client.install.install(**cluster_meta)
 
 
