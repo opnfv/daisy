@@ -301,6 +301,8 @@ if [ $IS_BARE == 0 ];then
     echo "====== add relate config of kolla==========="
     ssh $SSH_PARAS $DAISY_IP "mkdir -p /etc/kolla/config/nova"
     ssh $SSH_PARAS $DAISY_IP "echo -e '[libvirt]\nvirt_type=qemu\ncpu_mode=none' >> /etc/kolla/config/nova/nova-compute.conf"
+    network_config="$REMOTE_SPACE/deploy/config/vm_environment/$LAB_NAME-$POD_NAME/network.yml"
+    ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/prepare.sh -nw $network_config"
 fi
 
 echo "===prepare cluster and pxe==="
