@@ -16,7 +16,7 @@ def _config_admin_external_network():
         'network': {
             'name': name,
             'admin_state_up': True,
-            'shared': True,
+            'shared': False,
             'provider:network_type': 'flat',
             'provider:physical_network': 'physnet1',
             'router:external': True
