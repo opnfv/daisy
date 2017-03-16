@@ -22,6 +22,30 @@
       "revId": "76df3b51399221211783b15cb3f0166b9ab10444",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_53eda78a",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-16T10:30:08Z",
+      "side": 1,
+      "message": "no,we do not need this anymore.",
+      "parentUuid": "9ab8dda7_d372f748",
+      "range": {
+        "startLine": 122,
+        "startChar": 44,
+        "endLine": 122,
+        "endChar": 45
+      },
+      "revId": "76df3b51399221211783b15cb3f0166b9ab10444",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
