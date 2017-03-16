@@ -17,21 +17,6 @@ def _write_conf_file(conf_file, conf):
         f.close()
 
 
-def _config(service, sub_server, conf):
-    service_conf_path = os.path.join(KOLLA_CONF_PATH, service)
-    sub_service_conf = os.path.join(service_conf_path,
-                                    '{}-{}.conf'.format(service, sub_server))
-    _make_dirs(service_conf_path)
-    _write_conf_file(sub_service_conf, conf)
-
-
-def _config_nova_api(network_file):
-    xnet = NetworkConfig(network_file=network_file).external_network
-    _config('nova', 'api',
-            '[DEFAULT]\n'
-            'default_floating_pool = {}\n'.format(xnet['network_name']))
-
-
 def _config_service(service, subs):
     def _wrap(func):
         def _config(*args):
@@ -43,6 +28,13 @@ def _config_service(service, subs):
                 _write_conf_file(conf_file, func(*args))
         return _config
     return _wrap
+
+
+@_config_service('nova', ['api'])
+def _set_default_floating_pool(network_file):
+    xnet = NetworkConfig(network_file=network_file).external_network
+    return '[DEFAULT]\n' \
+           'default_floating_pool = {}\n'.format(xnet['network_name'])
 
 
 @_config_service('heat', ['api', 'engine'])
@@ -59,7 +51,7 @@ def main():
                         required=True,
                         help='network configuration file')
     args = parser.parse_args()
-    _config_nova_api(args.network_file)
+    _set_default_floating_pool(args.network_file)
     _set_trusts_auth()
 
 
