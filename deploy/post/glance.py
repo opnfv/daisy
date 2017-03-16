@@ -2,6 +2,7 @@ import os
 
 import glanceclient
 
+from deploy.common import query
 import keystoneauth
 
 
@@ -27,11 +28,7 @@ class Glance(keystoneauth.Keystoneauth):
         return id
 
     def get_by_name(self, name):
-        for image in self.list():
-            if image.name == name:
-                return image.id
-
-        return None
+        return query.find(lambda image: image.name == name, self.list())
 
     def list(self):
         return self.controller.list()

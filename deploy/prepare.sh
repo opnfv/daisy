@@ -13,7 +13,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 usage: `basename $0` -n network_config_file
 
 OPTIONS:
-  -nw  network configuration path, necessary
+  -n  network configuration path, necessary
   -h  Print this message and exit
 
 Description:
