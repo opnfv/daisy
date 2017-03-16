@@ -314,12 +314,14 @@ else
 fi
 
 echo "======prepare host and pxe==========="
-ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA --network $NETWORK --host 'yes' --env $IS_BARE"
+ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA --network $NETWORK --host 'yes' --isbare $IS_BARE"
 
-echo "======daisy deploy os and openstack==========="
+echo "======daisy virtual-deploy os and openstack==========="
 if [ $IS_BARE == 0 ];then
     virsh destroy all_in_one
     virsh start all_in_one
+    sleep 20
+    ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py  --install 'yes'"
 fi
 
 echo "===========check install progress==========="
