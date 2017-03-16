@@ -8,6 +8,7 @@
 ##############################################################################
 import novaclient.client
 
+from deploy.common import query
 import keystoneauth
 
 
@@ -23,11 +24,8 @@ class Nova(keystoneauth.Keystoneauth):
         return flavor.id
 
     def get_flavor_by_name(self, name):
-        for flavor in self.list_flavors():
-            if flavor.name == name:
-                return flavor.id
-
-        return None
+        return query.find(lambda flavor: flavor.name == name,
+                          self.list_flavors())
 
     def list_flavors(self):
         return self.flavors.list(detailed=True)
