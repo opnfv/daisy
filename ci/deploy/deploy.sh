@@ -322,6 +322,9 @@ if [ $IS_BARE == 0 ];then
     virsh start all_in_one
 fi
 
+echo "======install daisy========================="
+ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py  --install 'yes'"
+
 echo "===========check install progress==========="
 ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/deploy/check_os_progress.sh -d $IS_BARE -n $TARGET_HOSTS_NUM"
 if [ $? -ne 0 ]; then
