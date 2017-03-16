@@ -43,13 +43,6 @@ if [ $deploy_env == 0 ];then
         echo "detail info of host $host_id:"
         daisy host-detail $host_id
     done
-else
-    for host_id in $hosts_id;
-    do
-        echo "update host $host_id ipmi user and passwd"
-        daisy host-update $host_id --ipmi-user zteroot --ipmi-passwd superuser
-    done
-    echo "update all hosts ipmi user and passwd ok!"
 fi
 
 echo "check os installing progress..."
