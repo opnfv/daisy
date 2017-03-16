@@ -22,3 +22,5 @@ if [ ! -e "$imagedir/registry-server.tar" ];then
 fi
 cp CentOS*.iso /var/lib/daisy/kolla
 
+mkdir -p /var/lib/daisy/images/
+cp cirros*.img /var/lib/daisy/images/
