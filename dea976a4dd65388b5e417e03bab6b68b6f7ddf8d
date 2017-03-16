@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_b3050316",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-16T11:14:51Z",
+      "side": 1,
+      "message": "change into:\n            if \u0027env\u0027 in conf and conf[\u0027env\u0027] \u003d\u003d 0:\n                build_pxe_only(cluster_id)\n            else:\n                build_pxe_with_ipmi(cluster_id)",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 42
+      },
+      "revId": "dea976a4dd65388b5e417e03bab6b68b6f7ddf8d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_d302f70a",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-16T11:14:51Z",
+      "side": 1,
+      "message": "change into:\n          install_daisy(cluster_id)",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 52
+      },
+      "revId": "dea976a4dd65388b5e417e03bab6b68b6f7ddf8d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_5317e751",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-16T11:14:51Z",
+      "side": 1,
+      "message": "change into:\ndef build_pxe_only(cluster_id):\n    cluster_meta \u003d {\u0027cluster_id\u0027: cluster_id,\n                    \u0027pxe_only\u0027: \"true\"\n                    \u0027skip_pxe_ipmi\u0027: \"false\"}\n    client.install.install(**cluster_meta)",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 42
+      },
+      "revId": "dea976a4dd65388b5e417e03bab6b68b6f7ddf8d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_1322cfb9",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-16T11:14:51Z",
+      "side": 1,
+      "message": "Add this method:\n\ndef build_pxe_with_ipmi(cluster_id):\n    cluster_meta \u003d {\u0027cluster_id\u0027: cluster_id,\n                    \u0027pxe_only\u0027: \"false\"\n                    \u0027skip_pxe_ipmi\u0027: \"false\"}\n    client.install.install(**cluster_meta)",
+      "revId": "dea976a4dd65388b5e417e03bab6b68b6f7ddf8d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_13096f31",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-16T11:14:51Z",
+      "side": 1,
+      "message": "change into:\ndef install_daisy(cluster_id):\n    cluster_meta \u003d {\u0027cluster_id\u0027: cluster_id,\n                    \u0027skip_pxe_ipmi\u0027: \"True\"}\n    client.install.install(**cluster_meta)",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 42
+      },
+      "revId": "dea976a4dd65388b5e417e03bab6b68b6f7ddf8d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
