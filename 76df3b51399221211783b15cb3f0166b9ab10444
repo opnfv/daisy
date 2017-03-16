@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_d372f748",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-16T07:59:26Z",
+      "side": 1,
+      "message": "Did we also need \u0027pxe_only\u0027: \"false\" here?",
+      "range": {
+        "startLine": 122,
+        "startChar": 44,
+        "endLine": 122,
+        "endChar": 45
+      },
+      "revId": "76df3b51399221211783b15cb3f0166b9ab10444",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
