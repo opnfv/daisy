@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_30b029dd",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-16T02:13:47Z",
+      "side": 0,
+      "message": "Please rename it to build_pxe_only",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 26
+      },
+      "revId": "d355d53f3cd33fb7ea0790c8b6deba0d70fa2ce4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_90bb15c4",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-16T02:13:47Z",
+      "side": 0,
+      "message": "Please rename it to build_pxe_ipmi_and_wait_os_install",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 23
+      },
+      "revId": "d355d53f3cd33fb7ea0790c8b6deba0d70fa2ce4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}

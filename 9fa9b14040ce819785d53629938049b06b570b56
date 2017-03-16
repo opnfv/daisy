@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_b0c3b937",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-16T02:13:47Z",
+      "side": 1,
+      "message": "Please do not leak non-related code into this check_os_progress.sh. Otherwise, others would think this code is related to checking os progress and intent to copy it every where when they want to check os progress too.\n\nSo I suggest, move this back to deploy.sh.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 50
+      },
+      "revId": "9fa9b14040ce819785d53629938049b06b570b56",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_d0c0ad2c",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-16T02:13:47Z",
+      "side": 1,
+      "message": "See above",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "9fa9b14040ce819785d53629938049b06b570b56",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
