@@ -8,6 +8,7 @@
 ##############################################################################
 from neutronclient.neutron import client as neutronclient
 
+from deploy.common import query
 import keystoneauth
 
 
@@ -17,14 +18,14 @@ class Neutron(object):
         self.client = neutronclient.Client(api_v, session=session)
 
     def create_network(self, name, body):
-        if not self.is_network_exist(name):
+        if not self.get_network_by_name(name):
             return self._create_network(name, body)
         else:
             print('admin_ext [{}] already exist'.format(name))
             return None
 
     def create_subnet(self, body=None):
-        if not self.is_subnet_exist(body):
+        if not self.get_subnet_by_name(body):
             return self._create_subnet(body)
         else:
             print ('subnet [{}] already exist'.format(body))
@@ -36,20 +37,18 @@ class Neutron(object):
     def list_subnets(self):
         return self.client.list_subnets()['subnets']
 
-    def is_network_exist(self, name):
-        return [] != filter(lambda n: n['name'] == name, self.list_networks())
+    def get_network_by_name(self, name):
+        return query.find(lambda nw: nw['name'] == name, self.list_networks())
 
-    def is_subnet_exist(self, body):
-        print 'body: {}'.format(body)
-
-        def same_subnet(n):
-            print 'n: {}'.format(n)
+    def get_subnet_by_name(self, body):
+        def same_subnet(this, that):
             for item in ['name', 'network_id']:
-                if n[item] != body['subnets'][0][item]:
+                if this[item] != body['subnets'][0][item]:
                     return False
             return True
 
-        return [] != filter(lambda n: same_subnet(n), self.list_subnets())
+        return query.find(lambda n: same_subnet(n, body['subnets'][0]),
+                          self.list_subnets())
 
     def _create_network(self, name, body):
         try:
