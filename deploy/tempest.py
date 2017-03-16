@@ -31,6 +31,8 @@ _CLI_OPTS = [
                help='Config cluster'),
     cfg.StrOpt('host',
                help='Config host'),
+    cfg.StrOpt('install',
+               help='install daisy)'
     cfg.IntOpt('env',
                help='deploy environment'),
 ]
@@ -87,9 +89,16 @@ def prepare_install():
             add_hosts_interface(cluster_id, hosts_info, hosts_name,
                                 host_interface_map, vip)
             if 'env' in conf and conf['env'] == 0:
-                build_pxe_without_ipmi(cluster_id)
+                build_pxe_only(cluster_id)
+        elif conf['install'] and conf['install'] == 'yes':
+            skip_pxe_ipmi = None
+            if 'env' in conf and conf['env'] == 0:
+                skip_pxe_ipmi = 'true'
             else:
-                build_pxe_with_ipmi(cluster_id)
+                skip_pxe_ipmi = None
+            print("begin to install daisy!")
+            install_daisy(cluster_id, skip_pxe_ipmi)
+
     except Exception:
         print("Deploy failed!!!.%s." % traceback.format_exc())
     else:
@@ -102,15 +111,15 @@ def build_pxe_for_discover(cluster_id):
     client.install.install(**cluster_meta)
 
 
-def build_pxe_without_ipmi(cluster_id):
+def build_pxe_only(cluster_id):
     cluster_meta = {'cluster_id': cluster_id,
                     'pxe_only': "true"}
     client.install.install(**cluster_meta)
 
 
-def build_pxe_with_ipmi(cluster_id):
+def install_daisy(cluster_id, skip_pxe_ipmi=None):
     cluster_meta = {'cluster_id': cluster_id,
-                    'pxe_only': "false"}
+                    'skip_pxe_ipmi': skip_pxe_ipmi}
     client.install.install(**cluster_meta)
 
 
@@ -159,6 +168,8 @@ def add_hosts_interface(cluster_id, hosts_info, hosts_name, host_interface_map,
     for host_name, host in zip(hosts_name, hosts_info):
         host = host.to_dict()
         host['cluster'] = cluster_id
+        host['ipmi_user'] = 'zteroot'
+        host['ipmi_passwd'] = 'superuser'
         for interface in host['interfaces']:
             interface_name = interface['name']
             if interface_name in host_interface_map:
