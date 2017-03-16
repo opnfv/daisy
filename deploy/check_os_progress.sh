@@ -43,6 +43,8 @@ if [ $deploy_env == 0 ];then
         echo "detail info of host $host_id:"
         daisy host-detail $host_id
     done
+    echo "execute daisy install of virtual deploy!"
+    daisy install $cluster_id --skip-pxe-ipmi true
 else
     for host_id in $hosts_id;
     do
@@ -50,6 +52,8 @@ else
         daisy host-update $host_id --ipmi-user zteroot --ipmi-passwd superuser
     done
     echo "update all hosts ipmi user and passwd ok!"
+    echo "execute daisy install of baremetal deploy!"
+    daisy install $cluster_id
 fi
 
 echo "check os installing progress..."
