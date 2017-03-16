@@ -26,7 +26,7 @@ cat << EOF
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 `basename $0`: Deploys the Daisy4NFV
 
-usage: `basename $0` -d dha_conf -n network_con -l lab_name -p pod_name
+usage: `basename $0` -d dha_conf -l lab_name -p pod_name
                      -r remote_workspace -w workdir
 
 OPTIONS:
@@ -34,7 +34,6 @@ OPTIONS:
   -B  PXE Bridge for booting Daisy Master, optional
   -d  Configuration yaml file of DHA, optional, will be deleted later
   -D  Dry-run, does not perform deployment, will be deleted later
-  -n  Configuration yaml file of network, optional
   -l  LAB name, necessary
   -p  POD name, necessary
   -r  Remote workspace in target server, optional
@@ -48,7 +47,6 @@ Examples:
 sudo `basename $0` -b base_path
                    -l zte -p pod2 -B pxebr
                    -d ./deploy/config/vm_environment/zte-virtual1/deploy.yml
-                   -n ./deploy/config/vm_environment/zte-virtual1/network.yml
                    -r /opt/daisy -w /opt/daisy
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 EOF
@@ -66,7 +64,6 @@ SCRIPT_PATH=$(readlink -f $(dirname $0))
 WORKSPACE=$(cd ${SCRIPT_PATH}/../..; pwd)
 VM_STORAGE=/home/qemu/vms
 DHA_CONF=''
-NETWORK_CONF=''
 LAB_NAME=''
 POD_NAME=''
 TARGET_HOSTS_NUM=0
@@ -93,9 +90,6 @@ do
             ;;
         D)
             DRY_RUN=1
-            ;;
-        n)
-            NETWORK_CONF=${OPTARG}
             ;;
         l)
             LAB_NAME=${OPTARG}
@@ -301,8 +295,7 @@ if [ $IS_BARE == 0 ];then
     echo "====== add relate config of kolla==========="
     ssh $SSH_PARAS $DAISY_IP "mkdir -p /etc/kolla/config/nova"
     ssh $SSH_PARAS $DAISY_IP "echo -e '[libvirt]\nvirt_type=qemu\ncpu_mode=none' >> /etc/kolla/config/nova/nova-compute.conf"
-    NETWORK_CONF="$REMOTE_SPACE/deploy/config/vm_environment/$LAB_NAME-$POD_NAME/network.yml"
-    ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/prepare.sh -n $NETWORK_CONF"
+    ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/prepare.sh -n $NETWORK"
 fi
 
 echo "===prepare cluster and pxe==="
