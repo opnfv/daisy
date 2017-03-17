@@ -159,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_3f823201",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-17T09:37:55Z",
+      "side": 1,
+      "message": "I think modify env to isbare will be proprely.",
+      "parentUuid": "9ab8dda7_0665afe0",
+      "range": {
+        "startLine": 91,
+        "startChar": 15,
+        "endLine": 91,
+        "endChar": 49
+      },
+      "revId": "f1e7c0a8c6b31ad4cb4aa507931318ea73a6a1b7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_09daa078",
         "filename": "deploy/tempest.py",
         "patchSetId": 8
