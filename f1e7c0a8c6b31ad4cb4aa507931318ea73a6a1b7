@@ -135,6 +135,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_04d127fb",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-17T06:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_09daa078",
+      "range": {
+        "startLine": 92,
+        "startChar": 16,
+        "endLine": 92,
+        "endChar": 30
+      },
+      "revId": "f1e7c0a8c6b31ad4cb4aa507931318ea73a6a1b7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_29576404",
         "filename": "deploy/tempest.py",
         "patchSetId": 8
@@ -146,6 +170,30 @@
       "writtenOn": "2017-03-16T16:04:20Z",
       "side": 1,
       "message": "install_os_for_bm_oneshot",
+      "range": {
+        "startLine": 94,
+        "startChar": 16,
+        "endLine": 94,
+        "endChar": 35
+      },
+      "revId": "f1e7c0a8c6b31ad4cb4aa507931318ea73a6a1b7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_24ceab5b",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-17T06:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_29576404",
       "range": {
         "startLine": 94,
         "startChar": 16,
@@ -204,6 +252,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_c4da2f17",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-17T06:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_e9406c37",
+      "range": {
+        "startLine": 96,
+        "startChar": 12,
+        "endLine": 96,
+        "endChar": 25
+      },
+      "revId": "f1e7c0a8c6b31ad4cb4aa507931318ea73a6a1b7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_a9b8342b",
         "filename": "deploy/tempest.py",
         "patchSetId": 8
@@ -215,6 +287,30 @@
       "writtenOn": "2017-03-16T16:04:20Z",
       "side": 1,
       "message": "Please rename it to install_os_for_vm_step1",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 18
+      },
+      "revId": "f1e7c0a8c6b31ad4cb4aa507931318ea73a6a1b7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_04f8477b",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-17T06:20:51Z",
+      "side": 1,
+      "message": "install_os_for_vm_step1 or step2?\nrename this to step1 is not with the change of build_pxe_only in line 92.",
+      "parentUuid": "9ab8dda7_a9b8342b",
       "range": {
         "startLine": 110,
         "startChar": 4,
