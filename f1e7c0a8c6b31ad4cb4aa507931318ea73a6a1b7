@@ -159,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_446ddf03",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-17T07:33:19Z",
+      "side": 1,
+      "message": "Sorry , it should be install_os_for_vm_step1",
+      "parentUuid": "9ab8dda7_09daa078",
+      "range": {
+        "startLine": 92,
+        "startChar": 16,
+        "endLine": 92,
+        "endChar": 30
+      },
+      "revId": "f1e7c0a8c6b31ad4cb4aa507931318ea73a6a1b7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_29576404",
         "filename": "deploy/tempest.py",
         "patchSetId": 8
@@ -311,6 +335,30 @@
       "side": 1,
       "message": "install_os_for_vm_step1 or step2?\nrename this to step1 is not with the change of build_pxe_only in line 92.",
       "parentUuid": "9ab8dda7_a9b8342b",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 18
+      },
+      "revId": "f1e7c0a8c6b31ad4cb4aa507931318ea73a6a1b7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_647263e7",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-17T07:33:19Z",
+      "side": 1,
+      "message": "install_os_for_vm_step1",
+      "parentUuid": "9ab8dda7_04f8477b",
       "range": {
         "startLine": 110,
         "startChar": 4,
