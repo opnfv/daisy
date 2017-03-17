@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_c44a2f55",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-03-17T01:41:53Z",
+      "side": 1,
+      "message": "For B/M, to provide backward compatibility, we can not call install API twice, so please  ignore this.",
+      "parentUuid": "9ab8dda7_86043f16",
+      "revId": "dea976a4dd65388b5e417e03bab6b68b6f7ddf8d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_5317e751",
         "filename": "deploy/tempest.py",
         "patchSetId": 7
