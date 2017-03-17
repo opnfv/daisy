@@ -64,7 +64,7 @@ def _prepare_cirros():
     url = 'http://download.cirros-cloud.net'
     version = '0.3.5'
     name = 'cirros-{}-x86_64-disk.img'.format(version)
-    img = os.path.join(os.path.abspath(os.path.dirname(__file__)), name)
+    img = os.path.join("/var/lib/daisy/images", name)
     if not os.path.isfile(img):
         cmd = "wget %(url)s/%(version)s/%(name)s -O %(path)s" % {
             'url': url,
