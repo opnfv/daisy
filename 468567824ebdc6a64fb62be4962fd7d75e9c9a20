@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_7c2513aa",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-03-20T01:23:07Z",
+      "side": 1,
+      "message": "add else statement?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 47
+      },
+      "revId": "468567824ebdc6a64fb62be4962fd7d75e9c9a20",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
