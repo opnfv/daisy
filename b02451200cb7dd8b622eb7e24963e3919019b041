@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_0da3839f",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-03-21T01:20:25Z",
+      "side": 1,
+      "message": "is it \"333333",
+      "range": {
+        "startLine": 353,
+        "startChar": 33,
+        "endLine": 353,
+        "endChar": 39
+      },
+      "revId": "b02451200cb7dd8b622eb7e24963e3919019b041",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_2dce875b",
+        "filename": "deploy/config/network.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-03-21T01:20:25Z",
+      "side": 1,
+      "message": "suggest to unify to add file comment head.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 6
+      },
+      "revId": "b02451200cb7dd8b622eb7e24963e3919019b041",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_eda94f7c",
+        "filename": "deploy/post.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-03-21T01:20:25Z",
+      "side": 1,
+      "message": "-nw or -n? it isn\u0027t same with the last example discription.",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "b02451200cb7dd8b622eb7e24963e3919019b041",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
