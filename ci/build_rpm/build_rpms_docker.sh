@@ -14,7 +14,7 @@ rpm_build_dir=/opt/daisy4nfv
 rpm_output_dir=$rpm_build_dir/build_output
 tmp_rpm_build_dir=/home/cache/daisy4nfv
 
-DAISYCORE_TAG=1.3.0
+DAISYCORE_TAG=
 
 if [[ -d $tmp_rpm_build_dir ]]; then
     rm -fr $tmp_rpm_build_dir
@@ -41,7 +41,6 @@ do
     if [[ ! -z "$DAISYCORE_TAG" ]]; then
         pushd daisycloud-core
         git checkout $DAISYCORE_TAG
-        git fetch https://git.openstack.org/openstack/daisycloud-core refs/changes/91/441791/1 && git cherry-pick FETCH_HEAD
         popd
     fi
 
