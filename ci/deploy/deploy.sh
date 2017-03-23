@@ -342,8 +342,10 @@ fi
 
 if [ $IS_BARE == 0 ];then
     echo "============post deploy====================="
-    ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/post/execute.py"
+    ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/post.sh -n $NETWORK"
 fi
+
+echo "============deploy success==================="
 
 exit 0
 
