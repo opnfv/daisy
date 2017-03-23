@@ -11,7 +11,7 @@
 imagebranch="newton"
 imageversion="latest"
 imageserver="http://120.24.17.215"
-imagedir="/home/kolla_install/docker/"
+imagedir="/var/lib/daisy/versionfile/kolla"
 imagename="kolla-image-$imagebranch-$imageversion.tgz"
 mkdir -p $imagedir
 if [ ! -e "$imagedir/$imagename" ];then
