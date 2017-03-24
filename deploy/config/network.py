@@ -64,11 +64,3 @@ class NetworkConfig(object):
         prefix = self.type2name[network_type]
         name = '{}_{}'.format(prefix, field) if field else prefix
         setattr(self, name, value)
-
-    @property
-    def external_network(self):
-        return self._get_network('EXTERNAL')
-
-    @property
-    def external_name(self):
-        return self.external_network['network_name']

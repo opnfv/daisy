@@ -40,9 +40,9 @@ def _config_service(service, subs):
 
 @_config_service('nova', ['api'])
 def _set_default_floating_pool(network_file):
-    xnet = NetworkConfig(network_file=network_file).external_network
+    xnet = NetworkConfig(network_file=network_file).ext_network_name
     return '[DEFAULT]\n' \
-           'default_floating_pool = {}\n'.format(xnet['network_name'])
+           'default_floating_pool = {}\n'.format(xnet)
 
 
 @_config_service('heat', ['api', 'engine'])
