@@ -6,15 +6,14 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-import novaclient.client
+from novaclient import client
 
 import keystoneauth
 
 
-class Nova(keystoneauth.Keystoneauth):
+class Nova(keystoneauth.ClientBase):
     def __init__(self, version='2', openrc=None):
-        super(Nova, self).__init__(openrc)
-        self.client = novaclient.client.Client(version, session=self.session)
+        super(Nova, self).__init__(client.Client, version, openrc)
         self.flavors = self.client.flavors
 
     def create_flavor(self, name, ram, vcpus, disk, is_public=True):

@@ -13,10 +13,9 @@ import glanceclient
 import keystoneauth
 
 
-class Glance(keystoneauth.Keystoneauth):
+class Glance(keystoneauth.ClientBase):
     def __init__(self, version='2', openrc=None):
-        super(Glance, self).__init__(openrc)
-        self.client = glanceclient.Client(version, session=self.session)
+        super(Glance, self).__init__(glanceclient.Client, version, openrc)
         self.controller = self.client.images
 
     def create(self, name, path,
