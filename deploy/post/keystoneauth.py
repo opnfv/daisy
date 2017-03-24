@@ -64,3 +64,9 @@ class Keystoneauth(object):
         return reduce(parse_credential,
                       [(k, v) for (k, v) in raws.iteritems() if k in maps],
                       defaultdict(dict))
+
+
+class ClientBase(Keystoneauth):
+    def __init__(self, klass, version, openrc):
+        super(ClientBase, self).__init__(openrc)
+        self.client = klass(version, session=self.session)

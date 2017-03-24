@@ -6,16 +6,15 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-from neutronclient.neutron import client as neutronclient
+from neutronclient.neutron import client
 
 from deploy.common import query
 import keystoneauth
 
 
-class Neutron(object):
-    def __init__(self, api_v='2', openrc=None):
-        session = keystoneauth.Keystoneauth(openrc).session
-        self.client = neutronclient.Client(api_v, session=session)
+class Neutron(keystoneauth.ClientBase):
+    def __init__(self, version='2', openrc=None):
+        super(Neutron, self).__init__(client.Client, version, openrc)
 
     def create_network(self, name, body):
         if not self.get_network_by_name(name):
