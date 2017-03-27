@@ -89,8 +89,10 @@ def prepare_install():
             add_hosts_interface(cluster_id, hosts_info, hosts_name,
                                 host_interface_map, vip)
             if 'isbare' in conf and conf['isbare'] == 0:
+                enable_ceph_backend(cluster_id, conf['isbare'])
                 install_os_for_vm_step1(cluster_id)
             else:
+                enable_ceph_backend(cluster_id, conf.get('isbare'))
                 print("daisy baremetal deploy start")
                 install_os_for_bm_oneshot(cluster_id)
         elif conf['install'] and conf['install'] == 'yes':
@@ -213,6 +215,27 @@ def add_host_role(cluster_id, host_id, host_exp_name, host_real_name, vip):
         role_computer_update_meta = {'nodes': [host_id],
                                      'cluster_id': cluster_id}
         client.roles.update(computer_role_id, **role_computer_update_meta)
+
+
+def enable_ceph_backend(cluster_id, is_bare):
+    role_meta = {'filters': {'cluster_id': cluster_id}}
+    role_list_generator = client.roles.list(**role_meta)
+    role_list = [role for role in role_list_generator]
+    lb_role_id = [role.id for role in role_list if
+                  role.name == "CONTROLLER_LB"][0]
+    if is_bare == 0:
+        service_disk_meta = {'service':'cinder',
+                             'disk_location':'local',
+                             'partition':'/dev/sdb',
+                             'protocol_type':'LVM',
+                             'role_id':lb_role_id }
+    else:
+        service_disk_meta = {'service':'cinder',
+                             'disk_location':'local',
+                             'partition':'/dev/sdb',
+                             'protocol_type':'CEPH',
+                             'role_id':lb_role_id }
+    client.disk_array.service_disk_add(**service_disk_meta)
 
 
 if __name__ == "__main__":
