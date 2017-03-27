@@ -88,9 +88,14 @@ def prepare_install():
             cluster_id = cluster_info.id
             add_hosts_interface(cluster_id, hosts_info, hosts_name,
                                 host_interface_map, vip)
+            disk_name = '/dev/sdb'
             if 'isbare' in conf and conf['isbare'] == 0:
+                protocol_type = 'LVM'
+                enable_cinder_backend(cluster_id, disk_name, protocol_type)
                 install_os_for_vm_step1(cluster_id)
             else:
+                protocol_type = 'CEPH'
+                enable_cinder_backend(cluster_id, disk_name, protocol_type)
                 print("daisy baremetal deploy start")
                 install_os_for_bm_oneshot(cluster_id)
         elif conf['install'] and conf['install'] == 'yes':
@@ -215,6 +220,23 @@ def add_host_role(cluster_id, host_id, host_exp_name, host_real_name, vip):
         role_computer_update_meta = {'nodes': [host_id],
                                      'cluster_id': cluster_id}
         client.roles.update(computer_role_id, **role_computer_update_meta)
+
+
+def enable_cinder_backend(cluster_id, disk_name, protocol_type):
+    role_meta = {'filters': {'cluster_id': cluster_id}}
+    role_list_generator = client.roles.list(**role_meta)
+    role_list = [role for role in role_list_generator]
+    lb_role_id = [role.id for role in role_list if
+                  role.name == "CONTROLLER_LB"][0]
+    service_disk_meta = {'service': 'cinder',
+                         'disk_location': 'local',
+                         'partition': disk_name,
+                         'protocol_type': protocol_type,
+                         'role_id': lb_role_id}
+    try:
+        client.disk_array.service_disk_add(**service_disk_meta)
+    except Exception as e:
+        print e
 
 
 if __name__ == "__main__":
