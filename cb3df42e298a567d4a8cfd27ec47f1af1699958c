@@ -34,6 +34,24 @@
       "revId": "cb3df42e298a567d4a8cfd27ec47f1af1699958c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_e23ce795",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 2651
+      },
+      "writtenOn": "2017-03-28T05:40:14Z",
+      "side": 1,
+      "message": "def enable_ceph_backend(cluster_id, protocol_type)",
+      "parentUuid": "9ab8dda7_02bedbff",
+      "revId": "cb3df42e298a567d4a8cfd27ec47f1af1699958c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
