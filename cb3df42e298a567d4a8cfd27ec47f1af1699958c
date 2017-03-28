@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_e2d5c743",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 2651
+      },
+      "writtenOn": "2017-03-28T04:40:05Z",
+      "side": 1,
+      "message": "how about inputing protocol_type directly, instead of doing if...else... check once again?",
+      "revId": "cb3df42e298a567d4a8cfd27ec47f1af1699958c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
