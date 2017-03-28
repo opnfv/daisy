@@ -16,6 +16,24 @@
       "revId": "cb3df42e298a567d4a8cfd27ec47f1af1699958c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_02bedbff",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-28T05:27:28Z",
+      "side": 1,
+      "message": "we have to input protocol_type into service_disk table.\nwhat do you mean by inputing protocol_type directly?\nAnd do you have any good idea to input protocol_type directly?",
+      "parentUuid": "9ab8dda7_e2d5c743",
+      "revId": "cb3df42e298a567d4a8cfd27ec47f1af1699958c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
