@@ -94,6 +94,8 @@ def prepare_install():
                 print("daisy baremetal deploy start")
                 install_os_for_bm_oneshot(cluster_id)
         elif conf['install'] and conf['install'] == 'yes':
+            cluster_info = get_cluster()
+            cluster_id = cluster_info.id
             install_os_for_vm_step2(cluster_id)
 
     except Exception:

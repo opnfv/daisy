@@ -321,7 +321,7 @@ if [ $IS_BARE == 0 ];then
     virsh destroy all_in_one
     virsh start all_in_one
     sleep 20
-    ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py  --install 'yes'"
+    ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --install 'yes'"
 fi
 
 echo "===========check install progress==========="
