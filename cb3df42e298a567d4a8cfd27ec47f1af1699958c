@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_b15dd7eb",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-29T09:21:22Z",
+      "side": 1,
+      "message": "good idea\nthank you for your advice",
+      "parentUuid": "9ab8dda7_e23ce795",
+      "revId": "cb3df42e298a567d4a8cfd27ec47f1af1699958c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_b6406d57",
         "filename": "deploy/tempest.py",
         "patchSetId": 2
