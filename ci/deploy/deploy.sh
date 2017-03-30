@@ -20,7 +20,7 @@
 ############################################################################
 # BEGIN of usage description
 #
-usage ()
+function usage
 {
 cat << EOF
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -148,8 +148,8 @@ deploy_path=$WORKSPACE/deploy
 
 create_qcow2_path=$WORKSPACE/tools
 
-daisy_server_net=$WORKSPACE/templates/virtual_environment/networks/daisy.xml
-target_node_net=$WORKSPACE/templates/virtual_environment/networks/os-all_in_one.xml
+vmdeploy_daisy_server_net=$WORKSPACE/templates/virtual_environment/networks/daisy.xml
+vmdeploy_target_node_net=$WORKSPACE/templates/virtual_environment/networks/os-all_in_one.xml
 vmdeploy_daisy_server_vm=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
 vmdeploy_target_node_vm=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
 
@@ -173,8 +173,8 @@ if [ $DRY_RUN -eq 1 ]; then
     DAISY_IP: $DAISY_IP
     DAISY_PASSWD: $DAISY_PASSWD
     PARAS_IMAGE: $PARAS_IMAGE
-    daisy_server_net: $daisy_server_net
-    target_node_net: $target_node_net
+    vmdeploy_daisy_server_net: $vmdeploy_daisy_server_net
+    vmdeploy_target_node_net: $vmdeploy_target_node_net
     vmdeploy_daisy_server_vm: $vmdeploy_daisy_server_vm
     vmdeploy_target_node_vm: $vmdeploy_target_node_vm
     """
@@ -263,7 +263,7 @@ fi
 echo "=======create daisy node================"
 if [ $IS_BARE == 0 ];then
     $create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $DAISY_IP $PARAS_IMAGE
-    create_node $daisy_server_net daisy1 $vmdeploy_daisy_server_vm daisy
+    create_node $vmdeploy_daisy_server_net daisy1 $vmdeploy_daisy_server_vm daisy
 else
     $create_qcow2_path/daisy-img-modify.sh -c $create_qcow2_path/centos-img-modify.sh -a $DAISY_IP $PARAS_IMAGE
     virsh define $bmdeploy_daisy_server_vm
@@ -304,7 +304,7 @@ ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --
 echo "=====create and find node======"
 if [ $IS_BARE == 0 ];then
     qemu-img create -f qcow2 ${VM_STORAGE}/all_in_one.qcow2 200G
-    create_node $target_node_net daisy2 $vmdeploy_target_node_vm all_in_one
+    create_node $vmdeploy_target_node_net daisy2 $vmdeploy_target_node_vm all_in_one
     sleep 20
 else
     for i in $(seq 106 110); do
