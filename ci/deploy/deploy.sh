@@ -138,6 +138,7 @@ NETWORK=$REMOTE_SPACE/labs/$LAB_NAME/$POD_NAME/daisy/config/network.yml
 
 # set temporay workdir
 WORKDIR=${WORKDIR:-/tmp/workdir}
+export WORKDIR
 
 [[ $POD_NAME =~ (virtual) ]] && IS_BARE=0
 
