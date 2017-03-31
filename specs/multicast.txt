@@ -1,0 +1,355 @@
+Requirement
+===========
+1. When deploying a large OPNFV/OpenStack cluster, we would like to take the advantage of UDP multicast to prevent the network bottleneck when distributing Kolla container from one Daisy Server to all target hosts by using unicast.
+2. When it comes to auto scaling (extension) of compute nodes, use unicast is acceptable, since the number of nodes in this condition is usually small.
+
+The basic step to introduce multicast to deployment is:
+1) Do not setup the monopolistic docker registry server on Daisy server any more.
+2) Daisy server, as the multicast server, prepares the image file to be transmitted, and count how many target hosts(as the multicast clients)that should receive the image file simultaneously.
+3) Multicast clients tell the multicast server about ready to receive the image.
+4) Multicast server transmits image over UDP multicast channel.
+5) Multicast clients report success after received the whole image.
+7) Setup registry server on each target hosts based upon received image.
+8) Setup Kolla ansible to use 127.0.0.1 as the registry server IP so that the real docker container retrieving network activities only take place inside target hosts.
+
+Design
+======
+
+Why not TIPC
+------------
+TIPC or its wrapper such as ZeroMQ is good at multicast. But we do not want to use it for reasons:
+1. I have been working as a contributor of TIPC for years, knowing that the default TIPC kernel module equipped by CentOS7(kernel verison 3.10) is now stable especially in L3 multicast (although we can use L2 multicast, but the network will be limited to L2). If errors happen, it is hard for us to recover a node from kernel panic.
+2. TIPC's design is based on a stable multicast network and stable node cluster environment. But the real environment is generally not in that case. When multicast is broken, we should switch to unicast, but TIPC currently do not have such capability.
+
+Top level design
+----------------
+1. There are two kind of thread on the server side, one is UDP multicast thread the other is TCP sync/retransmit thread. There will be more than one TCP threads since one TCP thread can only serve a limited client (say 64~128) in order to limit the CPU load and unicast retransmit network usage.
+2. There is only on thread on client side.
+3. All the packets that a client lost during UDP multicast will be request by client to the TCP thread and resend by using TCP unicast, if unicast still cannot deliver the packets successfully, the client will fail.
+4. Each packet needs checksum.
+
+
+UDP Server Design (runs on Daisy Server)
+----------------------------------------
+
+1. Multicast group IP and Port should be configurable, as well as the interface that will be used as the egress of the multicast packets. We can let user to pass the interface's IP as the handle to find the egress.
+2. Image data to be sent is passed to server through stdin.
+3. Consider the size of image is large (xGB), the server cannot pre-allocate whole buffer to hold all image at once. Besides, since the data is from stdin and the actual length is unpredictable. So the server should split the data into small size buffers and send to the clients one by one. Furthermore, buffer shall be divided into packets which size is MTU including the UDP/IP header. Then the buffer size can be , for example 1024 * MTU including the UDP/IP header.
+4. After sending one buffer to client the server should stop and get feedback from client to see if all clients have got all packets in that buffer. If any clients lost any buffer, client should request the server to resend packets from a more stable way(TCP).
+5. when got the EOF from stdin, server should send a buffer which size is 0 as an EOF signal to the client to let it know about the end of sending.
+
+
+
+TCP Server Design (runs on Daisy Server)
+----------------------------------------
+
+1. All TCP server threads and the only one UDP thread share one process. The UDP thread is the parent thread, and the first TCP thread is the child, while the second TCP thread is the grandchild, and so on. Thus, for each TCP thread, there is only one parent and at most one child.
+2. TCP thread accepts the connect request from client. The number of client is predefined by server cmdline parameter. Each TCP thread connect with at most , say 64 clients, if there are more clients to be connected to, then a child TCP thread is spawned by the parent.
+3. Before UDP thread sending any buffer to client, all TCP threads should send UDP multicast IP/Port information to their clients beforehand.
+4. During each buffer sending cycle, TCP threads send a special protocol message to tell clients about the size/id of the buffer and id of each packet in it. After getting acknowledgements from all clients, TCP threads then signal the UDP thread to start multicasting buffer over UDP. After multicasting finished, TCP threads notifies clients multicast is done, and wait acknowledgements from clients again. If clients requests retransmission, then it is the responsibility of TCP threads to resend packets over unicast. If no retransmission needed, then clients should signal TCP threads that they are ready for the next buffer to come.
+5. Repeat step 4 if buffer size is not 0 in the last round, otherwise, TCP server shutdown connection and exit.
+
+
+Server cmdline usage example
+----------------------------
+
+./server <local_ip> <number_of_clients> [port] < kolla_image.tgz
+
+<local_ip> is used here to specify the multicast egress interface. But which interface will be used by TCP is leaved to route table to decide.
+<number_of_clients> indicates the number of clients , thus the number of target hosts which need to receive the image.
+[port] is the port that will be used by both UDP and TCP. Default value can be used if user does not provide it.
+
+
+Client Design.Target Host side.
+--------------------------------
+
+1. Each target hosts has only one client process.
+2. Client connect to TCP server according to the cmdline parameters right after start up.
+3. After connecting to TCP server, client first read from TCP server the multicast group information which can be used to create the multicast receive socket then.
+4. During each buffer receiving cycle, the client first read from TCP server the buffer info, prepare the receive buffer, and acknowledge the TCP server that it is ready to receive. Then, client receive buffer from the multicast socket until TCP server notifying the end of multicast. By compare the buffer info and the received packets, the client knows whether to send the retransmission request or not and whether to wait retransmission packet or not. After all packets are received from UDP/TCP, the client eventually flush buffer to stdout and tells the TCP server about ready to receive the next buffer.
+5. Repeat step 4 if buffer size is not 0 in the last round, otherwise, client shutdowns connection and exit.
+
+Client cmdline usage example
+----------------------------
+
+./client <local_ip> <server_ip> [port] > kolla_image.tgz
+
+<local_ip> is used here to specify the multicast ingress interface. But which interface will be used by TCP is leaved to route table to decide.
+<server_ip> indicates the TCP server IP to be connected to.
+[port] is the port that will be used by both connect to TCP server and receive multicast data.
+
+
+Collaboration diagram among UDP Server, TCP Server.illustrate only one TCP thread. and Clients:
+
+
+UDP Server                        TCP Server                                         Client
+    |                                  |                                                |
+init mcast group
+init mcast send socket
+    ---------------------------------->
+                                  accept clients
+                                       <------------------------connet------------------
+                                       --------------------send mcast group info------->
+    <----------------------------------
+                                  state = PREP
+do {
+read data from stdin     
+prepare one buffer
+    ----------------------------------->
+                                  state = SYNC
+                                       -------------------send buffer info-------------->
+                                      <----------------------send ClIENT_READY-----------
+    <----------------------------------
+                                  state = SEND
+
+    ================================================send buffer over UDP multicast======>
+    ----------------------------------->
+                                      -----------------------send SERVER_SENT----------->
+                                      <-------------------send CLIENT_REQUEST------------(if need retransmition)
+                                      ---------------send buffer over TCP unicast------->(if need retransmition)
+                                                                                         flush buffer to stdout
+                                      <-------------------send CLIENT_DONE---------------
+    <----------------------------------
+                                  state = PREP
+while (buffer.len != 0)
+
+
+
+Detailed Design
+===============
+
+Protocol Design
+---------------
+
+1. All Protocol headers are 1 byte long or align to 4 bytes.
+2. Packet size should not exceed above 1500(MTU) bytes including UDP/IP header and should be align to 4 byte.
+
+/* Packet header definition (align to 4 Byte) */
+struct packet_ctl {
+    uint32_t seq; // packet seq number start from 0, unique in server life cycle.
+    uint32_t crc; // checksum
+    uint32_t data_size; // payload length
+    uint8_t data[0];
+};
+
+/* Buffer info definition (align to 4 Byte) */
+struct buffer_ctl {
+    uint32_t buffer_id; // buffer seq number start from 0, unique in server life cycle.
+    uint32_t buffer_size; // payload total length of a buffer
+    uint32_t packet_id_base; // seq number of the first packet in this buffer.
+    uint32_t pkt_count; // number of packet in this buffer, 0 means EOF.
+};
+
+
+3. 1-byte-long header definition
+
+Signals such as the four below are 1 byte long, to simplify the receive process(since it cannot be spitted ).
+#define CLIENT_READY 0x1
+#define CLIENT_REQ 0x2
+#define CLIENT_DONE 0x4
+#define SERVER_SENT 0x8
+
+Note: Please see the collaboration diagram for their meanings.
+
+4. Retransmission Request Header
+
+/* Retransmition Request Header (align to 4 Byte) */
+struct request_ctl {
+uint32_t req_count; // How many seqs below.
+uint32_t seqs[0]; // packet seqs.
+};
+
+5. Buffer operations
+
+void buffer_init(); // Init the buffer_ctl structure and all(say 1024) packet_ctl structures. Allocate buffer memory.
+long buffer_fill(int fd); // fill a buffer from fd, such as stdin
+long buffer_flush(int fd); // flush a buffer to fd, say stdout
+struct packet_ctl *packet_put(struct packet_ctl *new_pkt);// put a packet to a buffer and return a free memory slot for the next packet.
+struct packet_ctl *packet_get(uint32_t seq);// get a packet data in buffer by indicating the packet seq.
+
+
+
+How to sync between server threads
+----------------------------------
+
+
+If children's aaa() operation need to wait the parents's init() to be done, then do it literally like this:
+
+   UDP Server
+    TCP Server1 = spawn( )---------> TCP Server1
+    init()
+                                        TCP Server2 = spawn( )---------> TCP Server2
+    V(sem)----------------------------> P(sem)                        // No child any more
+                                        V(sem)----------------------------> P(sem)
+                                        aaa()                               // No need to V(sem), for no child
+                                                                            aaa()
+ 
+If parent's send() operation need to wait the children's ready() done, then do it literally too, but is a reverse way:
+
+   UDP Server                         TCP Server1                          TCP Server2
+                                                                         // No child any more
+                                          ready()                             ready()
+                                          P(sem) <------------------------- V(sem)
+    P(sem) <-------------------------   V(sem)
+    send()
+
+Note that the aaa() and ready() operations above run in parallel. If this is not the case due to race condition, the sequence above can be modified into this below:
+
+   UDP Server                         TCP Server1                          TCP Server2
+    create sem                          create sem                          // No child any more
+                                                                               ready()
+                                          P(sem) <--------------------------- V(sem)
+                                          ready()
+    P(sem) <-------------------------  V(sem)
+    send()
+
+
+In order to implement such chained/zipper sync pattern, a pair of semaphores is needed between the parent and the child. One is used by child to wait parent , the other is used by parent to wait child. semaphore pair can be allocated by parent and pass the pointer to the child over spawn() operation such as pthread_create().
+ 
+/* semaphore pair definition */
+struct semaphores {
+    sem_t wait_parent;
+    sem_t wait_child;
+};
+
+Then the semaphore pair can be recorded by threads by using the semlink struct below:
+struct semlink {
+    struct semaphores *this; /* used by parent to point to the struct semaphores
+                                which it created during spawn child. */
+    struct semaphores *parent; /* used by child to point to the struct
+                                  semaphores which it created by parent */
+};
+ 
+chained/zipper sync API:
+
+void sl_wait_child(struct semlink *sl);
+void sl_release_child(struct semlink *sl);
+void sl_wait_parent(struct semlink *sl);
+void sl_release_parent(struct semlink *sl);
+
+API usage is like this.
+
+Thread1(root parent)          Thread2(child)               Thread3(grandchild)
+sl_wait_parent(noop op)
+sl_release_child
+                +---------->sl_wait_parent
+                            sl_release_child
+                                           +-----------> sl_wait_parent
+                                                         sl_release_child(noop op)
+                                                         ...
+                                                         sl_wait_child(noop op)
+                                                       + sl_release_parent
+                            sl_wait_child <-------------
+                          + sl_release_parent
+sl_wait_child <------------
+sl_release_parent(noop op)
+ 
+API implementation:
+
+void sl_wait_child(struct semlink *sl)
+{
+    if (sl->this) {
+        P(sl->this->wait_child);
+    }
+}
+
+void sl_release_child(struct semlink *sl)
+{
+    if (sl->this) {
+        V(sl->this->wait_parent);
+    }
+}
+
+void sl_wait_parent(struct semlink *sl)
+{
+    if (sl->parent) {
+        P(sl->parent->wait_parent);
+    }
+}
+
+void sl_release_parent(struct semlink *sl)
+{
+    if (sl->parent) {
+        V(sl->parent->wait_child);
+    }
+} 
+ 
+Client flow chart
+-----------------
+See Collaboration Diagram
+
+UDP thread flow chart
+-------------
+See Collaboration Diagram
+
+TCP thread flow chart
+-------------
+
+
+S_INIT --- (UDP initialized) --->  S_ACCEPT --- ( accept clients) -+
+                                                                   |
+  /----------------------------------------------------------------/
+  V
+S_PREP --- (UDP prepared one buffer) ---> S_SYNC --- ( clients ClIENT_READY) ---> S_SEND --- (clients CLIENT_DONE) 
+  ^                                                                                                   | 
+  |                                                                                                   |
+  \--------------------------------------------------(bufferctl.pkt_count != 0)-----------------------+----(bufferctl.pkt_count == 0) ---> exit()
+
+
+TCP using poll and message queue
+--------------------------------
+
+TCP uses poll() to sync with client's events as well as output event from itself, so that we can use non-block socket operations to reduce the latency. POLLIN means there are message from client and POLLOUT means we are ready to send message/retransmission packets to client.
+
+poll main loop pseudo code:
+void check_clients(struct server_status_data *sdata)
+{
+    poll_events = poll(&(sdata->ds[1]), sdata->ccount - 1, timeout);
+
+    /* check all connected clients */
+    for (sdata->cindex = 1; sdata->cindex < sdata->ccount; sdata->cindex++) {
+        ds = &(sdata->ds[sdata->cindex]);
+        if (!ds->revents) {
+            continue;
+        }
+
+        if (ds->revents & (POLLERR|POLLHUP|POLLNVAL)) {
+            handle_error_event(sdata);
+        } else if (ds->revents & (POLLIN|POLLPRI)) {
+            handle_pullin_event(sdata);  // may set POLLOUT into ds->events according to protocol to trigger handle_pullout_event().
+        } else if (ds->revents & POLLOUT) {
+            handle_pullout_event(sdata);
+        }
+    }
+}
+
+For TCP, since the message from client may not complete and send data may be also interrupted due to non-block fashion, there should be one send message queue and a receive message queue on the server side for each client (client do not use non-block operations). 
+
+TCP message queue definition:
+
+struct tcpq {
+    struct qmsg *head, *tail;
+    long count; /* message count in a queue */
+    long size; /* Total data size of a queue */
+};
+
+TCP message queue item definition:
+
+struct qmsg {
+    struct qmsg *next;
+    void *data;
+    long size;
+};
+
+TCP message queue API:
+
+struct tcpq * tcpq_queue_init(void); // Allocate and init a queue.
+void tcpq_queue_free(struct tcpq *q); // Free a queue.
+long tcpq_queue_dsize(struct tcpq *q); // Return queue length.
+void tcpq_queue_tail(struct tcpq *q, void *data, long size); // queue new message to tail.
+void tcpq_queue_head(struct tcpq *q, void *data, long size); // queue message that cannot be sent currently back to queue head.
+void * tcpq_dequeue_head(struct tcpq *q, long *size); // get one piece from queue head.
+void * tcpq_dqueue_flat(struct tcpq *q, long *size); // Serialize all pieces of a queue, and move it out of queue, to ease the further operation on it.
+void * tcpq_queue_flat_peek(struct tcpq *q, long *size); // Serialize all pieces of a queue, do not move it out of queue, to ease the further operation on it.
+
+
