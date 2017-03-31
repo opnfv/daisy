@@ -69,6 +69,30 @@
       "revId": "6bac54420b178171174dd4538a03c943a0f749f5",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_d4570f01",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-03-31T02:51:45Z",
+      "side": 1,
+      "message": "this parameter depends on the number of node,\nI will modify this.",
+      "parentUuid": "9ab8dda7_c993ffa1",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "6bac54420b178171174dd4538a03c943a0f749f5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
