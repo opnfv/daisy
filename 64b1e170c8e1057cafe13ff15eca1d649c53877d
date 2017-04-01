@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_88ce5882",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T08:49:46Z",
+      "side": 1,
+      "message": "can you format all the \u003d\u003d\u003d\u003d\u003d\u003d with the same numbers in this file?",
+      "range": {
+        "startLine": 320,
+        "startChar": 10,
+        "endLine": 320,
+        "endChar": 16
+      },
+      "revId": "64b1e170c8e1057cafe13ff15eca1d649c53877d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
