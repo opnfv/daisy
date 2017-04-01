@@ -1,0 +1,550 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_883ad8cb",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "add this file into:\ndocs/developer/specs\n\nand rename it to multicast.rst",
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_a8379ce2",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "Daisy Server \u003d\u003e Installer\n\nit is a common description, not limited in Daisy",
+      "range": {
+        "startLine": 4,
+        "startChar": 87,
+        "endLine": 4,
+        "endChar": 92
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_4834e0dd",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "1) \u003d\u003e 1. and the remains",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 2
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_6831a4eb",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "does this image include : operation system + openstack?",
+      "range": {
+        "startLine": 18,
+        "startChar": 57,
+        "endLine": 18,
+        "endChar": 71
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_084ee86f",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "Methods to achieve\n-------------------\n\nTIPC\n++++\n\njust to indicate the alternatives and analysis the situation.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 12
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_2853ac18",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": ", but it is not suitable as an installer:",
+      "range": {
+        "startLine": 27,
+        "startChar": 55,
+        "endLine": 28,
+        "endChar": 8
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_c8577001",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "~~",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 71
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_e85cb427",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "esp in Lossless Ethernet",
+      "range": {
+        "startLine": 34,
+        "startChar": 31,
+        "endLine": 34,
+        "endChar": 55
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_8841783b",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "~~",
+      "range": {
+        "startLine": 34,
+        "startChar": 93,
+        "endLine": 34,
+        "endChar": 96
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_a83ebcb6",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "installer",
+      "range": {
+        "startLine": 35,
+        "startChar": 78,
+        "endLine": 35,
+        "endChar": 80
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_484b8059",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "threads",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_6848c45b",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "does daisy allow some nodes fail during the installation?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_08758897",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "why just check the whole image using sha512sum instead of packet sum. Using L2 CRC for packet verification?",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_287acc88",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "The use will",
+      "range": {
+        "startLine": 58,
+        "startChar": 45,
+        "endLine": 58,
+        "endChar": 64
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_c86e90c9",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "it is the client\u0027s responsibility to report the status of packet received. It is not necessary to checkout packet by packet.  At most, we can choose  to verify every 1000 packets or so.",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 56
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_e87354af",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "depends on how many clients lost packets and how many packets losts.\n\nif all the clients losts of packet, use multicast is acceptable.",
+      "range": {
+        "startLine": 97,
+        "startChar": 64,
+        "endLine": 97,
+        "endChar": 68
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_4862a0d9",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "suggest to support restful api. it only is not only used in cli, but also in remote way, esp in automatically mode",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_886898bb",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "when install daisy, which port is for pxe is defined, so it is not necessary to pass this parameter.",
+      "range": {
+        "startLine": 109,
+        "startChar": 9,
+        "endLine": 109,
+        "endChar": 19
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_a8655ce2",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "such as daisy-pre-install",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 8
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_685f640f",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "suggest to use config file for default values and can be overwrite in cli.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 19
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_089ca8bf",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "a file instead of output?",
+      "range": {
+        "startLine": 134,
+        "startChar": 83,
+        "endLine": 134,
+        "endChar": 89
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_28a16cf8",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "same as server",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 28
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_e8aa74d3",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "please devide the bellow contents into docs/developer/design",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 15
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_c8a53005",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-01T06:15:14Z",
+      "side": 1,
+      "message": "nowadays, larger MTU is supported by hardware, and installer can configure the hardware devices. Larger MTU can improve the multicast performance.",
+      "range": {
+        "startLine": 196,
+        "startChar": 39,
+        "endLine": 196,
+        "endChar": 48
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
