@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_353d40bc",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_883ad8cb",
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_a8379ce2",
         "filename": "specs/multicast.txt",
         "patchSetId": 7
@@ -30,6 +48,30 @@
       "writtenOn": "2017-04-01T06:15:14Z",
       "side": 1,
       "message": "Daisy Server \u003d\u003e Installer\n\nit is a common description, not limited in Daisy",
+      "range": {
+        "startLine": 4,
+        "startChar": 87,
+        "endLine": 4,
+        "endChar": 92
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_d2587a58",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_a8379ce2",
       "range": {
         "startLine": 4,
         "startChar": 87,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_f2533e37",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "1. is already been used as upper level. so here can I use a. b. c.... instead?",
+      "parentUuid": "9ab8dda7_4834e0dd",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 2
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_6831a4eb",
         "filename": "specs/multicast.txt",
         "patchSetId": 7
@@ -76,6 +142,30 @@
       "writtenOn": "2017-04-01T06:15:14Z",
       "side": 1,
       "message": "does this image include : operation system + openstack?",
+      "range": {
+        "startLine": 18,
+        "startChar": 57,
+        "endLine": 18,
+        "endChar": 71
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_9232020f",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "That is docker image only",
+      "parentUuid": "9ab8dda7_6831a4eb",
       "range": {
         "startLine": 18,
         "startChar": 57,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_b235c6f8",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_084ee86f",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 12
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_2853ac18",
         "filename": "specs/multicast.txt",
         "patchSetId": 7
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_122612cf",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_2853ac18",
+      "range": {
+        "startLine": 27,
+        "startChar": 55,
+        "endLine": 28,
+        "endChar": 8
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_c8577001",
         "filename": "specs/multicast.txt",
         "patchSetId": 7
@@ -145,6 +283,30 @@
       "writtenOn": "2017-04-01T06:15:14Z",
       "side": 1,
       "message": "~~",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 71
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_3221d6b4",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_c8577001",
       "range": {
         "startLine": 29,
         "startChar": 3,
@@ -203,6 +365,54 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_d22f1aa0",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_8841783b",
+      "range": {
+        "startLine": 34,
+        "startChar": 93,
+        "endLine": 34,
+        "endChar": 96
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_9219a28a",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_e85cb427",
+      "range": {
+        "startLine": 34,
+        "startChar": 31,
+        "endLine": 34,
+        "endChar": 55
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_a83ebcb6",
         "filename": "specs/multicast.txt",
         "patchSetId": 7
@@ -214,6 +424,30 @@
       "writtenOn": "2017-04-01T06:15:14Z",
       "side": 1,
       "message": "installer",
+      "range": {
+        "startLine": 35,
+        "startChar": 78,
+        "endLine": 35,
+        "endChar": 80
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_52132a66",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_a83ebcb6",
       "range": {
         "startLine": 35,
         "startChar": 78,
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_d2063a20",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "two \"kinds\" of thread  is better",
+      "parentUuid": "9ab8dda7_484b8059",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_6848c45b",
         "filename": "specs/multicast.txt",
         "patchSetId": 7
@@ -260,6 +518,30 @@
       "writtenOn": "2017-04-01T06:15:14Z",
       "side": 1,
       "message": "does daisy allow some nodes fail during the installation?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_f201fe06",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "the client will failback to using the monopolistic docker registry server on Daisy server as a\nfailsafe option.",
+      "parentUuid": "9ab8dda7_6848c45b",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -295,6 +577,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_9500ac02",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "This multicast tool will read data from STDIN pipe, thus, support chained command line like other UNIX command line tools do. So the actual length is unpredictable, that is why it utilizes checksum per packet. \n\nAnother reason is because there will be packet re-transmission take place, so the checksum granularity should be at packet level.",
+      "parentUuid": "9ab8dda7_08758897",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_287acc88",
         "filename": "specs/multicast.txt",
         "patchSetId": 7
@@ -306,6 +612,30 @@
       "writtenOn": "2017-04-01T06:15:14Z",
       "side": 1,
       "message": "The use will",
+      "range": {
+        "startLine": 58,
+        "startChar": 45,
+        "endLine": 58,
+        "endChar": 64
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_b503700c",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_287acc88",
       "range": {
         "startLine": 58,
         "startChar": 45,
@@ -341,6 +671,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_550a3422",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "Yes, the client will do it like you said. Here the granularity for each re-transmission check is \"buffer\", not \"packet\". one buffer \u003d 1024 packets.",
+      "parentUuid": "9ab8dda7_c86e90c9",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 56
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_e87354af",
         "filename": "specs/multicast.txt",
         "patchSetId": 7
@@ -364,6 +718,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_750df836",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "I think you mean if all the clients losts of packet, use multicast is \"NOT\" acceptable?",
+      "parentUuid": "9ab8dda7_e87354af",
+      "range": {
+        "startLine": 97,
+        "startChar": 64,
+        "endLine": 97,
+        "endChar": 68
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_4862a0d9",
         "filename": "specs/multicast.txt",
         "patchSetId": 7
@@ -375,6 +753,30 @@
       "writtenOn": "2017-04-01T06:15:14Z",
       "side": 1,
       "message": "suggest to support restful api. it only is not only used in cli, but also in remote way, esp in automatically mode",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_95274cb6",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "The design of this multicast tool keeps as simple as a UNIX command line tools like \"scp\". No service running in background ,so no restful api inside this tools. Well the other to level tools or the installer may build a restful api as a wrapper around this tool.\n\nFor automatic node discovery, as said in requirement, we should still use the unicast mode because the number of newly discovered nodes is not predictable. For Server is hard to say how many nodes it should wait to start multicast, it has to serve one node at each time.",
+      "parentUuid": "9ab8dda7_4862a0d9",
       "range": {
         "startLine": 106,
         "startChar": 0,
@@ -433,6 +835,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_5521d49d",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "This tool will has a loss cope with the user(Installer). So Installer should pass this info to it.",
+      "parentUuid": "9ab8dda7_886898bb",
+      "range": {
+        "startLine": 109,
+        "startChar": 9,
+        "endLine": 109,
+        "endChar": 19
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_685f640f",
         "filename": "specs/multicast.txt",
         "patchSetId": 7
@@ -444,6 +870,30 @@
       "writtenOn": "2017-04-01T06:15:14Z",
       "side": 1,
       "message": "suggest to use config file for default values and can be overwrite in cli.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 19
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_b5513010",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "This should be a exact number of node in a to-be-created cluster, which does not need default value.",
+      "parentUuid": "9ab8dda7_685f640f",
       "range": {
         "startLine": 113,
         "startChar": 0,
@@ -479,6 +929,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_5558f431",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "stdout is more general than a file. In order to save disk space, we can do things with pipe like this:\n\"client | docker load\" , which do not need file as backup storage",
+      "parentUuid": "9ab8dda7_089ca8bf",
+      "range": {
+        "startLine": 134,
+        "startChar": 83,
+        "endLine": 134,
+        "endChar": 89
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_28a16cf8",
         "filename": "specs/multicast.txt",
         "patchSetId": 7
@@ -490,6 +964,30 @@
       "writtenOn": "2017-04-01T06:15:14Z",
       "side": 1,
       "message": "same as server",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 28
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_755bb82e",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "Please see server reply.",
+      "parentUuid": "9ab8dda7_28a16cf8",
       "range": {
         "startLine": 140,
         "startChar": 0,
@@ -525,6 +1023,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_15427c3e",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_e8aa74d3",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 15
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_c8a53005",
         "filename": "specs/multicast.txt",
         "patchSetId": 7
@@ -536,6 +1058,30 @@
       "writtenOn": "2017-04-01T06:15:14Z",
       "side": 1,
       "message": "nowadays, larger MTU is supported by hardware, and installer can configure the hardware devices. Larger MTU can improve the multicast performance.",
+      "range": {
+        "startLine": 196,
+        "startChar": 39,
+        "endLine": 196,
+        "endChar": 48
+      },
+      "revId": "eb75c530cb76f41f4febb701278b2bdb857bd592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_f546c84e",
+        "filename": "specs/multicast.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-05T06:37:47Z",
+      "side": 1,
+      "message": "Did you mean jumbo frame? Yes that will be a great improvement . The design will keep in mind that the default MTU is 1500 but can be set easily (through cmd line option) if jumbo frame is supported by endpoints and routers from server all the way to the target node.",
+      "parentUuid": "9ab8dda7_c8a53005",
       "range": {
         "startLine": 196,
         "startChar": 39,
