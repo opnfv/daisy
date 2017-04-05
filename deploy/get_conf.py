@@ -91,7 +91,8 @@ def dha_config_parse(s, dha_file):
 
 def config(dha_file, network_file):
     data = init(dha_file)
+    ceph_disk_name = data.get('ceph_disk_name')
     hosts_name = dha_config_parse(data, dha_file)
     data = init(network_file)
     network_map, vip, interface_map = network_config_parse(data, network_file)
-    return interface_map, hosts_name, network_map, vip
+    return interface_map, hosts_name, network_map, vip, ceph_disk_name

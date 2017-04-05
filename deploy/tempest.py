@@ -66,7 +66,7 @@ def prepare_install():
         print("get config...")
         conf = cfg.ConfigOpts()
         parse(conf, sys.argv[1:])
-        host_interface_map, hosts_name, network_map, vip = \
+        host_interface_map, hosts_name, network_map, vip, ceph_disk_name = \
             get_conf.config(conf['dha'], conf['network'])
         if conf['cluster'] and conf['cluster'] == 'yes':
             print("add cluster...")
@@ -88,6 +88,14 @@ def prepare_install():
             cluster_id = cluster_info.id
             add_hosts_interface(cluster_id, hosts_info, hosts_name,
                                 host_interface_map, vip)
+            if len(hosts_name) == 1:
+                protocol_type = 'LVM'
+            elif len(hosts_name) > 2:
+                protocol_type = 'CEPH'
+            else:
+                print('hosts_num is %s' % len(hosts_name))
+                protocol_type = None
+            enable_cinder_backend(cluster_id, ceph_disk_name, protocol_type)
             if 'isbare' in conf and conf['isbare'] == 0:
                 install_os_for_vm_step1(cluster_id)
             else:
@@ -215,6 +223,23 @@ def add_host_role(cluster_id, host_id, host_exp_name, host_real_name, vip):
         role_computer_update_meta = {'nodes': [host_id],
                                      'cluster_id': cluster_id}
         client.roles.update(computer_role_id, **role_computer_update_meta)
+
+
+def enable_cinder_backend(cluster_id, disk_name, protocol_type):
+    role_meta = {'filters': {'cluster_id': cluster_id}}
+    role_list_generator = client.roles.list(**role_meta)
+    role_list = [role for role in role_list_generator]
+    lb_role_id = [role.id for role in role_list if
+                  role.name == "CONTROLLER_LB"][0]
+    service_disk_meta = {'service': 'cinder',
+                         'disk_location': 'local',
+                         'partition': disk_name,
+                         'protocol_type': protocol_type,
+                         'role_id': lb_role_id}
+    try:
+        client.disk_array.service_disk_add(**service_disk_meta)
+    except Exception as e:
+        print e
 
 
 if __name__ == "__main__":
