@@ -125,9 +125,7 @@ def install_os_for_vm_step1(cluster_id):
 
 
 def install_os_for_bm_oneshot(cluster_id):
-    cluster_meta = {'cluster_id': cluster_id,
-                    'pxe_only': "false",
-                    'skip_pxe_ipmi': "false"}
+    cluster_meta = {'cluster_id': cluster_id}
     client.install.install(**cluster_meta)
 
 
