@@ -44,8 +44,9 @@ while true; do
     fi
     count=$[count + 1]
 
-    openstack_install_active=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $12}' | grep -c "active" `
-    openstack_install_failed=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $12}' | grep -c "install-failed" `
+    # get 'Role_status' column
+    openstack_install_active=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $13}' | grep -c "active" `
+    openstack_install_failed=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $13}' | grep -c "install-failed" `
     if [ $openstack_install_active -eq $hosts_num ]; then
         echo "openstack installing successful ..."
         break
@@ -54,7 +55,8 @@ while true; do
         tail -n 200 /var/log/daisy/kolla_$cluster_id*
         exit 1
     else
-        progress=`daisy host-list --cluster-id $cluster_id |grep DISCOVERY_SUCCESSFUL |awk -F "|" '{print $11}'|sed s/[[:space:]]//g|sed ':a;N;$ s/\n/ /g;ba'`
+        # get 'Role_progress' column
+        progress=`daisy host-list --cluster-id $cluster_id |grep DISCOVERY_SUCCESSFUL |awk -F "|" '{print $12}'|sed s/[[:space:]]//g|sed ':a;N;$ s/\n/ /g;ba'`
         echo " openstack in installing , progress of each node is $progress%"
         sleep 30
     fi
