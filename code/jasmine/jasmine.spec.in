@@ -1,0 +1,33 @@
+Summary: Just A Small Multicast engINE
+Name: jasmine
+Version: @version@
+Release: 1%{?dist}
+Vendor: ZTE
+License: Apache-2.0
+Group: System Environment/Base
+URL: https://wiki.opnfv.org/display/DAIS
+Source: %{name}-%{version}%{?gittarver}.tar.gz
+
+BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
+
+%description
+jasmine is used to distribute files over UDP multicast for installers
+
+%prep
+%setup -q -n %{name}-%{version}%{?gittarver}
+
+%build
+if [ ! -f configure ]; then
+	./autogen.sh
+fi
+
+./configure
+
+%install
+rm -rf %{buildroot}
+make install DESTDIR=%{buildroot}
+
+%files
+%{_bindir}/jasmines
+%{_bindir}/jasminec
+
