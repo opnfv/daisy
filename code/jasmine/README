@@ -1,0 +1,17 @@
+jasmine: Just A Small Multicast engINE
+
+Installation
+------------
+
+./autogen.sh
+./configure
+make && make install
+
+Usage
+-----
+jasmine server:
+Usage: jasmines local_ip num_of_clients [port]
+
+jasmine client:
+Usage: jasminec <local_ip> <server_ip> [port]
+
