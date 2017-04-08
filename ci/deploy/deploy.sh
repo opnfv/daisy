@@ -153,6 +153,11 @@ target_node_net=$WORKSPACE/templates/virtual_environment/networks/os-all_in_one.
 vmdeploy_daisy_server_vm=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
 vmdeploy_target_node_vm=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
 
+vmdeploy_computer01_node_vm=$WORKSPACE/templates/virtual_environment/vms/computer01.xml
+vmdeploy_computer01_node_vm=$WORKSPACE/templates/virtual_environment/vms/computer01.xml
+vmdeploy_controller01_node_vm=$WORKSPACE/templates/virtual_environment/vms/controller01.xml
+vmdeploy_controller02_node_vm=$WORKSPACE/templates/virtual_environment/vms/controller02.xml
+vmdeploy_controller03_node_vm=$WORKSPACE/templates/virtual_environment/vms/controller03.xml
 
 bmdeploy_daisy_server_net=$WORKSPACE/templates/physical_environment/networks/daisy.xml
 bmdeploy_daisy_server_vm=$WORKSPACE/templates/physical_environment/vms/daisy.xml
@@ -251,6 +256,16 @@ function clean_up
 echo "=====clean up all node and network======"
 if [ $IS_BARE == 0 ];then
     clean_up all_in_one daisy2
+    virsh destroy computer01
+    virsh undefine computer01
+    virsh destroy computer02
+    virsh undefine computer02
+    virsh destroy controller01
+    virsh undefine controller01
+    virsh destroy controller02
+    virsh undefine controller02
+    virsh destroy controller03
+    virsh undefine controller03
     clean_up daisy daisy1
 else
     virsh destroy daisy
@@ -303,8 +318,21 @@ ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --
 
 echo "=====create and find node======"
 if [ $IS_BARE == 0 ];then
-    qemu-img create -f qcow2 ${VM_STORAGE}/all_in_one.qcow2 200G
-    create_node $target_node_net daisy2 $vmdeploy_target_node_vm all_in_one
+    if [ $TARGET_HOSTS_NUM == 1 ];then
+        qemu-img create -f qcow2 ${VM_STORAGE}/all_in_one.qcow2 200G
+        create_node $target_node_net daisy2 $vmdeploy_target_node_vm all_in_one
+    else
+        qemu-img create -f qcow2 ${VM_STORAGE}/computer01.qcow2 200G
+        create_node $target_node_net daisy2 $vmdeploy_computer01_node_vm computer01
+        virsh define computer02
+        virsh start computer02
+        irsh define controller01
+        virsh start controller01
+        virsh define controller02
+        virsh start controller02
+        virsh define controller03
+        virsh start controller03
+    fi
     sleep 20
 else
     for i in $(seq 106 110); do
@@ -318,8 +346,21 @@ ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA -
 
 echo "======daisy virtual-deploy os and openstack==========="
 if [ $IS_BARE == 0 ];then
-    virsh destroy all_in_one
-    virsh start all_in_one
+    if [ $TARGET_HOSTS_NUM == 1 ];then
+        virsh destroy all_in_one
+        virsh start all_in_one
+    else
+        virsh destroy computer01
+        virsh start computer01
+        virsh destroy computer02
+        virsh start computer02
+        virsh destroy controller01
+        virsh start controller01
+        virsh destroy controller02
+        virsh start controller02
+        virsh destroy controller03
+        virsh start controller03
+    fi
     sleep 20
     ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --install 'yes'"
 fi
