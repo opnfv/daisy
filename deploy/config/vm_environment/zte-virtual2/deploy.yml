@@ -1,0 +1,24 @@
+hosts:
+- name: 'controller01'
+  roles:
+    - 'CONTROLLER_LB'
+- name: 'controller02'
+  roles:
+    - 'CONTROLLER_LB'
+- name: 'controller03'
+  roles:
+    - 'CONTROLLER_LB'
+- name: 'computer01'
+  roles:
+    - 'COMPUTER'
+- name: 'computer02'
+  roles:
+    - 'COMPUTER'
+disks:
+  daisy: 50
+  controller: 50
+  compute: 50
+daisy_passwd: 'r00tme'
+daisy_ip: '10.20.11.2'
+daisy_gateway: '10.20.11.1'
+ceph_disk_name: ''
