@@ -69,6 +69,7 @@ POD_NAME=''
 TARGET_HOSTS_NUM=0
 DRY_RUN=0
 IS_BARE=1
+VM_MULTINODE=("computer01" "computer01" "controller01" "controller02" "controller03")
 #
 # END of variables to customize
 ############################################################################
@@ -153,6 +154,9 @@ VMDEPLOY_TARGET_NODE_NET=$WORKSPACE/templates/virtual_environment/networks/os-al
 VMDEPLOY_DAISY_SERVER_VM=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
 VMDEPLOY_TARGET_NODE_VM=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
 
+for ((i=0;i<${#VM_MULTINODE[@]};i++));do
+    VMDEPLOY_${VM_MULTINODE[$i]}_NODE_VM=$WORKSPACE/templates/virtual_environment/vms/${VM_MULTINODE[$i]}.xml
+done
 
 BMDEPLOY_DAISY_SERVER_NET=$WORKSPACE/templates/physical_environment/networks/daisy.xml
 BMDEPLOY_DAISY_SERVER_VM=$WORKSPACE/templates/physical_environment/vms/daisy.xml
@@ -253,6 +257,10 @@ function clean_up
 echo "=====clean up all node and network======"
 if [ $IS_BARE == 0 ];then
     clean_up all_in_one daisy2
+    for ((i=0;i<${#VM_MULTINODE[@]};i++));do
+        virsh destroy ${VM_MULTINODE[$i]}
+        virsh undefine ${VM_MULTINODE[$i]}
+    done
     clean_up daisy daisy1
 else
     virsh destroy daisy
@@ -305,8 +313,19 @@ ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --
 
 echo "=====create and find node======"
 if [ $IS_BARE == 0 ];then
-    qemu-img create -f qcow2 ${VM_STORAGE}/all_in_one.qcow2 200G
-    create_node $VMDEPLOY_TARGET_NODE_NET daisy2 $VMDEPLOY_TARGET_NODE_VM all_in_one
+    if [ $TARGET_HOSTS_NUM == 1 ];then
+        qemu-img create -f qcow2 ${VM_STORAGE}/all_in_one.qcow2 200G
+        create_node $VMDEPLOY_TARGET_NODE_NET daisy2 $VMDEPLOY_TARGET_NODE_VM all_in_one
+    else
+        virsh net-define $target_node_net
+        virsh net-autostart daisy2
+        virsh net-start daisy2
+        for ((i=0;i<${#VM_MULTINODE[@]};i++));do
+            qemu-img create -f qcow2 ${VM_STORAGE}/${VM_MULTINODE[$i]}.qcow2 200G
+            virsh define $(VMDEPLOY_${VM_MULTINODE[$i]}_NODE_VM)
+            virsh start ${VM_MULTINODE[$i]}
+        done
+    fi
     sleep 20
 else
     for i in $(seq 106 110); do
@@ -320,8 +339,15 @@ ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA -
 
 echo "======daisy virtual-deploy os and openstack==========="
 if [ $IS_BARE == 0 ];then
-    virsh destroy all_in_one
-    virsh start all_in_one
+    if [ $TARGET_HOSTS_NUM == 1 ];then
+        virsh destroy all_in_one
+        virsh start all_in_one
+    else
+        for ((i=0;i<${#VM_MULTINODE[@]};i++));do
+            virsh destroy ${VM_MULTINODE[$i]}
+            virsh start ${VM_MULTINODE[$i]}
+        done
+    fi
     sleep 20
     ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --install 'yes'"
 fi
@@ -334,7 +360,13 @@ fi
 sleep 10
 
 if [ $IS_BARE == 0 ];then
-    virsh reboot all_in_one
+    if [ $TARGET_HOSTS_NUM == 1 ];then
+        virsh reboot all_in_one
+    else
+        for ((i=0;i<${#VM_MULTINODE[@]};i++));do
+            virsh reboot ${VM_MULTINODE[$i]}
+        done
+    fi
 fi
 ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/deploy/check_openstack_progress.sh -n $TARGET_HOSTS_NUM"
 if [ $? -ne 0 ]; then
