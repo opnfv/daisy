@@ -90,12 +90,15 @@ def prepare_install():
                                 host_interface_map, vip)
             if len(hosts_name) == 1:
                 protocol_type = 'LVM'
+                service_name = 'cinder'
             elif len(hosts_name) > 2:
-                protocol_type = 'CEPH'
+                protocol_type = 'RAW'
+                service_name = 'ceph'
             else:
                 print('hosts_num is %s' % len(hosts_name))
                 protocol_type = None
-            enable_cinder_backend(cluster_id, ceph_disk_name, protocol_type)
+            enable_cinder_backend(cluster_id, service_name,
+                                  ceph_disk_name, protocol_type)
             if 'isbare' in conf and conf['isbare'] == 0:
                 install_os_for_vm_step1(cluster_id)
             else:
@@ -223,13 +226,13 @@ def add_host_role(cluster_id, host_id, host_exp_name, host_real_name, vip):
         client.roles.update(computer_role_id, **role_computer_update_meta)
 
 
-def enable_cinder_backend(cluster_id, disk_name, protocol_type):
+def enable_cinder_backend(cluster_id, service_name, disk_name, protocol_type):
     role_meta = {'filters': {'cluster_id': cluster_id}}
     role_list_generator = client.roles.list(**role_meta)
     role_list = [role for role in role_list_generator]
     lb_role_id = [role.id for role in role_list if
                   role.name == "CONTROLLER_LB"][0]
-    service_disk_meta = {'service': 'cinder',
+    service_disk_meta = {'service': service_name,
                          'disk_location': 'local',
                          'partition': disk_name,
                          'protocol_type': protocol_type,
