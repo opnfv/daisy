@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_78a64812",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-04-10T07:05:08Z",
+      "side": 1,
+      "message": "maybe here add \u0027check openstack install progress\u0027 will be synchronized with \u0027check operating system install progress\u0027 above?",
+      "revId": "82bb974f202ac869441e38ec3463c63d013e4eb3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
