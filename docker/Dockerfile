@@ -15,6 +15,10 @@ RUN yum -y install \
   make \
   rpm \
   rpm-build \
+  gcc \
+  autoconf \
+  automake \
+  glibc-devel \
   python-sphinx \
   python-XStatic-Angular \
   python-XStatic-Angular-Bootstrap \
