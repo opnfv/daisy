@@ -7,15 +7,7 @@
 # are made available under the terms of the Apache License, Version 2.0
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
-# TODO
-# [x] 1. Pass full path for parameter for -d and -n
-# [x] 2. Refactor para fetching procedure of paras_from_deploy
-# [x] 3. Refactor execute_on_jumpserver
-# [ ] 4. Refactor for names for var such like daisy_server_net, target_node_net
-# [ ] 5. Store PODs' configruation files into securelab
-# [ ] 6. Use POD name as the parameter instead of files
 ##############################################################################
-#daisy host discover
 
 ############################################################################
 # BEGIN of usage description
@@ -256,7 +248,7 @@ function clean_up
     virsh net-undefine $network_name
 }
 
-echo "=====clean up all node and network======"
+echo "====== clean up all node and network ======"
 if [ $IS_BARE == 0 ];then
     clean_up all_in_one daisy2
     for ((i=0;i<${#VM_MULTINODE[@]};i++));do
@@ -269,7 +261,7 @@ else
     virsh undefine daisy
 fi
 
-echo "=======create daisy node================"
+echo "====== create daisy node ======"
 $CREATE_QCOW2_PATH/daisy-img-modify.sh -c $CREATE_QCOW2_PATH/centos-img-modify.sh -w $WORKDIR -a $DAISY_IP $PARAS_IMAGE
 if [ $IS_BARE == 0 ];then
     create_node $VMDELOY_DAISY_SERVER_NET daisy1 $VMDEPLOY_DAISY_SERVER_VM daisy
@@ -279,7 +271,7 @@ else
 fi
 sleep 20
 
-echo "====== install daisy==========="
+echo "====== install daisy ======"
 $DEPLOY_PATH/trustme.sh $DAISY_IP $DAISY_PASSWD
 ssh $SSH_PARAS $DAISY_IP "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE} ]]; then rm -fr ${REMOTE_SPACE}; fi"
 scp -r $WORKSPACE root@$DAISY_IP:${REMOTE_SPACE}
@@ -295,21 +287,21 @@ else
     echo "daisy install successfully"
 fi
 
-echo "===== generate known_hosts file in daisy vm========"
+echo "====== generate known_hosts file in daisy vm ======"
 touch $WORKSPACE/known_hosts
 scp $WORKSPACE/known_hosts root@$DAISY_IP:/root/.ssh/
 
 if [ $IS_BARE == 0 ];then
-    echo "====== add relate config of kolla==========="
+    echo "====== add relate config of kolla ======"
     ssh $SSH_PARAS $DAISY_IP "mkdir -p /etc/kolla/config/nova"
     ssh $SSH_PARAS $DAISY_IP "echo -e '[libvirt]\nvirt_type=qemu\ncpu_mode=none' >> /etc/kolla/config/nova/nova-compute.conf"
     ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/prepare.sh -n $NETWORK"
 fi
 
-echo "===prepare cluster and pxe==="
+echo "====== prepare cluster and pxe ======"
 ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --cluster 'yes'"
 
-echo "=====create and find node======"
+echo "====== create and find node ======"
 if [ $IS_BARE == 0 ];then
     if [ $TARGET_HOSTS_NUM == 1 ];then
         qemu-img create -f qcow2 ${VM_STORAGE}/all_in_one.qcow2 200G
@@ -332,11 +324,11 @@ else
     done
 fi
 
-echo "======prepare host and pxe==========="
+echo "====== prepare host and pxe ======"
 ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA --network $NETWORK --host 'yes' --isbare $IS_BARE"
 
-echo "======daisy virtual-deploy os and openstack==========="
 if [ $IS_BARE == 0 ];then
+    echo "====== daisy virtual-deploy operating system and openstack ======"
     if [ $TARGET_HOSTS_NUM == 1 ];then
         virsh destroy all_in_one
         virsh start all_in_one
@@ -350,7 +342,7 @@ if [ $IS_BARE == 0 ];then
     ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --install 'yes'"
 fi
 
-echo "===========check install progress==========="
+echo "====== check operating system install progress ======"
 ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/deploy/check_os_progress.sh -d $IS_BARE -n $TARGET_HOSTS_NUM"
 if [ $? -ne 0 ]; then
     exit 1;
@@ -366,6 +358,8 @@ if [ $IS_BARE == 0 ];then
         done
     fi
 fi
+
+echo "====== check openstack install progress ======"
 ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/deploy/check_openstack_progress.sh -n $TARGET_HOSTS_NUM"
 if [ $? -ne 0 ]; then
     exit 1;
@@ -373,11 +367,11 @@ fi
 
 
 if [ $IS_BARE == 0 ];then
-    echo "============post deploy====================="
+    echo "====== post deploy ======"
     ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/post.sh -n $NETWORK"
 fi
 
-echo "============deploy success==================="
+echo "====== deploy successfully ======"
 
 exit 0
 
