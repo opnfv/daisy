@@ -7,6 +7,13 @@ Installation
 ./configure
 make && make install
 
+RPM Based Installation
+----------------------
+./autogen.sh
+./configure
+make rpm
+rpm -ivh ./x86_64/jasmine-1.0.3-1.rpm
+
 Usage
 -----
 jasmine server:
