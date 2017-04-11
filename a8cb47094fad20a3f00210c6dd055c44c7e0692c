@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_7b108201",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-04-11T03:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_58ab44d6",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 31
+      },
+      "revId": "a8cb47094fad20a3f00210c6dd055c44c7e0692c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_f8b9d82e",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-10T07:33:32Z",
       "side": 1,
       "message": "each VM needs an image file.",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 32
+      },
+      "revId": "a8cb47094fad20a3f00210c6dd055c44c7e0692c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_9b13f60c",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-04-11T03:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_f8b9d82e",
       "range": {
         "startLine": 327,
         "startChar": 0,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_3bfa0abe",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/network.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-04-11T03:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_583d84ba",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "a8cb47094fad20a3f00210c6dd055c44c7e0692c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_f84b1857",
         "filename": "deploy/config/vm_environment/zte-virtual2/network.yml",
         "patchSetId": 3
@@ -129,6 +201,30 @@
       "writtenOn": "2017-04-10T12:14:01Z",
       "side": 1,
       "message": "thank you for your advice",
+      "parentUuid": "9ab8dda7_f84b1857",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "a8cb47094fad20a3f00210c6dd055c44c7e0692c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_bb06facc",
+        "filename": "deploy/config/vm_environment/zte-virtual2/network.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-04-11T03:01:28Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "9ab8dda7_f84b1857",
       "range": {
         "startLine": 12,
