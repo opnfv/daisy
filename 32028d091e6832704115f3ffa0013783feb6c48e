@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_b1137bb7",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-12T09:02:56Z",
+      "side": 1,
+      "message": "If it is for all-in-one only (do not deploy ceph), then I am also OK with this change.",
+      "parentUuid": "9ab8dda7_3140eba4",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "32028d091e6832704115f3ffa0013783feb6c48e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_1147e74c",
         "filename": "templates/virtual_environment/vms/computer02.xml",
         "patchSetId": 9
