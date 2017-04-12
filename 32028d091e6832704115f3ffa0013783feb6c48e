@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_d12f0ff5",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/network.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-12T09:01:46Z",
+      "side": 1,
+      "message": "IMHO, external network is used only for VMs\u0027 external traffic. It should not be used for carrying the API traffic, otherwise, we may face security issues. \n\nSo here publicapi refers to a netplane through which user can access openstack api. There is another netplane called privateapi which is used for openstack services interconnections. But currently we just combined it into publicapi for simplicity.",
+      "parentUuid": "9ab8dda7_513d5fba",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "32028d091e6832704115f3ffa0013783feb6c48e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_f14b3357",
         "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
         "patchSetId": 9
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_71366354",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-12T09:01:46Z",
+      "side": 1,
+      "message": "Agree, keep it as what is was, and when wen know what this disk name is in virtual env, we will modify it accordingly.",
+      "parentUuid": "9ab8dda7_f14b3357",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "32028d091e6832704115f3ffa0013783feb6c48e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_1147e74c",
         "filename": "templates/virtual_environment/vms/computer02.xml",
         "patchSetId": 9
@@ -83,6 +131,24 @@
       "writtenOn": "2017-04-12T04:17:35Z",
       "side": 1,
       "message": "most of the configure file is the same, so I suggest to use the same template to produce the a dynamic for computer0x.xml and controllerxx.xml",
+      "revId": "32028d091e6832704115f3ffa0013783feb6c48e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_f149f3d0",
+        "filename": "templates/virtual_environment/vms/computer02.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-12T09:01:46Z",
+      "side": 1,
+      "message": "Yes, but seems it will be a big work.",
+      "parentUuid": "9ab8dda7_1147e74c",
       "revId": "32028d091e6832704115f3ffa0013783feb6c48e",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
