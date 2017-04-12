@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_513d5fba",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/network.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-12T04:17:35Z",
+      "side": 1,
+      "message": "It is wrong for publicapi, it should be \"adminapi\". Maybe it is wrong in daisycore\n\npublicapi should be in external network",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "32028d091e6832704115f3ffa0013783feb6c48e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_f14b3357",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-12T04:17:35Z",
+      "side": 1,
+      "message": "I wonder why cancel ceph support?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "32028d091e6832704115f3ffa0013783feb6c48e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_1147e74c",
+        "filename": "templates/virtual_environment/vms/computer02.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-12T04:17:35Z",
+      "side": 1,
+      "message": "most of the configure file is the same, so I suggest to use the same template to produce the a dynamic for computer0x.xml and controllerxx.xml",
+      "revId": "32028d091e6832704115f3ffa0013783feb6c48e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
