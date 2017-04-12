@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_3140eba4",
+        "filename": "deploy/config/vm_environment/zte-virtual1/deploy.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-04-12T09:01:08Z",
+      "side": 1,
+      "message": "This is all_in_one env,so we can only use LVM backend\nso here is an useless parameter.",
+      "parentUuid": "9ab8dda7_f14b3357",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "32028d091e6832704115f3ffa0013783feb6c48e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_1147e74c",
         "filename": "templates/virtual_environment/vms/computer02.xml",
         "patchSetId": 9
