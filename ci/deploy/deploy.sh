@@ -137,7 +137,7 @@ DHA=$REMOTE_SPACE/labs/$LAB_NAME/$POD_NAME/daisy/config/deploy.yml
 NETWORK=$REMOTE_SPACE/labs/$LAB_NAME/$POD_NAME/daisy/config/network.yml
 
 # set temporay workdir
-WORKDIR=${WORKDIR:-/tmp/workdir}
+WORKDIR=${WORKDIR:-/tmp/workdir/daisy}
 
 [[ $POD_NAME =~ (virtual) ]] && IS_BARE=0
 
@@ -258,16 +258,12 @@ else
     virsh destroy daisy
     virsh undefine daisy
 fi
-if [ -f $WORKDIR/daisy/centos7.qcow2 ]; then
-    rm -rf $WORKDIR/daisy/centos7.qcow2
-fi
 
 echo "=======create daisy node================"
+$CREATE_QCOW2_PATH/daisy-img-modify.sh -c $CREATE_QCOW2_PATH/centos-img-modify.sh -w $WORKDIR -a $DAISY_IP $PARAS_IMAGE
 if [ $IS_BARE == 0 ];then
-    $CREATE_QCOW2_PATH/daisy-img-modify.sh -c $CREATE_QCOW2_PATH/centos-img-modify.sh -a $DAISY_IP $PARAS_IMAGE
     create_node $VMDELOY_DAISY_SERVER_NET daisy1 $VMDEPLOY_DAISY_SERVER_VM daisy
 else
-    $CREATE_QCOW2_PATH/daisy-img-modify.sh -c $CREATE_QCOW2_PATH/centos-img-modify.sh -a $DAISY_IP $PARAS_IMAGE
     virsh define $BMDEPLOY_DAISY_SERVER_VM
     virsh start daisy
 fi
