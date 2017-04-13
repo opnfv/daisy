@@ -81,6 +81,24 @@
       "revId": "b3fb89f629de15cb5c08192cb392b0219063ac70",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_2c541220",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-04-13T02:35:24Z",
+      "side": 1,
+      "message": "sorry, i was wrong to think this various is the same as the var workdir\u003d${WORKDIR:-\"/tmp/workdir/daisy\"} in daisy-img-modify.sh, it may be more reasonable to pass this various to daisy-img-modify.sh as input argument.",
+      "parentUuid": "9ab8dda7_18194c79",
+      "revId": "b3fb89f629de15cb5c08192cb392b0219063ac70",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
