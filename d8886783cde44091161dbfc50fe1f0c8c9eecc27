@@ -22,6 +22,30 @@
       "revId": "d8886783cde44091161dbfc50fe1f0c8c9eecc27",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_cc9696f0",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-04-13T00:37:22Z",
+      "side": 1,
+      "message": "may I remove the whole TODO list from this file? since item 5/6 are also finished.",
+      "parentUuid": "9ab8dda7_31deab6e",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "d8886783cde44091161dbfc50fe1f0c8c9eecc27",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
