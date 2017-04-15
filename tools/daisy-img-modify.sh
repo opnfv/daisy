@@ -15,19 +15,21 @@ usage()
 {
     cat << EOF
 USAGE: `basename $0` [-c sub-Command] [-a IP Address] [-g Gateway IP address] [-s image Size in GB]
-
+                     [-w workdir]
 OPTIONS:
   -c sub-command to modify the content
   -a IP address for the sub-command to set in the image
   -g gateway IP address for the sub-command to set in the image
   -s image size of gigabytes. If it is absent, the image size will not be changed.
+  -w workdir for temporary usage, optional
+  -h print this message and exit
 
 EXAMPLE:
     sudo `basename $0` -c centos-img-modify.sh -a 10.20.11.2 -g 10.20.11.1 -s 100
 EOF
 }
 
-while getopts "c:a:g:s:h" OPTION
+while getopts "c:a:g:s:w:h" OPTION
 do
     case $OPTION in
         c)
@@ -46,6 +48,9 @@ do
             ;;
         s)
             img_size=${OPTARG}
+            ;;
+        w)
+            WORKDIR=${OPTARG}
             ;;
         h)
             usage
@@ -206,6 +211,9 @@ cleanup() {
         kpartx -dv $raw_imgfile || eliminate
     fi
     rm -f $raw_imgfile
+    if [ -f $imgfile ]; then
+        rm -rf $imgfile
+    fi
     rm -rf $mountdir
 }
 
