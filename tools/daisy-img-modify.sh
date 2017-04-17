@@ -211,9 +211,6 @@ cleanup() {
         kpartx -dv $raw_imgfile || eliminate
     fi
     rm -f $raw_imgfile
-    if [ -f $imgfile ]; then
-        rm -rf $imgfile
-    fi
     rm -rf $mountdir
 }
 
@@ -239,6 +236,9 @@ error_trap()
 
 main() {
     cleanup
+    if [ -f $imgfile ]; then
+        rm -rf $imgfile
+    fi
 
     trap "error_trap" EXIT SIGTERM
 
