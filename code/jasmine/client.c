@@ -255,7 +255,7 @@ int main(int argc, char *argv[])
 
     if (argc < 3) {
         printf("Usage: %s <local_ip> <server_ip> [port]\n", argv[0]);
-        return 0;
+        return -1;
     }
 
     if (!inet_aton(argv[1], &local_addr)) {
