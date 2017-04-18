@@ -22,6 +22,30 @@
       "revId": "2cf7f098048ef0c11eb1321747b600230a495c88",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_a12fa8a0",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-04-18T01:04:24Z",
+      "side": 0,
+      "message": "I just move this statement to the daisy-img-modify.sh?please refer to daisy-img-modify.sh below lines:\n    if [ -f $imgfile ]; then\n        rm -rf $imgfile\n    fi",
+      "parentUuid": "9ab8dda7_81a5c4b6",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 2
+      },
+      "revId": "2cf7f098048ef0c11eb1321747b600230a495c88",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
