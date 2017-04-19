@@ -157,6 +157,7 @@ resize() {
     # resize the image
     qemu-img resize $raw_imgfile ${img_size}G
     qemu-img info $raw_imgfile
+    losetup --find --show $raw_imgfile
     loopdevice=$(kpartx -l $raw_imgfile | head -1 | cut -f1 -d ' ')
     kpartx -av $raw_imgfile
     sleep 2
@@ -170,9 +171,8 @@ resize() {
 # mount image
 setup() {
     mkdir -p $mountdir
-
+    losetup --find --show $raw_imgfile
     loopdevice=$(kpartx -l $raw_imgfile | head -1 | cut -f1 -d ' ')
-
     kpartx -av $raw_imgfile
     sleep 2
     dmsetup ls
