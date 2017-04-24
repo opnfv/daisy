@@ -38,6 +38,13 @@ def _config_service(service, subs):
     return _wrap
 
 
+@_config_service('nova', ['compute'])
+def _set_default_compute():
+    return '[libvirt]\n' \
+           'virt_type=qemu\n' \
+           'cpu_mode=none\n'
+
+
 @_config_service('nova', ['api'])
 def _set_default_floating_pool(network_file):
     xnet = NetworkConfig(network_file=network_file).ext_network_name
@@ -59,6 +66,7 @@ def main():
                         required=True,
                         help='network configuration file')
     args = parser.parse_args()
+    _set_default_compute()
     _set_default_floating_pool(args.network_file)
     _set_trusts_auth()
 
