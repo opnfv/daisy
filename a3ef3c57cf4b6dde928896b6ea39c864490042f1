@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_d68938cb",
+        "filename": "deploy/prepare/execute.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-24T10:49:20Z",
+      "side": 1,
+      "message": "This is only for V/M, not for B/M, and it seems here we can not tell if we are in V/M deployment or B/M?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 26
+      },
+      "revId": "a3ef3c57cf4b6dde928896b6ea39c864490042f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
