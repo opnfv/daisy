@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_6aa3c04f",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-25T07:03:46Z",
+      "side": 1,
+      "message": "Please explain why we need to enlarge this. Please put the explanation as comment in above this line. Thanks.",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 8
+      },
+      "revId": "b3ed66337899c7052680c044669a613d6b9ac660",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
