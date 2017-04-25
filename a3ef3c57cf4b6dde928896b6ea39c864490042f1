@@ -22,6 +22,30 @@
       "revId": "a3ef3c57cf4b6dde928896b6ea39c864490042f1",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_4ab11ce0",
+        "filename": "deploy/prepare/execute.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-04-25T01:06:06Z",
+      "side": 1,
+      "message": "Yes, the execute.py only runs for V/M,it tell the V/M or B/M in deploy.sh file,please refer to the below code in deploy.sh.\n\nif [ $IS_BARE \u003d\u003d 0 ];then\n    echo \"\u003d\u003d\u003d\u003d\u003d\u003d add relate config of kolla \u003d\u003d\u003d\u003d\u003d\u003d\"\n     ssh $SSH_PARAS $DAISY_IP \"bash $REMOTE_SPACE/deploy/prepare.sh -n $NETWORK\"\nfi",
+      "parentUuid": "9ab8dda7_d68938cb",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 26
+      },
+      "revId": "a3ef3c57cf4b6dde928896b6ea39c864490042f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
