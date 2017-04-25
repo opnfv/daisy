@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_6d5bda2e",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-04-25T08:25:31Z",
+      "side": 1,
+      "message": "need to delete this?",
+      "range": {
+        "startLine": 45,
+        "startChar": 56,
+        "endLine": 45,
+        "endChar": 81
+      },
+      "revId": "08ed20c767831124fc241c0d2812e31c649aa5fe",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
