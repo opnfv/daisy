@@ -269,7 +269,10 @@ else
     virsh define $BMDEPLOY_DAISY_SERVER_VM
     virsh start daisy
 fi
-sleep 20
+#wait for the daisy1 network start finished for execute trustme.sh
+#here sleep 40 just needed in Dell blade server
+#for E9000 blade server we only have to sleep 20
+sleep 40
 
 echo "====== install daisy ======"
 $DEPLOY_PATH/trustme.sh $DAISY_IP $DAISY_PASSWD

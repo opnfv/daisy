@@ -8,7 +8,7 @@ OPTIONS:
   -n target node numbers
 
 EXAMPLE:
-    sudo `basename $0` -d 1 -n 5
+    sudo `basename $0` -n 5
 EOF
 }
 
