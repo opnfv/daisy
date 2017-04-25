@@ -269,7 +269,7 @@ else
     virsh define $BMDEPLOY_DAISY_SERVER_VM
     virsh start daisy
 fi
-sleep 20
+sleep 40
 
 echo "====== install daisy ======"
 $DEPLOY_PATH/trustme.sh $DAISY_IP $DAISY_PASSWD
