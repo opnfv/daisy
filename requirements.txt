@@ -1,0 +1,4 @@
+configobj
+paramiko
+pyyaml
+scp

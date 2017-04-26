@@ -1,3 +1,7 @@
+configobj
+paramiko
+pyyaml
+scp
 pytest
 pytest-cov
 pytest-faker
