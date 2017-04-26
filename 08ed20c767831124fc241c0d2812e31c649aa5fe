@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_6080c146",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-26T01:34:00Z",
+      "side": 1,
+      "message": "From https://build.opnfv.org/ci/job/daisy-build-daily-master/239/consoleFull , it seems there is a chance that the container was not deleted automatically after stopped. May be because something was stuck in container during the last run or other processes were running in daisy container while 239 was runing?",
+      "parentUuid": "9ab8dda7_4da61612",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 50
+      },
+      "revId": "08ed20c767831124fc241c0d2812e31c649aa5fe",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_6d5bda2e",
         "filename": "ci/build_rpm/build_rpms.sh",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-25T08:25:31Z",
       "side": 1,
       "message": "need to delete this?",
+      "range": {
+        "startLine": 45,
+        "startChar": 56,
+        "endLine": 45,
+        "endChar": 81
+      },
+      "revId": "08ed20c767831124fc241c0d2812e31c649aa5fe",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_00978591",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-26T01:34:00Z",
+      "side": 1,
+      "message": "since we use -v in line 41, so I think we can keep this.",
+      "parentUuid": "9ab8dda7_6d5bda2e",
       "range": {
         "startLine": 45,
         "startChar": 56,
