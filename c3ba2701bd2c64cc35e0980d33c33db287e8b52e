@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_de506ad6",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-26T16:08:04Z",
+      "side": 1,
+      "message": "What about we treat the daisy_env as a virtual base object, then extent it to daisy_vm_env and daisy_bm_env. In this way we can replace all the \"if\" statements like this with a virtual function call such as \"self.daisy_env.xxx\"?",
+      "range": {
+        "startLine": 137,
+        "startChar": 7,
+        "endLine": 137,
+        "endChar": 37
+      },
+      "revId": "c3ba2701bd2c64cc35e0980d33c33db287e8b52e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
