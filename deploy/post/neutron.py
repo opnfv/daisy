@@ -67,3 +67,15 @@ class Neutron(keystoneauth.ClientBase):
         except Exception, e:
             print('_create_subnet fail with: {}'.format(e))
             return None
+
+    def get_external_physnet(self, host, type):
+        agent = query.find(lambda ag: ag['host'] == host and ag['agent_type'] == type,
+                           self.client.list_agents()['agents'])
+        if not agent:
+            print('get_physnet fail or NULL: {} {}'.format(host, type))
+            return None
+
+        for k, v in agent['configurations']['bridge_mappings'].iteritems():
+            if v == 'br-ex':
+                return k
+        return None

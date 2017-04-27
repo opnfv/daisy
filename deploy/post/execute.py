@@ -14,16 +14,17 @@ import argparse
 import neutron
 import nova
 from deploy.config.network import NetworkConfig
+from daisyclient.v1 import client as daisy_client
 
 
-def _config_external_network(ext_name):
+def _config_external_network(ext_name, physnet):
     body = {
         'network': {
             'name': ext_name,
             'admin_state_up': True,
             'shared': False,
             'provider:network_type': 'flat',
-            'provider:physical_network': 'physnet1',
+            'provider:physical_network': physnet,
             'router:external': True
         }
     }
@@ -47,12 +48,39 @@ def _config_external_subnet(ext_id, network_conf):
     }
 
 
+def get_endpoint(file_path):
+    for line in open(file_path):
+        if 'OS_ENDPOINT' in line:
+            daisyrc_admin_line = line.strip()
+            daisy_endpoint = daisyrc_admin_line.split("=")[1]
+    return daisy_endpoint
+
+
+def get_controller_host_name():
+    daisy_version = 1.0
+    daisyrc_path = "/root/daisyrc_admin"
+
+    daisy_endpoint = get_endpoint(daisyrc_path)
+    client = daisy_client.Client(version=daisy_version, endpoint=daisy_endpoint)
+
+    hosts_list_generator = client.hosts.list()
+    hosts_list = [host for host in hosts_list_generator]
+    for host in hosts_list:
+        host_info = client.hosts.get(host.id)
+        if 'CONTROLLER_LB' in host_info.role:
+            return host_info.name
+    return None
+
+
 def _create_external_network(network_file):
+    agent_type = 'Open vSwitch agent'
     network_conf = NetworkConfig(network_file=network_file)
     ext_name = network_conf.ext_network_name
+    host_name = get_controller_host_name()
     neutronclient = neutron.Neutron()
+    physnet = neutronclient.get_external_physnet(host_name, agent_type)
     ext_id = neutronclient.create_network(ext_name,
-                                          _config_external_network(ext_name))
+                                          _config_external_network(ext_name, physnet))
     neutronclient.create_subnet(_config_external_subnet(ext_id, network_conf))
 
 
