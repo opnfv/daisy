@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_de014a07",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-04-27T07:11:57Z",
+      "side": 1,
+      "message": "Agree. This script has been tested on zte-virtual1 and zte-pod2, manually.",
+      "parentUuid": "9ab8dda7_fe6d2e33",
+      "revId": "c3ba2701bd2c64cc35e0980d33c33db287e8b52e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_1e228201",
         "filename": "deploy/deploy.py",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2017-04-27T01:55:09Z",
       "side": 1,
       "message": "If do not have these parameters in deploy_struct dict these syntax will raise an keyerror error.\nhow about use self.deploy_struct.get(\u0027XXX\u0027,default_value)?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 56
+      },
+      "revId": "c3ba2701bd2c64cc35e0980d33c33db287e8b52e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_79007801",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-04-27T07:11:57Z",
+      "side": 1,
+      "message": "I changed some lines as you mentioned. But the IP address should be set according to the physical network in bare-metal environment, and cannot be set to a default value.",
+      "parentUuid": "9ab8dda7_1e228201",
       "range": {
         "startLine": 103,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_592494ae",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-04-27T07:11:57Z",
+      "side": 1,
+      "message": "self.daisy_server_info is gotten from function get_daisy_server_info(). There should not be a key error exception .",
+      "parentUuid": "9ab8dda7_1e692225",
+      "range": {
+        "startLine": 123,
+        "startChar": 29,
+        "endLine": 125,
+        "endChar": 64
+      },
+      "revId": "c3ba2701bd2c64cc35e0980d33c33db287e8b52e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_de506ad6",
         "filename": "deploy/deploy.py",
         "patchSetId": 3
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_390a0022",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-04-27T07:11:57Z",
+      "side": 1,
+      "message": "I moved these judgement into environment.py. Please take a look.",
+      "parentUuid": "9ab8dda7_de506ad6",
+      "range": {
+        "startLine": 137,
+        "startChar": 7,
+        "endLine": 137,
+        "endChar": 37
+      },
+      "revId": "c3ba2701bd2c64cc35e0980d33c33db287e8b52e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_de1b8ac8",
         "filename": "deploy/deploy.py",
         "patchSetId": 3
@@ -99,6 +189,30 @@
       "writtenOn": "2017-04-27T01:55:09Z",
       "side": 1,
       "message": "Could we move the daisy tmp working dir to /home/ dir of server instead of in / dir?For always the / tmp is less then 50G in most blade server,it may be a little small for daisy node install daisy and store images of openstack.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 59
+      },
+      "revId": "c3ba2701bd2c64cc35e0980d33c33db287e8b52e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_992a0c7d",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-04-27T07:11:57Z",
+      "side": 1,
+      "message": "I moved the daisy server\u0027s image file to /home/qemu/vms. Please refer to create_daisy_server_image() function in environment.py. There is a shutil.move() action.",
+      "parentUuid": "9ab8dda7_de1b8ac8",
       "range": {
         "startLine": 182,
         "startChar": 0,
