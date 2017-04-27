@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_5413fb0c",
+        "filename": "deploy/daisy_server.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-27T14:35:16Z",
+      "side": 1,
+      "message": "use string format insdead of 6-xxx",
+      "range": {
+        "startLine": 65,
+        "startChar": 15,
+        "endLine": 65,
+        "endChar": 53
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_f4f9cfc8",
+        "filename": "deploy/daisy_server.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-27T14:35:16Z",
+      "side": 1,
+      "message": "does not seen any values for these functions just replace shell scripts.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 30
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_34420711",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-27T14:35:16Z",
+      "side": 1,
+      "message": "this line is not necessary I think.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_54453b15",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-27T14:35:16Z",
+      "side": 1,
+      "message": "why not the same naming format?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 12
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_f44b0f29",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-27T14:35:16Z",
+      "side": 1,
+      "message": "most of these parameters should support default parameters",
+      "range": {
+        "startLine": 43,
+        "startChar": 24,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_1447c31e",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-27T14:35:16Z",
+      "side": 1,
+      "message": "missing exception code.",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_146ee396",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-27T14:35:16Z",
+      "side": 1,
+      "message": "suggest un-exported funtion named with _, for example:\n_get_adapter_info(self):",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 24
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_745f1fe6",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-27T14:35:16Z",
+      "side": 1,
+      "message": "if you choose get, please the same format for the previous lines.",
+      "range": {
+        "startLine": 100,
+        "startChar": 38,
+        "endLine": 100,
+        "endChar": 41
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_3459a7fe",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-27T14:35:16Z",
+      "side": 1,
+      "message": "ugly here",
+      "range": {
+        "startLine": 101,
+        "startChar": 39,
+        "endLine": 101,
+        "endChar": 78
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_940973df",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-27T14:35:16Z",
+      "side": 1,
+      "message": "these codes are not relevant with this class, which are used to call this class or test.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 30
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_b41a7715",
+        "filename": "deploy/environment.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-27T14:35:16Z",
+      "side": 1,
+      "message": "use VirtualEnvironment, BareMetalEnvironment as the parent class.",
+      "range": {
+        "startLine": 49,
+        "startChar": 23,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_141ca312",
+        "filename": "deploy/environment.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-04-27T14:35:16Z",
+      "side": 1,
+      "message": "it is not suitable here. new and init function now turn, just the class itself.\n\nthere is a new, a __delete__ function maybe added.",
+      "range": {
+        "startLine": 53,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
