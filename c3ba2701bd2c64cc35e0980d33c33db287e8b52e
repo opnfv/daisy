@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "9ab8dda7_fe6d2e33",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-04-27T01:55:09Z",
+      "side": 1,
+      "message": "This python script is really a big change.\nI think it should be Comprehensive tested for our CI env.\nThank you.",
+      "revId": "c3ba2701bd2c64cc35e0980d33c33db287e8b52e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_1e228201",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-04-27T01:55:09Z",
+      "side": 1,
+      "message": "If do not have these parameters in deploy_struct dict these syntax will raise an keyerror error.\nhow about use self.deploy_struct.get(\u0027XXX\u0027,default_value)?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 56
+      },
+      "revId": "c3ba2701bd2c64cc35e0980d33c33db287e8b52e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_1e692225",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-04-27T01:55:09Z",
+      "side": 1,
+      "message": "same as above.",
+      "range": {
+        "startLine": 123,
+        "startChar": 29,
+        "endLine": 125,
+        "endChar": 64
+      },
+      "revId": "c3ba2701bd2c64cc35e0980d33c33db287e8b52e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_de506ad6",
         "filename": "deploy/deploy.py",
         "patchSetId": 3
@@ -18,6 +81,29 @@
         "startChar": 7,
         "endLine": 137,
         "endChar": 37
+      },
+      "revId": "c3ba2701bd2c64cc35e0980d33c33db287e8b52e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_de1b8ac8",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-04-27T01:55:09Z",
+      "side": 1,
+      "message": "Could we move the daisy tmp working dir to /home/ dir of server instead of in / dir?For always the / tmp is less then 50G in most blade server,it may be a little small for daisy node install daisy and store images of openstack.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 59
       },
       "revId": "c3ba2701bd2c64cc35e0980d33c33db287e8b52e",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
