@@ -15,15 +15,14 @@ import neutron
 import nova
 from deploy.config.network import NetworkConfig
 
-
-def _config_external_network(ext_name):
+def _config_external_network(ext_name, physnet):
     body = {
         'network': {
             'name': ext_name,
             'admin_state_up': True,
             'shared': False,
             'provider:network_type': 'flat',
-            'provider:physical_network': 'physnet1',
+            'provider:physical_network': physnet,
             'router:external': True
         }
     }
@@ -50,9 +49,10 @@ def _config_external_subnet(ext_id, network_conf):
 def _create_external_network(network_file):
     network_conf = NetworkConfig(network_file=network_file)
     ext_name = network_conf.ext_network_name
+    physnet = network_conf.ext_mapping
     neutronclient = neutron.Neutron()
     ext_id = neutronclient.create_network(ext_name,
-                                          _config_external_network(ext_name))
+                                          _config_external_network(ext_name, physnet))
     neutronclient.create_subnet(_config_external_subnet(ext_id, network_conf))
 
 

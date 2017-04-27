@@ -67,3 +67,4 @@ class Neutron(keystoneauth.ClientBase):
         except Exception, e:
             print('_create_subnet fail with: {}'.format(e))
             return None
+
