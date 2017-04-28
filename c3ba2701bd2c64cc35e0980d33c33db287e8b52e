@@ -245,6 +245,30 @@
       "revId": "c3ba2701bd2c64cc35e0980d33c33db287e8b52e",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_6f9c2ac1",
+        "filename": "deploy/environment.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-04-28T05:28:05Z",
+      "side": 1,
+      "message": "Sorry,please ignore this commont if this two is just a template.",
+      "parentUuid": "9ab8dda7_de72aa10",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 86
+      },
+      "revId": "c3ba2701bd2c64cc35e0980d33c33db287e8b52e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
