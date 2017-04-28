@@ -45,6 +45,30 @@
       "revId": "af5cca01475cb2380c6f1a4c1f2afc056dcf11d7",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_1408232c",
+        "filename": "deploy/post/neutron.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-28T02:25:04Z",
+      "side": 1,
+      "message": "Sorry, May be I was wrong. the user, especially the administrator should know the bridge mapping name such as physnet1 well. Other wise, he/she may not be able to know how to create the provider networks. So I think we can define \"physnet1\" as the external provider network somewhere in the config file (such as DHA/DEA) ,for example, in network.yml:\n\ninterfaces:\n  - name: \u0027EXTERNAL\u0027\n    interface: \u0027ens8\u0027\n+   mapping: physnet1\n\nThen, pass this info to Daisy/Kolla to create the mapping(currently we do not have such ability, but kolla just configs one mapping named physnet1, which is used by external interface), in that case, our script would get the mapping name directly from network.yml and use it in _create_subnet() function. What do you think?",
+      "parentUuid": "9ab8dda7_343c47e2",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 24
+      },
+      "revId": "af5cca01475cb2380c6f1a4c1f2afc056dcf11d7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
