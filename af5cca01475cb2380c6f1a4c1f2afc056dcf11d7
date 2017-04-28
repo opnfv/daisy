@@ -22,6 +22,29 @@
       "revId": "af5cca01475cb2380c6f1a4c1f2afc056dcf11d7",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_343c47e2",
+        "filename": "deploy/post/neutron.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-04-28T02:08:48Z",
+      "side": 1,
+      "message": "IMHO, both \"physnet1\" and \"br-ex\" are implmentation specific. The user may not be familiar with both of them.\n\nCan we find phynet name by its corresponding interface name? for example ens8? Beause the interface name is the only info we are sure in user\u0027s DHA/DEA config file.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 24
+      },
+      "revId": "af5cca01475cb2380c6f1a4c1f2afc056dcf11d7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
