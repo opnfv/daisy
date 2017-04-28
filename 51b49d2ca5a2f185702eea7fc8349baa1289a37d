@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_cfb43637",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-04-28T08:54:47Z",
+      "side": 1,
+      "message": "OK,i will do.",
+      "parentUuid": "9ab8dda7_74615f38",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 16
+      },
+      "revId": "51b49d2ca5a2f185702eea7fc8349baa1289a37d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_f46d4f33",
         "filename": "deploy/post/execute.py",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-27T15:43:58Z",
       "side": 1,
       "message": "more efficiency:\n\nwith open(file_path) as fd:\n    return re.findall(re.compile(r\u0027export\\s+OS_ENDPOINT\\s*\u003d\\s*\\\u0027(.*)\\\u0027\u0027), fd.read())",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "51b49d2ca5a2f185702eea7fc8349baa1289a37d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_af6c629d",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-04-28T08:54:47Z",
+      "side": 1,
+      "message": "OK?it will replace it as this way.",
+      "parentUuid": "9ab8dda7_f46d4f33",
       "range": {
         "startLine": 51,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_6f83ca56",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-04-28T08:54:47Z",
+      "side": 1,
+      "message": "yes,good suggestion.",
+      "parentUuid": "9ab8dda7_14690325",
+      "range": {
+        "startLine": 59,
+        "startChar": 19,
+        "endLine": 59,
+        "endChar": 40
+      },
+      "revId": "51b49d2ca5a2f185702eea7fc8349baa1289a37d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_b477d701",
         "filename": "deploy/post/execute.py",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_6f5f4ae6",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-04-28T08:54:47Z",
+      "side": 1,
+      "message": "OK, it is more concise.",
+      "parentUuid": "9ab8dda7_b477d701",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 27
+      },
+      "revId": "51b49d2ca5a2f185702eea7fc8349baa1289a37d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_d4728b10",
         "filename": "deploy/post/execute.py",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2017-04-27T15:43:58Z",
       "side": 1,
       "message": "return only or all of them?",
+      "range": {
+        "startLine": 70,
+        "startChar": 12,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "51b49d2ca5a2f185702eea7fc8349baa1289a37d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_8f863e64",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-04-28T08:54:47Z",
+      "side": 1,
+      "message": "Only return one node name.",
+      "parentUuid": "9ab8dda7_d4728b10",
       "range": {
         "startLine": 70,
         "startChar": 12,
