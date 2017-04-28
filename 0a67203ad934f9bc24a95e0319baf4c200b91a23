@@ -275,6 +275,75 @@
       "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_ef41fa39",
+        "filename": "deploy/utils.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-04-28T05:28:05Z",
+      "side": 1,
+      "message": "Suggest do not use join instead of os.path.join.\nfor this will cover the use of build-in function of join.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_cf46764f",
+        "filename": "deploy/utils.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-04-28T05:28:05Z",
+      "side": 1,
+      "message": "Can this be changed to \"with open(log_file, \"w+\") as log.file:\"?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 61
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_8f787e90",
+        "filename": "deploy/utils.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-04-28T05:28:05Z",
+      "side": 1,
+      "message": "This is just for e9000?",
+      "range": {
+        "startLine": 105,
+        "startChar": 13,
+        "endLine": 105,
+        "endChar": 71
+      },
+      "revId": "0a67203ad934f9bc24a95e0319baf4c200b91a23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
