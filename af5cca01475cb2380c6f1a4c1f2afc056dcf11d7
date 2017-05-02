@@ -141,6 +141,30 @@
       "revId": "af5cca01475cb2380c6f1a4c1f2afc056dcf11d7",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_ce1c3716",
+        "filename": "deploy/post/neutron.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-05-02T12:09:09Z",
+      "side": 1,
+      "message": "OK,as your suggestion firstly adding the external network mapping configuration network.yml.",
+      "parentUuid": "9ab8dda7_abcbf551",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 24
+      },
+      "revId": "af5cca01475cb2380c6f1a4c1f2afc056dcf11d7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
