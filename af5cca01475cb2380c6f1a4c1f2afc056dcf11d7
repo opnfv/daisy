@@ -117,6 +117,30 @@
       "revId": "af5cca01475cb2380c6f1a4c1f2afc056dcf11d7",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_abcbf551",
+        "filename": "deploy/post/neutron.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-05-02T01:35:54Z",
+      "side": 1,
+      "message": "Kolla do support the creation of this mapping already. It even support creating multiple mappings. But currently Daisy only config one hard coded mapping to Kolla, that is the \"physnet1 mapping to br-ex, which is used for external interface\". \n\nI think we can go head with this idea currently(just define the mapping in network.yml), then implement the network.yml mapping parser and pass result to Daisy then to Kolla in future.",
+      "parentUuid": "9ab8dda7_0fab2ed7",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 24
+      },
+      "revId": "af5cca01475cb2380c6f1a4c1f2afc056dcf11d7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
