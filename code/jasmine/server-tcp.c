@@ -25,7 +25,6 @@
 #include "server.h"
 
 #define MAX_CLIENTS 128 /* Clients per TCP server */
-#define TCP_BUFF_SIZE 65536
 
 struct cdata {
     struct tcpq *tx;
@@ -219,8 +218,9 @@ void accept_clients_may_spawn(struct server_status_data *sdata)
 
 void keep_on_receiving_client_request(struct server_status_data *sdata)
 {
-    char buf[TCP_BUFF_SIZE];
+    char buf[MAX_REQ_SIZE];
     void *cpy;
+    void *anscpy;
     struct request_ctl *req;
     uint32_t *rqb;
     struct packet_ctl *ans;
@@ -270,10 +270,11 @@ void keep_on_receiving_client_request(struct server_status_data *sdata)
             total_sz = ans->data_size + sizeof(struct packet_ctl);
             log(6, "Send packet %u (%u bytes) on %d",
                 rqb[rq_index], ans->data_size, sdata->cindex);
-            cpy = wrapper_malloc(total_sz);
-            memcpy(cpy, ans, total_sz);
-            tcpq_queue_tail(cd->tx, cpy, total_sz);
+            anscpy = wrapper_malloc(total_sz);
+            memcpy(anscpy, ans, total_sz);
+            tcpq_queue_tail(cd->tx, anscpy, total_sz);
         }
+        free(cpy);
 
         if (rq_index > 0) {
             /* Data need to be sent out */
@@ -394,7 +395,7 @@ void handle_pullin_event(struct server_status_data *sdata)
 
 void handle_pullout_event(struct server_status_data *sdata)
 {
-    char buf[TCP_BUFF_SIZE];
+    char buf[PACKET_SIZE];
     struct pollfd *ds;
     struct cdata *cd;
     long transmit_sz;
