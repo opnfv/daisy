@@ -22,6 +22,30 @@
       "revId": "a7e8ac7aa6cf5bdefb80fdd051a2162b4f7d6108",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_806368db",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-05-04T11:49:16Z",
+      "side": 1,
+      "message": "Yes,currently the code in deploy/config/network.py has already supported getting the mapping in network.yml.\nplease refer to the method _parse_networks(self, networks) in class NetworkConfig.",
+      "parentUuid": "9ab8dda7_c53bb2cf",
+      "range": {
+        "startLine": 53,
+        "startChar": 13,
+        "endLine": 53,
+        "endChar": 38
+      },
+      "revId": "a7e8ac7aa6cf5bdefb80fdd051a2162b4f7d6108",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
