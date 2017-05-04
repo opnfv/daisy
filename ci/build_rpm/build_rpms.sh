@@ -38,6 +38,10 @@ function cleanup_container {
         echo "Stopping containers... $containers_to_kill"
         sudo docker stop -t 2 ${containers_to_kill}
         echo "Removing containers... $containers_to_kill"
+
+        # Prevent "removal of container daisy is already in progress"
+        sleep 10
+
         sudo docker rm -v -f ${containers_to_kill}
 
         if [[ ! -z "$volumes_to_remove" ]]; then
