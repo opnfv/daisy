@@ -21,7 +21,7 @@
 /* Exclude padding */
 #define PACKET_PAYLOAD_SIZE (((PACKET_SIZE) - sizeof(struct packet_ctl)) & ~0x3)
 
-#define PACKETS_PER_BUFFER 1024
+#define PACKETS_PER_BUFFER 65536
 
 #define DEF_PORT 18383 /* for both UDP and TCP */
 
@@ -50,6 +50,9 @@ struct packet_ctl {
 struct request_ctl {
     uint32_t req_count; /* Requested packet slot count */
 };
+
+#define MAX_REQ_SIZE (sizeof(struct request_ctl) + \
+                      PACKETS_PER_BUFFER * sizeof(uint32_t))
 
 extern struct buffer_ctl buffctl;
 extern struct packet_ctl *packetctl[PACKETS_PER_BUFFER];
