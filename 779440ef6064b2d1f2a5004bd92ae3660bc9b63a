@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_a0478c4a",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-05-04T11:41:38Z",
+      "side": 1,
+      "message": "Is this delay can resolve the container removal collision?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 8
+      },
+      "revId": "779440ef6064b2d1f2a5004bd92ae3660bc9b63a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
