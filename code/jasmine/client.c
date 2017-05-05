@@ -107,7 +107,7 @@ void tcp_retransmition(int tcp_socket,
 {
     struct request_ctl *reqctl;
     uint32_t *reqbody;
-    uint8_t rqbuf[sizeof(struct request_ctl) + PACKETS_PER_BUFFER * sizeof(uint32_t)];
+    uint8_t rqbuf[MAX_REQ_SIZE];
     uint32_t l;
 
     reqctl = (struct request_ctl *)rqbuf;
@@ -174,7 +174,7 @@ int recv_mcast(int tcp_socket, int udp_socket,
         do {
             FD_SET(tcp_socket, &rfds);
             FD_SET(udp_socket, &rfds);
-            tv.tv_sec = 5;
+            tv.tv_sec = 20;
             tv.tv_usec = 0;
 
             res = select(maxfd, &rfds, 0, 0, &tv);
