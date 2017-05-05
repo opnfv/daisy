@@ -22,6 +22,30 @@
       "revId": "779440ef6064b2d1f2a5004bd92ae3660bc9b63a",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_3763dfb2",
+        "filename": "ci/build_rpm/build_rpms.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-05-05T00:55:22Z",
+      "side": 1,
+      "message": "According to https://build.opnfv.org/ci/job/daisy4nfv-verify-build-master/463/console. It seems \"sudo docker stop -t 2 daisy\" did not wait until the container was fully removed, so the next command \"sudo docker rm -v -f daisy\" got error \"removal of container daisy is already in progress\"? , So I hope a delay here can workaround this problem. Just try.\n\nOr maybe it is a bug of docker( refer to https://github.com/moby/moby/issues/29040). If this delay does not help, we need to dive into this a little bit more.",
+      "parentUuid": "9ab8dda7_a0478c4a",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 8
+      },
+      "revId": "779440ef6064b2d1f2a5004bd92ae3660bc9b63a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
