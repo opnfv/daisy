@@ -33,6 +33,7 @@ networks:
       end: 172.10.101.20
     name: EXTERNAL
     network_name: admin_external
+    mapping: physnet1
   - cidr: '10.20.11.0/24'
     gateway: '10.20.11.1'
     ip_ranges:
