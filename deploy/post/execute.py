@@ -50,11 +50,12 @@ def _config_external_subnet(ext_id, network_conf):
 def _create_external_network(network_file):
     network_conf = NetworkConfig(network_file=network_file)
     ext_name = network_conf.ext_network_name
-    physnet = network_conf.ext_mapping
+    physnet = network_conf.ext_mapping if hasattr(network_conf, 'ext_mapping') else 'physnet1'
     neutronclient = neutron.Neutron()
     ext_id = neutronclient.create_network(ext_name,
                                           _config_external_network(ext_name, physnet))
-    neutronclient.create_subnet(_config_external_subnet(ext_id, network_conf))
+    if ext_id:
+        neutronclient.create_subnet(_config_external_subnet(ext_id, network_conf))
 
 
 def _create_flavor_m1_micro():
