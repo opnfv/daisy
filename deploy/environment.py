@@ -11,6 +11,9 @@ import os
 import shutil
 import time
 
+from config.schemas import (
+    MIN_NODE_DISK_SIZE,
+)
 from daisy_server import (
     DaisyServer
 )
@@ -183,8 +186,9 @@ class VirtualEnvironment(DaisyEnvironmentBase):
     def create_virtual_node(self, node):
         name = node['name']
         roles = node['roles']
-        controller_size = self.deploy_struct.get('disks', {'controller': 200}).get('controller')
-        compute_size = self.deploy_struct.get('disks', {'compute': 200}).get('compute')
+        disks = self.deploy_struct.get('disks', {})
+        controller_size = disks.get('controller', MIN_NODE_DISK_SIZE)
+        compute_size = disks.get('compute', MIN_NODE_DISK_SIZE)
         LI('Begin to create virtual node %s, roles %s' % (name, roles))
 
         if 'CONTROLLER_LB' in roles:
@@ -201,9 +205,6 @@ class VirtualEnvironment(DaisyEnvironmentBase):
         if 'template' in node:
             template = node['template']
         disk_file = path_join(self.storage_dir, name + '.qcow2')
-        # TODO: modify the sizes in deploy.yml to more than 100G
-        if size < 200:
-            size = 200
         create_virtual_disk(disk_file, size)
         create_vm(template, name, disk_file)
 
