@@ -26,6 +26,7 @@ from utils import (
     WORKSPACE,
     LI,
     LW,
+    LE,
     err_exit,
     run_shell,
     path_join,
@@ -59,6 +60,11 @@ class DaisyEnvironment(object):
                                         daisy_server_info, work_dir, storage_dir)
 
 
+MIN_DAISY_DISK_SIZE = 50
+# minimal size of root_lv_size is 102400 mega-bytes
+MIN_DISK_SIZE = 110
+
+
 class DaisyEnvironmentBase(object):
     def __init__(self, deploy_struct, net_struct, adapter, pxe_bridge,
                  daisy_server_info, work_dir, storage_dir):
@@ -70,6 +76,7 @@ class DaisyEnvironmentBase(object):
         self.storage_dir = storage_dir
         self.daisy_server_info = daisy_server_info
         self.server = None
+        self.check_configuration()
         LI('Daisy Environment Initialized')
 
     def delete_daisy_server(self):
@@ -107,8 +114,21 @@ class DaisyEnvironmentBase(object):
         self.server.connect()
         self.server.install_daisy()
 
+    def _check_disk_size(self, name, min_size):
+        default_conf = {name: min_size}
+        conf_size = self.deploy_struct.get('disks', default_conf).get(name, min_size)
+        if conf_size < min_size:
+            LE('The disk size of %s is too small' % name)
+            return False
+        else:
+            return True
+
 
 class BareMetalEnvironment(DaisyEnvironmentBase):
+    def check_configuration(self):
+        if not self._check_disk_size('daisy', MIN_DAISY_DISK_SIZE):
+            err_exit('Configuration check failed!')
+
     def delete_old_environment(self):
         LW('Begin to delete old environment !')
         self.delete_daisy_server()
@@ -156,6 +176,14 @@ class BareMetalEnvironment(DaisyEnvironmentBase):
 
 
 class VirtualEnvironment(DaisyEnvironmentBase):
+    def check_configuration(self):
+        result = True
+        result &= self._check_disk_size('daisy', MIN_DAISY_DISK_SIZE)
+        result &= self._check_disk_size('controller', MIN_DISK_SIZE)
+        result &= self._check_disk_size('compute', MIN_DISK_SIZE)
+        if not result:
+            err_exit('Configuration check failed!')
+
     def create_daisy_server_network(self):
         net_name = create_virtual_network(VMDEPLOY_DAISY_SERVER_NET)
         if net_name != self.pxe_bridge:
@@ -183,8 +211,10 @@ class VirtualEnvironment(DaisyEnvironmentBase):
     def create_virtual_node(self, node):
         name = node['name']
         roles = node['roles']
-        controller_size = self.deploy_struct.get('disks', {'controller': 200}).get('controller')
-        compute_size = self.deploy_struct.get('disks', {'compute': 200}).get('compute')
+        disks = self.deploy_struct.get('disks',
+                                       {'controller': MIN_DISK_SIZE, 'compute': MIN_DISK_SIZE})
+        controller_size = disks.get('controller', MIN_DISK_SIZE)
+        compute_size = disks.get('compute', MIN_DISK_SIZE)
         LI('Begin to create virtual node %s, roles %s' % (name, roles))
 
         if 'CONTROLLER_LB' in roles:
@@ -201,9 +231,6 @@ class VirtualEnvironment(DaisyEnvironmentBase):
         if 'template' in node:
             template = node['template']
         disk_file = path_join(self.storage_dir, name + '.qcow2')
-        # TODO: modify the sizes in deploy.yml to more than 100G
-        if size < 200:
-            size = 200
         create_virtual_disk(disk_file, size)
         create_vm(template, name, disk_file)
 
