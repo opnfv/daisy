@@ -173,7 +173,7 @@ class VirtualEnvironment(DaisyEnvironmentBase):
 
         create_vm(template,
                   name=self.daisy_server_info['name'],
-                  disk_file=self.daisy_server_info['image'])
+                  disks=[self.daisy_server_info['image']])
 
     def create_daisy_server(self):
         self.create_daisy_server_image()
@@ -205,7 +205,16 @@ class VirtualEnvironment(DaisyEnvironmentBase):
         if size < 200:
             size = 200
         create_virtual_disk(disk_file, size)
-        create_vm(template, name, disk_file)
+
+        disks = [disk_file]
+        ceph_disk_name = self.deploy_struct.get('ceph_disk_name', '')
+        if ceph_disk_name and ceph_disk_name != '/dev/sda' and 'CONTROLLER_LB' in roles:
+            ceph_size = self.deploy_struct.get('disks', {}).get('ceph', 110)
+            ceph_disk_file = path_join(self.storage_dir, name + '_data.qcow2')
+            create_virtual_disk(ceph_disk_file, ceph_size)
+            disks.append(ceph_disk_file)
+
+        create_vm(template, name, disks)
 
     def create_nodes(self):
         # TODO: support virtNetTemplatePath in deploy.yml

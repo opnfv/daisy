@@ -10,6 +10,7 @@
 import commands
 import libvirt
 import os
+import string
 import xml.etree.ElementTree as ET
 
 from utils import (
@@ -47,13 +48,25 @@ def modify_vm_name(root, vm_name):
     name_elem.text = vm_name
 
 
-def modify_vm_disk_file(root, disk_file):
-    for disk in root.findall('./devices/disk'):
-        if 'device' in disk.attrib and disk.attrib['device'] == 'disk':
-            for source in disk.iterfind('source'):
-                if 'file' in source.attrib:
-                    source.attrib['file'] = disk_file
-                    break
+def modify_vm_disk_file(root, disks):
+    dev_list = ['hd' + ch for ch in string.ascii_lowercase]
+    devices = root.find('./devices')
+    for disk in devices.findall('disk'):
+        if disk.attrib['device'] == 'disk':
+            devices.remove(disk)
+        else:
+            target = disk.find('target')
+            dev = target.attrib['dev']
+            if dev in dev_list:
+                dev_list.remove(dev)
+
+    for disk_file in disks:
+        dev = dev_list.pop(0)
+        disk = ET.Element('disk', attrib={'device': 'disk', 'type': 'file'})
+        disk.append(ET.Element('driver', attrib={'name': 'qemu', 'type': 'qcow2'}))
+        disk.append(ET.Element('source', attrib={'file': disk_file}))
+        disk.append(ET.Element('target', attrib={'dev': dev, 'bus': 'ide'}))
+        devices.append(disk)
 
 
 def create_virtual_disk(disk_file, size):
@@ -66,16 +79,16 @@ def create_virtual_disk(disk_file, size):
         err_exit('Fail to create qemu image !')
 
 
-def create_vm(template, name=None, disk_file=None):
+def create_vm(template, name=None, disks=None):
     LI('Begin to create VM %s' % template)
 
-    if name or disk_file:
+    if name or disks:
         tree = ET.ElementTree(file=template)
         root = tree.getroot()
         if name:
             modify_vm_name(root, name)
-        if disk_file:
-            modify_vm_disk_file(root, disk_file)
+        if disks:
+            modify_vm_disk_file(root, disks)
 
         temp_file = path_join(WORKSPACE, 'tmp.xml')
         tree.write(temp_file)
