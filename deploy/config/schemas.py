@@ -13,6 +13,7 @@ from jsonschema import Draft4Validator, FormatChecker
 MIN_DAISY_DISK_SIZE = 50
 # minimal size of root_lv_size is 102400 mega-bytes
 MIN_NODE_DISK_SIZE = 110
+MIN_CEPH_DISK_SIZE = 110
 
 hosts_schema = {
     'type': 'array',
@@ -36,7 +37,8 @@ disks_schema = {
     'properties': {
         'daisy': {'type': 'integer', 'minimum': MIN_DAISY_DISK_SIZE},
         'controller': {'type': 'integer', 'minimum': MIN_NODE_DISK_SIZE},
-        'compute': {'type': 'integer', 'minimum': MIN_NODE_DISK_SIZE}
+        'compute': {'type': 'integer', 'minimum': MIN_NODE_DISK_SIZE},
+        'ceph': {'type': 'integer', 'minimum': MIN_CEPH_DISK_SIZE}
     }
 }
 

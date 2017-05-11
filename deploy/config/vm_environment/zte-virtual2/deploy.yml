@@ -19,7 +19,8 @@ disks:
   daisy: 50
   controller: 110
   compute: 110
+  ceph: 110
 daisy_passwd: 'r00tme'
 daisy_ip: '10.20.11.2'
 daisy_gateway: '10.20.11.1'
-ceph_disk_name: ''
+ceph_disk_name: '/dev/sdb'
