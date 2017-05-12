@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_3191a299",
+        "filename": "deploy/config/schemas.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-05-12T08:22:38Z",
+      "side": 1,
+      "message": "currently this function isn\u0027t called,only for test?",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "fb09a7ed97707b6a007721ff4b72a904c4204e93",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
