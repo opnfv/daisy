@@ -22,6 +22,29 @@
       "revId": "1a00605bef4c9624681f2e6fee3deb519522754b",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_5168d686",
+        "filename": "deploy/environment.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-05-12T09:41:19Z",
+      "side": 1,
+      "message": "Can this function add a new backend disk of /dev/sda/ to the target node vm?\nIf the answer is yes,then the ceph will be support on multinode virtual deploy.",
+      "range": {
+        "startLine": 217,
+        "startChar": 8,
+        "endLine": 217,
+        "endChar": 40
+      },
+      "revId": "1a00605bef4c9624681f2e6fee3deb519522754b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
