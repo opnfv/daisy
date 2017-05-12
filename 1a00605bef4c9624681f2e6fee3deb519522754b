@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_916e4e95",
+        "filename": "deploy/config/vm_environment/zte-virtual2/deploy.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-05-12T09:38:41Z",
+      "side": 1,
+      "message": "why add this?\nwe do not support multinode virtual deploy with ceph,so I think this is useless.",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "1a00605bef4c9624681f2e6fee3deb519522754b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
