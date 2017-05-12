@@ -1,0 +1,7 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Alex Yang <yangyang1@zte.com.cn>
+Submitted-by: Alex Yang <yangyang1@zte.com.cn>
+Submitted-at: Fri, 12 May 2017 09:26:01 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/34409
+Project: daisy
+Branch: refs/heads/master
