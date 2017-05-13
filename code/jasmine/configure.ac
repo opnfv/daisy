@@ -5,7 +5,7 @@
 AC_PREREQ([2.61])
 
 AC_INIT([jasmine],
-	m4_esyscmd([build-aux/git-version-gen .tarball-version]),
+	[1.2],
 	[hu.zhijiang@zte.com.cn])
 
 AC_USE_SYSTEM_EXTENSIONS

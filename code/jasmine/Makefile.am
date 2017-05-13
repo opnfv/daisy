@@ -5,7 +5,6 @@ SPEC			= $(PACKAGE_NAME).spec
 TARFILE			= $(PACKAGE_NAME)-$(VERSION).tar.gz
 
 EXTRA_DIST		= autogen.sh $(SPEC).in \
-			  build-aux/git-version-gen \
 			  .version
 
 AUTOMAKE_OPTIONS	= foreign
