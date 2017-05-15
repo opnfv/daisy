@@ -1,3 +1,4 @@
+adapter: ipmi
 hosts:
 - name: 'controller01'
   roles:
@@ -16,8 +17,6 @@ hosts:
     - 'COMPUTER'
 disks:
   daisy: 50
-  controller: 50
-  compute: 50
 daisy_passwd: 'r00tme'
 daisy_ip: '10.20.7.3'
 daisy_gateway: '10.20.7.1'

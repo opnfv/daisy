@@ -20,10 +20,17 @@
 import argparse
 import yaml
 
+
+from config.schemas import (
+    MIN_DAISY_DISK_SIZE,
+    deploy_schema_validate
+)
 from utils import (
     WORKSPACE,
     save_log_to_file,
     LI,
+    LE,
+    err_exit,
     log_bar,
     path_join,
     check_sudo_privilege,
@@ -31,7 +38,6 @@ from utils import (
     make_file_executable,
     confirm_dir_exists
 )
-
 from environment import (
     DaisyEnvironment,
 )
@@ -64,6 +70,11 @@ class DaisyDeployment(object):
         self.pxe_bridge = pxe_bridge
         self.deploy_log = deploy_log
 
+        result = deploy_schema_validate(self.deploy_struct)
+        if result:
+            LE(result)
+            err_exit('Configuration deploy.yml check failed!')
+
         self.adapter = self._get_adapter_info()
         LI('The adapter is %s' % self.adapter)
 
@@ -84,19 +95,14 @@ class DaisyDeployment(object):
                                           self.storage_dir)
 
     def _get_adapter_info(self):
-        # TODO: specify the adapter info in deploy.yml
-        if 'adapter' in self.deploy_struct:
-            return self.deploy_struct['adapter']
-        elif self.pod_name and 'virtual' in self.pod_name:
-            return 'libvirt'
-        else:
-            return 'ipmi'
+        default_adapter = 'libvirt' if 'virtual' in self.pod_name else 'ipmi'
+        return self.deploy_struct.get('adapter', default_adapter)
 
     def _get_daisy_server_info(self):
         address = self.deploy_struct.get('daisy_ip', '10.20.11.2')
         gateway = self.deploy_struct.get('daisy_gateway', '10.20.11.1')
         password = self.deploy_struct.get('daisy_passwd', 'r00tme')
-        disk_size = self.deploy_struct.get('disks', {'daisy': 50})['daisy']
+        disk_size = self.deploy_struct.get('disks', {}).get('daisy', MIN_DAISY_DISK_SIZE)
         # TODO: get VM name of daisy server from deploy.yml or vm template
         name = 'daisy'
         image = path_join(self.storage_dir, name + '.qcow2')

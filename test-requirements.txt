@@ -1,9 +1,9 @@
 configobj
+jsonschema
 paramiko
-pyyaml
-scp
 pytest
 pytest-cov
 pytest-faker
 pytest-mock
-
+pyyaml
+scp
