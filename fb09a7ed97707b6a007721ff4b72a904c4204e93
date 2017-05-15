@@ -1,0 +1,9 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+1: Jun Zhong <zhong.jun@zte.com.cn>
+Code-Review+1: zhou ya <zhou.ya@zte.com.cn>
+Code-Review+2: Zhijiang Hu <hu.zhijiang@zte.com.cn>
+Submitted-by: Zhijiang Hu <hu.zhijiang@zte.com.cn>
+Submitted-at: Mon, 15 May 2017 03:53:31 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/34465
+Project: daisy
+Branch: refs/heads/master
