@@ -4,6 +4,7 @@ hosts:
   roles:
     - 'CONTROLLER_LB'
     - 'COMPUTER'
+  template: 'templates/virtual_environment/vms/all_in_one.xml'
 disks:
   daisy: 50
   controller: 110
