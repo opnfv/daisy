@@ -28,6 +28,7 @@ from libvirt_utils import (
 )
 from utils import (
     WORKSPACE,
+    LD,
     LI,
     LW,
     err_exit,
@@ -45,8 +46,8 @@ VMDEPLOY_DAISY_SERVER_VM = path_join(WORKSPACE, 'templates/virtual_environment/v
 BMDEPLOY_DAISY_SERVER_VM = path_join(WORKSPACE, 'templates/physical_environment/vms/daisy.xml')
 
 ALL_IN_ONE_TEMPLATE = path_join(WORKSPACE, 'templates/virtual_environment/vms/all_in_one.xml')
-CONTROLLER_TEMPLATE = path_join(WORKSPACE, 'templates/virtual_environment/vms/controller01.xml')
-COMPUTE_TEMPLATE = path_join(WORKSPACE, 'templates/virtual_environment/vms/computer01.xml')
+CONTROLLER_TEMPLATE = path_join(WORKSPACE, 'templates/virtual_environment/vms/controller.xml')
+COMPUTE_TEMPLATE = path_join(WORKSPACE, 'templates/virtual_environment/vms/computer.xml')
 VIRT_NET_TEMPLATE_PATH = path_join(WORKSPACE, 'templates/virtual_environment/networks')
 
 
@@ -160,6 +161,27 @@ class BareMetalEnvironment(DaisyEnvironmentBase):
 
 
 class VirtualEnvironment(DaisyEnvironmentBase):
+    def __init__(self, deploy_struct, net_struct, adapter, pxe_bridge,
+                 daisy_server_info, work_dir, storage_dir):
+        super(VirtualEnvironment, self).__init__(deploy_struct, net_struct, adapter, pxe_bridge,
+                                                 daisy_server_info, work_dir, storage_dir)
+        self.check_configuration()
+
+    def check_configuration(self):
+        self.check_nodes_template()
+
+    def check_nodes_template(self):
+        for node in self.deploy_struct['hosts']:
+            template = node.get('template', None)
+            if not template or os.access(template, os.R_OK):
+                continue
+            elif os.access(path_join(WORKSPACE, template), os.R_OK):
+                template_new = path_join(WORKSPACE, template)
+                LD('Template of VM node %s is %s' % (node.get('name', ''), template_new))
+                node['template'] = template_new
+            else:
+                err_exit('The template of vm node %s does not exist.' % node.get('name'))
+
     def create_daisy_server_network(self):
         net_name = create_virtual_network(VMDEPLOY_DAISY_SERVER_NET)
         if net_name != self.pxe_bridge:
