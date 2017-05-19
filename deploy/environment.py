@@ -45,8 +45,8 @@ VMDEPLOY_DAISY_SERVER_VM = path_join(WORKSPACE, 'templates/virtual_environment/v
 BMDEPLOY_DAISY_SERVER_VM = path_join(WORKSPACE, 'templates/physical_environment/vms/daisy.xml')
 
 ALL_IN_ONE_TEMPLATE = path_join(WORKSPACE, 'templates/virtual_environment/vms/all_in_one.xml')
-CONTROLLER_TEMPLATE = path_join(WORKSPACE, 'templates/virtual_environment/vms/controller01.xml')
-COMPUTE_TEMPLATE = path_join(WORKSPACE, 'templates/virtual_environment/vms/computer01.xml')
+CONTROLLER_TEMPLATE = path_join(WORKSPACE, 'templates/virtual_environment/vms/controller.xml')
+COMPUTE_TEMPLATE = path_join(WORKSPACE, 'templates/virtual_environment/vms/computer.xml')
 VIRT_NET_TEMPLATE_PATH = path_join(WORKSPACE, 'templates/virtual_environment/networks')
 
 
