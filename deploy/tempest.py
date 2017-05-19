@@ -151,8 +151,7 @@ def discover_host(hosts_name):
 def update_network(cluster_id, network_map):
     network_meta = {'filters': {'cluster_id': cluster_id}}
     network_info_gernerator = client.networks.list(**network_meta)
-    network_info_list = [net for net in network_info_gernerator]
-    for net in network_info_list:
+    for net in network_info_gernerator:
         network_id = net.id
         network_name = net.name
         if network_map.get(network_name):
@@ -162,9 +161,8 @@ def update_network(cluster_id, network_map):
 
 def get_hosts():
     hosts_list_generator = client.hosts.list()
-    hosts_list = [host for host in hosts_list_generator]
     hosts_info = []
-    for host in hosts_list:
+    for host in hosts_list_generator:
         host_info = client.hosts.get(host.id)
         hosts_info.append(host_info)
     return hosts_info
@@ -172,8 +170,7 @@ def get_hosts():
 
 def get_cluster():
     cluster_list_generator = client.clusters.list()
-    cluster_list = [cluster for cluster in cluster_list_generator]
-    for cluster in cluster_list:
+    for cluster in cluster_list_generator:
         cluster_info = client.clusters.get(cluster.id)
     return cluster_info
 
@@ -229,8 +226,7 @@ def add_host_role(cluster_id, host_id, host_exp_name, host_real_name, vip):
 def enable_cinder_backend(cluster_id, service_name, disk_name, protocol_type):
     role_meta = {'filters': {'cluster_id': cluster_id}}
     role_list_generator = client.roles.list(**role_meta)
-    role_list = [role for role in role_list_generator]
-    lb_role_id = [role.id for role in role_list if
+    lb_role_id = [role.id for role in role_list_generator if
                   role.name == "CONTROLLER_LB"][0]
     service_disk_meta = {'service': service_name,
                          'disk_location': 'local',
