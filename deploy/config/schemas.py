@@ -27,7 +27,8 @@ hosts_schema = {
                     'type': 'string',
                     'enum': ['COMPUTER', 'CONTROLLER_LB', 'CONTROLLER_HA']
                 }
-            }
+            },
+            'template': {'type': 'string', 'minLength': 1}
         }
     }
 }
