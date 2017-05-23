@@ -8,8 +8,8 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-imagebranch="newton"
-imageversion="latest"
+imagebranch="ocata"
+imageversion="170420124331"
 imageserver="http://120.24.17.215"
 imagedir="/var/lib/daisy/versionfile/kolla"
 imagename="kolla-image-$imagebranch-$imageversion.tgz"
