@@ -1,9 +1,9 @@
 FROM centos:7
-LABEL daisy_image_version=1.0
+LABEL daisy_image_version=1.1
 ARG BRANCH
 ENV BRANCH=${BRANCH:-master}
 RUN yum -y update
-RUN yum -y install centos-release-openstack-newton
+RUN yum -y install centos-release-openstack-ocata
 RUN yum -y install \
   wget \
   coreutils \
