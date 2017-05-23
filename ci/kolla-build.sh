@@ -13,6 +13,7 @@
 # Parameters: $1 kolla git url, for example,
 #                 https://git.openstack.org/openstack/kolla
 #             $2 kolla branch, for example, stable/newton
+#             $3 kolla tag, for example, 3.0.2
 
 set -o errexit
 set -o nounset
@@ -20,6 +21,7 @@ set -o pipefail
 
 KOLLA_GIT=$1
 KOLLA_BRANCH=$2
+KOLLA_TAG=$3
 KOLLA_GIT_VERSION=
 KOLLA_IMAGE_VERSION=
 KOLLA_GIT_DIR=/tmp/kolla-git
@@ -40,6 +42,12 @@ function pre_check {
             python2-oslo-config:3.14.0 python-netaddr:0.7.13 \
             python2-setuptools:16.0.0 python2-crypto:2.6 docker-engine:1.12 \
             centos-release-openstack-newton:1 epel-release:7"
+    elif [ $KOLLA_BRANCH == "stable/ocata" ] ; then
+        RPM_REQUIRES="python-docker-py:1.10 python2-pbr:1.10 python-jinja2:2.8 \
+            python-gitdb:0.6.4 GitPython:1.0.1 python-six:1.10.0 \
+            python2-oslo-config:3.22.0 python-netaddr:0.7.18 \
+            python2-setuptools:22.0.0 python2-crypto:2.6 docker-engine:1.12 \
+            centos-release-openstack-ocata:1 epel-release:7"
     else
         exit 1
     fi
@@ -125,6 +133,8 @@ function start_registry_server {
 function pack_registry_data {
     echo "Packaging registry data"
     datetag=$(date +%y%m%d%H%M%S)
+
+    #TODO: not compatible withe "master" branch
     version=$(echo $KOLLA_BRANCH | awk -F'/' '{print $2}')
 
     if [ ! -d $BUILD_OUTPUT_DIR ] ; then
@@ -144,30 +154,32 @@ function pack_registry_data {
 
 function update_kolla_code {
     echo "Updating Kolla code"
-    if [ ! -d $KOLLA_GIT_DIR ] ; then
-        mkdir -p $KOLLA_GIT_DIR
-    fi
 
-    if [ ! -d $KOLLA_GIT_DIR/kolla ] ; then
-        pushd $KOLLA_GIT_DIR
-        git clone $KOLLA_GIT
-        pushd $KOLLA_GIT_DIR/kolla
-        git checkout $KOLLA_BRANCH
-        popd
-        popd
-    else
-        pushd $KOLLA_GIT_DIR/kolla
-        git remote update
-        git checkout $KOLLA_BRANCH
-        git pull --ff-only
-        popd
-    fi
+    rm -rf $KOLLA_GIT_DIR
+    mkdir -p $KOLLA_GIT_DIR
 
+    pushd $KOLLA_GIT_DIR
+    git clone $KOLLA_GIT
     pushd $KOLLA_GIT_DIR/kolla
+    git checkout $KOLLA_BRANCH
+
+    if [[ ! -z "$KOLLA_TAG" ]]; then
+        git checkout $KOLLA_TAG
+    fi
+
     KOLLA_GIT_VERSION=$(git log -1 --pretty="%H")
     tox -e genconfig
     KOLLA_IMAGE_VERSION=$(cat $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf \
         | grep "#tag" | gawk -F' = ' '{print $2}')
+
+    if [[ ! -z "$KOLLA_TAG" ]]; then
+        if ["$KOLLA_TAG" != $KOLLA_IMAGE_VERSION] ; then
+            echo "tag in git: $KOLLA_TAG, while tag in code: $KOLLA_IMAGE_VERSION"
+            exit 1
+        fi
+    fi
+
+    popd
     popd
 }
 
@@ -185,13 +197,34 @@ function start_build {
 }
 
 function usage {
-    echo "Usage: $0 https://git.openstack.org/openstack/kolla stable/newton"
+    echo "Usage: $0 https://git.openstack.org/openstack/kolla stable/ocata"
 }
 
 if [ "$1" == "" -o "$2" == "" ] ; then
     usage
     exit 1
 fi
+
+
+
+exitcode=""
+error_trap()
+{
+    local rc=$?
+
+    set +e
+
+    if [ -z "$exitcode" ]; then
+        exitcode=$rc
+    fi
+
+    echo "Image build failed with $exitcode"
+
+    exit $exitcode
+}
+
+
+trap "error_trap" EXIT SIGTERM
 
 pre_check
 # Try to cleanup images of the last failed run, if any.
