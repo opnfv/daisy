@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_d901c33a",
+        "filename": "deploy/config/vm_environment/zte-virtual2/deploy.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-05-24T00:46:20Z",
+      "side": 1,
+      "message": "This refers to fuel: fuel/deploy/config/labs/devel-pipeline/default/fuel/config/dha.yaml",
+      "parentUuid": "5aaae553_5974f39b",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 62
+      },
+      "revId": "4d5ab1086ec8f09043e4cb9dd1aedddff018bbc9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_7979af92",
         "filename": "templates/virtual_environment/vms/computer.xml",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_f9feff37",
+        "filename": "templates/virtual_environment/vms/computer.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-05-24T00:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aaae553_7979af92",
+      "range": {
+        "startLine": 35,
+        "startChar": 20,
+        "endLine": 35,
+        "endChar": 51
+      },
+      "revId": "4d5ab1086ec8f09043e4cb9dd1aedddff018bbc9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_196e7bca",
         "filename": "templates/virtual_environment/vms/controller.xml",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-23T15:13:00Z",
       "side": 1,
       "message": "the same",
+      "range": {
+        "startLine": 35,
+        "startChar": 20,
+        "endLine": 35,
+        "endChar": 53
+      },
+      "revId": "4d5ab1086ec8f09043e4cb9dd1aedddff018bbc9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_b9f8874a",
+        "filename": "templates/virtual_environment/vms/controller.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-05-24T00:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aaae553_196e7bca",
       "range": {
         "startLine": 35,
         "startChar": 20,
