@@ -29,9 +29,28 @@ if [ ! -d $CACHE_PATH ]; then mkdir -p $CACHE_PATH ; fi
 if [ ! -f $CACHE_PATH/${isoname} ]; then
     wget -P $CACHE_PATH $isourl
 fi
+
 if [ ! -f $CACHE_PATH/$imagename ]; then
     wget -P $CACHE_PATH "$imageserver/$imagename"
+    wget -P $CACHE_PATH "$imageserver/$imagename.md5"
 fi
+
+md5sum -c $CACHE_PATH/$imagename.md5
+if [ "$?" != "0" ]; then
+    echo "Kolla image csum error, will retry"
+    rm -rf $CACHE_PATH/$imagename.md5
+    rm -rf $CACHE_PATH/$imagename
+    wget -P $CACHE_PATH "$imageserver/$imagename"
+    wget -P $CACHE_PATH "$imageserver/$imagename.md5"
+    md5sum -c $CACHE_PATH/$imagename.md5
+    if [ "$?" != "0" ]; then
+        echo "Kolla image csum error, please retry manually"
+        rm -rf $CACHE_PATH/$imagename.md5
+        rm -rf $CACHE_PATH/$imagename
+        exit 1   
+    fi
+fi
+
 if [ ! -f $CACHE_PATH/registry-server.tar ]; then
     wget -P $CACHE_PATH "http://daisycloud.org/static/files/registry-server.tar"
 fi
