@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_1fd17bcd",
+        "filename": "deploy/config/vm_environment/zte-virtual2/deploy.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-05-25T05:34:06Z",
+      "side": 1,
+      "message": "I don\u0027t think it is a good solution.",
+      "parentUuid": "5aaae553_d901c33a",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 62
+      },
+      "revId": "4d5ab1086ec8f09043e4cb9dd1aedddff018bbc9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_7979af92",
         "filename": "templates/virtual_environment/vms/computer.xml",
         "patchSetId": 4
