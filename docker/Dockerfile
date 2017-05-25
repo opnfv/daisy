@@ -18,6 +18,7 @@ RUN yum -y install \
   gcc \
   autoconf \
   automake \
+  fontawesome-fonts-web \
   glibc-devel \
   python-sphinx \
   python-XStatic-Angular \
