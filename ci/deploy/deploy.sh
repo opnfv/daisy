@@ -294,10 +294,8 @@ echo "====== generate known_hosts file in daisy vm ======"
 touch $WORKSPACE/known_hosts
 scp $WORKSPACE/known_hosts root@$DAISY_IP:/root/.ssh/
 
-if [ $IS_BARE == 0 ];then
-    echo "====== add relate config of kolla ======"
-    ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/prepare.sh -n $NETWORK"
-fi
+echo "====== add relate config of kolla ======"
+ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/prepare.sh -n $NETWORK"
 
 echo "====== prepare cluster and pxe ======"
 ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --cluster 'yes'"
@@ -367,14 +365,13 @@ if [ $? -ne 0 ]; then
 fi
 
 
-if [ $IS_BARE == 0 ];then
-    echo "====== post deploy ======"
-    ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/post.sh -n $NETWORK"
-fi
+echo "====== post deploy ======"
+ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/post.sh -n $NETWORK"
 
 echo "====== deploy successfully ======"
 
 exit 0
+
 #
 # END of main
 ############################################################################
