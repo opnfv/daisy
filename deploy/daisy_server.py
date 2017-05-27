@@ -205,8 +205,9 @@ class DaisyServer(object):
         if self.adapter != 'libvirt':
             return
         LI('Prepare some configuration files')
-        cmd = 'bash {script} -n {net_file}'.format(
-            script=path_join(self.remote_dir, 'deploy/prepare.sh'),
+        cmd = 'export PYTHONPATH={python_path}; python {script} -nw {net_file}'.format(
+            python_path=self.remote_dir,
+            script=path_join(self.remote_dir, 'deploy/prepare/execute.py'),
             net_file=path_join(self.remote_dir, 'network.yml'))
         self.ssh_run(cmd)
 
@@ -258,7 +259,8 @@ class DaisyServer(object):
 
     def post_deploy(self):
         LI('Post deploy ...')
-        cmd = 'bash {script} -n {net_file}'.format(
-            script=path_join(self.remote_dir, 'deploy/post.sh'),
+        cmd = 'export PYTHONPATH={python_path}; python {script} -nw {net_file}'.format(
+            python_path=self.remote_dir,
+            script=path_join(self.remote_dir, 'deploy/post/execute.py'),
             net_file=path_join(self.remote_dir, 'network.yml'))
         self.ssh_run(cmd, check=False)
