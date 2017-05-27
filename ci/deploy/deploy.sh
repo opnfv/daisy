@@ -310,7 +310,8 @@ if [ $IS_BARE == 0 ];then
         virsh net-autostart daisy2
         virsh net-start daisy2
         for ((i=0;i<${#VM_MULTINODE[@]};i++));do
-            qemu-img create -f qcow2 ${VM_STORAGE}/${VM_MULTINODE[$i]}.qcow2 200G
+            qemu-img create -f qcow2 ${VM_STORAGE}/${VM_MULTINODE[$i]}.qcow2 120G
+            qemu-img create -f qcow2 ${VM_STORAGE}/${VM_MULTINODE[$i]}_data.qcow2 150G
             virsh define ${VMDEPLOY_NODE[$i]}
             virsh start ${VM_MULTINODE[$i]}
         done
