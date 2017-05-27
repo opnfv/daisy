@@ -38,12 +38,14 @@ networks:
     vlan_id: 172
     name: 'STORAGE'
   - cidr: '172.70.0.0/24'
-    gateway: '172.70.0.0'
+    gateway: '172.70.0.1'
     ip_ranges:
       - 'start': '172.70.0.2'
         'end': '172.70.0.100'
     vlan_id: 173
     'name': 'EXTERNAL'
+    network_name: 'admin_external'
+    mapping: 'physnet1'
   - cidr: '10.20.7.0/24'
     gateway: '10.20.7.1'
     ip_ranges:
