@@ -232,7 +232,8 @@ class VirtualEnvironment(DaisyEnvironmentBase):
 
         disks = [disk_file]
         ceph_disk_name = self.deploy_struct.get('ceph_disk_name', '')
-        if ceph_disk_name and ceph_disk_name != '/dev/sda' and 'CONTROLLER_LB' in roles:
+        # if ceph_disk_name and ceph_disk_name != '/dev/sda' and 'CONTROLLER_LB' in roles:
+        if ceph_disk_name and ceph_disk_name != '/dev/sda':
             ceph_size = self.deploy_struct.get('disks', {}).get('ceph', MIN_CEPH_DISK_SIZE)
             ceph_disk_file = path_join(self.storage_dir, name + '_data.qcow2')
             create_virtual_disk(ceph_disk_file, ceph_size)
