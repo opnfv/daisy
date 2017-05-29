@@ -217,7 +217,7 @@ def add_host_role(cluster_id, host_id, host_exp_name, host_real_name, vip):
         role_lb_update_meta = {'nodes': [host_id],
                                'cluster_id': cluster_id, 'vip': vip}
         client.roles.update(lb_role_id, **role_lb_update_meta)
-    if host_exp_name in ['computer01', 'computer02']:
+    if host_exp_name in ['computer01', 'computer02', 'computer03', 'computer04']:
         role_computer_update_meta = {'nodes': [host_id],
                                      'cluster_id': cluster_id}
         client.roles.update(computer_role_id, **role_computer_update_meta)
