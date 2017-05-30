@@ -61,7 +61,7 @@ POD_NAME=''
 TARGET_HOSTS_NUM=0
 DRY_RUN=0
 IS_BARE=1
-VM_MULTINODE=("computer01" "computer02" "controller01" "controller02" "controller03")
+VM_MULTINODE=("computer01" "computer02" "computer03" "computer04" "controller01")
 #
 # END of variables to customize
 ############################################################################
