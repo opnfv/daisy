@@ -369,11 +369,13 @@ fi
 echo "====== post deploy ======"
 ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/post.sh -n $NETWORK"
 
-echo "====== disable iptable rules ======"
-sudo iptables -D FORWARD -o daisy1 -j REJECT --reject-with icmp-port-unreachable
-sudo iptables -D FORWARD -i daisy1 -j REJECT --reject-with icmp-port-unreachable
-sudo iptables -D FORWARD -o daisy2 -j REJECT --reject-with icmp-port-unreachable
-sudo iptables -D FORWARD -i daisy2 -j REJECT --reject-with icmp-port-unreachable
+if [ $IS_BARE == 0 ]; then
+    echo "====== disable iptable rules ======"
+    iptables -D FORWARD -o daisy1 -j REJECT --reject-with icmp-port-unreachable
+    iptables -D FORWARD -i daisy1 -j REJECT --reject-with icmp-port-unreachable
+    iptables -D FORWARD -o daisy2 -j REJECT --reject-with icmp-port-unreachable
+    iptables -D FORWARD -i daisy2 -j REJECT --reject-with icmp-port-unreachable
+fi
 
 echo "====== deploy successfully ======"
 
