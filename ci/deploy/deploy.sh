@@ -31,6 +31,7 @@ OPTIONS:
   -r  Remote workspace in target server, optional
   -w  Workdir for temporary usage, optional
   -h  Print this message and exit
+  -s  Deployment scenario
 
 Description:
 Deploys the Daisy4NFV on the indicated lab resource
@@ -69,7 +70,7 @@ VM_MULTINODE=("computer01" "computer02" "computer03" "computer04" "controller01"
 ############################################################################
 # BEGIN of main
 #
-while getopts "b:B:Dd:n:l:p:r:w:h" OPTION
+while getopts "b:B:Dd:n:l:p:r:w:s:h" OPTION
 do
     case $OPTION in
         b)
@@ -96,6 +97,9 @@ do
         w)
             WORKDIR=${OPTARG}
             ;;
+        s)
+            DEPLOY_SCENARIO=${OPTARG}
+            ;;
         h)
             usage
             exit 0
@@ -118,6 +122,8 @@ if [ -z $BASE_PATH ] || [ ! -d $BASE_PATH ] || [ -z LAB_NAME ] || [ -z $POD_NAME
     echo "exit abnormal"
     exit 0
 fi
+
+DEPLOY_SCENARIO=${DEPLOY_SCENARIO:-"os-nosdn-nofeature-noha"}
 
 BRIDGE=${BRIDGE:-pxebr}
 
