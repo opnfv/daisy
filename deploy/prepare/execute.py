@@ -39,7 +39,7 @@ def _config_service(service, subs):
 
 
 @_config_service('nova', ['compute'])
-def _set_default_compute():
+def _set_qemu_compute():
     return '[libvirt]\n' \
            'virt_type=qemu\n' \
            'cpu_mode=none\n'
@@ -65,8 +65,15 @@ def main():
                         type=str,
                         required=True,
                         help='network configuration file')
+    parser.add_argument('-b', '--is-baremetal',
+                        type=str,
+                        required=True,
+                        help='0 for virtual, 1 for baremetal')
     args = parser.parse_args()
-    _set_default_compute()
+
+    if args.is_baremetal == '0':
+        _set_qemu_compute()
+
     _set_default_floating_pool(args.network_file)
     _set_trusts_auth()
 

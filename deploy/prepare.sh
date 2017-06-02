@@ -21,7 +21,8 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 usage: `basename $0` -n network_config_file
 
 OPTIONS:
-  -nw  network configuration path, necessary
+  -n  network configuration path, necessary
+  -b  0 for virtual, 1 for baremetal
   -h  Print this message and exit
 
 Description:
@@ -35,11 +36,14 @@ EOF
 
 NETWORK_CONF=''
 
-while getopts "n:h" OPTION
+while getopts "n:b:h" OPTION
 do
     case $OPTION in
         n)
             NETWORK_CONF=${OPTARG}
+            ;;
+        b)
+            IS_BARE=${OPTARG}
             ;;
         h)
             usage
@@ -53,4 +57,4 @@ do
     esac
 done
 
-python $PYTHONPATH/deploy/prepare/execute.py -nw $NETWORK_CONF
+python $PYTHONPATH/deploy/prepare/execute.py -nw $NETWORK_CONF -b $IS_BARE
