@@ -36,14 +36,13 @@ E.g. OpenStack only deployment roles setting
       - name: host1
         roles:
           - controller
-          - ha
 
       - name: host2
         roles:
           - compute
 
 NOTE:
-IF YOU SELECT MUTIPLE NODES AS CONTROLLER, THE 'ha' role MUST BE SELECTED, TOO.
+WE JUST SUPPORT ONE CONTROLLER NODE NOW.
 
 E.g. OpenStack and ceph deployment roles setting
 
@@ -53,9 +52,6 @@ E.g. OpenStack and ceph deployment roles setting
       - name: host1
         roles:
           - controller
-          - ha
-          - ceph-adm
-          - ceph-mon
 
       - name: host2
         roles:
@@ -72,52 +68,66 @@ You can write your own reference into it.
 **The following figure shows the default network configuration.**
 
 .. code-block:: console
-
-                                    +--+
-                                    |  |
-                +------------+      |  |
-                |  Jumphost  +------+  |
-                +------------+      |  |
-                                    |  |
-                                    |  |
-                                    |  |
-                +------------+      |  |
-       +--------+ Controller +------+  |
-       |        +------------+      |  |
-       |                            |  |
-       |                            |  |
-       |                            |  |
-       |        +------------+      |  |
-       |        |  Compute1  +------+  |
-       |        +------------+      |  |
-       |                            |  |
-       |                            |  |
-       |                            |  |
-       |        +------------+      |  |
-       |        |  Compute2  +------+  |
-       |        +------------+      |  |
-       |                            |  |
-       |                            |  |
-       |                            |  |
-       |                            |  |
-       |                            ++-+
-       |                             ^
-       |                             |
-       |                             |
-      ++--------------------------+  |
-      |      External Network     |  |
-      +---------------------------+  |
-             +-----------------------+---+
-             |    Installation Network   |
-             |    Public/Private API     |
-             |      Internet Access      |
-             |      Tenant Network       |
-             +---------------------------+
-
++------------+------------------------------+
+|Jumperserver+                              |
++------------+                       +--+   |
+|                                    |  |   |
+|                +------------+      |  |   |
+|                | Daisyserver+------+  |   |
+|                +------------+      |  |   |
+|                                    |  |   |
+|                                    |  |   |
+|                                    |  |   |
+|                +------------+      |  |   |
+|       +--------+ Controller +------+  |   |
+|       |        +------------+      |  |   |
+|       |                            |  |   |
+|       |                            |  |   |
+|       |                            |  |   |
+|       |        +------------+      |  |   |
+|       |        |  Compute1  +------+  |   |
+|       |        +------------+      |  |   |
+|       |                            |  |   |
+|       |                            |  |   |
+|       |                            |  |   |
+|       |        +------------+      |  |   |
+|       |        |  Compute2  +------+  |   |
+|       |        +------------+      |  |   |
+|       |                            |  |   |
+|       |                            |  |   |
+|       |                            |  |   |
+|       |                            |  |   |
+|       |                            ++-+   |
+|       |                             ^     |
+|       |                             |     |
+|       |                             |     |
+|      ++--------------------------+  |     |
+|      |                           |  |     |
+|      |      External Network     |  |     |
+|      +---------------------------+  |     |
+|             +-----------------------+---+ |
+|             |    Installation Network   | |
+|             |    Public/Private API     | |
+|             |      Internet Access      | |
+|             |      Tenant Network       | |
+|             +---------------------------+ |
++-------------------------------------------+
 
 Start Deployment (Virtual Deployment)
 -------------------------------------
 
-TODO
+(1) Git clone the latest daisy code from opnfv: "git clone https://zhouya@gerrit.opnfv.org/gerrit/a/daisy"
 
+(2) Download latest bin file(such as opnfv-2017-06-06_23-00-04.bin) of daisy from http://artifacts.opnfv.org/daisy.html and change the bin file name(such as opnfv-2017-06-06_23-00-04.bin) to opnfv.bin
 
+(3) Make sure the opnfv.bin file is in daisy code dir
+
+(4) Create folder of labs/zte/virtual1/daisy/config in daisy code dir
+
+(5) Move the daisy/deploy/config/vm_environment/zte-virtual1/deploy.yml and daisy/deploy/config/vm_environment/zte-virtual1/network.yml to labs/zte/virtual1/daisy/config dir.
+Notes:zte-virtual1 config file is just for all-in-one deployment,if you want to deploy openstack with five node(1 lb node and 4 computer nodes),change the zte-virtual1 to zte-virtual2
+
+(6) Run the script deploy.sh in daisy/ci/deploy/ with command:
+sudo ./ci/deploy/deploy.sh -b ../daisy  -l zte -p virtual1 -B pxebr
+
+(7) When deploy successfully,the floating ip of openstack is 10.20.11.11,the login account is "admin" and the password is "keystone"
