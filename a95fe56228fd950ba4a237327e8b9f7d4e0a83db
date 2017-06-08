@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aaae553_f21fe3b5",
+        "filename": "docs/installationprocedure/vmdeploy.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-06-08T06:13:43Z",
+      "side": 1,
+      "message": "should be daisy4nfv to separate it from upstream daisy, just to be sure that we do not let user be confused.",
+      "range": {
+        "startLine": 119,
+        "startChar": 25,
+        "endLine": 119,
+        "endChar": 30
+      },
+      "revId": "a95fe56228fd950ba4a237327e8b9f7d4e0a83db",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_52235705",
+        "filename": "docs/installationprocedure/vmdeploy.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-06-08T06:13:43Z",
+      "side": 1,
+      "message": "https://gerrit.opnfv.org/gerrit/daisy",
+      "range": {
+        "startLine": 119,
+        "startChar": 59,
+        "endLine": 119,
+        "endChar": 105
+      },
+      "revId": "a95fe56228fd950ba4a237327e8b9f7d4e0a83db",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_b2796bfe",
+        "filename": "docs/installationprocedure/vmdeploy.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-06-08T06:13:43Z",
+      "side": 1,
+      "message": "daisy4nfv",
+      "range": {
+        "startLine": 123,
+        "startChar": 39,
+        "endLine": 123,
+        "endChar": 44
+      },
+      "revId": "a95fe56228fd950ba4a237327e8b9f7d4e0a83db",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_d27e67e4",
+        "filename": "docs/installationprocedure/vmdeploy.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-06-08T06:13:43Z",
+      "side": 1,
+      "message": "daisy4nfv",
+      "range": {
+        "startLine": 125,
+        "startChar": 55,
+        "endLine": 125,
+        "endChar": 60
+      },
+      "revId": "a95fe56228fd950ba4a237327e8b9f7d4e0a83db",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
