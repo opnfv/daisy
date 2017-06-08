@@ -301,7 +301,7 @@ touch $WORKSPACE/known_hosts
 scp $WORKSPACE/known_hosts root@$DAISY_IP:/root/.ssh/
 
 echo "====== add relate config of kolla ======"
-ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/prepare.sh -n $NETWORK"
+ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/prepare.sh -n $NETWORK -b $IS_BARE"
 
 echo "====== prepare cluster and pxe ======"
 ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --cluster 'yes'"
