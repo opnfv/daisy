@@ -82,6 +82,7 @@ def prepare_install():
         elif conf['host'] and conf['host'] == 'yes':
             print("discover host...")
             discover_host(hosts_name)
+            time.sleep(10)
             print("update hosts interface...")
             hosts_info = get_hosts()
             cluster_info = get_cluster()
