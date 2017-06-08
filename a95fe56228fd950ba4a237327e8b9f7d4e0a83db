@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "5aaae553_32db3bef",
+        "filename": "docs/installationprocedure/vmdeploy.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-06-08T06:27:58Z",
+      "side": 1,
+      "message": "need new line after this ?\n\nOther wise we can not see the diagram in http://artifacts.opnfv.org/daisy/review/35849/installationprocedure/index.html\n\nOthers good example:\n\nhttp://artifacts.opnfv.org/compass4nfv/brahmaputra/docs/configguide/installerconfig.html",
+      "revId": "a95fe56228fd950ba4a237327e8b9f7d4e0a83db",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_52d837ef",
+        "filename": "docs/installationprocedure/vmdeploy.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-06-08T06:27:58Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a95fe56228fd950ba4a237327e8b9f7d4e0a83db",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_f21fe3b5",
         "filename": "docs/installationprocedure/vmdeploy.rst",
         "patchSetId": 4
