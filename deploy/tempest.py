@@ -35,6 +35,8 @@ _CLI_OPTS = [
                help='install daisy'),
     cfg.IntOpt('isbare',
                help='deploy environment'),
+    cfg.IntOpt('scenario',
+               help='deploy scenario'),
 ]
 
 
@@ -100,6 +102,10 @@ def prepare_install():
                 protocol_type = None
             enable_cinder_backend(cluster_id, service_name,
                                   ceph_disk_name, protocol_type)
+            if 'scenario' in conf and 'odl_l3' in conf['scenario']:
+                enable_opendaylight(cluster_id, 'odl_l3')
+            elif 'scenario' in conf and 'odl_l2' in conf['scenario']:
+                enable_opendaylight(cluster_id, 'odl_l2')
             if 'isbare' in conf and conf['isbare'] == 0:
                 install_os_for_vm_step1(cluster_id)
             else:
@@ -236,6 +242,30 @@ def enable_cinder_backend(cluster_id, service_name, disk_name, protocol_type):
                          'role_id': lb_role_id}
     try:
         client.disk_array.service_disk_add(**service_disk_meta)
+    except Exception as e:
+        print e
+
+
+def enable_opendaylight(cluster_id, layer):
+    role_meta = {'filters': {'cluster_id': cluster_id}}
+    role_list_generator = client.roles.list(**role_meta)
+    lb_role_id = [role.id for role in role_list_generator if
+                  role.name == "CONTROLLER_LB"][0]
+    odl_layer = ''
+    if 'odl_l3' == layer:
+        odl_layer = 'l3'
+    elif 'odl_l2' == layer:
+        odl_layer = 'l2'
+    neutron_backend_info = {
+        'neutron_backends_array': [{'zenic_ip': '',
+                                    'sdn_controller_type': 'opendaylight',
+                                    'zenic_port': '',
+                                    'zenic_user_password': '',
+                                    'neutron_agent_type': '',
+                                    'zenic_user_name': '',
+                                    'enable_l2_or_l3': odl_layer}]}
+    try:
+        client.roles.update(lb_role_id, **neutron_backend_info)
     except Exception as e:
         print e
 
