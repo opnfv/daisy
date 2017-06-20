@@ -331,7 +331,7 @@ else
 fi
 
 echo "====== prepare host and pxe ======"
-ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA --network $NETWORK --host 'yes' --isbare $IS_BARE"
+ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA --network $NETWORK --host 'yes' --isbare $IS_BARE --scenario $DEPLOY_SCENARIO"
 
 if [ $IS_BARE == 0 ];then
     echo "====== daisy virtual-deploy operating system and openstack ======"
