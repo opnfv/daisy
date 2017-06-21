@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aaae553_5eefd5b0",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-06-21T03:38:00Z",
+      "side": 1,
+      "message": "only ODL scenarios need this, not all scenarios",
+      "range": {
+        "startLine": 103,
+        "startChar": 12,
+        "endLine": 103,
+        "endChar": 31
+      },
+      "revId": "397ba4cc5f83d2982b29ee88a1b60f87ff38fee7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
