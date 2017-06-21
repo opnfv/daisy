@@ -46,6 +46,30 @@
       "revId": "397ba4cc5f83d2982b29ee88a1b60f87ff38fee7",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_7e6df131",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-06-21T07:50:19Z",
+      "side": 1,
+      "message": "According to https://gerrit.opnfv.org/gerrit/#/c/35637/ and https://gerrit.opnfv.org/gerrit/#/c/35639/, we can use the -s $DEPLOY_SCENARIO parameter.",
+      "parentUuid": "5aaae553_1e315d5a",
+      "range": {
+        "startLine": 103,
+        "startChar": 12,
+        "endLine": 103,
+        "endChar": 31
+      },
+      "revId": "397ba4cc5f83d2982b29ee88a1b60f87ff38fee7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
