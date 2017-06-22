@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aaae553_f509ff95",
+        "filename": "deploy/scenario/ha_odl-l3_nofeature_scenario.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-06-22T03:57:09Z",
+      "side": 1,
+      "message": "Currently HA does not work properly , only one controller is enough.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 10
+      },
+      "revId": "d06a602f93f566d2d2b6d682fb515db00dbff351",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_95fe8b6a",
+        "filename": "deploy/scenario/scenario.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-06-22T03:57:09Z",
+      "side": 1,
+      "message": "odl-l2 is also needed in near future.",
+      "revId": "d06a602f93f566d2d2b6d682fb515db00dbff351",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
