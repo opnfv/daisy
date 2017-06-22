@@ -12,6 +12,14 @@ import os
 from deploy.config.network import NetworkConfig
 
 KOLLA_CONF_PATH = '/etc/kolla/config'
+KOLLA_GLOBAL_CONF_FILE = "/etc/kolla/globals.yml"
+odl_conf_infor = {  'enable_opendaylight': "yes",
+                    'neutron_plugin_agent': "opendaylight",
+                    'opendaylight_mechanism_driver': "opendaylight_v2",
+                    'enable_opendaylight_l3': "yes",
+                    'enable_opendaylight_qos': "no",
+                    'enable_opendaylight_legacy_netvirt_conntrack': "no",
+                    'opendaylight_leader_ip_address': "10.20.11.6"  }
 
 
 def _make_dirs(path):
@@ -59,6 +67,21 @@ def _set_trusts_auth():
            'trusts_delegated_roles =\n'
 
 
+def _set_default_odl_conf(file, config):
+    with open(file, 'a+') as f:
+        lines = f.readlines()
+        f.write("\n")
+        for k, val in config.iteritems():
+            isExistKey = False
+            for line in lines:
+                if k in line:
+                    isExistKey = True
+                    break
+            if not isExistKey:
+                f.write("%s : %s\n" % (k, val))
+        f.close()
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-nw', '--network-file',
@@ -69,6 +92,7 @@ def main():
     _set_default_compute()
     _set_default_floating_pool(args.network_file)
     _set_trusts_auth()
+    _set_default_odl_conf(KOLLA_GLOBAL_CONF_FILE, odl_conf_infor)
 
 
 if __name__ == '__main__':
