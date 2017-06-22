@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aaae553_35d8f71c",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-06-22T03:54:18Z",
+      "side": 1,
+      "message": "need support both l2 and l3, not only odl.\n\nalso please switch to new image: kolla-image-ocata-170621131826.tgz",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 47
+      },
+      "revId": "c047c93808cbed92909986dbe79ee630a3a2b640",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
