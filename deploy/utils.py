@@ -19,7 +19,7 @@ path_join = os.path.join
 CWD = os.getcwd()
 WORKSPACE = os.path.normpath(path_join(os.path.dirname(__file__), '..'))
 BASE = CWD
-
+valid_scenario_list = ['os-nosdn-nofeature-noha', 'os-odl_l3-nofeature-noha']
 
 def get_logger():
     logger = logging.getLogger(__name__)
@@ -136,3 +136,22 @@ def run_shell(cmd, check=False):
             LI('Successful command: ' + str(cmd))
 
     return return_code
+
+
+def merge_dicts(dict1, dict2):
+    for k in set(dict1).union(dict2):
+        if k in dict1 and k in dict2:
+            if isinstance(dict1[k], dict) and isinstance(dict2[k], dict):
+                yield (k, dict(merge_dicts(dict1[k], dict2[k])))
+                continue
+            # If one of the values is not a dict nor a list,
+            # you can't continue merging it.
+            # Value from second dict overrides one in first if exists.
+        if k in dict2:
+            yield (k, dict2[k])
+        else:
+            yield (k, dict1[k])
+
+def check_scenario_valid(scenario):
+    if not (scenario in valid_scenario_list):
+        err_exit('Invald scenario:%s' %(scenario))
