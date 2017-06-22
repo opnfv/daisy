@@ -1,0 +1,28 @@
+##############################################################################
+# Copyright (c) 2017 ZTE Coreporation and others.
+# hu.zhijiang@zte.com.cn
+# sun.jing22@zte.com.cn
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Apache License, Version 2.0
+# which accompanies this distribution, and is available at
+# http://www.apache.org/licenses/LICENSE-2.0
+##############################################################################
+##############################################################################
+# Short scenario name convention to be followed:
+# os-<controller>-<feature>-<mode>[-<optional-parameter>]
+# controler: nosdn|odl|onos|ocl|...
+# feaure: nofeature | [vlan]_[kvm]_[ovs]_[vlan]_....
+# mode: ha|noha
+##############################################################################
+
+os-nosdn-nofeature-ha:
+  configfile: ha_nofeature_scenario.yaml
+
+os-nosdn-nofeature-noha:
+  configfile: no-ha_nofeature_scenario.yaml
+
+os-odl_l3-nofeature-ha:
+  configfile: ha_odl-l3_nofeature_scenario.yaml
+
+os-odl_l3-nofeature-noha:
+  configfile: no-ha_odl-l3_nofeature_scenario.yaml

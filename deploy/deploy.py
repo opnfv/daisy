@@ -15,6 +15,7 @@
 # [ ] 4. get ipmi user/password from PDF (Pod Descriptor File)
 # [ ] 5. get pxe bridge from jjb
 # [ ] 6. enlarge the vm size of Controller & Compute in deploy.yml
+# [ ] 7. support scenarios options and configuration
 ##############################################################################
 
 import argparse
@@ -36,7 +37,8 @@ from utils import (
     check_sudo_privilege,
     check_file_exists,
     make_file_executable,
-    confirm_dir_exists
+    confirm_dir_exists,
+    merge_dicts
 )
 from environment import (
     DaisyEnvironment,
@@ -46,13 +48,12 @@ from environment import (
 class DaisyDeployment(object):
     def __init__(self, lab_name, pod_name, deploy_file, net_file, bin_file,
                  daisy_only, cleanup_only, remote_dir, work_dir, storage_dir,
-                 pxe_bridge, deploy_log):
+                 pxe_bridge, deploy_log, scenario):
         self.lab_name = lab_name
         self.pod_name = pod_name
 
         self.deploy_file = deploy_file
-        with open(deploy_file) as yaml_file:
-            self.deploy_struct = yaml.safe_load(yaml_file)
+        self.deploy_struct = self._consturct_final_deploy_conf(deploy_file, scenario)
 
         if not cleanup_only:
             self.net_file = net_file
@@ -114,6 +115,27 @@ class DaisyDeployment(object):
                 'password': password,
                 'disk_size': disk_size}
 
+    def _consturct_final_deploy_conf(self, deploy_file, scenario):
+        with open(deploy_file) as yaml_file:
+            deploy_struct = yaml.safe_load(yaml_file)
+        scenario_file = path_join(WORKSPACE, 'deploy/scenario/scenario.yaml')
+        with open(scenario_file) as yaml_file:
+            scenario_trans_conf = yaml.safe_load(yaml_file)
+        if scenario in scenario_trans_conf:
+            fin_scenario_file = path_join(WORKSPACE, 'deploy/scenario',
+                                          scenario_trans_conf[scenario]['configfile'])
+        else:
+            fin_scenario_file = path_join(WORKSPACE, 'deploy/scenario', scenario)
+        with open(fin_scenario_file) as yaml_file:
+            deploy_scenario_conf = yaml.safe_load(yaml_file)
+        deploy_scenario_override_conf = deploy_scenario_conf['deploy-override-config']
+        # Only virtual deploy scenarios can override deploy.yml
+        if deploy_scenario_conf and (deploy_struct['adapter'] == 'libvirt'):
+            deploy_struct = dict(merge_dicts(deploy_struct, deploy_scenario_override_conf))
+        modules = deploy_scenario_conf['stack-extensions']
+        deploy_struct['modules'] = modules
+        return deploy_struct
+
     def run(self):
         self.daisy_env.delete_old_environment()
         if self.cleanup_only:
@@ -168,6 +190,9 @@ def config_arg_parser():
     parser.add_argument('-log', dest='deploy_log', action='store', nargs='?',
                         default=path_join(WORKSPACE, 'deploy.log'),
                         help='Path and name of the deployment log file')
+    parser.add_argument('-s', dest='scenario', action='store', nargs='?',
+                        default='os-nosdn-nofeature-noha',
+                        help='Deployment scenario')
     return parser
 
 
@@ -182,6 +207,7 @@ def parse_arguments():
     deploy_file = path_join(conf_base_dir, 'daisy/config/deploy.yml')
     net_file = path_join(conf_base_dir, 'daisy/config/network.yml')
 
+    #get the final new deploy_file com the deploy.yml and scenario.yaml
     check_file_exists(deploy_file)
     if not args.cleanup_only:
         check_file_exists(net_file)
@@ -202,7 +228,8 @@ def parse_arguments():
         'work_dir': args.work_dir,
         'storage_dir': args.storage_dir,
         'pxe_bridge': args.pxe_bridge,
-        'deploy_log': args.deploy_log
+        'deploy_log': args.deploy_log,
+        'scenario': args.scenario
     }
     return kwargs
 
