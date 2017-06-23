@@ -22,6 +22,30 @@
       "revId": "693d9936f30809253b665bcfff5a3e9d94269a60",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_03992e6e",
+        "filename": "deploy/utils.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-06-23T05:42:51Z",
+      "side": 1,
+      "message": "OK, it is done.",
+      "parentUuid": "1aa4ed85_a3ba9a08",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "693d9936f30809253b665bcfff5a3e9d94269a60",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
