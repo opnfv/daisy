@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_a3ba9a08",
+        "filename": "deploy/utils.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-06-23T02:48:53Z",
+      "side": 1,
+      "message": "os-odl_l2-nofeature-noha also will be supported in E release",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "693d9936f30809253b665bcfff5a3e9d94269a60",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
