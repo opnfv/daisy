@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1aa4ed85_2c2bf731",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-06-26T06:39:36Z",
+      "side": 1,
+      "message": "Actually tempest.py is not mentioned in this patch.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "a9a70f05a1da068a85ee68ed8d7092c694f07e5d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_acffe7a9",
         "filename": "deploy/deploy.py",
         "patchSetId": 2
