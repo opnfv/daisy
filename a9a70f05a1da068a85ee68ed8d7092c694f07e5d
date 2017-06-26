@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_acffe7a9",
+        "filename": "deploy/deploy.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-06-26T06:36:27Z",
+      "side": 1,
+      "message": "In daisy_server.py, there are many \u0027deploy.yml\u0027. Should them be replaced by the new name?",
+      "range": {
+        "startLine": 145,
+        "startChar": 48,
+        "endLine": 145,
+        "endChar": 67
+      },
+      "revId": "a9a70f05a1da068a85ee68ed8d7092c694f07e5d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_6c0a4fd4",
+        "filename": "deploy/environment.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-06-26T06:36:27Z",
+      "side": 1,
+      "message": "different with line 156. and conflict with line 163 in deploy.py",
+      "range": {
+        "startLine": 285,
+        "startChar": 44,
+        "endLine": 285,
+        "endChar": 52
+      },
+      "revId": "a9a70f05a1da068a85ee68ed8d7092c694f07e5d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
