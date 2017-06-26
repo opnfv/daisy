@@ -13,7 +13,7 @@ TOOLS_PATH=$1
 CACHE_PATH=/home/cache
 
 imagebranch="ocata"
-imageversion="170420124331"
+imageversion="170621131826"
 imageserver="http://120.24.17.215"
 imagename="kolla-image-$imagebranch-$imageversion.tgz"
 
