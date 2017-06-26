@@ -20,6 +20,7 @@
 
 import argparse
 import yaml
+import time
 
 
 from config.schemas import (
@@ -53,8 +54,10 @@ class DaisyDeployment(object):
         self.lab_name = lab_name
         self.pod_name = pod_name
 
-        self.deploy_file = deploy_file
-        self.deploy_struct = self._consturct_final_deploy_conf(deploy_file, scenario)
+        self.src_deploy_file = deploy_file
+        self.scenario = scenario
+        self.deploy_struct = self._construct_final_deploy_conf(deploy_file, scenario)
+        self.deploy_file = self._construct_final_deploy_file(self.deploy_struct, work_dir)
 
         if not cleanup_only:
             self.net_file = net_file
@@ -94,7 +97,8 @@ class DaisyDeployment(object):
                                           self.pxe_bridge,
                                           self.daisy_server_info,
                                           self.work_dir,
-                                          self.storage_dir)
+                                          self.storage_dir,
+                                          self.scenario)
 
     def _get_adapter_info(self):
         default_adapter = 'libvirt' if 'virtual' in self.pod_name else 'ipmi'
@@ -116,7 +120,7 @@ class DaisyDeployment(object):
                 'password': password,
                 'disk_size': disk_size}
 
-    def _consturct_final_deploy_conf(self, deploy_file, scenario):
+    def _construct_final_deploy_conf(self, deploy_file, scenario):
         with open(deploy_file) as yaml_file:
             deploy_struct = yaml.safe_load(yaml_file)
         scenario_file = path_join(WORKSPACE, 'deploy/scenario/scenario.yaml')
@@ -136,6 +140,16 @@ class DaisyDeployment(object):
         modules = deploy_scenario_conf['stack-extensions']
         deploy_struct['modules'] = modules
         return deploy_struct
+
+    def _construct_final_deploy_file(self, deploy_infor, work_dir):
+        final_deploy_file = path_join(work_dir, 'final_deploy.yml')
+        with open(final_deploy_file, 'w') as f:
+            f.write("\n".join([("title: This file automatically generated"),
+                               "created: " + str(time.strftime("%d/%m/%Y")) + " "
+                               + str(time.strftime("%H:%M:%S")),
+                               "comment: none\n"]))
+            yaml.dump(deploy_infor, f, default_flow_style=False)
+        return final_deploy_file
 
     def run(self):
         self.daisy_env.delete_old_environment()

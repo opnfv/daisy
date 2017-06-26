@@ -72,7 +72,7 @@ def log_scp(filename, size, send):
 
 
 class DaisyServer(object):
-    def __init__(self, name, address, password, remote_dir, bin_file, adapter):
+    def __init__(self, name, address, password, remote_dir, bin_file, adapter, scenario):
         self.name = name
         self.address = address
         self.password = password
@@ -80,6 +80,7 @@ class DaisyServer(object):
         self.bin_file = bin_file
         self.adapter = adapter
         self.ssh_client = None
+        self.scenario = scenario
 
     def connect(self):
         LI('Try to connect to Daisy Server ...')
@@ -227,11 +228,12 @@ class DaisyServer(object):
 
     def prepare_host_and_pxe(self):
         LI('Prepare host and PXE')
-        cmd = "python {script} --dha {deploy_file} --network {net_file} --host \'yes\' --isbare {is_bare}".format(
+        cmd = "python {script} --dha {deploy_file} --network {net_file} --host \'yes\' --isbare {is_bare} --scenario {scenarion}".format(
             script=path_join(self.remote_dir, 'deploy/tempest.py'),
             deploy_file=path_join(self.remote_dir, 'deploy.yml'),
             net_file=path_join(self.remote_dir, 'network.yml'),
-            is_bare=1 if self.adapter == 'ipmi' else 0)
+            is_bare=1 if self.adapter == 'ipmi' else 0,
+            scenario = self.scenario)
         self.ssh_run(cmd, check=True)
 
     def install_virtual_nodes(self):
