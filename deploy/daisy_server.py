@@ -72,7 +72,8 @@ def log_scp(filename, size, send):
 
 
 class DaisyServer(object):
-    def __init__(self, name, address, password, remote_dir, bin_file, adapter):
+    def __init__(self, name, address, password, remote_dir, bin_file,
+                 adapter, scenario, deploy_file_name, net_file_name):
         self.name = name
         self.address = address
         self.password = password
@@ -80,6 +81,9 @@ class DaisyServer(object):
         self.bin_file = bin_file
         self.adapter = adapter
         self.ssh_client = None
+        self.scenario = scenario
+        self.deploy_file_name = deploy_file_name
+        self.net_file_name = net_file_name
 
     def connect(self):
         LI('Try to connect to Daisy Server ...')
@@ -208,38 +212,39 @@ class DaisyServer(object):
         cmd = 'export PYTHONPATH={python_path}; python {script} -nw {net_file}'.format(
             python_path=self.remote_dir,
             script=path_join(self.remote_dir, 'deploy/prepare/execute.py'),
-            net_file=path_join(self.remote_dir, 'network.yml'))
+            net_file=path_join(self.remote_dir, self.net_file_name))
         self.ssh_run(cmd)
 
     def prepare_cluster(self, deploy_file, net_file):
         LI('Copy cluster configuration files to Daisy Server')
-        self.scp_put(deploy_file, path_join(self.remote_dir, 'deploy.yml'))
-        self.scp_put(net_file, path_join(self.remote_dir, 'network.yml'))
+        self.scp_put(deploy_file, path_join(self.remote_dir, self.deploy_file_name))
+        self.scp_put(net_file, path_join(self.remote_dir, self.net_file_name))
 
         self.prepare_configurations()
 
         LI('Prepare cluster and PXE')
         cmd = "python {script} --dha {deploy_file} --network {net_file} --cluster \'yes\'".format(
             script=path_join(self.remote_dir, 'deploy/tempest.py'),
-            deploy_file=path_join(self.remote_dir, 'deploy.yml'),
-            net_file=path_join(self.remote_dir, 'network.yml'))
+            deploy_file=path_join(self.remote_dir, self.deploy_file_name),
+            net_file=path_join(self.remote_dir, self.net_file_name))
         self.ssh_run(cmd, check=True)
 
     def prepare_host_and_pxe(self):
         LI('Prepare host and PXE')
-        cmd = "python {script} --dha {deploy_file} --network {net_file} --host \'yes\' --isbare {is_bare}".format(
+        cmd = "python {script} --dha {deploy_file} --network {net_file} --host \'yes\' --isbare {is_bare} --scenario {scenarion}".format(
             script=path_join(self.remote_dir, 'deploy/tempest.py'),
-            deploy_file=path_join(self.remote_dir, 'deploy.yml'),
-            net_file=path_join(self.remote_dir, 'network.yml'),
-            is_bare=1 if self.adapter == 'ipmi' else 0)
+            deploy_file=path_join(self.remote_dir, self.deploy_file_name),
+            net_file=path_join(self.remote_dir, self.net_file_name),
+            is_bare=1 if self.adapter == 'ipmi' else 0,
+            scenario=self.scenario)
         self.ssh_run(cmd, check=True)
 
     def install_virtual_nodes(self):
         LI('Daisy install virtual nodes')
         cmd = "python {script} --dha {deploy_file} --network {net_file} --install \'yes\'".format(
             script=path_join(self.remote_dir, 'deploy/tempest.py'),
-            deploy_file=path_join(self.remote_dir, 'deploy.yml'),
-            net_file=path_join(self.remote_dir, 'network.yml'))
+            deploy_file=path_join(self.remote_dir, self.deploy_file_name),
+            net_file=path_join(self.remote_dir, self.net_file_name))
         self.ssh_run(cmd, check=True)
 
     def check_os_installation(self, nodes_num):
@@ -262,5 +267,5 @@ class DaisyServer(object):
         cmd = 'export PYTHONPATH={python_path}; python {script} -nw {net_file}'.format(
             python_path=self.remote_dir,
             script=path_join(self.remote_dir, 'deploy/post/execute.py'),
-            net_file=path_join(self.remote_dir, 'network.yml'))
+            net_file=path_join(self.remote_dir, self.net_file_name))
         self.ssh_run(cmd, check=False)
