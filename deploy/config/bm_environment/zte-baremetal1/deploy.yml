@@ -3,12 +3,6 @@ hosts:
 - name: 'controller01'
   roles:
     - 'CONTROLLER_LB'
-- name: 'controller02'
-  roles:
-    - 'CONTROLLER_LB'
-- name: 'controller03'
-  roles:
-    - 'CONTROLLER_LB'
 - name: 'computer01'
   roles:
     - 'COMPUTER'
