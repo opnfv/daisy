@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_f2d7f6bd",
+        "filename": "docs/installationprocedure/vmdeploy.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-06-27T05:49:04Z",
+      "side": 1,
+      "message": "the bridge should be daisy1 in virtual deployment",
+      "range": {
+        "startLine": 135,
+        "startChar": 62,
+        "endLine": 135,
+        "endChar": 67
+      },
+      "revId": "afaf7385cf8ad2df8b37d7152585e2a8a5f41057",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
