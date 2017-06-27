@@ -20,6 +20,8 @@
 
 import argparse
 import yaml
+import time
+import os
 
 
 from config.schemas import (
@@ -53,11 +55,14 @@ class DaisyDeployment(object):
         self.lab_name = lab_name
         self.pod_name = pod_name
 
-        self.deploy_file = deploy_file
-        self.deploy_struct = self._consturct_final_deploy_conf(deploy_file, scenario)
+        self.src_deploy_file = deploy_file
+        self.scenario = scenario
+        self.deploy_struct = self._construct_final_deploy_conf(deploy_file, scenario)
+        self.deploy_file, self.deploy_file_name = self._construct_final_deploy_file(self.deploy_struct, work_dir)
 
         if not cleanup_only:
             self.net_file = net_file
+            self.net_file_name = os.path.basename(net_file)
             with open(net_file) as yaml_file:
                 self.net_struct = yaml.safe_load(yaml_file)
         else:
@@ -94,7 +99,9 @@ class DaisyDeployment(object):
                                           self.pxe_bridge,
                                           self.daisy_server_info,
                                           self.work_dir,
-                                          self.storage_dir)
+                                          self.storage_dir,
+                                          self.scenario)
+        return
 
     def _get_adapter_info(self):
         default_adapter = 'libvirt' if 'virtual' in self.pod_name else 'ipmi'
@@ -116,7 +123,7 @@ class DaisyDeployment(object):
                 'password': password,
                 'disk_size': disk_size}
 
-    def _consturct_final_deploy_conf(self, deploy_file, scenario):
+    def _construct_final_deploy_conf(self, deploy_file, scenario):
         with open(deploy_file) as yaml_file:
             deploy_struct = yaml.safe_load(yaml_file)
         scenario_file = path_join(WORKSPACE, 'deploy/scenario/scenario.yaml')
@@ -137,6 +144,17 @@ class DaisyDeployment(object):
         deploy_struct['modules'] = modules
         return deploy_struct
 
+    def _construct_final_deploy_file(self, deploy_infor, work_dir):
+        final_deploy_file_name = 'final_deploy.yml'
+        final_deploy_file = path_join(work_dir, 'final_deploy.yml')
+        with open(final_deploy_file, 'w') as f:
+            f.write("\n".join([("title: This file automatically generated"),
+                               "created: " + str(time.strftime("%d/%m/%Y")) +
+                               " " + str(time.strftime("%H:%M:%S")),
+                               "comment: none\n"]))
+            yaml.dump(deploy_infor, f, default_flow_style=False)
+        return final_deploy_file, final_deploy_file_name
+
     def run(self):
         self.daisy_env.delete_old_environment()
         if self.cleanup_only:
@@ -145,7 +163,8 @@ class DaisyDeployment(object):
         if self.daisy_only:
             log_bar('Create Daisy Server successfully !')
             return
-        self.daisy_env.install_daisy(self.remote_dir, self.bin_file)
+        self.daisy_env.install_daisy(self.remote_dir, self.bin_file,
+                                     self.deploy_file_name, self.net_file_name)
         self.daisy_env.deploy(self.deploy_file, self.net_file)
         log_bar('Daisy deploy successfully !')
 

@@ -53,20 +53,22 @@ VIRT_NET_TEMPLATE_PATH = path_join(WORKSPACE, 'templates/virtual_environment/net
 
 class DaisyEnvironment(object):
     def __new__(cls, deploy_struct, net_struct, adapter, pxe_bridge,
-                daisy_server_info, work_dir, storage_dir):
+                daisy_server_info, work_dir, storage_dir, scenario):
         if adapter == 'libvirt':
             return VirtualEnvironment(deploy_struct, net_struct,
                                       adapter, pxe_bridge,
-                                      daisy_server_info, work_dir, storage_dir)
+                                      daisy_server_info, work_dir,
+                                      storage_dir, scenario)
         else:
             return BareMetalEnvironment(deploy_struct, net_struct,
                                         adapter, pxe_bridge,
-                                        daisy_server_info, work_dir, storage_dir)
+                                        daisy_server_info, work_dir,
+                                        storage_dir, scenario)
 
 
 class DaisyEnvironmentBase(object):
     def __init__(self, deploy_struct, net_struct, adapter, pxe_bridge,
-                 daisy_server_info, work_dir, storage_dir):
+                 daisy_server_info, work_dir, storage_dir, scenario):
         self.deploy_struct = deploy_struct
         self.net_struct = net_struct
         self.adapter = adapter
@@ -75,6 +77,7 @@ class DaisyEnvironmentBase(object):
         self.storage_dir = storage_dir
         self.daisy_server_info = daisy_server_info
         self.server = None
+        self.scenario = scenario
         LI('Daisy Environment Initialized')
 
     def delete_daisy_server(self):
@@ -102,13 +105,16 @@ class DaisyEnvironmentBase(object):
         shutil.move(image, self.daisy_server_info['image'])
         LI('Daisy Server image is created %s' % self.daisy_server_info['image'])
 
-    def install_daisy(self, remote_dir, bin_file):
+    def install_daisy(self, remote_dir, bin_file, deploy_file_name, net_file_name):
         self.server = DaisyServer(self.daisy_server_info['name'],
                                   self.daisy_server_info['address'],
                                   self.daisy_server_info['password'],
                                   remote_dir,
                                   bin_file,
-                                  self.adapter)
+                                  self.adapter,
+                                  self.scenario,
+                                  deploy_file_name,
+                                  net_file_name)
         self.server.connect()
         self.server.install_daisy()
 
@@ -162,9 +168,9 @@ class BareMetalEnvironment(DaisyEnvironmentBase):
 
 class VirtualEnvironment(DaisyEnvironmentBase):
     def __init__(self, deploy_struct, net_struct, adapter, pxe_bridge,
-                 daisy_server_info, work_dir, storage_dir):
+                 daisy_server_info, work_dir, storage_dir, scenario):
         super(VirtualEnvironment, self).__init__(deploy_struct, net_struct, adapter, pxe_bridge,
-                                                 daisy_server_info, work_dir, storage_dir)
+                                                 daisy_server_info, work_dir, storage_dir, scenario)
         self.check_configuration()
 
     def check_configuration(self):
