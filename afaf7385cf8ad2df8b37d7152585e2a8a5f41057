@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1aa4ed85_2cfe926c",
+        "filename": "docs/installationprocedure/bmdeploy.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-06-28T07:04:09Z",
+      "side": 1,
+      "message": "Delete this",
+      "range": {
+        "startLine": 134,
+        "startChar": 55,
+        "endLine": 134,
+        "endChar": 63
+      },
+      "revId": "afaf7385cf8ad2df8b37d7152585e2a8a5f41057",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_f2d7f6bd",
         "filename": "docs/installationprocedure/vmdeploy.rst",
         "patchSetId": 4
@@ -13,6 +36,30 @@
       "writtenOn": "2017-06-27T05:49:04Z",
       "side": 1,
       "message": "the bridge should be daisy1 in virtual deployment",
+      "range": {
+        "startLine": 135,
+        "startChar": 62,
+        "endLine": 135,
+        "endChar": 67
+      },
+      "revId": "afaf7385cf8ad2df8b37d7152585e2a8a5f41057",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_8c09c697",
+        "filename": "docs/installationprocedure/vmdeploy.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-06-28T07:04:09Z",
+      "side": 1,
+      "message": "-B option never used in code. So Here I suggest delete this in doc.",
+      "parentUuid": "1aa4ed85_f2d7f6bd",
       "range": {
         "startLine": 135,
         "startChar": 62,
