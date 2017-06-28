@@ -40,7 +40,7 @@ Examples:
 sudo `basename $0` -b base_path
                    -l zte -p pod2 -B pxebr
                    -d ./deploy/config/vm_environment/zte-virtual1/deploy.yml
-                   -r /opt/daisy -w /opt/daisy
+                   -r /opt/daisy -w /opt/daisy -s os-nosdn-nofeature-noha
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 EOF
 }
@@ -63,6 +63,7 @@ TARGET_HOSTS_NUM=0
 DRY_RUN=0
 IS_BARE=1
 VM_MULTINODE=("computer01" "computer02" "computer03" "computer04" "controller01")
+VALID_DEPLOY_SCENARIO=("os-nosdn-nofeature-noha" "os-odl_l3-nofeature-noha" "os-odl_l2-nofeature-noha")
 #
 # END of variables to customize
 ############################################################################
@@ -181,6 +182,7 @@ if [ $DRY_RUN -eq 1 ]; then
     VMDEPLOY_TARGET_NODE_NET: $VMDEPLOY_TARGET_NODE_NET
     VMDEPLOY_DAISY_SERVER_VM: $VMDEPLOY_DAISY_SERVER_VM
     VMDEPLOY_TARGET_NODE_VM: $VMDEPLOY_TARGET_NODE_VM
+    DEPLOY_SCENARIO: $DEPLOY_SCENARIO
     """
     exit 1
 fi
@@ -194,6 +196,25 @@ elif [ ! -x ${WORKSPACE}/opnfv.bin ]; then
 fi
 
 test -d ${VM_STORAGE} || mkdir -p ${VM_STORAGE}
+
+function check_scenario_arg
+{
+    local is_valid_scenario=0
+
+    for item in ${VALID_DEPLOY_SCENARIO[@]};do
+        if [ ${DEPLOY_SCENARIO} == $item ]; then
+            is_valid_scenario=1
+            break
+        fi
+    done
+
+    if [ $is_valid_scenario -eq 0 ]; then
+        echo "Invalid scenario argument:${DEPLOY_SCENARIO}"
+        exit 1
+    fi
+}
+
+check_scenario_arg
 
 function create_node
 {
