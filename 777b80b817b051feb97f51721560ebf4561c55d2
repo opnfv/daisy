@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_4cb50ecc",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-06-28T06:17:45Z",
+      "side": 1,
+      "message": "Can we locate this just before the \necho \"\u003d\u003d\u003d\u003d\u003d\u003d clean up all node and network \u003d\u003d\u003d\u003d\u003d\u003d\"?",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 18
+      },
+      "revId": "777b80b817b051feb97f51721560ebf4561c55d2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
