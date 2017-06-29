@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_852bd981",
+        "filename": "docs/releasenotes/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-06-29T09:13:02Z",
+      "side": 1,
+      "message": "suggest to change to \"Support OpenDayLight Carbon\" for unify the express with the below.",
+      "range": {
+        "startLine": 85,
+        "startChar": 41,
+        "endLine": 85,
+        "endChar": 72
+      },
+      "revId": "cd92ecc165ce21ab7f22f5762276113e3336a045",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
