@@ -22,6 +22,30 @@
       "revId": "5ce8cad7877b47f19c1570e90a5427beea020f33",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_220c5b94",
+        "filename": "docs/installationprocedure/bmdeploy.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-06-29T07:24:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa4ed85_c2eea7b4",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "5ce8cad7877b47f19c1570e90a5427beea020f33",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
