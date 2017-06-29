@@ -1,9 +1,11 @@
+.. _daisy-installation:
+
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
-********************************************************
-OPNFV(Danube) Daisy4nfv Installation Guide
-********************************************************
+**********************************
+OPNFV Daisy4nfv Installation Guide
+**********************************
 
 .. toctree::
       :numbered:
