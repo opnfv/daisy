@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_c2eea7b4",
+        "filename": "docs/installationprocedure/bmdeploy.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-06-29T07:22:33Z",
+      "side": 1,
+      "message": "(Virtual Deployment)-\u003e (Bare Metal Deployment)",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "5ce8cad7877b47f19c1570e90a5427beea020f33",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
