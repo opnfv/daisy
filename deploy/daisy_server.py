@@ -209,10 +209,11 @@ class DaisyServer(object):
         if self.adapter != 'libvirt':
             return
         LI('Prepare some configuration files')
-        cmd = 'export PYTHONPATH={python_path}; python {script} -nw {net_file}'.format(
+        cmd = 'export PYTHONPATH={python_path}; python {script} -nw {net_file} -b {is_bare}'.format(
             python_path=self.remote_dir,
             script=path_join(self.remote_dir, 'deploy/prepare/execute.py'),
-            net_file=path_join(self.remote_dir, self.net_file_name))
+            net_file=path_join(self.remote_dir, self.net_file_name),
+            is_bare=1 if self.adapter == 'ipmi' else 0)
         self.ssh_run(cmd)
 
     def prepare_cluster(self, deploy_file, net_file):
@@ -231,7 +232,7 @@ class DaisyServer(object):
 
     def prepare_host_and_pxe(self):
         LI('Prepare host and PXE')
-        cmd = "python {script} --dha {deploy_file} --network {net_file} --host \'yes\' --isbare {is_bare} --scenario {scenarion}".format(
+        cmd = "python {script} --dha {deploy_file} --network {net_file} --host \'yes\' --isbare {is_bare} --scenario {scenario}".format(
             script=path_join(self.remote_dir, 'deploy/tempest.py'),
             deploy_file=path_join(self.remote_dir, self.deploy_file_name),
             net_file=path_join(self.remote_dir, self.net_file_name),
