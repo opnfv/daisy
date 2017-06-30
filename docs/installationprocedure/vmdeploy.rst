@@ -137,6 +137,6 @@ Start Deployment (Virtual Deployment)
 Notes:zte-virtual1 config file is just for all-in-one deployment,if you want to deploy openstack with five node(1 lb node and 4 computer nodes),change the zte-virtual1 to zte-virtual2
 
 (6) Run the script deploy.sh in daisy/ci/deploy/ with command:
-sudo ./ci/deploy/deploy.sh -b ../daisy  -l zte -p virtual1 -B pxebr
+sudo ./ci/deploy/deploy.sh -b ../daisy  -l zte -p virtual1 -s os-nosdn-nofeature-noha
 
 (7) When deploy successfully,the floating ip of openstack is 10.20.11.11,the login account is "admin" and the password is "keystone"
