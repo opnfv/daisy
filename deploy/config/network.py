@@ -18,6 +18,7 @@ class NetworkConfig(object):
         'STORAGE': 'stor',
         'PUBLICAPI': 'pub',
         'TENANT': 'tenant',
+        'HEARTBEAT': 'hbt',
     }
 
     def __init__(self, network_file):
