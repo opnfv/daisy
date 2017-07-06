@@ -29,11 +29,11 @@ networks:
   - cidr: '172.10.101.0/24'
     gateway: '172.10.101.1'
     ip_ranges:
-    - start: 172.10.101.2
-      end: 172.10.101.20
-    name: EXTERNAL
-    network_name: admin_external
-    mapping: physnet1
+    - start: '172.10.101.2'
+      end: '172.10.101.20'
+    name: 'EXTERNAL'
+    network_name: 'admin_external'
+    mapping: 'physnet1'
   - cidr: '10.20.11.0/24'
     gateway: '10.20.11.1'
     ip_ranges:
@@ -46,6 +46,12 @@ networks:
     - start: '10.20.11.3'
       end: '10.20.11.10'
     name: 'TENANT'
+  - cidr: '100.20.11.0/24'
+    gateway: '100.20.11.1'
+    ip_ranges:
+    - start: '100.20.11.3'
+      end: '100.20.11.10'
+    name: 'HEARTBEAT'
 interfaces:
   - name: 'EXTERNAL'
     interface: 'ens8'
@@ -57,5 +63,7 @@ interfaces:
     interface: 'ens3'
   - name: 'TENANT'
     interface: 'ens3'
+  - name: 'HEARTBEAT'
+    interface: 'ens9'
 internal_vip: '10.20.11.11'
 public_vip: '10.20.11.11'
