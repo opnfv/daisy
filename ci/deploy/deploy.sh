@@ -62,7 +62,7 @@ POD_NAME=''
 TARGET_HOSTS_NUM=0
 DRY_RUN=0
 IS_BARE=1
-VM_MULTINODE=("computer01" "computer02" "computer03" "computer04" "controller01")
+VM_MULTINODE=("computer01" "computer02" "controller02" "controller03" "controller01")
 VALID_DEPLOY_SCENARIO=("os-nosdn-nofeature-noha" "os-nosdn-nofeature-ha" "os-odl_l3-nofeature-noha" "os-odl_l2-nofeature-noha")
 #
 # END of variables to customize
@@ -149,7 +149,8 @@ DEPLOY_PATH=$WORKSPACE/deploy
 CREATE_QCOW2_PATH=$WORKSPACE/tools
 
 VMDELOY_DAISY_SERVER_NET=$WORKSPACE/templates/virtual_environment/networks/daisy.xml
-VMDEPLOY_TARGET_NODE_NET=$WORKSPACE/templates/virtual_environment/networks/os-all_in_one.xml
+VMDEPLOY_TARGET_NODE_NET=$WORKSPACE/templates/virtual_environment/networks/external.xml
+VMDEPLOY_TARGET_KEEPALIVED_NET=$WORKSPACE/templates/virtual_environment/networks/keepalived.xml
 VMDEPLOY_DAISY_SERVER_VM=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
 VMDEPLOY_TARGET_NODE_VM=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
 
@@ -336,6 +337,9 @@ if [ $IS_BARE == 0 ];then
         virsh net-define $VMDEPLOY_TARGET_NODE_NET
         virsh net-autostart daisy2
         virsh net-start daisy2
+        virsh net-define $VMDEPLOY_TARGET_KEEPALIVED_NET
+        virsh net-autostart daisy3
+        virsh net-start daisy3
         for ((i=0;i<${#VM_MULTINODE[@]};i++));do
             qemu-img create -f qcow2 ${VM_STORAGE}/${VM_MULTINODE[$i]}.qcow2 120G
             qemu-img create -f qcow2 ${VM_STORAGE}/${VM_MULTINODE[$i]}_data.qcow2 150G

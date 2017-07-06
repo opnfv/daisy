@@ -40,7 +40,7 @@ from utils import (
 CREATE_QCOW2_PATH = path_join(WORKSPACE, 'tools')
 
 VMDEPLOY_DAISY_SERVER_NET = path_join(WORKSPACE, 'templates/virtual_environment/networks/daisy.xml')
-VMDEPLOY_TARGET_NODE_NET = path_join(WORKSPACE, 'templates/virtual_environment/networks/os-all_in_one.xml')
+VMDEPLOY_TARGET_NODE_NET = path_join(WORKSPACE, 'templates/virtual_environment/networks/external.xml')
 VMDEPLOY_DAISY_SERVER_VM = path_join(WORKSPACE, 'templates/virtual_environment/vms/daisy.xml')
 
 BMDEPLOY_DAISY_SERVER_VM = path_join(WORKSPACE, 'templates/physical_environment/vms/daisy.xml')
