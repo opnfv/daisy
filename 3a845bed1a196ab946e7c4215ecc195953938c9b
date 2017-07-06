@@ -22,6 +22,30 @@
       "revId": "3a845bed1a196ab946e7c4215ecc195953938c9b",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_81265f67",
+        "filename": "templates/virtual_environment/vms/computer01.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-07-06T06:35:56Z",
+      "side": 1,
+      "message": "This is a thorny configuration.\nFor the vm we create from this xml get the ip by dhcp from the bridge daisy3.So,we can\u0027t fix the ip of each vms.\nAnd in the tempest.py file we can see we do not add the host role by this xml file,but by the deploy.yml file.\nso the vm started by this computer01.xml or other computer0x.xml can also be a CONTROLLER_LB role.The add_host_role may have to do the reconsitution.\n\ndef add_host_role(cluster_id, host_id, host_exp_name, host_real_name, vip):\n    role_meta \u003d {\u0027filters\u0027: {\u0027cluster_id\u0027: cluster_id}}\n    role_list_generator \u003d client.roles.list(**role_meta)\n    role_list \u003d [role for role in role_list_generator]\n    lb_role_id \u003d [role.id for role in role_list if\n                  role.name \u003d\u003d \"CONTROLLER_LB\"][0]\n    computer_role_id \u003d [role.id for role in role_list if\n                        role.name \u003d\u003d \"COMPUTER\"][0]\n    if host_exp_name in [\u0027all_in_one\u0027]:\n        role_lb_update_meta \u003d {\u0027nodes\u0027: [host_id],\n                               \u0027cluster_id\u0027: cluster_id, \u0027vip\u0027: vip}\n        client.roles.update(lb_role_id, **role_lb_update_meta)\n        role_computer_update_meta \u003d {\u0027nodes\u0027: [host_id],\n                                     \u0027cluster_id\u0027: cluster_id}\n        client.roles.update(computer_role_id, **role_computer_update_meta)\n    if host_exp_name in [\u0027controller01\u0027, \u0027controller02\u0027, \u0027controller03\u0027]:\n        role_lb_update_meta \u003d {\u0027nodes\u0027: [host_id],\n                               \u0027cluster_id\u0027: cluster_id, \u0027vip\u0027: vip}\n        client.roles.update(lb_role_id, **role_lb_update_meta)\n    if host_exp_name in [\u0027computer01\u0027, \u0027computer02\u0027, \u0027computer03\u0027, \u0027computer04\u0027]:\n        role_computer_update_meta \u003d {\u0027nodes\u0027: [host_id],\n                                     \u0027cluster_id\u0027: cluster_id}\n        client.roles.update(computer_role_id, **role_computer_update_meta)",
+      "parentUuid": "1aa4ed85_41962796",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 16
+      },
+      "revId": "3a845bed1a196ab946e7c4215ecc195953938c9b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
