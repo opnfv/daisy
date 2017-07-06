@@ -1,0 +1,12 @@
+<network connections='1'>
+  <name>daisy3</name>
+  <forward mode='nat'>
+    <nat>
+      <port start='1024' end='65535'/>
+    </nat>
+  </forward>
+  <bridge name='daisy3' stp='on' delay='0'/>
+  <domain name='daisy3'/>
+  <ip address='100.20.11.1' netmask='255.255.255.0'>
+  </ip>
+</network>

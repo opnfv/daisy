@@ -62,8 +62,8 @@ POD_NAME=''
 TARGET_HOSTS_NUM=0
 DRY_RUN=0
 IS_BARE=1
-VM_MULTINODE=("computer01" "computer02" "computer03" "computer04" "controller01")
-VALID_DEPLOY_SCENARIO=("os-nosdn-nofeature-noha" "os-nosdn-nofeature-ha" "os-odl_l3-nofeature-noha" "os-odl_l2-nofeature-noha")
+VM_MULTINODE=("computer01" "computer02" "controller02" "controller03" "controller01")
+VALID_DEPLOY_SCENARIO=("os-nosdn-nofeature-noha" "os-odl_l3-nofeature-noha" "os-odl_l2-nofeature-noha")
 #
 # END of variables to customize
 ############################################################################
@@ -150,6 +150,7 @@ CREATE_QCOW2_PATH=$WORKSPACE/tools
 
 VMDELOY_DAISY_SERVER_NET=$WORKSPACE/templates/virtual_environment/networks/daisy.xml
 VMDEPLOY_TARGET_NODE_NET=$WORKSPACE/templates/virtual_environment/networks/os-all_in_one.xml
+VMDEPLOY_TARGET_KEEPALIVED_NET=$WORKSPACE/templates/virtual_environment/networks/keepalived.xml
 VMDEPLOY_DAISY_SERVER_VM=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
 VMDEPLOY_TARGET_NODE_VM=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
 
@@ -277,45 +278,45 @@ function clean_up
 
 echo "====== clean up all node and network ======"
 if [ $IS_BARE == 0 ];then
-    clean_up all_in_one daisy2
+#    clean_up all_in_one daisy2
     for ((i=0;i<${#VM_MULTINODE[@]};i++));do
         virsh destroy ${VM_MULTINODE[$i]}
         virsh undefine ${VM_MULTINODE[$i]}
     done
-    clean_up daisy daisy1
-else
-    virsh destroy daisy
-    virsh undefine daisy
+#    clean_up daisy daisy1
+#else
+#    virsh destroy daisy
+#    virsh undefine daisy
 fi
 
 echo "====== create daisy node ======"
-$CREATE_QCOW2_PATH/daisy-img-modify.sh -c $CREATE_QCOW2_PATH/centos-img-modify.sh -w $WORKDIR -a $DAISY_IP $PARAS_IMAGE
-if [ $IS_BARE == 0 ];then
-    create_node $VMDELOY_DAISY_SERVER_NET daisy1 $VMDEPLOY_DAISY_SERVER_VM daisy
-else
-    virsh define $BMDEPLOY_DAISY_SERVER_VM
-    virsh start daisy
-fi
+#$CREATE_QCOW2_PATH/daisy-img-modify.sh -c $CREATE_QCOW2_PATH/centos-img-modify.sh -w $WORKDIR -a $DAISY_IP $PARAS_IMAGE
+#if [ $IS_BARE == 0 ];then
+#    create_node $VMDELOY_DAISY_SERVER_NET daisy1 $VMDEPLOY_DAISY_SERVER_VM daisy
+#else
+#    virsh define $BMDEPLOY_DAISY_SERVER_VM
+#    virsh start daisy
+#fi
 #wait for the daisy1 network start finished for execute trustme.sh
 #here sleep 40 just needed in Dell blade server
 #for E9000 blade server we only have to sleep 20
-sleep 40
+#sleep 40
 
 echo "====== install daisy ======"
-$DEPLOY_PATH/trustme.sh $DAISY_IP $DAISY_PASSWD
-ssh $SSH_PARAS $DAISY_IP "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE} ]]; then rm -fr ${REMOTE_SPACE}; fi"
-scp -r $WORKSPACE root@$DAISY_IP:${REMOTE_SPACE}
-ssh $SSH_PARAS $DAISY_IP "mkdir -p /home/daisy_install"
-update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $DAISY_IP
-scp $WORKSPACE/deploy/daisy.conf root@$DAISY_IP:/home/daisy_install
-ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/opnfv.bin  install"
-rc=$?
-if [ $rc -ne 0 ]; then
-    echo "daisy install failed"
-    exit 1
-else
-    echo "daisy install successfully"
-fi
+#$DEPLOY_PATH/trustme.sh $DAISY_IP $DAISY_PASSWD
+#ssh $SSH_PARAS $DAISY_IP "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE} ]]; then rm -fr ${REMOTE_SPACE}; fi"
+#scp -r $WORKSPACE root@$DAISY_IP:${REMOTE_SPACE}
+#ssh $SSH_PARAS $DAISY_IP "mkdir -p /home/daisy_install"
+#update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $DAISY_IP
+#scp $WORKSPACE/deploy/daisy.conf root@$DAISY_IP:/home/daisy_install
+#ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/opnfv.bin  install"
+#rc=$?
+#if [ $rc -ne 0 ]; then
+#    echo "daisy install failed"
+#    exit 1
+#else
+#    echo "daisy install successfully"
+#fi
 
 echo "====== generate known_hosts file in daisy vm ======"
 touch $WORKSPACE/known_hosts
@@ -336,6 +337,9 @@ if [ $IS_BARE == 0 ];then
         virsh net-define $VMDEPLOY_TARGET_NODE_NET
         virsh net-autostart daisy2
         virsh net-start daisy2
+        virsh net-define $VMDEPLOY_TARGET_KEEPALIVED_NET
+        virsh net-autostart daisy3
+        virsh net-start daisy3
         for ((i=0;i<${#VM_MULTINODE[@]};i++));do
             qemu-img create -f qcow2 ${VM_STORAGE}/${VM_MULTINODE[$i]}.qcow2 120G
             qemu-img create -f qcow2 ${VM_STORAGE}/${VM_MULTINODE[$i]}_data.qcow2 150G

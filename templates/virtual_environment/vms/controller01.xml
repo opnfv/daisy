@@ -84,6 +84,10 @@
       <source network='daisy2' bridge='daisy2'/>
       <model type='rtl8139'/>
     </interface>
+    <interface type='network'>
+      <source network='daisy3' bridge='daisy3'/>
+      <model type='rtl8139'/>
+    </interface>
     <serial type='pty'>
       <source path='/dev/pts/4'/>
       <target port='0'/>
