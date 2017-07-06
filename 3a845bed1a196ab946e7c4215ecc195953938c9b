@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_41962796",
+        "filename": "templates/virtual_environment/vms/computer01.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-07-06T06:19:11Z",
+      "side": 1,
+      "message": "HA netplane is only used by network/controller node. No need to put HA netplane into compute role. So we really need this?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 16
+      },
+      "revId": "3a845bed1a196ab946e7c4215ecc195953938c9b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
