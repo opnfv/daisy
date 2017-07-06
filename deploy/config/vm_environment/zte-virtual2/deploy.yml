@@ -4,19 +4,19 @@ hosts:
   roles:
     - 'CONTROLLER_LB'
   template: 'templates/virtual_environment/vms/controller.xml'
+- name: 'controller02'
+  roles:
+    - 'CONTROLLER_LB'
+  template: 'templates/virtual_environment/vms/controller.xml'
+- name: 'controller03'
+  roles:
+    - 'CONTROLLER_LB'
+  template: 'templates/virtual_environment/vms/controller.xml'
 - name: 'computer01'
   roles:
     - 'COMPUTER'
   template: 'templates/virtual_environment/vms/computer.xml'
 - name: 'computer02'
-  roles:
-    - 'COMPUTER'
-  template: 'templates/virtual_environment/vms/computer.xml'
-- name: 'computer03'
-  roles:
-    - 'COMPUTER'
-  template: 'templates/virtual_environment/vms/computer.xml'
-- name: 'computer04'
   roles:
     - 'COMPUTER'
   template: 'templates/virtual_environment/vms/computer.xml'
