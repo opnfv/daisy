@@ -21,6 +21,9 @@ WORKSPACE = os.path.normpath(path_join(os.path.dirname(__file__), '..'))
 BASE = CWD
 valid_scenario_list = ['os-nosdn-nofeature-noha',
                        'os-odl_l3-nofeature-noha',
+                       'os-odl_l2-nofeature-noha',
+                       'os-nosdn-nofeature-ha',
+                       'os-odl_l3-nofeature-ha',
                        'os-odl_l2-nofeature-noha']
 
 
