@@ -115,12 +115,14 @@ You can write your own reference into it.
     |             |      Internet Access      | |
     |             |      Tenant Network       | |
     |             |     Storage Network       | |
+    |             |     HeartBeat Network     | |
     |             \---------------------------/ |
     +-------------------------------------------+
 
 
 
 Note: For Flat External networks(which is used by default), a physical interface is needed on each compute node for ODL NetVirt recent versions.
+HeartBeat network is selected,and if it is configured in network.yml,the keepalived interface will be the heartbeat interface.
 
 Start Deployment (Virtual Deployment)
 -------------------------------------
