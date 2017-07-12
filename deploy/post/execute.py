@@ -10,10 +10,22 @@ import os
 
 import glance
 import argparse
-
+import yaml
 import neutron
 import nova
 from deploy.config.network import NetworkConfig
+
+
+def _config_kolla_admin_openrc(kolla_config_path):
+    with open('%s/globals.yml' % kolla_config_path, 'r') as f:
+        kolla_config = yaml.safe_load(f.read())
+        f.close()
+    if kolla_config.get('opendaylight_leader_ip_address'):
+        sdn_controller_ip = kolla_config.get('opendaylight_leader_ip_address')
+        openrc_file = file('%s/admin-openrc.sh' % kolla_config_path, 'a')
+        sdn_ctl_ip = 'export SDN_CONTROLLER_IP=' + sdn_controller_ip + '\n'
+        openrc_file.write(sdn_ctl_ip)
+        openrc_file.close()
 
 
 def _config_external_network(ext_name, physnet):
@@ -115,6 +127,7 @@ def main():
     _create_external_network(args.network_file)
     _create_flavor_m1_micro()
     _create_image_TestVM()
+    _config_kolla_admin_openrc('/etc/kolla/')
 
 
 if __name__ == '__main__':
