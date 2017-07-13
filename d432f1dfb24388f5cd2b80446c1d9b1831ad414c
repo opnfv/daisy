@@ -16,6 +16,24 @@
       "revId": "d432f1dfb24388f5cd2b80446c1d9b1831ad414c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_30f9e54d",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-07-13T07:45:08Z",
+      "side": 1,
+      "message": "Thank you zhihui,\u0027with\u0027 statement helps to close the file.\nBut I think the openrc_filr.close() is needed in L28.\nThank you for your advice.",
+      "parentUuid": "1aa4ed85_fc9569e4",
+      "revId": "d432f1dfb24388f5cd2b80446c1d9b1831ad414c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
