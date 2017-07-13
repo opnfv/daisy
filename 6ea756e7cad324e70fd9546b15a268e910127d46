@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_f3e277d4",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-07-13T10:42:44Z",
+      "side": 1,
+      "message": "is it better to put this statement before \"if sdn_controller_ip:\"?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "6ea756e7cad324e70fd9546b15a268e910127d46",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
