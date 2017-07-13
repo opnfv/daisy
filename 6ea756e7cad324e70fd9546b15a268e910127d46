@@ -22,6 +22,30 @@
       "revId": "6ea756e7cad324e70fd9546b15a268e910127d46",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_13771304",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-07-13T10:59:02Z",
+      "side": 1,
+      "message": "if the kolla_config file do not have a \u0027opendaylight_leader_ip_address\u0027,the sentence below if kolla_config.get(\u0027opendaylight_leader_ip_address\u0027): will do not execute\nSo,I think do not have to put the statement before  \"if sdn_controller_ip:\"",
+      "parentUuid": "1aa4ed85_f3e277d4",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "6ea756e7cad324e70fd9546b15a268e910127d46",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
