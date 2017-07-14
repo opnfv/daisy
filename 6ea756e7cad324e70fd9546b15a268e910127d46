@@ -46,6 +46,30 @@
       "revId": "6ea756e7cad324e70fd9546b15a268e910127d46",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_c4469323",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-07-14T01:20:21Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "1aa4ed85_13771304",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "6ea756e7cad324e70fd9546b15a268e910127d46",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
