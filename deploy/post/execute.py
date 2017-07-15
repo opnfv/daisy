@@ -82,12 +82,13 @@ def _create_flavor_m1_micro():
 
 
 def _prepare_cirros():
-    url = 'http://download.cirros-cloud.net'
+    url = 'https://download.cirros-cloud.net'
     version = '0.3.5'
     name = 'cirros-{}-x86_64-disk.img'.format(version)
     img = os.path.join("/var/lib/daisy/images", name)
+    imgmd5 = "/var/lib/daisy/images/cirros.md5"
     if not os.path.isfile(img):
-        cmd = "wget %(url)s/%(version)s/%(name)s -O %(path)s" % {
+        cmd = "curl -sSL %(url)s/%(version)s/%(name)s -o %(path)s" % {
             'url': url,
             'version': version,
             'name': name,
@@ -97,6 +98,27 @@ def _prepare_cirros():
             os.system(cmd)
         except Exception as error:
             print ('Download cirros failed: {}'.format(str(error)))
+            img = None
+
+        cmd = "curl -sSL %(url)s/%(version)s/MD5SUMS -o %(md5path)s" % {
+            'url': url,
+            'version': version,
+            'md5path': imgmd5}
+        try:
+            print ('Downloading MD5SUM for cirros: {}'.format(cmd))
+            os.system(cmd)
+        except Exception as error:
+            print ('Download cirros MD5SUM failed: {}'.format(str(error)))
+            img = None
+
+        cmd = "cat  %(md5path)s | grep %(name)s | md5sum -c" % {
+            'md5path': imgmd5,
+            'name': name}
+        try:
+            print ('md5sum check cirros: {}'.format(cmd))
+            os.system(cmd)
+        except Exception as error:
+            print ('md5sum check cirros failed: {}'.format(str(error)))
             img = None
 
     return img
