@@ -46,6 +46,10 @@ do
 done
 
 python $PYTHONPATH/deploy/post/execute.py -nw $NETWORK
+if [ ! $? -eq 0 ]; then
+    exit 1
+fi
+
 source /etc/kolla/admin-openrc.sh
 openstack security group rule create --proto icmp default
 openstack security group rule create --proto tcp --dst-port 22 default
