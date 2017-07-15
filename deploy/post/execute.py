@@ -14,6 +14,7 @@ import yaml
 import neutron
 import nova
 from deploy.config.network import NetworkConfig
+from deploy.utils import err_exit
 
 
 def _config_kolla_admin_openrc(kolla_config_path):
@@ -82,21 +83,36 @@ def _create_flavor_m1_micro():
 
 
 def _prepare_cirros():
-    url = 'http://download.cirros-cloud.net'
+    url = 'https://download.cirros-cloud.net'
     version = '0.3.5'
     name = 'cirros-{}-x86_64-disk.img'.format(version)
-    img = os.path.join("/var/lib/daisy/images", name)
+    imgpath = "/var/lib/daisy/images"
+    img = os.path.join(imgpath, name)
+    imgmd5 = os.path.join(imgpath, "cirros.md5")
+
     if not os.path.isfile(img):
-        cmd = "wget %(url)s/%(version)s/%(name)s -O %(path)s" % {
+        cmd = "curl -sSL %(url)s/%(version)s/%(name)s -o %(path)s" % {
             'url': url,
             'version': version,
             'name': name,
             'path': img}
-        try:
-            print ('Downloading cirros: {}'.format(cmd))
-            os.system(cmd)
-        except Exception as error:
-            print ('Download cirros failed: {}'.format(str(error)))
+        print ('Downloading cirros: {}'.format(cmd))
+        os.system(cmd)
+
+        cmd = "curl -sSL %(url)s/%(version)s/MD5SUMS -o %(md5path)s" % {
+            'url': url,
+            'version': version,
+            'md5path': imgmd5}
+        print ('Downloading MD5SUM for cirros: {}'.format(cmd))
+        os.system(cmd)
+
+        cmd = "cd %(path)s && cat %(md5path)s | grep %(name)s | md5sum -c" % {
+            'path': imgpath,
+            'md5path': imgmd5,
+            'name': name}
+        print ('md5sum check cirros: {}'.format(cmd))
+        ret = os.system(cmd)
+        if ret != 0:
             img = None
 
     return img
@@ -106,12 +122,14 @@ def _create_image_TestVM():
     glanceclient = glance.Glance()
     image = 'TestVM'
     if not glanceclient.get_by_name(image):
-        img = _prepare_cirros()
-        if img:
-            try:
+        try:
+            img = _prepare_cirros()
+            if img:
                 glanceclient.create(image, img)
-            except Exception as error:
-                print ('Create image failed: {}'.format(str(error)))
+            else:
+                err_exit("Test image preparation failed")
+        except Exception as error:
+            err_exit('Create image failed: {}'.format(str(error)))
     else:
         print ('Use existing TestVM image')
 
