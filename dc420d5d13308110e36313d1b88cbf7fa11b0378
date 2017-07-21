@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_11c85921",
+        "filename": "templates/virtual_environment/vms/computer.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-07-21T09:36:59Z",
+      "side": 1,
+      "message": "how can we use the deploy.sh to create the daisy3 network?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 16
+      },
+      "revId": "dc420d5d13308110e36313d1b88cbf7fa11b0378",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
