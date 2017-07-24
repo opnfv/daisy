@@ -52,6 +52,10 @@ while true; do
         break
     elif [ $openstack_install_failed -gt 0 ]; then
         echo "openstack installing have failed..."
+        echo "this is the daisy api log"
+        cat /var/log/daisy/api.log |grep -v wsgi
+        echo "----------------------------------------------------"
+        echo "this is the kolla install log"
         tail -n 200 /var/log/daisy/kolla_$cluster_id*
         exit 1
     else

@@ -62,6 +62,8 @@ while true; do
         break
     elif [ $os_install_failed -gt 0 ]; then
         echo "os installing have failed..."
+        echo "this is the daisy api log"
+        cat /var/log/daisy/api.log |grep -v wsgi
         exit 1
     else
         progress=`daisy host-list --cluster-id $cluster_id |grep DISCOVERY_SUCCESSFUL |awk -F "|" '{print $7}'|sed s/[[:space:]]//g|sed ':a;N;$ s/\n/ /g;ba'`
