@@ -7,6 +7,8 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
+import commands
+import itertools
 import os
 import shutil
 import time
@@ -41,6 +43,7 @@ CREATE_QCOW2_PATH = path_join(WORKSPACE, 'tools')
 
 VMDEPLOY_DAISY_SERVER_NET = path_join(WORKSPACE, 'templates/virtual_environment/networks/daisy.xml')
 VMDEPLOY_TARGET_NODE_NET = path_join(WORKSPACE, 'templates/virtual_environment/networks/external.xml')
+VMDEPLOY_TARGET_KEEPALIVED_NET = path_join(WORKSPACE, 'templates/virtual_environment/networks/keepalived.xml')
 VMDEPLOY_DAISY_SERVER_VM = path_join(WORKSPACE, 'templates/virtual_environment/vms/daisy.xml')
 
 BMDEPLOY_DAISY_SERVER_VM = path_join(WORKSPACE, 'templates/physical_environment/vms/daisy.xml')
@@ -172,6 +175,9 @@ class VirtualEnvironment(DaisyEnvironmentBase):
         super(VirtualEnvironment, self).__init__(deploy_struct, net_struct, adapter, pxe_bridge,
                                                  daisy_server_info, work_dir, storage_dir, scenario)
         self.check_configuration()
+        self._daisy_server_net = None
+        self._daisy_os_net = None
+        self._daisy_keepalived_net = None
 
     def check_configuration(self):
         self.check_nodes_template()
@@ -193,6 +199,7 @@ class VirtualEnvironment(DaisyEnvironmentBase):
         if net_name != self.pxe_bridge:
             self.delete_virtual_network(VMDEPLOY_DAISY_SERVER_NET)
             err_exit('Network name %s is wrong, pxe bridge is %s' % (net_name, self.pxe_bridge))
+        self._daisy_server_net = net_name
 
     def create_daisy_server_vm(self):
         # TODO: refactor the structure of deploy.yml, add VM template param of Daisy Server
@@ -250,7 +257,11 @@ class VirtualEnvironment(DaisyEnvironmentBase):
     def create_nodes(self):
         # TODO: support virtNetTemplatePath in deploy.yml
         #       and multi interfaces, not only all-in-one
-        create_virtual_network(VMDEPLOY_TARGET_NODE_NET)
+        net_name = create_virtual_network(VMDEPLOY_TARGET_NODE_NET)
+        self._daisy_os_net = net_name
+        net_name = create_virtual_network(VMDEPLOY_TARGET_KEEPALIVED_NET)
+        self._daisy_keepalived_net = net_name
+
         for node in self.deploy_struct['hosts']:
             self.create_virtual_node(node)
         time.sleep(20)
@@ -300,3 +311,17 @@ class VirtualEnvironment(DaisyEnvironmentBase):
         self.reboot_nodes(boot_devs=['hd'])
         self.server.check_openstack_installation(len(self.deploy_struct['hosts']))
         self.server.post_deploy()
+        self._post_deploy()
+
+    def _post_deploy(self):
+        LI('Disable iptables rules of daisy networks on deploy server')
+        networks = [self._daisy_server_net, self._daisy_os_net]
+        options = ['-o', '-i']
+        for (network, option) in list(itertools.product(networks, options)):
+            cmd = 'iptables -D FORWARD {option} {network} -j REJECT --reject-with icmp-port-unreachable'.format(
+                option=option, network=network)
+            status, output = commands.getstatusoutput(cmd)
+            if status:
+                LW('iptables command failed: %s' % output)
+            else:
+                LI('iptables command success: %s' % cmd)
