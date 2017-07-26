@@ -134,6 +134,50 @@ def _create_image_TestVM():
         print ('Use existing TestVM image')
 
 
+def _config_icmp_security_group_rule(security_group_id):
+    body = {
+        'security_group_rule': {
+                        'direction': 'ingress',
+                        'ethertype': 'IPv4',
+                        'protocol': 'icmp',
+                        'remote_ip_prefix': '0.0.0.0/0',
+                        'security_group_id': security_group_id
+        }
+    }
+    return body
+
+
+def _config_ssh_security_group_rule(security_group_id):
+    body = {
+        'security_group_rule': {
+                        'direction': 'ingress',
+                        'ethertype': 'IPv4',
+                        'protocol': 'tcp',
+                        'port_range_min': 22,
+                        'port_range_max': 22,
+                        'remote_ip_prefix': '0.0.0.0/0',
+                        'security_group_id': security_group_id
+        }
+    }
+    return body
+
+
+def _create_security_group_rules():
+    neutronclient = neutron.Neutron()
+    try:
+        security_group_name = 'default'
+        security_group = neutronclient.get_security_group_by_name(security_group_name)
+        security_group_id = security_group['id']
+    except Exception, e:
+        print('Cannot find security group by name %s' % security_group_name)
+        return
+
+    neutronclient.create_security_group_rule(security_group,
+                                             _config_icmp_security_group_rule(security_group_id))
+    neutronclient.create_security_group_rule(security_group,
+                                             _config_ssh_security_group_rule(security_group_id))
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-nw', '--network-file',
@@ -144,6 +188,7 @@ def main():
     _create_external_network(args.network_file)
     _create_flavor_m1_micro()
     _create_image_TestVM()
+    _create_security_group_rules()
     _config_kolla_admin_openrc('/etc/kolla/')
 
 

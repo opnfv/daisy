@@ -67,3 +67,31 @@ class Neutron(keystoneauth.ClientBase):
         except Exception, e:
             print('_create_subnet fail with: {}'.format(e))
             return None
+
+    def _list_security_groups(self):
+        return self.client.list_security_groups()['security_groups']
+
+    def get_security_group_by_name(self, name):
+        return query.find(lambda nw: nw['name'] == name, self._list_security_groups())
+
+    def _check_security_group_rule_conflict(self, security_group, body):
+        newrule = body['security_group_rule']
+        rules = security_group['security_group_rules']
+        for rule in rules:
+            is_same = True
+            for key in newrule.keys():
+                if key in rule and newrule[key] != rule[key]:
+                    is_same = False
+                    break
+            if is_same == True:
+                print('The rule already exists in the security group %s' % security_group['id'])
+                return True
+        return False
+
+    def create_security_group_rule(self, security_group, body):
+        if False == self._check_security_group_rule_conflict(security_group, body):
+            try:
+                rule = self.client.create_security_group_rule(body=body)
+                print('create_security_group_rule success with id %s' % rule['security_group_rule']['id'])
+            except Exception, e:
+                print('create_security_group_rule fail with exception %s' % e)
