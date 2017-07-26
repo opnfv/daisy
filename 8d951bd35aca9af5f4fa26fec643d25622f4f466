@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_1a270914",
+        "filename": "deploy/post/execute.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-07-26T06:28:53Z",
+      "side": 1,
+      "message": "Have many paremeter in common.\nCan we add the parameter of \u0027tcp\u0027 and \u0027icmp\u0027 to one function to  make these two functions to one?",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 15
+      },
+      "revId": "8d951bd35aca9af5f4fa26fec643d25622f4f466",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
