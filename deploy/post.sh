@@ -1,4 +1,12 @@
 #!/bin/bash
+##############################################################################
+# Copyright (c) 2016 ZTE Corporation and others.
+#
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Apache License, Version 2.0
+# which accompanies this distribution, and is available at
+# http://www.apache.org/licenses/LICENSE-2.0
+##############################################################################
 
 SCRIPT_PATH=$(readlink -f $(dirname $0))
 
@@ -50,6 +58,3 @@ if [ ! $? -eq 0 ]; then
     exit 1
 fi
 
-source /etc/kolla/admin-openrc.sh
-openstack security group rule create --proto icmp default
-openstack security group rule create --proto tcp --dst-port 22 default

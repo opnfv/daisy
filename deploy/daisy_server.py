@@ -265,7 +265,8 @@ class DaisyServer(object):
 
     def post_deploy(self):
         LI('Post deploy ...')
-        cmd = 'bash {script} -n {net_file}'.format(
-            script=path_join(self.remote_dir, 'deploy/post.sh'),
+        cmd = 'export PYTHONPATH={python_path}; python {script} -nw {net_file}'.format(
+            python_path=self.remote_dir,
+            script=path_join(self.remote_dir, 'deploy/post/execute.py'),
             net_file=path_join(self.remote_dir, self.net_file_name))
         self.ssh_run(cmd, check=False)
