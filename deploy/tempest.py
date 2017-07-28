@@ -82,6 +82,7 @@ def prepare_install():
             print("build pxe...")
             build_pxe_for_discover(cluster_id)
         elif conf['host'] and conf['host'] == 'yes':
+            isbare = False if 'isbare' in conf and conf['isbare'] == 0 else True
             print("discover host...")
             discover_host(hosts_name)
             time.sleep(10)
@@ -90,7 +91,7 @@ def prepare_install():
             cluster_info = get_cluster()
             cluster_id = cluster_info.id
             add_hosts_interface(cluster_id, hosts_info, hosts_name,
-                                host_interface_map, vip)
+                                host_interface_map, vip, isbare)
             if len(hosts_name) == 1:
                 protocol_type = 'LVM'
                 service_name = 'cinder'
@@ -106,7 +107,7 @@ def prepare_install():
                 enable_opendaylight(cluster_id, 'odl_l3')
             elif 'scenario' in conf and 'odl_l2' in conf['scenario']:
                 enable_opendaylight(cluster_id, 'odl_l2')
-            if 'isbare' in conf and conf['isbare'] == 0:
+            if not isbare:
                 install_os_for_vm_step1(cluster_id)
             else:
                 print("daisy baremetal deploy start")
@@ -183,12 +184,13 @@ def get_cluster():
 
 
 def add_hosts_interface(cluster_id, hosts_info, hosts_name, host_interface_map,
-                        vip):
+                        vip, isbare):
     for host_name, host in zip(hosts_name, hosts_info):
         host = host.to_dict()
         host['cluster'] = cluster_id
-        host['ipmi_user'] = 'zteroot'
-        host['ipmi_passwd'] = 'superuser'
+        if isbare:
+            host['ipmi_user'] = 'zteroot'
+            host['ipmi_passwd'] = 'superuser'
         for interface in host['interfaces']:
             interface_name = interface['name']
             if interface_name in host_interface_map:
