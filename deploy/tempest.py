@@ -15,6 +15,7 @@ import get_conf
 import traceback
 import time
 import os
+import yaml
 
 daisy_version = 1.0
 daisyrc_path = "/root/daisyrc_admin"
@@ -68,7 +69,7 @@ def prepare_install():
         print("get config...")
         conf = cfg.ConfigOpts()
         parse(conf, sys.argv[1:])
-        host_interface_map, hosts_name, network_map, vip, ceph_disk_name = \
+        host_interface_map, hosts_name, network_map, vip, ceph_disk_name, mac_address_map = \
             get_conf.config(conf['dha'], conf['network'])
         if conf['cluster'] and conf['cluster'] == 'yes':
             print("add cluster...")
@@ -90,7 +91,7 @@ def prepare_install():
             hosts_info = get_hosts()
             cluster_info = get_cluster()
             cluster_id = cluster_info.id
-            add_hosts_interface(cluster_id, hosts_info, hosts_name,
+            add_hosts_interface(cluster_id, hosts_info, hosts_name, mac_address_map,
                                 host_interface_map, vip, isbare)
             if len(hosts_name) == 1:
                 protocol_type = 'LVM'
@@ -183,7 +184,8 @@ def get_cluster():
     return cluster_info
 
 
-def add_hosts_interface(cluster_id, hosts_info, hosts_name, host_interface_map,
+def add_hosts_interface(cluster_id, hosts_info, hosts_name, mac_address_map,
+                        host_interface_map,
                         vip, isbare):
     for host_name, host in zip(hosts_name, hosts_info):
         host = host.to_dict()
@@ -196,6 +198,10 @@ def add_hosts_interface(cluster_id, hosts_info, hosts_name, host_interface_map,
             if interface_name in host_interface_map:
                 interface['assigned_networks'] = \
                     host_interface_map[interface_name]
+            if mac_address_map:
+                for nodename in mac_address_map:
+                    if interface['mac'] in mac_address_map[nodename]:
+                        host_name = nodename
         pathlist = os.listdir(iso_path)
         for filename in pathlist:
             if filename.endswith('iso'):
