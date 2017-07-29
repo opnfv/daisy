@@ -74,6 +74,13 @@ def host(host=None):
     return map
 
 
+@decorator_mk('hosts')
+def mac_address(host=None):
+    mac_addresses = host.get('mac_addresses', [])
+    map = {host['name']: mac_addresses}
+    return map
+
+
 def network_config_parse(s, dha_file):
     network_map = network(s)
     vip = s.get('internal_vip')
@@ -93,6 +100,7 @@ def config(dha_file, network_file):
     data = init(dha_file)
     ceph_disk_name = data.get('ceph_disk_name')
     hosts_name = dha_config_parse(data, dha_file)
+    mac_address_map = mac_address(data)
     data = init(network_file)
     network_map, vip, interface_map = network_config_parse(data, network_file)
-    return interface_map, hosts_name, network_map, vip, ceph_disk_name
+    return interface_map, hosts_name, network_map, vip, ceph_disk_name, mac_address_map
