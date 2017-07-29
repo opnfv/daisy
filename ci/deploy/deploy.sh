@@ -330,6 +330,27 @@ ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/prepare.sh -n $NETWORK -b $I
 echo "====== prepare cluster and pxe ======"
 ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --cluster 'yes'"
 
+
+function get_mac_addresses_for_virtual()
+{
+    tmpfile=$(mktemp XXXXXXXX.yml)
+    cp $DHA_CONF $tmpfile
+
+    for ((i=0;i<${#VM_MULTINODE[@]};i++));do
+        name=${VM_MULTINODE[$i]}
+        macs=$(virsh dumpxml $name | grep "<mac" | awk -F "'" '{print $2}' | tr "\n" " ")
+        line=$(awk "BEGIN{}(/name/&&/controller01/){print NR}" $tmpfile)
+        sed -i "${line}a\  mac_addresses:" $tmpfile
+        for mac in $macs; do
+            line=$[ line + 1 ]
+            sed -i "${line}a\    - \'$mac\'" $tmpfile
+        done
+    done
+    scp -q $tmpfile root@$DAISY_IP:$DHA
+    rm $tmpfile
+}
+
+
 echo "====== create and find node ======"
 if [ $IS_BARE == 0 ];then
     if [ $TARGET_HOSTS_NUM == 1 ];then
@@ -350,6 +371,9 @@ if [ $IS_BARE == 0 ];then
         done
     fi
     sleep 20
+    if [ $TARGET_HOSTS_NUM -ne 1 ]; then
+        get_mac_addresses_for_virtual
+    fi
 else
     for i in $(seq 106 110); do
         ipmitool -I lanplus -H 192.168.1.$i -U zteroot -P superuser -R 1 chassis bootdev pxe
