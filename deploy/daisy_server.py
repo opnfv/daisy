@@ -10,7 +10,9 @@
 import os
 import paramiko
 import scp
+import tempfile
 import time
+import yaml
 
 from utils import (
     WORKSPACE,
@@ -229,6 +231,13 @@ class DaisyServer(object):
             deploy_file=path_join(self.remote_dir, self.deploy_file_name),
             net_file=path_join(self.remote_dir, self.net_file_name))
         self.ssh_run(cmd, check=True)
+
+    def copy_new_deploy_config(self, data):
+        (dummy, conf_file) = tempfile.mkstemp()
+        with open(conf_file, 'w') as fh:
+            fh.write(yaml.safe_dump(data))
+            fh.flush()
+            self.scp_put(conf_file, path_join(self.remote_dir, self.deploy_file_name))
 
     def prepare_host_and_pxe(self):
         LI('Prepare host and PXE')

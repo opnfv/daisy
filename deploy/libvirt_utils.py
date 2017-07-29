@@ -104,9 +104,10 @@ def create_vm(template, name=None, disks=None):
     if domain.create() < 0:
         err_exit('Failed to start VM %s' % template)
     domain.setAutostart(1)
+    conn.close()
 
     LI('VM %s is started' % domain.name())
-    return
+    return domain
 
 
 def reboot_vm(vm_name, boot_devs=None):
@@ -123,18 +124,13 @@ def reboot_vm(vm_name, boot_devs=None):
             vm.destroy()
             LI('Destroy VM %s' % vm_name)
 
-        # root = ET.fromstring(vm.XMLDesc())
-        temp_file = path_join(WORKSPACE, 'tmp.xml')
-        commands.getoutput('virsh dumpxml %s > %s' % (vm_name, temp_file))
-        tree = ET.parse(temp_file)
-        root = tree.getroot()
+        root = ET.fromstring(vm.XMLDesc())
         LI('Modify the boot order %s' % boot_devs)
         modify_vm_boot_order(root, boot_devs)
-        tree.write(temp_file)
 
         LI('Re-define and start the VM %s' % vm_name)
         vm.undefine()
-        vm = conn.defineXML(commands.getoutput('cat %s' % temp_file))
+        vm = conn.defineXML(ET.tostring(root))
         vm.create()
         vm.setAutostart(1)
     else:
@@ -222,3 +218,9 @@ def delete_virtual_network(network_xml):
     conn.close()
     if not result:
         LI('Network %s is not found' % name)
+
+
+def get_vm_mac_addresses(domain):
+    root = ET.fromstring(domain.XMLDesc())
+    macs = root.findall('./devices/interface/mac')
+    return [mac.attrib['address'] for mac in macs]
