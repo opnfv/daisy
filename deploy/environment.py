@@ -26,7 +26,8 @@ from libvirt_utils import (
     reboot_vm,
     delete_vm_and_disk,
     create_virtual_network,
-    delete_virtual_network
+    delete_virtual_network,
+    get_vm_mac_addresses
 )
 from utils import (
     WORKSPACE,
@@ -252,7 +253,7 @@ class VirtualEnvironment(DaisyEnvironmentBase):
             create_virtual_disk(ceph_disk_file, ceph_size)
             disks.append(ceph_disk_file)
 
-        create_vm(template, name, disks)
+        return create_vm(template, name, disks)
 
     def create_nodes(self):
         # TODO: support virtNetTemplatePath in deploy.yml
@@ -263,7 +264,8 @@ class VirtualEnvironment(DaisyEnvironmentBase):
         self._daisy_keepalived_net = net_name
 
         for node in self.deploy_struct['hosts']:
-            self.create_virtual_node(node)
+            domain = self.create_virtual_node(node)
+            node['mac_addresses'] = get_vm_mac_addresses(domain)
         time.sleep(20)
 
     def reboot_nodes(self, boot_devs=None):
@@ -298,6 +300,7 @@ class VirtualEnvironment(DaisyEnvironmentBase):
     def deploy(self, deploy_file, net_file):
         self.server.prepare_cluster(deploy_file, net_file)
         self.create_nodes()
+        self.server.copy_new_deploy_config(self.deploy_struct)
         self.server.prepare_host_and_pxe()
         LI('Begin Daisy virtual-deploy os and openstack')
         self.reboot_nodes()
