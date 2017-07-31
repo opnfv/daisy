@@ -22,6 +22,30 @@
       "revId": "e3b42f024883bcb40e43b9c8e7938aa11088f758",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_e18c4682",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-07-31T02:24:16Z",
+      "side": 1,
+      "message": "This mac_address_map check I think is the main change of this PS. Please elaborate your idea about why we don\u0027t need this. then we can do further discuss.",
+      "parentUuid": "da33351e_21874e63",
+      "range": {
+        "startLine": 200,
+        "startChar": 12,
+        "endLine": 200,
+        "endChar": 31
+      },
+      "revId": "e3b42f024883bcb40e43b9c8e7938aa11088f758",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
