@@ -42,7 +42,10 @@ E.g. OpenStack only deployment roles setting
           - compute
 
 NOTE:
-WE JUST SUPPORT ONE CONTROLLER NODE NOW.
+For B/M, Daisy uses MAC address defined in deploy.yml to map discovered nodes to node items definition in deploy.yml, then assign role described by node item to the discovered nodes by name pattern. Currently, controller01, controller02, and controller03 will be assigned with Controler role while computer01, 'computer02, computer03, and computer04 will be assigned with Compute role.
+
+NOTE:
+For V/M, There is no MAC address defined in deploy.yml for each virtual machine. Instead, Daisy will fill that blank by getting MAC from "virsh dump-xml".
 
 E.g. OpenStack and ceph deployment roles setting
 
@@ -121,7 +124,8 @@ You can write your own reference into it.
 
 
 
-Note: For Flat External networks(which is used by default), a physical interface is needed on each compute node for ODL NetVirt recent versions.
+Note:
+For Flat External networks(which is used by default), a physical interface is needed on each compute node for ODL NetVirt recent versions.
 HeartBeat network is selected,and if it is configured in network.yml,the keepalived interface will be the heartbeat interface.
 
 Start Deployment (Virtual Deployment)
@@ -136,7 +140,9 @@ Start Deployment (Virtual Deployment)
 (4) Create folder of labs/zte/virtual1/daisy/config in daisy4nfv code dir
 
 (5) Move the daisy/deploy/config/vm_environment/zte-virtual1/deploy.yml and daisy/deploy/config/vm_environment/zte-virtual1/network.yml to labs/zte/virtual1/daisy/config dir.
-Notes:zte-virtual1 config file is just for all-in-one deployment,if you want to deploy openstack with five node(1 lb node and 4 computer nodes),change the zte-virtual1 to zte-virtual2
+
+Note:
+zte-virtual1 config file is just for all-in-one deployment,if you want to deploy openstack with five node(1 lb node and 4 computer nodes),change the zte-virtual1 to zte-virtual2
 
 (6) Run the script deploy.sh in daisy/ci/deploy/ with command:
 sudo ./ci/deploy/deploy.sh -b ../daisy  -l zte -p virtual1 -s os-nosdn-nofeature-noha
