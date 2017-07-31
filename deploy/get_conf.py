@@ -9,6 +9,13 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 import yaml
+from oslo_config import cfg
+import sys
+
+_CLI_OPTS = [
+    cfg.StrOpt('dha',
+               help='The dha file path'),
+]
 
 
 def init(file):
@@ -96,3 +103,42 @@ def config(dha_file, network_file):
     data = init(network_file)
     network_map, vip, interface_map = network_config_parse(data, network_file)
     return interface_map, hosts_name, network_map, vip, ceph_disk_name
+
+
+def parse(conf, args):
+    conf.register_cli_opts(_CLI_OPTS)
+    conf(args=args)
+
+
+def get_yml_para(dha_file):
+    data = init(dha_file)
+    disks = data.get("disks", 0)
+    daisyserver_size = disks.get("daisy", 0)
+    controller_node_size = disks.get("controller", 0)
+    compute_node_size = disks.get("compute", 0)
+    daisy_passwd = data.get("daisy_passwd", "")
+    daisy_ip = data.get("daisy_ip", "")
+    daisy_gateway = data.get("daisy_gateway", "")
+    daisy_target_node = data.get("hosts", "")
+    hosts_num = len(daisy_target_node)
+    return daisyserver_size, controller_node_size,\
+        compute_node_size, daisy_passwd, daisy_ip, daisy_gateway,\
+        hosts_num
+
+
+def get_conf_from_deploy():
+    conf = cfg.ConfigOpts()
+    parse(conf, sys.argv[1:])
+    daisyserver_size, controller_node_size, compute_node_size,\
+        daisy_passwd, daisy_ip, daisy_gateway,\
+        hosts_num = get_yml_para(conf['dha'])
+    print "{hosts_num} {ip} {passwd} -s {size} -g {gateway}".format(
+        hosts_num=hosts_num,
+        passwd=daisy_passwd,
+        size=daisyserver_size,
+        ip=daisy_ip,
+        gateway=daisy_gateway)
+
+
+if __name__ == "__main__":
+    get_conf_from_deploy()
