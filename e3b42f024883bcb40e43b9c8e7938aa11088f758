@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_21874e63",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-07-31T01:34:53Z",
+      "side": 1,
+      "message": "Do we really need this judgement?",
+      "range": {
+        "startLine": 200,
+        "startChar": 12,
+        "endLine": 200,
+        "endChar": 31
+      },
+      "revId": "e3b42f024883bcb40e43b9c8e7938aa11088f758",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
