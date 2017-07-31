@@ -165,7 +165,7 @@ done
 BMDEPLOY_DAISY_SERVER_NET=$WORKSPACE/templates/physical_environment/networks/daisy.xml
 BMDEPLOY_DAISY_SERVER_VM=$WORKSPACE/templates/physical_environment/vms/daisy.xml
 
-PARAS_FROM_DEPLOY=`python $WORKSPACE/deploy/get_para_from_deploy.py --dha $DHA_CONF`
+PARAS_FROM_DEPLOY=`python $WORKSPACE/deploy/get_conf.py --dha $DHA_CONF`
 TARGET_HOSTS_NUM=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 1`
 DAISY_IP=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 2`
 DAISY_PASSWD=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 3`
