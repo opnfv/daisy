@@ -1,5 +1,5 @@
 <domain type='kvm' id='4'>
-  <name>computer03</name>
+  <name>nodename</name>
   <memory unit='KiB'>8388608</memory>
   <currentMemory unit='KiB'>8388608</currentMemory>
   <vcpu placement='static'>4</vcpu>
@@ -32,7 +32,7 @@
     <emulator>/usr/libexec/qemu-kvm</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2'/>
-      <source file='/home/qemu/vms/computer03.qcow2'/>
+      <source file='/home/qemu/vms/nodename.qcow2'/>
       <backingStore/>
       <target dev='hda' bus='ide'/>
       <alias name='ide0-0-0'/>
@@ -40,7 +40,7 @@
     </disk>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2'/>
-      <source file='/home/qemu/vms/computer03_data.qcow2'/>
+      <source file='/home/qemu/vms/nodename_data.qcow2'/>
       <backingStore/>
       <target dev='hdb' bus='ide'/>
       <alias name='ide0-0-1'/>
@@ -82,6 +82,10 @@
     </interface>
     <interface type='network'>
       <source network='daisy2' bridge='daisy2'/>
+      <model type='rtl8139'/>
+    </interface>
+    <interface type='network'>
+      <source network='daisy3' bridge='daisy3'/>
       <model type='rtl8139'/>
     </interface>
     <serial type='pty'>

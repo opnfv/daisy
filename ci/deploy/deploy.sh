@@ -158,6 +158,8 @@ VMDEPLOY_TARGET_NODE_VM=$WORKSPACE/templates/virtual_environment/vms/all_in_one.
 
 VMDEPLOY_NODE=[]
 for ((i=0;i<${#VM_MULTINODE[@]};i++));do
+    cp $WORKSPACE/templates/virtual_environment/vms/vmtemplate.xml $WORKSPACE/templates/virtual_environment/vms/${VM_MULTINODE[$i]}.xml
+    sed -i "s/nodename/${VM_MULTINODE[$i]}/g" $WORKSPACE/templates/virtual_environment/vms/${VM_MULTINODE[$i]}.xml
     VMDEPLOY_NODE[$i]=$WORKSPACE/templates/virtual_environment/vms/${VM_MULTINODE[$i]}.xml
     echo ${VMDEPLOY_NODE[$i]}
 done
