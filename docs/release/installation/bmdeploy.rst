@@ -46,8 +46,13 @@ E.g. OpenStack only deployment roles setting
         roles:
           - COMPUTER
 
+
 NOTE:
-WE JUST SUPPORT ONE CONTROLLER NODE NOW.
+For B/M, Daisy uses MAC address defined in deploy.yml to map discovered nodes to node items definition in deploy.yml, then assign role described by node item to the discovered nodes by name pattern. Currently, controller01, controller02, and controller03 will be assigned with Controler role while computer01, 'computer02, computer03, and computer04 will be assigned with Compute role.
+
+NOTE:
+For V/M, There is no MAC address defined in deploy.yml for each virtual machine. Instead, Daisy will fill that blank by getting MAC from "virsh dump-xml".
+
 
 Network Configuration (Bare Metal Deployment)
 ------------------------------------------
@@ -116,7 +121,8 @@ You can write your own reference into it.
 
 
 
-Note: For Flat External networks(which is used by default), a physical interface is needed on each compute node for ODL NetVirt recent versions.
+Note:
+For Flat External networks(which is used by default), a physical interface is needed on each compute node for ODL NetVirt recent versions.
 HeartBeat network is selected,and if it is configured in network.yml,the keepalived interface will be the heartbeat interface.
 
 Start Deployment (Bare Metal Deployment)
