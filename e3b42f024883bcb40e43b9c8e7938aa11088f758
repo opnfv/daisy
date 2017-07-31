@@ -46,6 +46,30 @@
       "revId": "e3b42f024883bcb40e43b9c8e7938aa11088f758",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_81f3ba09",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-07-31T02:35:54Z",
+      "side": 1,
+      "message": "I think if the mac_address_map is null the statement under \"for\" statement can not execute.\nThis is a Small improvement,and we can fire another ps to do this fix.",
+      "parentUuid": "da33351e_e18c4682",
+      "range": {
+        "startLine": 200,
+        "startChar": 12,
+        "endLine": 200,
+        "endChar": 31
+      },
+      "revId": "e3b42f024883bcb40e43b9c8e7938aa11088f758",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
