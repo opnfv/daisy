@@ -157,8 +157,15 @@ VMDEPLOY_DAISY_SERVER_VM=$WORKSPACE/templates/virtual_environment/vms/daisy.xml
 VMDEPLOY_TARGET_NODE_VM=$WORKSPACE/templates/virtual_environment/vms/all_in_one.xml
 
 VMDEPLOY_NODE=[]
-for ((i=0;i<${#VM_MULTINODE[@]};i++));do
+for ((i=0; i < ${#VM_MULTINODE[@]}; i++)); do
+    if [[ ${VM_MULTINODE[$i]} == *controller* ]]; then
+        nodename_prefix="controller"
+    else
+        nodename_prefix="computer"
+    fi
     VMDEPLOY_NODE[$i]=$WORKSPACE/templates/virtual_environment/vms/${VM_MULTINODE[$i]}.xml
+    cp $WORKSPACE/templates/virtual_environment/vms/${nodename_prefix}.xml ${VMDEPLOY_NODE[$i]}
+    sed -i "s/${nodename_prefix}/${VM_MULTINODE[$i]}/g" ${VMDEPLOY_NODE[$i]}
     echo ${VMDEPLOY_NODE[$i]}
 done
 
