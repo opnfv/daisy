@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_95fe546a",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-01T05:20:36Z",
+      "side": 1,
+      "message": "hard code is not a good way to instantiate the template.",
+      "range": {
+        "startLine": 166,
+        "startChar": 18,
+        "endLine": 166,
+        "endChar": 34
+      },
+      "revId": "3be24383670458da7e665793dede2fe623e4a15d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
