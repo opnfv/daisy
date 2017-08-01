@@ -339,7 +339,7 @@ function get_mac_addresses_for_virtual()
     for ((i=0;i<${#VM_MULTINODE[@]};i++));do
         name=${VM_MULTINODE[$i]}
         macs=$(virsh dumpxml $name | grep "<mac" | awk -F "'" '{print $2}' | tr "\n" " ")
-        line=$(awk "BEGIN{}(/name/&&/controller01/){print NR}" $tmpfile)
+        line=$(awk "BEGIN{}(/name/&&/$name/){print NR}" $tmpfile)
         sed -i "${line}a\  mac_addresses:" $tmpfile
         for mac in $macs; do
             line=$[ line + 1 ]
