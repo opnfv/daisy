@@ -88,14 +88,14 @@ def mac_address(host=None):
     return map
 
 
-def network_config_parse(s, dha_file):
+def network_config_parse(s):
     network_map = network(s)
     vip = s.get('internal_vip')
     interface_map = interface(s)
     return network_map, vip, interface_map
 
 
-def dha_config_parse(s, dha_file):
+def dha_config_parse(s):
     host_role_map = role(s)
     hosts_name = []
     for name in host_role_map:
@@ -106,10 +106,10 @@ def dha_config_parse(s, dha_file):
 def config(dha_file, network_file):
     data = init(dha_file)
     ceph_disk_name = data.get('ceph_disk_name')
-    hosts_name = dha_config_parse(data, dha_file)
+    hosts_name = dha_config_parse(data)
     mac_address_map = mac_address(data)
     data = init(network_file)
-    network_map, vip, interface_map = network_config_parse(data, network_file)
+    network_map, vip, interface_map = network_config_parse(data)
     return interface_map, hosts_name, network_map, vip, ceph_disk_name, mac_address_map
 
 
