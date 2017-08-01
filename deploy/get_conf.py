@@ -25,8 +25,8 @@ def init(file):
 
 def decorator_mk(types):
     def decorator(func):
-        def wrapter(s):
-            item_list = s.get(types, [])
+        def wrapter(data):
+            item_list = data.get(types, [])
             result = {}
             for item in item_list:
                 ret = func(item)
@@ -88,15 +88,15 @@ def mac_address(host=None):
     return map
 
 
-def network_config_parse(s, dha_file):
-    network_map = network(s)
-    vip = s.get('internal_vip')
-    interface_map = interface(s)
+def network_config_parse(network_data):
+    network_map = network(network_data)
+    vip = network_data.get('internal_vip')
+    interface_map = interface(network_data)
     return network_map, vip, interface_map
 
 
-def dha_config_parse(s, dha_file):
-    host_role_map = role(s)
+def dha_config_parse(dha_data):
+    host_role_map = role(dha_data)
     hosts_name = []
     for name in host_role_map:
         hosts_name.append(name)
@@ -104,12 +104,12 @@ def dha_config_parse(s, dha_file):
 
 
 def config(dha_file, network_file):
-    data = init(dha_file)
-    ceph_disk_name = data.get('ceph_disk_name')
-    hosts_name = dha_config_parse(data, dha_file)
-    mac_address_map = mac_address(data)
-    data = init(network_file)
-    network_map, vip, interface_map = network_config_parse(data, network_file)
+    dha_data = init(dha_file)
+    ceph_disk_name = dha_data.get('ceph_disk_name')
+    hosts_name = dha_config_parse(dha_data)
+    mac_address_map = mac_address(dha_data)
+    network_data = init(network_file)
+    network_map, vip, interface_map = network_config_parse(network_data)
     return interface_map, hosts_name, network_map, vip, ceph_disk_name, mac_address_map
 
 
