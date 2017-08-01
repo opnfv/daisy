@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_152084f6",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-01T06:34:45Z",
+      "side": 1,
+      "message": "nodename",
+      "range": {
+        "startLine": 168,
+        "startChar": 14,
+        "endLine": 168,
+        "endChar": 32
+      },
+      "revId": "987d3f54c9278e6e6368229b8f5d62eb66faffdc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_751110ac",
+        "filename": "templates/virtual_environment/vms/computer.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-01T06:34:45Z",
+      "side": 1,
+      "message": "nodename",
+      "range": {
+        "startLine": 2,
+        "startChar": 8,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "987d3f54c9278e6e6368229b8f5d62eb66faffdc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_b52278ff",
+        "filename": "templates/virtual_environment/vms/computer.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-01T06:34:45Z",
+      "side": 1,
+      "message": "nodename",
+      "range": {
+        "startLine": 35,
+        "startChar": 35,
+        "endLine": 35,
+        "endChar": 43
+      },
+      "revId": "987d3f54c9278e6e6368229b8f5d62eb66faffdc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_d5257c0b",
+        "filename": "templates/virtual_environment/vms/computer.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-01T06:34:45Z",
+      "side": 1,
+      "message": "nodename",
+      "range": {
+        "startLine": 43,
+        "startChar": 35,
+        "endLine": 43,
+        "endChar": 43
+      },
+      "revId": "987d3f54c9278e6e6368229b8f5d62eb66faffdc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_55120cb5",
+        "filename": "templates/virtual_environment/vms/controller.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-01T06:34:45Z",
+      "side": 1,
+      "message": "nodename",
+      "range": {
+        "startLine": 2,
+        "startChar": 8,
+        "endLine": 2,
+        "endChar": 18
+      },
+      "revId": "987d3f54c9278e6e6368229b8f5d62eb66faffdc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_351788a5",
+        "filename": "templates/virtual_environment/vms/controller.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-01T06:34:45Z",
+      "side": 1,
+      "message": "nodename",
+      "range": {
+        "startLine": 35,
+        "startChar": 35,
+        "endLine": 35,
+        "endChar": 45
+      },
+      "revId": "987d3f54c9278e6e6368229b8f5d62eb66faffdc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_950c9496",
+        "filename": "templates/virtual_environment/vms/controller.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-01T06:34:45Z",
+      "side": 1,
+      "message": "nodename",
+      "range": {
+        "startLine": 43,
+        "startChar": 35,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "987d3f54c9278e6e6368229b8f5d62eb66faffdc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
