@@ -22,6 +22,30 @@
       "revId": "affb1922e1ddd9464ee3e19d9fce923c7360ff2d",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_55604c35",
+        "filename": "deploy/get_conf.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-01T06:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_d5d0dcf9",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 26
+      },
+      "revId": "affb1922e1ddd9464ee3e19d9fce923c7360ff2d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
