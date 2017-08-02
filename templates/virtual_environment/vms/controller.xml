@@ -1,5 +1,5 @@
 <domain type='kvm' id='4'>
-  <name>controller</name>
+  <name>nodename</name>
   <memory unit='KiB'>12582912</memory>
   <currentMemory unit='KiB'>12582912</currentMemory>
   <vcpu placement='static'>4</vcpu>
@@ -32,11 +32,19 @@
     <emulator>/usr/libexec/qemu-kvm</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2'/>
-      <source file='/home/qemu/vms/controller.qcow2'/>
+      <source file='/home/qemu/vms/nodename.qcow2'/>
       <backingStore/>
       <target dev='hda' bus='ide'/>
       <alias name='ide0-0-0'/>
       <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+    </disk>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='/home/qemu/vms/nodename_data.qcow2'/>
+      <backingStore/>
+      <target dev='hdb' bus='ide'/>
+      <alias name='ide0-0-1'/>
+      <address type='drive' controller='0' bus='0' target='0' unit='1'/>
     </disk>
     <controller type='usb' index='0' model='ich9-ehci1'>
       <alias name='usb'/>
