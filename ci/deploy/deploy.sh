@@ -267,25 +267,31 @@ function update_config
     fi
 }
 
-function clean_up
+function clean_up_virtual_env()
 {
-    local vm_name=$1
-    local network_name=$2
+    local vms=$(virsh list --all | tail -n +3 | awk '{print $2}')
+    local active_vms=$(virsh list | tail -n +3 | awk '{print $2}')
+    for vm_name in ${VM_MULTINODE[@]} all_in_one daisy; do
+        if [[ $(echo $vms | tr " " "\n" | grep ^$vm_name$) ]]; then
+            [[ $(echo $active_vms | tr " " "\n" | grep ^$vm_name$) ]] && virsh destroy $vm_name
+            virsh undefine $vm_name
+        fi
+    done
 
-    virsh destroy $vm_name
-    virsh undefine $vm_name
-    virsh net-destroy $network_name
-    virsh net-undefine $network_name
+    local nets=$(virsh net-list --all | tail -n +3 |awk '{print $1}')
+    local active_nets=$(virsh net-list | tail -n +3 |awk '{print $1}')
+    for net_template in ${VMDELOY_DAISY_SERVER_NET} ${VMDEPLOY_TARGET_NODE_NET} ${VMDEPLOY_TARGET_KEEPALIVED_NET}; do
+        network_name=$(grep "<name>" $net_template | awk -F "<|>" '{print $3}')
+        if [[ $(echo $nets | tr " " "\n" | grep ^$network_name$) ]]; then
+            [[ $(echo $active_nets | tr " " "\n" | grep ^$network_name$) ]] && virsh net-destroy $network_name
+            virsh net-undefine $network_name
+        fi
+    done
 }
 
 echo "====== clean up all node and network ======"
 if [ $IS_BARE == 0 ];then
-    clean_up all_in_one daisy2
-    for ((i=0;i<${#VM_MULTINODE[@]};i++));do
-        virsh destroy ${VM_MULTINODE[$i]}
-        virsh undefine ${VM_MULTINODE[$i]}
-    done
-    clean_up daisy daisy1
+    clean_up_virtual_env
 else
     virsh destroy daisy
     virsh undefine daisy
