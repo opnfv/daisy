@@ -3,3 +3,4 @@ jsonschema
 paramiko
 pyyaml
 scp
+oslo_config
