@@ -46,6 +46,30 @@
       "revId": "e1267f7064473d66ebc570e47788420cbe1da8ca",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_6d882023",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-03T02:51:55Z",
+      "side": 1,
+      "message": "Maybe we can realize this requirement on other patch.",
+      "parentUuid": "da33351e_2d9f3861",
+      "range": {
+        "startLine": 274,
+        "startChar": 48,
+        "endLine": 274,
+        "endChar": 55
+      },
+      "revId": "e1267f7064473d66ebc570e47788420cbe1da8ca",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
