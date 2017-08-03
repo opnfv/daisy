@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_2d03b8b9",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-03T01:04:17Z",
+      "side": 1,
+      "message": "Sometimes if we do not want to destroy the installed daisy node,and redeploy the openstack,do we have to seperate the daisy node and other node?",
+      "range": {
+        "startLine": 274,
+        "startChar": 48,
+        "endLine": 274,
+        "endChar": 55
+      },
+      "revId": "e1267f7064473d66ebc570e47788420cbe1da8ca",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
