@@ -172,6 +172,40 @@ done
 BMDEPLOY_DAISY_SERVER_NET=$WORKSPACE/templates/physical_environment/networks/daisy.xml
 BMDEPLOY_DAISY_SERVER_VM=$WORKSPACE/templates/physical_environment/vms/daisy.xml
 
+function update_dha_by_pdf()
+{
+    local pdf_yaml=securedlab/labs/$LAB_NAME/${POD_NAME}.yaml
+    local jinja2_template=securedlab/installers/daisy/pod_config.yaml.j2
+    local generate_config=securedlab/utils/generate_config.py
+    if [ ! -f ${generate_config} ] || [ ! -f ${pdf_yaml} ] || [ ! -f ${jinja2_template} ]; then
+        return
+    fi
+
+    local tmpfile=$(mktemp XXXXXXXX.yml)
+    python ${generate_config} -j ${jinja2_template} -y ${pdf_yaml} > ${tmpfile}
+    if [ $? -ne 0 ]; then
+        echo "Cannot generate config from POD Descriptor File, use original deploy.yml !"
+        return
+    fi
+    if [ -z $(awk "BEGIN{}(/daisy_ip/){print NR}" $tmpfile) ]; then
+        line=$(awk "BEGIN{}(/daisy_gateway/){print NR}" $tmpfile)
+        sed -i "${line}b\daisy_ip: $INSTALLER_IP" $tmpfile
+    fi
+    if [ $? -ne 0 ]; then
+        echo "Cannot write INSTALLER_IP to config file, use original deploy.yml !"
+        return
+    fi
+    cp ${tmpfile} ${DHA_CONF}
+    echo "====== Update deploy.yml from POD Descriptor File ======"
+    rm -f $tmpfile
+}
+
+if [[ ! -z $INSTALLER_IP ]]; then
+    pushd ${WORKSPACE}
+    update_dha_by_pdf
+    popd
+fi
+
 PARAS_FROM_DEPLOY=`python $WORKSPACE/deploy/get_conf.py --dha $DHA_CONF`
 TARGET_HOSTS_NUM=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 1`
 DAISY_IP=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 2`
