@@ -103,10 +103,14 @@ def prepare_install():
                 protocol_type = None
             enable_cinder_backend(cluster_id, service_name,
                                   ceph_disk_name, protocol_type)
-            if 'scenario' in conf and 'odl_l3' in conf['scenario']:
-                enable_opendaylight(cluster_id, 'odl_l3')
-            elif 'scenario' in conf and 'odl_l2' in conf['scenario']:
-                enable_opendaylight(cluster_id, 'odl_l2')
+
+            if 'scenario' in conf:
+                if 'odl_l3' in conf['scenario'] or
+                    'odl' in conf['scenario']:
+                    enable_opendaylight(cluster_id, 'odl_l3')
+                elif 'odl_l2' in conf['scenario']:
+                    enable_opendaylight(cluster_id, 'odl_l2')
+
             if not isbare:
                 install_os_for_vm_step1(cluster_id)
             else:

@@ -24,7 +24,9 @@ valid_scenario_list = ['os-nosdn-nofeature-noha',
                        'os-odl_l2-nofeature-noha',
                        'os-nosdn-nofeature-ha',
                        'os-odl_l3-nofeature-ha',
-                       'os-odl_l2-nofeature-ha']
+                       'os-odl_l2-nofeature-ha',
+                       'os-odl-nofeature-noha',
+                       'os-odl-nofeature-ha']
 
 
 def get_logger():
