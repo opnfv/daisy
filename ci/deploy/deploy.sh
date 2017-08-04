@@ -64,7 +64,8 @@ DRY_RUN=0
 IS_BARE=1
 VM_MULTINODE=("computer01" "computer02" "controller02" "controller03" "controller01")
 VALID_DEPLOY_SCENARIO=("os-nosdn-nofeature-noha" "os-nosdn-nofeature-ha" "os-odl_l3-nofeature-noha"
-                       "os-odl_l2-nofeature-noha" "os-odl_l3-nofeature-ha" "os-odl_l2-nofeature-ha")
+                       "os-odl_l2-nofeature-noha" "os-odl_l3-nofeature-ha" "os-odl_l2-nofeature-ha"
+                       "os-odl-nofeature-noha" "os-odl-nofeature-ha")
 
 #
 # END of variables to customize
