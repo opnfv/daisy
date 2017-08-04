@@ -9,7 +9,6 @@
 
 import os
 import pytest
-
 from deepdiff import DeepDiff
 
 from deploy.get_conf import (
@@ -64,4 +63,4 @@ def test_config(deploy_file, network_file):
               '10.20.11.11', '/dev/sdb',
               {'controller01': [], 'controller02': [], 'controller03': [],
                'computer01': [], 'computer02': []})
-    assert DeepDiff(result, expect) == {}
+    assert DeepDiff(result, expect, ignore_order=True) == {}
