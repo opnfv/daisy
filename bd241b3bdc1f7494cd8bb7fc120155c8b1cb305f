@@ -46,6 +46,30 @@
       "revId": "bd241b3bdc1f7494cd8bb7fc120155c8b1cb305f",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_0374c5fb",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-04T05:38:36Z",
+      "side": 1,
+      "message": "Where does its value come from before? from deploy.yml? can we read it out from  deploy.yml before we making a new deploy.yml? Maybe it is not a good way. Better idea is needed.",
+      "parentUuid": "da33351e_2376293f",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 33
+      },
+      "revId": "bd241b3bdc1f7494cd8bb7fc120155c8b1cb305f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
