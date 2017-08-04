@@ -7,3 +7,4 @@ pytest-faker
 pytest-mock
 pyyaml
 scp
+oslo_config
