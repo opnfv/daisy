@@ -10,6 +10,8 @@
 import os
 import pytest
 
+from deepdiff import DeepDiff
+
 from deploy.get_conf import (
     get_yml_para,
     config
@@ -31,34 +33,35 @@ def test_get_yml_para(deploy_file):
 
 
 def test_config(deploy_file, network_file):
-    assert config(deploy_file, network_file) == ({'ens8': [{'ip': '', 'name': 'EXTERNAL'}],
-                                                  'ens3': [{'ip': '', 'name': 'MANAGEMENT'},
-                                                           {'ip': '', 'name': 'PUBLICAPI'},
-                                                           {'ip': '', 'name': 'STORAGE'},
-                                                           {'ip': '', 'name': 'physnet1'}],
-                                                  'ens9': [{'ip': '', 'name': 'HEARTBEAT'}]},
-                                                 ['computer01', 'computer02', 'controller01', 'controller02',
-                                                  'controller03'],
-                                                 {'MANAGEMENT': {'cidr': '10.20.11.0/24', 'gateway': '10.20.11.1',
-                                                                 'ip_ranges': [{'start': '10.20.11.3',
-                                                                               'end': '10.20.11.10'}]},
-                                                  'STORAGE': {'cidr': '10.20.11.0/24', 'gateway': '10.20.11.1',
-                                                              'ip_ranges': [{'start': '10.20.11.3',
-                                                                             'end': '10.20.11.10'}]},
-                                                  'EXTERNAL': {'cidr': '172.10.101.0/24', 'gateway': '172.10.101.1',
-                                                               'ip_ranges': [{'start': '172.10.101.2',
-                                                                              'end': '172.10.101.20'}],
-                                                               'network_name': 'admin_external',
-                                                               'mapping': 'physnet1'},
-                                                  'PUBLICAPI': {'cidr': '10.20.11.0/24', 'gateway': '10.20.11.1',
-                                                                'ip_ranges': [{'start': '10.20.11.3',
-                                                                               'end': '10.20.11.10'}]},
-                                                  'physnet1': {'cidr': '10.20.11.0/24', 'gateway': '10.20.11.1',
-                                                               'ip_ranges': [{'start': '10.20.11.3',
-                                                                              'end': '10.20.11.10'}]},
-                                                  'HEARTBEAT': {'cidr': '100.20.11.0/24', 'gateway': '100.20.11.1',
-                                                                'ip_ranges': [{'start': '100.20.11.3',
-                                                                               'end': '100.20.11.10'}]}},
-                                                 '10.20.11.11', '/dev/sdb',
-                                                 {'controller01': [], 'controller02': [], 'controller03': [],
-                                                  'computer01': [], 'computer02': []})
+    result = config(deploy_file, network_file)
+    expect = ({'ens8': [{'ip': '', 'name': 'EXTERNAL'}],
+               'ens3': [{'ip': '', 'name': 'MANAGEMENT'},
+                        {'ip': '', 'name': 'PUBLICAPI'},
+                        {'ip': '', 'name': 'STORAGE'},
+                        {'ip': '', 'name': 'physnet1'}],
+               'ens9': [{'ip': '', 'name': 'HEARTBEAT'}]},
+              ['computer01', 'computer02', 'controller01', 'controller02', 'controller03'],
+              {'MANAGEMENT': {'cidr': '10.20.11.0/24', 'gateway': '10.20.11.1',
+                              'ip_ranges': [{'start': '10.20.11.3',
+                                             'end': '10.20.11.10'}]},
+               'STORAGE': {'cidr': '10.20.11.0/24', 'gateway': '10.20.11.1',
+                           'ip_ranges': [{'start': '10.20.11.3',
+                                          'end': '10.20.11.10'}]},
+               'EXTERNAL': {'cidr': '172.10.101.0/24', 'gateway': '172.10.101.1',
+                            'ip_ranges': [{'start': '172.10.101.2',
+                                           'end': '172.10.101.20'}],
+                            'network_name': 'admin_external',
+                            'mapping': 'physnet1'},
+               'PUBLICAPI': {'cidr': '10.20.11.0/24', 'gateway': '10.20.11.1',
+                             'ip_ranges': [{'start': '10.20.11.3',
+                                            'end': '10.20.11.10'}]},
+               'physnet1': {'cidr': '10.20.11.0/24', 'gateway': '10.20.11.1',
+                            'ip_ranges': [{'start': '10.20.11.3',
+                                           'end': '10.20.11.10'}]},
+               'HEARTBEAT': {'cidr': '100.20.11.0/24', 'gateway': '100.20.11.1',
+                             'ip_ranges': [{'start': '100.20.11.3',
+                                            'end': '100.20.11.10'}]}},
+              '10.20.11.11', '/dev/sdb',
+              {'controller01': [], 'controller02': [], 'controller03': [],
+               'computer01': [], 'computer02': []})
+    assert DeepDiff(result, expect) == {}
