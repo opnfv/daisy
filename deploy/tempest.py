@@ -215,10 +215,9 @@ def add_hosts_interface(cluster_id, hosts_info, hosts_name, mac_address_map,
 def add_host_role(cluster_id, host_id, host_exp_name, host_real_name, vip):
     role_meta = {'filters': {'cluster_id': cluster_id}}
     role_list_generator = client.roles.list(**role_meta)
-    role_list = [role for role in role_list_generator]
-    lb_role_id = [role.id for role in role_list if
+    lb_role_id = [role.id for role in role_list_generator if
                   role.name == "CONTROLLER_LB"][0]
-    computer_role_id = [role.id for role in role_list if
+    computer_role_id = [role.id for role in role_list_generator if
                         role.name == "COMPUTER"][0]
     if host_exp_name in ['all_in_one']:
         role_lb_update_meta = {'nodes': [host_id],
