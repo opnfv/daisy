@@ -13,6 +13,8 @@
 # controler: nosdn|odl|onos|ocl|...
 # feaure: nofeature | [vlan]_[kvm]_[ovs]_[vlan]_....
 # mode: ha|noha
+# NOTE: os-odl-nofeature-noha = os-odl_l3-nofeature-noha
+#       os-odl-nofeature-ha = os-odl_l3-nofeature-ha
 ##############################################################################
 
 os-nosdn-nofeature-ha:
@@ -32,3 +34,9 @@ os-odl_l2-nofeature-ha:
 
 os-odl_l2-nofeature-noha:
   configfile: no-ha_odl-l2_nofeature_scenario.yaml
+
+os-odl-nofeature-ha:
+  configfile: ha_odl_nofeature_scenario.yaml
+
+os-odl-nofeature-noha:
+  configfile: no-ha_odl_nofeature_scenario.yaml
