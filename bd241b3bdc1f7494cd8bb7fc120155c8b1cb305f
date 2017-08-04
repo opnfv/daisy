@@ -22,6 +22,30 @@
       "revId": "bd241b3bdc1f7494cd8bb7fc120155c8b1cb305f",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_e3c9e15b",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-04T04:04:03Z",
+      "side": 1,
+      "message": "There is not daisy_ip in the PDF(e.g. securedlab/labs/zte/pod2.yaml). If we use PDF to generate the deploy.yml, we must provide daisy_ip by another way.",
+      "parentUuid": "da33351e_2376293f",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 33
+      },
+      "revId": "bd241b3bdc1f7494cd8bb7fc120155c8b1cb305f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
