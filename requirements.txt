@@ -4,3 +4,4 @@ paramiko
 pyyaml
 scp
 oslo_config
+deepdiff
