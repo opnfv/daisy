@@ -324,6 +324,9 @@ ssh $SSH_PARAS $DAISY_IP "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE} ]]; the
 scp -r $WORKSPACE root@$DAISY_IP:${REMOTE_SPACE}
 ssh $SSH_PARAS $DAISY_IP "mkdir -p /home/daisy_install"
 update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $DAISY_IP
+physical_networks=`ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no 10.20.11.2 "ls -l /sys/class/net/ | grep -v lo |grep "pci"|awk -F 'net/' '{print $2}'"`
+physical_network=`echo $physical_networks|awk '{print $9}'`
+update_config $WORKSPACE/deploy/daisy.conf eth_name $physical_network
 scp $WORKSPACE/deploy/daisy.conf root@$DAISY_IP:/home/daisy_install
 ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/opnfv.bin  install"
 rc=$?
