@@ -128,10 +128,13 @@ def get_yml_para(dha_file):
     daisy_ip = data.get("daisy_ip", "")
     daisy_gateway = data.get("daisy_gateway", "")
     daisy_target_node = data.get("hosts", "")
+    build_pxe = data.get("build_pxe", "yes")
+    pxe_server_interface = data.get("pxe_server_interface", "")
+    enable_multicast = data.get("enable_multicast", "False")
     hosts_num = len(daisy_target_node)
     return daisyserver_size, controller_node_size,\
         compute_node_size, daisy_passwd, daisy_ip, daisy_gateway,\
-        hosts_num
+        hosts_num, build_pxe, pxe_server_interface, enable_multicast
 
 
 def get_conf_from_deploy():
@@ -139,13 +142,18 @@ def get_conf_from_deploy():
     parse(conf, sys.argv[1:])
     daisyserver_size, controller_node_size, compute_node_size,\
         daisy_passwd, daisy_ip, daisy_gateway,\
-        hosts_num = get_yml_para(conf['dha'])
-    print "{hosts_num} {ip} {passwd} -s {size} -g {gateway}".format(
-        hosts_num=hosts_num,
-        passwd=daisy_passwd,
-        size=daisyserver_size,
-        ip=daisy_ip,
-        gateway=daisy_gateway)
+        hosts_num, build_pxe, pxe_server_interface, enable_multicast\
+        = get_yml_para(conf['dha'])
+    print "{hosts_num} {ip} {passwd} {pxe} {pxe_interface} {multicast}"\
+          " -s {size} -g {gateway}".format(
+              hosts_num=hosts_num,
+              passwd=daisy_passwd,
+              size=daisyserver_size,
+              pxe=build_pxe,
+              pxe_interface=pxe_server_interface,
+              multicast=enable_multicast,
+              ip=daisy_ip,
+              gateway=daisy_gateway)
 
 
 if __name__ == "__main__":
