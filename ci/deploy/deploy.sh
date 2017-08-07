@@ -177,7 +177,10 @@ PARAS_FROM_DEPLOY=`python $WORKSPACE/deploy/get_conf.py --dha $DHA_CONF`
 TARGET_HOSTS_NUM=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 1`
 DAISY_IP=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 2`
 DAISY_PASSWD=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 3`
-PARAS_IMAGE=${PARAS_FROM_DEPLOY#* * * }
+BUILD_PXE=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 4`
+PXE_INTERFACE=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 5`
+MULTICAST=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 6`
+PARAS_IMAGE=${PARAS_FROM_DEPLOY#* * * * * * }
 
 
 if [ $DRY_RUN -eq 1 ]; then
@@ -324,6 +327,11 @@ ssh $SSH_PARAS $DAISY_IP "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE} ]]; the
 scp -r $WORKSPACE root@$DAISY_IP:${REMOTE_SPACE}
 ssh $SSH_PARAS $DAISY_IP "mkdir -p /home/daisy_install"
 update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $DAISY_IP
+if [ $BUILD_PXE == yes ]; then
+    update_config $WORKSPACE/deploy/daisy.conf build_pxe $BUILD_PXE
+    update_config $WORKSPACE/deploy/daisy.conf eth_name $PXE_INTERFACE
+fi
+update_config $WORKSPACE/deploy/daisy.conf daisy_conf_mcast_enabled $MULTICAST
 scp $WORKSPACE/deploy/daisy.conf root@$DAISY_IP:/home/daisy_install
 ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/opnfv.bin  install"
 rc=$?
