@@ -19,7 +19,6 @@ import os
 daisy_version = 1.0
 daisyrc_path = "/root/daisyrc_admin"
 iso_path = "/var/lib/daisy/kolla/"
-deployment_interface = "ens3"
 cluster_name = "clustertest"
 
 _CLI_OPTS = [
@@ -59,9 +58,6 @@ def get_endpoint(file_path):
             daisy_endpoint = daisyrc_admin_line.split("=")[1]
     return daisy_endpoint
 
-daisy_endpoint = get_endpoint(daisyrc_path)
-client = daisy_client.Client(version=daisy_version, endpoint=daisy_endpoint)
-
 
 def prepare_install():
     try:
@@ -79,8 +75,6 @@ def prepare_install():
             print("cluster_id=%s." % cluster_id)
             print("update network...")
             update_network(cluster_id, network_map)
-            print("build pxe...")
-            build_pxe_for_discover(cluster_id)
         elif conf['host'] and conf['host'] == 'yes':
             isbare = False if 'isbare' in conf and conf['isbare'] == 0 else True
             print("discover host...")
@@ -125,12 +119,6 @@ def prepare_install():
         print("Deploy failed!!!.%s." % traceback.format_exc())
     else:
         print_bar("Everything is done!")
-
-
-def build_pxe_for_discover(cluster_id):
-    cluster_meta = {'cluster_id': cluster_id,
-                    'deployment_interface': deployment_interface}
-    client.install.install(**cluster_meta)
 
 
 def install_os_for_vm_step1(cluster_id):
@@ -282,4 +270,6 @@ def enable_opendaylight(cluster_id, layer):
 
 
 if __name__ == "__main__":
+    daisy_endpoint = get_endpoint(daisyrc_path)
+    client = daisy_client.Client(version=daisy_version, endpoint=daisy_endpoint)
     prepare_install()
