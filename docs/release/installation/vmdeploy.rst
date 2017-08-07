@@ -42,7 +42,10 @@ E.g. OpenStack only deployment roles setting
           - compute
 
 NOTE:
-For B/M, Daisy uses MAC address defined in deploy.yml to map discovered nodes to node items definition in deploy.yml, then assign role described by node item to the discovered nodes by name pattern. Currently, controller01, controller02, and controller03 will be assigned with Controler role while computer01, 'computer02, computer03, and computer04 will be assigned with Compute role.
+For B/M, Daisy uses MAC address defined in deploy.yml to map discovered nodes to node items definition in deploy.yml,
+then assign role described by node item to the discovered nodes by name pattern.
+Currently, controller01, controller02, and controller03 will be assigned with Controller role
+while computer01, computer02, computer03, and computer04 will be assigned with Compute role.
 
 NOTE:
 For V/M, There is no MAC address defined in deploy.yml for each virtual machine. Instead, Daisy will fill that blank by getting MAC from "virsh dump-xml".
