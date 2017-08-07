@@ -1,5 +1,5 @@
 Summary: Just A Small Multicast engINE
-Name: jasmine
+Name: daisy4nfv-jasmine
 Version: @version@
 Release: 1%{?dist}
 Vendor: ZTE
@@ -11,7 +11,7 @@ Source: %{name}-%{version}%{?gittarver}.tar.gz
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 %description
-jasmine is used to distribute files over UDP multicast for installers
+daisy4nfv-jasmine is used to distribute files over UDP multicast for installers
 
 %prep
 %setup -q -n %{name}-%{version}%{?gittarver}

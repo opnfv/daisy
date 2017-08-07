@@ -4,7 +4,7 @@
 # bootstrap / init
 AC_PREREQ([2.61])
 
-AC_INIT([jasmine],
+AC_INIT([daisy4nfv-jasmine],
 	[1.2],
 	[hu.zhijiang@zte.com.cn])
 
