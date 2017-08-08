@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_cfb4bbf4",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-08T12:15:57Z",
+      "side": 1,
+      "message": "Please replace this by \"ssh $SSH_PARAS $DAISY_IP\". 10.20.11.2 can not be used in bare metal env.",
+      "range": {
+        "startLine": 327,
+        "startChar": 19,
+        "endLine": 327,
+        "endChar": 93
+      },
+      "revId": "5598f131c60c4808a687a1e3b49a97e5b84dbaf6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
