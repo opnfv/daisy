@@ -144,7 +144,7 @@ class BareMetalEnvironment(DaisyEnvironmentBase):
 
         create_vm(template,
                   name=self.daisy_server_info['name'],
-                  disk_file=self.daisy_server_info['image'])
+                  disks=[self.daisy_server_info['image']])
 
     def reboot_nodes(self, boot_dev=None):
         # TODO: add ipmi info into deploy.yml, or read from PDF
@@ -168,6 +168,7 @@ class BareMetalEnvironment(DaisyEnvironmentBase):
         self.server.check_os_installation(len(self.deploy_struct['hosts']))
         time.sleep(10)
         self.server.check_openstack_installation(len(self.deploy_struct['hosts']))
+        self.server.post_deploy()
 
 
 class VirtualEnvironment(DaisyEnvironmentBase):
