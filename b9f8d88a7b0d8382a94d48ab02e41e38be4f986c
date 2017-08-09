@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_1277ecd5",
+        "filename": "deploy/daisy.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-09T01:26:51Z",
+      "side": 1,
+      "message": "Please add description for this option in config doc, to warn user not to touch this option any more(it must be yes now). Further more, if user already has a old version daisy.conf in place which has build_pxe\u003dno, in your doc, tell them to change it into build_pxe\u003dyes manually before installing Daisy.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "b9f8d88a7b0d8382a94d48ab02e41e38be4f986c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
