@@ -46,6 +46,30 @@
       "revId": "03302069a13f2bdaf414264808e8cb77b5d15c0c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_152516c2",
+        "filename": "deploy/daisy.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-09T08:30:54Z",
+      "side": 1,
+      "message": "This is really wrong. You will got an unpredictable  $physical_networks, which may not matching your env setup for deployment. For example, you may got $physical_networks \u003d ens2, but you need ens3.\n\nThe right way is to get interface from MANAGEMENT section of your network.yml",
+      "parentUuid": "da33351e_1577d6d5",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "03302069a13f2bdaf414264808e8cb77b5d15c0c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
