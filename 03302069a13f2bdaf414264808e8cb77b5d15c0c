@@ -22,6 +22,30 @@
       "revId": "03302069a13f2bdaf414264808e8cb77b5d15c0c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_1577d6d5",
+        "filename": "deploy/daisy.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-09T08:00:51Z",
+      "side": 1,
+      "message": "in deploy.sh script:\nphysical_networks\u003d`ssh $SSH_PARAS $DAISY_IP \"ls -l /sys/class/net/ | grep -v lo |grep \"pci\"\"`\nphysical_network\u003d`echo $physical_networks|awk \u0027{print $9}\u0027`\nupdate_config $WORKSPACE/deploy/daisy.conf eth_name $physical_network\n\nI used the /sys/class/net/ file to check the interface of daisy vm.But the interface must be one,or this check will fail.",
+      "parentUuid": "da33351e_f5d7d2bd",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "03302069a13f2bdaf414264808e8cb77b5d15c0c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
