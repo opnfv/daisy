@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_35aada70",
+        "filename": "docs/release/installation/index.rst",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-09T05:44:21Z",
+      "side": 1,
+      "message": "We already have config guide doc:docs/release/configguide/installerconfig.rst\n\nPlease do not add a new one.",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "111fadafcd6c7a2c4f3e84408ec3d5ebfaa30219",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
