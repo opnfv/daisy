@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_f5d7d2bd",
+        "filename": "deploy/daisy.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-09T07:22:30Z",
+      "side": 1,
+      "message": "How to change in accordingly in OPNFV\n CI env (Both VM and BM)?",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "03302069a13f2bdaf414264808e8cb77b5d15c0c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
