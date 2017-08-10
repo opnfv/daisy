@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_fe94cf45",
+        "filename": "deploy/daisy.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-10T11:59:39Z",
+      "side": 1,
+      "message": "Yes,we have one interface in daisy vm,so this only interface is the interface we should add to this section.\nIf we have another interface in the daisy vm, we should select one to build the pxe server.",
+      "parentUuid": "da33351e_d80c8397",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "03302069a13f2bdaf414264808e8cb77b5d15c0c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_b811bfae",
         "filename": "docs/release/configguide/installerconfig.rst",
         "patchSetId": 11
