@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "da33351e_2946ffbf",
+        "filename": "deploy/config/vm_environment/zte-virtual2/deploy.yml",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-10T11:36:41Z",
+      "side": 1,
+      "message": "revert this file format change if no content change. Probably cause by file format changed from CR/LF to CR or LF...",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_691767a4",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-10T11:36:41Z",
+      "side": 1,
+      "message": "This will result failure to callers who call you API like enable_opendaylight()",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 80
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_29d8bf1c",
         "filename": "docs/release/configguide/installerconfig.rst",
         "patchSetId": 13
