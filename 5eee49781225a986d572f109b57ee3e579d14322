@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_29d8bf1c",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-10T11:33:11Z",
+      "side": 1,
+      "message": "It seems that all the commas after the section numbers are from Chinese char-set. Please use utf-8 char-set.",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 2
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_89046b7f",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-10T11:33:11Z",
+      "side": 1,
+      "message": "What does this mean? Daisy Server?",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 46
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_09f85b7b",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-10T11:33:11Z",
+      "side": 1,
+      "message": "the value in daisy.conf",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_e9f41789",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-10T11:33:11Z",
+      "side": 1,
+      "message": "no -\u003e \"no\"",
+      "range": {
+        "startLine": 32,
+        "startChar": 64,
+        "endLine": 32,
+        "endChar": 66
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_4949c3cf",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-10T11:33:11Z",
+      "side": 1,
+      "message": "is required",
+      "range": {
+        "startLine": 35,
+        "startChar": 66,
+        "endLine": 35,
+        "endChar": 74
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_a93a0f34",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-10T11:33:11Z",
+      "side": 1,
+      "message": "\"Daisy Server\" or \"Daisy Server VM\" is more clear.",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 15
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_49f2639b",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-10T11:33:11Z",
+      "side": 1,
+      "message": "sections are",
+      "range": {
+        "startLine": 45,
+        "startChar": 40,
+        "endLine": 45,
+        "endChar": 50
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
