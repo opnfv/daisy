@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_89790bff",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-10T11:59:39Z",
+      "side": 1,
+      "message": "Maybe these function can be put in one class,I will try to refactor this file in another ps.",
+      "parentUuid": "da33351e_691767a4",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 80
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_29d8bf1c",
         "filename": "docs/release/configguide/installerconfig.rst",
         "patchSetId": 13
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_697e47e6",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-10T11:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_29d8bf1c",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 2
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_89046b7f",
         "filename": "docs/release/configguide/installerconfig.rst",
         "patchSetId": 13
@@ -82,6 +130,30 @@
       "writtenOn": "2017-08-10T11:33:11Z",
       "side": 1,
       "message": "What does this mean? Daisy Server?",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 46
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_c98313cb",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-10T11:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_89046b7f",
       "range": {
         "startLine": 25,
         "startChar": 25,
@@ -140,6 +212,54 @@
     },
     {
       "key": {
+        "uuid": "da33351e_494ee3c2",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-10T11:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_09f85b7b",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_e9509760",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-10T11:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_e9f41789",
+      "range": {
+        "startLine": 32,
+        "startChar": 64,
+        "endLine": 32,
+        "endChar": 66
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_4949c3cf",
         "filename": "docs/release/configguide/installerconfig.rst",
         "patchSetId": 13
@@ -151,6 +271,30 @@
       "writtenOn": "2017-08-10T11:33:11Z",
       "side": 1,
       "message": "is required",
+      "range": {
+        "startLine": 35,
+        "startChar": 66,
+        "endLine": 35,
+        "endChar": 74
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_0954db52",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-10T11:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_4949c3cf",
       "range": {
         "startLine": 35,
         "startChar": 66,
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_a95faf71",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-10T11:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_a93a0f34",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 15
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_49f2639b",
         "filename": "docs/release/configguide/installerconfig.rst",
         "patchSetId": 13
@@ -197,6 +365,30 @@
       "writtenOn": "2017-08-10T11:33:11Z",
       "side": 1,
       "message": "sections are",
+      "range": {
+        "startLine": 45,
+        "startChar": 40,
+        "endLine": 45,
+        "endChar": 50
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_c95af382",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-10T11:59:39Z",
+      "side": 1,
+      "message": "I will try to make my English more accurate.\n^_^",
+      "parentUuid": "da33351e_49f2639b",
       "range": {
         "startLine": 45,
         "startChar": 40,
