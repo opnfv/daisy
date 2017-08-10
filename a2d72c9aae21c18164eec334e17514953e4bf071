@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_5e65fb43",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-10T06:38:06Z",
+      "side": 1,
+      "message": "Why we need this? \n\nThis automatica method is wrong and unpredictable. It may rewrite the right value by a wrong one. SO it is NO better than simply define a default value \"ens3\" in daisy.conf and change manually.",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 69
+      },
+      "revId": "a2d72c9aae21c18164eec334e17514953e4bf071",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
