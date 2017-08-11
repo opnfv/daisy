@@ -72,6 +72,29 @@
     },
     {
       "key": {
+        "uuid": "da33351e_581d0ebd",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-11T05:43:14Z",
+      "side": 1,
+      "message": "Before installing Daisy4NFV on jump server.",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_29d8bf1c",
         "filename": "docs/release/configguide/installerconfig.rst",
         "patchSetId": 13
@@ -159,6 +182,29 @@
         "startChar": 25,
         "endLine": 25,
         "endChar": 46
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_d8111eae",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-11T05:43:14Z",
+      "side": 1,
+      "message": "These are not sections, change your \"section\" to \"option\" or \"item\" or \"field\"...\n\nSection is like \"Default\" section defined below. \n[Default]\nxxx\nxxx",
+      "range": {
+        "startLine": 29,
+        "startChar": 20,
+        "endLine": 29,
+        "endChar": 27
       },
       "revId": "5eee49781225a986d572f109b57ee3e579d14322",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
@@ -394,6 +440,29 @@
         "startChar": 40,
         "endLine": 45,
         "endChar": 50
+      },
+      "revId": "5eee49781225a986d572f109b57ee3e579d14322",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_38264a17",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-11T05:43:14Z",
+      "side": 1,
+      "message": "want to",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 14
       },
       "revId": "5eee49781225a986d572f109b57ee3e579d14322",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
