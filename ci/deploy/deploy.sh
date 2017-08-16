@@ -190,10 +190,11 @@ function update_dha_by_pdf()
     fi
     if [ -z $(awk "BEGIN{}(/daisy_ip/){print NR}" $tmpfile) ]; then
         line=$(awk "BEGIN{}(/daisy_gateway/){print NR}" $tmpfile)
-        sed -i "${line}b\daisy_ip: $INSTALLER_IP" $tmpfile
+        sed -i "${line} i\daisy_ip: $INSTALLER_IP" $tmpfile
     fi
     if [ $? -ne 0 ]; then
         echo "Cannot write INSTALLER_IP to config file, use original deploy.yml !"
+        rm $tmpfile
         return
     fi
     cp ${tmpfile} ${DHA_CONF}
