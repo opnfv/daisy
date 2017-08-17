@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_d263aeaf",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-17T02:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_8c1d8bc0",
+      "range": {
+        "startLine": 14,
+        "startChar": 17,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "453e824ff7311f66dde683d9bdf55eb9a6494e8c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_ec79b7fd",
         "filename": "docs/release/configguide/installerconfig.rst",
         "patchSetId": 16
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-16T14:31:29Z",
       "side": 1,
       "message": "an **space** should be kept befind 1.\n\nno extra blank line is required between two list item",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 2
+      },
+      "revId": "453e824ff7311f66dde683d9bdf55eb9a6494e8c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_32593aff",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 16
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-17T02:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_ec79b7fd",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_125eb6e6",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 16
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-17T02:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_cc7e73e4",
+      "range": {
+        "startLine": 31,
+        "startChar": 42,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "453e824ff7311f66dde683d9bdf55eb9a6494e8c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_2c843fd3",
         "filename": "docs/release/configguide/installerconfig.rst",
         "patchSetId": 16
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-16T14:31:29Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 35,
+        "startChar": 37,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "453e824ff7311f66dde683d9bdf55eb9a6494e8c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_526f9e92",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-17T02:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_2c843fd3",
       "range": {
         "startLine": 35,
         "startChar": 37,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_b26c2a9e",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-17T02:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_0c897beb",
+      "range": {
+        "startLine": 40,
+        "startChar": 28,
+        "endLine": 40,
+        "endChar": 30
+      },
+      "revId": "453e824ff7311f66dde683d9bdf55eb9a6494e8c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_6c6da732",
         "filename": "docs/release/installation/vmdeploy.rst",
         "patchSetId": 16
@@ -128,6 +248,24 @@
       "writtenOn": "2017-08-16T14:31:29Z",
       "side": 1,
       "message": "too long",
+      "revId": "453e824ff7311f66dde683d9bdf55eb9a6494e8c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_d231eea3",
+        "filename": "docs/release/installation/vmdeploy.rst",
+        "patchSetId": 16
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-17T02:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_6c6da732",
       "revId": "453e824ff7311f66dde683d9bdf55eb9a6494e8c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
