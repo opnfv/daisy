@@ -8,6 +8,8 @@
 ##############################################################################
 
 from jsonschema import Draft4Validator, FormatChecker
+import sys
+import yaml
 
 
 MIN_DAISY_DISK_SIZE = 50
@@ -28,8 +30,19 @@ hosts_schema = {
                     'enum': ['COMPUTER', 'CONTROLLER_LB', 'CONTROLLER_HA']
                 }
             },
-            'template': {'type': 'string', 'minLength': 1}
-        }
+            'template': {'type': 'string', 'minLength': 1},
+            'ipmi_ip': {'type': 'string', 'format': 'ip-address'},
+            'ipmi_user': {'type': 'string'},
+            'ipmi_pass': {'type': 'string'},
+            'mac_addresses': {
+                'type': 'array',
+                'items': {
+                    'type': 'string',
+                    'pattern': '^([0-9a-fA-F]{2})((:[0-9a-fA-F]{2}){5})$'
+                }
+            }
+        },
+        'required': ['roles']
     }
 }
 
@@ -51,12 +64,13 @@ schema_mapping = {
     'daisy_ip': {'type': 'string', 'format': 'ip-address'},
     'daisy_gateway': {'type': 'string', 'format': 'ip-address'},
     'ceph_disk_name': {'type': 'string'},
+    'modules': {'type': ['array', 'null']}
 }
 
 deploy_schema = {
     'type': 'object',
     'properties': schema_mapping,
-    'required': ['hosts', 'daisy_passwd', 'daisy_ip', 'daisy_gateway']
+    'required': ['hosts', 'daisy_passwd', 'daisy_gateway']
 }
 
 
@@ -75,3 +89,19 @@ def item_validate(data, schema_type):
 
 def deploy_schema_validate(data):
     return _validate(data, deploy_schema)
+
+
+def _main():
+    if 2 != len(sys.argv):
+        sys.exit(1)
+    try:
+        data = yaml.safe_load(open(sys.argv[1], 'r'))
+        errors = deploy_schema_validate(data)
+    except Exception as e:
+        errors = 'Exception occured: ' + str(e)
+    if errors:
+        sys.exit(errors)
+
+
+if __name__ == '__main__':
+    _main()
