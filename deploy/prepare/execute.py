@@ -16,7 +16,7 @@ KOLLA_CONF_PATH = '/etc/kolla/config'
 
 def _make_dirs(path):
     if not os.path.isdir(path):
-        os.makedirs(path, mode=0644)
+        os.makedirs(path, mode=0744)
 
 
 def _write_conf_file(conf_file, conf):
