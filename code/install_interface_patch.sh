@@ -9,7 +9,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 imagebranch="ocata"
-imageversion="170621131826"
+imageversion="170811155446"
 imageserver="http://120.24.17.215"
 imagedir="/var/lib/daisy/versionfile/kolla"
 imagename="kolla-image-$imagebranch-$imageversion.tgz"
