@@ -134,18 +134,29 @@ HeartBeat network is selected,and if it is configured in network.yml,the keepali
 Start Deployment (Virtual Deployment)
 -------------------------------------
 
-(1) Git clone the latest daisy4nfv code from opnfv: "git clone https://gerrit.opnfv.org/gerrit/daisy"
+(1) Git clone the latest daisy4nfv code from opnfv: "git clone https://gerrit.opnfv.org/gerrit/daisy", make sure the current branch is master
 
-(2) Download latest bin file(such as opnfv-2017-06-06_23-00-04.bin) of daisy from http://artifacts.opnfv.org/daisy.html and change the bin file name(such as opnfv-2017-06-06_23-00-04.bin) to opnfv.bin
+(2) Download latest bin file(such as opnfv-2017-06-06_23-00-04.bin) of daisy from http://artifacts.opnfv.org/daisy.html and change the bin file name(such as opnfv-2017-06-06_23-00-04.bin) to opnfv.bin. Check the https://build.opnfv.org/ci/job/daisy-os-odl-nofeature-ha-baremetal-daily-master/, and if the 'snaps_health_check' of functest result is 'PASS', you can use this verify-passed bin to deploy the openstack in your own environment
 
-(3) Make sure the opnfv.bin file is in daisy4nfv code dir
+(3) Assumed cloned dir is $workdir, which laid out like below:
+[root@daisyserver daisy]# ls
+ci    deploy      docker  INFO         LICENSE    requirements.txt       templates   tests  tox.ini
+code  deploy.log  docs    known_hosts  setup.py   test-requirements.txt  tools
+Make sure the opnfv.bin file is in $workdir
 
-(4) Create folder of labs/zte/virtual1/daisy/config in daisy4nfv code dir
+(4) Enter into $workdir, Create folder of labs/zte/virtual1/daisy/config in $workdir
 
 (5) Move the daisy/deploy/config/vm_environment/zte-virtual1/deploy.yml and daisy/deploy/config/vm_environment/zte-virtual1/network.yml to labs/zte/virtual1/daisy/config dir.
 
 Note:
 zte-virtual1 config file is just for all-in-one deployment,if you want to deploy openstack with five node(1 lb node and 4 computer nodes),change the zte-virtual1 to zte-virtual2
+
+Note:
+If selinux is disabled on the host, please delete yml file section of below lines in dir templates/virtual_environment/vms/
+  <seclabel type='dynamic' model='selinux' relabel='yes'>
+    <label>system_u:system_r:svirt_t:s0:c182,c195</label>
+    <imagelabel>system_u:object_r:svirt_image_t:s0:c182,c195</imagelabel>
+  </seclabel>
 
 (6) Run the script deploy.sh in daisy/ci/deploy/ with command:
 sudo ./ci/deploy/deploy.sh -b ../daisy  -l zte -p virtual1 -s os-nosdn-nofeature-noha
