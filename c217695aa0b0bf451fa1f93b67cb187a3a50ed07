@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_2e9c29c0",
+        "filename": "docs/release/installation/vmdeploy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-21T05:33:39Z",
+      "side": 1,
+      "message": "Define  $workdir once is enough.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 94
+      },
+      "revId": "c217695aa0b0bf451fa1f93b67cb187a3a50ed07",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
