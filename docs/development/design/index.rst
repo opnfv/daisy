@@ -12,5 +12,6 @@ Design Docs for Daisy4nfv
    :numbered:
    :maxdepth: 2
 
+   ci.rst
    multicast.rst
 
