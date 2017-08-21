@@ -10,7 +10,8 @@ Design Docs for Daisy4nfv
 
 .. toctree::
    :numbered:
-   :maxdepth: 2
+   :maxdepth: 1
 
+   ci.rst
    multicast.rst
 
