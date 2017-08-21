@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_2ec8a921",
+        "filename": "docs/release/installation/bmdeploy.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-21T07:56:33Z",
+      "side": 1,
+      "message": "sorry,my mistake.",
+      "parentUuid": "da33351e_8e23b504",
+      "range": {
+        "startLine": 138,
+        "startChar": 6,
+        "endLine": 138,
+        "endChar": 37
+      },
+      "revId": "64e626a2b2109752ee565ac8765d6e2b526b60cb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_ce749dff",
         "filename": "docs/release/installation/vmdeploy.rst",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_6ed2b1d3",
+        "filename": "docs/release/installation/vmdeploy.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-21T07:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_ce749dff",
+      "range": {
+        "startLine": 144,
+        "startChar": 6,
+        "endLine": 144,
+        "endChar": 37
+      },
+      "revId": "64e626a2b2109752ee565ac8765d6e2b526b60cb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_6e8471d4",
         "filename": "docs/release/installation/vmdeploy.rst",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2017-08-21T07:53:14Z",
       "side": 1,
       "message": "xml",
+      "range": {
+        "startLine": 155,
+        "startChar": 50,
+        "endLine": 155,
+        "endChar": 53
+      },
+      "revId": "64e626a2b2109752ee565ac8765d6e2b526b60cb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_0ecde531",
+        "filename": "docs/release/installation/vmdeploy.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-21T07:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_6e8471d4",
       "range": {
         "startLine": 155,
         "startChar": 50,
