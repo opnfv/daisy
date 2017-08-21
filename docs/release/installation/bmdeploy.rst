@@ -130,11 +130,19 @@ Start Deployment (Bare Metal Deployment)
 
 (1) Git clone the latest daisy4nfv code from opnfv: "git clone https://gerrit.opnfv.org/gerrit/daisy"
 
-(2) Download latest bin file(such as opnfv-2017-06-06_23-00-04.bin) of daisy from http://artifacts.opnfv.org/daisy.html and change the bin file name(such as opnfv-2017-06-06_23-00-04.bin) to opnfv.bin
+(2) Download latest bin file(such as opnfv-2017-06-06_23-00-04.bin) of daisy from http://artifacts.opnfv.org/daisy.html and change the bin file name(such as opnfv-2017-06-06_23-00-04.bin) to opnfv.bin. Check the https://build.opnfv.org/ci/job/daisy-os-odl-nofeature-ha-baremetal-daily-master/, and if the 'snaps_health_check' of functest result is 'PASS', you can use this verify-passed bin to deploy the openstack in your own environment 
 
-(3) Make sure the opnfv.bin file is in daisy4nfv code dir
+(3) Assumed cloned dir is $workdir, which laid out like below:
+[root@daisyserver daisy]# ls
+ci    deploy      docker  INFO         LICENSE    requirements.txt       templates   tests  tox.ini
+code  deploy.log  docs    known_hosts  setup.py   test-requirements.txt  tools
+Make sure the opnfv.bin file is in $workdir 
 
-(4) Create folder of labs/zte/pod2/daisy/config in daisy4nfv code dir
+(4) Assumed cloned dir is $workdir, which laid out like below:
+[root@daisyserver daisy]# ls
+ci    deploy      docker  INFO         LICENSE    requirements.txt       templates   tests     tox.ini
+code  deploy.log  docs    known_hosts  setup.py   test-requirements.txt  tools       opnfv.bin
+Create folder of labs/zte/pod2/daisy/config in $workdir
 
 (5) Move the ./deploy/config/bm_environment/zte-baremetal1/deploy.yml and ./deploy/config/bm_environment/zte-baremetal1/network.yml to labs/zte/pod2/daisy/config dir.
 
