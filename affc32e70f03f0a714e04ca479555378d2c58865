@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_6e3c71e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-21T08:35:23Z",
+      "side": 1,
+      "message": "Please describe the most important reason of this change.\nWithout this change, we encountered wrong kolla config file generated like:\ncinder_volume_group: cinder-volumes\ndocker_namespace: kolla\ndocker_registry: 10.20.11.2:4000\nenable_cinder: \u0027yes\u0027\nenable_cinder_backend_lvm: \u0027yes\u0027\nkeepalived_interface: \u0027{{ network_interface }}\u0027\nkolla_external_vip_interface: ens3\nkolla_internal_vip_address: 10.20.11.11\nnetwork_interface: ens3\nneutron_external_interface: ens8\nopenstack_release: 4.0.2\nstorage_interface: ens3\ntunnel_interface: ens3\n\nkeepalived_interface is wrong, may result in keepalive not work, VIP lose, and since we still use VIP in all-in-one setup, so the whole deployment may fail.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "affc32e70f03f0a714e04ca479555378d2c58865",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
