@@ -22,6 +22,23 @@
       "revId": "12ea8427854a79a34c5b50b1f894025d9629b59e",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_eec88176",
+        "filename": "docs/release/installation/vmdeploy.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-21T06:48:51Z",
+      "side": 1,
+      "message": "Add a Note:\n\nIf selinux is disabled on the host, please delete this line\nin templates/virtual_environment/vms/*.xml \n  \u003cseclabel type\u003d\u0027dynamic\u0027 model\u003d\u0027selinux\u0027 relabel\u003d\u0027yes\u0027\u003e",
+      "revId": "12ea8427854a79a34c5b50b1f894025d9629b59e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
