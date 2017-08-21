@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_4e3b6d3a",
+        "filename": "docs/release/installation/vmdeploy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-21T07:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_2e9c29c0",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 94
+      },
+      "revId": "c217695aa0b0bf451fa1f93b67cb187a3a50ed07",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_8eac55ef",
         "filename": "docs/release/installation/vmdeploy.rst",
         "patchSetId": 2
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "da33351e_ae3f9924",
+        "filename": "docs/release/installation/vmdeploy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-21T07:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_8eac55ef",
+      "range": {
+        "startLine": 153,
+        "startChar": 13,
+        "endLine": 153,
+        "endChar": 19
+      },
+      "revId": "c217695aa0b0bf451fa1f93b67cb187a3a50ed07",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_8e3c5531",
+        "filename": "docs/release/installation/vmdeploy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-21T07:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_eeb9a12f",
+      "range": {
+        "startLine": 153,
+        "startChar": 76,
+        "endLine": 153,
+        "endChar": 82
+      },
+      "revId": "c217695aa0b0bf451fa1f93b67cb187a3a50ed07",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_2e838957",
         "filename": "docs/release/installation/vmdeploy.rst",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-21T05:39:51Z",
       "side": 1,
       "message": "Wrong, zte-virtual1 is actually for multinode, zte-virtual2 is all-in-one",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 177
+      },
+      "revId": "c217695aa0b0bf451fa1f93b67cb187a3a50ed07",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_ae267914",
+        "filename": "docs/release/installation/vmdeploy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-21T07:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_2e838957",
       "range": {
         "startLine": 156,
         "startChar": 0,
@@ -156,6 +252,78 @@
         "startChar": 81,
         "endLine": 159,
         "endChar": 85
+      },
+      "revId": "c217695aa0b0bf451fa1f93b67cb187a3a50ed07",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_4e89adea",
+        "filename": "docs/release/installation/vmdeploy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-21T07:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_0eefa51f",
+      "range": {
+        "startLine": 159,
+        "startChar": 81,
+        "endLine": 159,
+        "endChar": 85
+      },
+      "revId": "c217695aa0b0bf451fa1f93b67cb187a3a50ed07",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_0e7fa5e1",
+        "filename": "docs/release/installation/vmdeploy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-21T07:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_ce8dbd7d",
+      "range": {
+        "startLine": 159,
+        "startChar": 50,
+        "endLine": 159,
+        "endChar": 58
+      },
+      "revId": "c217695aa0b0bf451fa1f93b67cb187a3a50ed07",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_ee2081f9",
+        "filename": "docs/release/installation/vmdeploy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-21T07:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_8e93b5a2",
+      "range": {
+        "startLine": 159,
+        "startChar": 30,
+        "endLine": 159,
+        "endChar": 38
       },
       "revId": "c217695aa0b0bf451fa1f93b67cb187a3a50ed07",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
