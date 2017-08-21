@@ -1,5 +1,5 @@
-Detailed Design
-===============
+Kolla Image Multicast Design
+============================
 
 Protocol Design
 ---------------
