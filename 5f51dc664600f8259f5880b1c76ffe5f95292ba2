@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_793f1026",
+        "filename": "templates/virtual_environment/vms/all_in_one.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-08-24T06:51:09Z",
+      "side": 1,
+      "message": "RAM is enough or not for all_in_one?",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 52
+      },
+      "revId": "5f51dc664600f8259f5880b1c76ffe5f95292ba2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
