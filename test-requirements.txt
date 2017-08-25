@@ -10,3 +10,8 @@ pyyaml
 scp
 oslo_config
 deepdiff
+keystoneauth1
+python-glanceclient
+python-neutronclient
+python-novaclient
+
