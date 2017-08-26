@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_45b5f52f",
+        "filename": "requirements.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-26T01:49:19Z",
+      "side": 1,
+      "message": "Further, we need to think about making a fully functional Python packaging hierarchy as well as this file. Then when users want to use our program, they need to install it before hand so that all the required packages such as keystoneauth1 can be installed automatically.",
+      "revId": "1cf9f49c5167d7bbf4969ed9146599c73a73fbcc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
