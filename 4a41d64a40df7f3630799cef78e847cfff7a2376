@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_451cd5c1",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-26T07:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_654ab9c6",
+      "range": {
+        "startLine": 32,
+        "startChar": 85,
+        "endLine": 32,
+        "endChar": 89
+      },
+      "revId": "4a41d64a40df7f3630799cef78e847cfff7a2376",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_4545f5b1",
         "filename": "docs/release/configguide/installerconfig.rst",
         "patchSetId": 1
@@ -62,6 +86,54 @@
       "range": {
         "startLine": 34,
         "startChar": 45,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "4a41d64a40df7f3630799cef78e847cfff7a2376",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_654f59be",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-26T07:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_a57a01ef",
+      "range": {
+        "startLine": 34,
+        "startChar": 45,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "4a41d64a40df7f3630799cef78e847cfff7a2376",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_454a15ad",
+        "filename": "docs/release/configguide/installerconfig.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-26T07:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_4545f5b1",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
         "endLine": 34,
         "endChar": 46
       },
