@@ -15,10 +15,12 @@ import get_conf
 import traceback
 import time
 import os
+import ConfigParser
 
 daisy_version = 1.0
 daisyrc_path = "/root/daisyrc_admin"
 iso_path = "/var/lib/daisy/kolla/"
+deployment_interface = "ens3"
 cluster_name = "clustertest"
 
 _CLI_OPTS = [
@@ -51,6 +53,14 @@ def print_bar(msg):
     print ("--------------------------------------------")
 
 
+def get_configure_from_daisyconf(section, key):
+    config = ConfigParser.ConfigParser()
+    dirname = os.getcwd()
+    config.read("%s/daisy.conf" % dirname)
+    option_value=config.get(section, key)
+    return option_value
+
+
 def get_endpoint(file_path):
     for line in open(file_path):
         if 'OS_ENDPOINT' in line:
@@ -79,6 +89,9 @@ def prepare_install():
             print("cluster_id=%s." % cluster_id)
             print("update network...")
             update_network(cluster_id, network_map)
+            print("build pxe...")
+            deployment_interface = get_configure_from_daisyconf("PXE", "eth_name")
+            build_pxe_for_discover(cluster_id)
         elif conf['host'] and conf['host'] == 'yes':
             isbare = False if 'isbare' in conf and conf['isbare'] == 0 else True
             print("discover host...")
@@ -123,6 +136,12 @@ def prepare_install():
         print("Deploy failed!!!.%s." % traceback.format_exc())
     else:
         print_bar("Everything is done!")
+
+
+def build_pxe_for_discover(cluster_id):
+    cluster_meta = {'cluster_id': cluster_id,
+                    'deployment_interface': deployment_interface}
+    client.install.install(**cluster_meta)
 
 
 def install_os_for_vm_step1(cluster_id):
