@@ -272,6 +272,7 @@ function create_node
     virsh net-define $net_template
     virsh net-autostart $net_name
     virsh net-start $net_name
+
     virsh define $vms_template
     virsh start $vms_name
 }
@@ -310,20 +311,34 @@ function update_config
     fi
 }
 
-function clean_up_virtual_env()
+function clean_up_target_vms()
 {
     local vms=$(virsh list --all | tail -n +3 | awk '{print $2}')
     local active_vms=$(virsh list | tail -n +3 | awk '{print $2}')
-    for vm_name in ${VM_MULTINODE[@]} all_in_one daisy; do
+    for vm_name in ${VM_MULTINODE[@]} all_in_one; do
         if [[ $(echo $vms | tr " " "\n" | grep ^$vm_name$) ]]; then
             [[ $(echo $active_vms | tr " " "\n" | grep ^$vm_name$) ]] && virsh destroy $vm_name
             virsh undefine $vm_name
         fi
     done
+}
 
+function clean_up_daisy_vm()
+{
+    local vms=$(virsh list --all | tail -n +3 | awk '{print $2}')
+    local active_vms=$(virsh list | tail -n +3 | awk '{print $2}')
+    vm_name=daisy
+    if [[ $(echo $vms | tr " " "\n" | grep ^$vm_name$) ]]; then
+        [[ $(echo $active_vms | tr " " "\n" | grep ^$vm_name$) ]] && virsh destroy $vm_name
+        virsh undefine $vm_name
+    fi
+}
+
+function clean_up_daisy_vnetworks()
+{
     local nets=$(virsh net-list --all | tail -n +3 |awk '{print $1}')
     local active_nets=$(virsh net-list | tail -n +3 |awk '{print $1}')
-    for net_template in ${VMDELOY_DAISY_SERVER_NET} ${VMDEPLOY_TARGET_NODE_NET} ${VMDEPLOY_TARGET_KEEPALIVED_NET}; do
+    for net_template in ${VMDELOY_DAISY_SERVER_NET}; do
         network_name=$(grep "<name>" $net_template | awk -F "<|>" '{print $3}')
         if [[ $(echo $nets | tr " " "\n" | grep ^$network_name$) ]]; then
             [[ $(echo $active_nets | tr " " "\n" | grep ^$network_name$) ]] && virsh net-destroy $network_name
@@ -332,49 +347,92 @@ function clean_up_virtual_env()
     done
 }
 
-echo "====== clean up all node and network ======"
-if [ $IS_BARE == 0 ];then
-    clean_up_virtual_env
-else
-    virsh destroy daisy
-    virsh undefine daisy
-fi
+function clean_up_target_vnetworks()
+{
+    local nets=$(virsh net-list --all | tail -n +3 |awk '{print $1}')
+    local active_nets=$(virsh net-list | tail -n +3 |awk '{print $1}')
+    for net_template in ${VMDEPLOY_TARGET_NODE_NET} ${VMDEPLOY_TARGET_KEEPALIVED_NET}; do
+        network_name=$(grep "<name>" $net_template | awk -F "<|>" '{print $3}')
+        if [[ $(echo $nets | tr " " "\n" | grep ^$network_name$) ]]; then
+            [[ $(echo $active_nets | tr " " "\n" | grep ^$network_name$) ]] && virsh net-destroy $network_name
+            virsh net-undefine $network_name
+        fi
+    done
+}
 
-echo "====== create daisy node ======"
-$CREATE_QCOW2_PATH/daisy-img-modify.sh -c $CREATE_QCOW2_PATH/centos-img-modify.sh -w $WORKDIR -a $DAISY_IP $PARAS_IMAGE
-if [ $IS_BARE == 0 ];then
-    create_node $VMDELOY_DAISY_SERVER_NET daisy1 $VMDEPLOY_DAISY_SERVER_VM daisy
-else
-    virsh define $BMDEPLOY_DAISY_SERVER_VM
-    virsh start daisy
-fi
-#wait for the daisy1 network start finished for execute trustme.sh
-#here sleep 40 just needed in Dell blade server
-#for E9000 blade server we only have to sleep 20
-sleep 40
+function create_daisy_vm_and_networks()
+{
+    echo "====== Create Daisy VM ======"
+    $CREATE_QCOW2_PATH/daisy-img-modify.sh -c $CREATE_QCOW2_PATH/centos-img-modify.sh -w $WORKDIR -a $DAISY_IP $PARAS_IMAGE
+    if [ $IS_BARE == 0 ];then
+        create_node $VMDELOY_DAISY_SERVER_NET daisy1 $VMDEPLOY_DAISY_SERVER_VM daisy
+    else
+        virsh define $BMDEPLOY_DAISY_SERVER_VM
+        virsh start daisy
+    fi
 
-echo "====== install daisy ======"
-$DEPLOY_PATH/trustme.sh $DAISY_IP $DAISY_PASSWD
-ssh $SSH_PARAS $DAISY_IP "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE} ]]; then rm -fr ${REMOTE_SPACE}; fi"
-scp -r $WORKSPACE root@$DAISY_IP:${REMOTE_SPACE}
-ssh $SSH_PARAS $DAISY_IP "mkdir -p /home/daisy_install"
-update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $DAISY_IP
-scp $WORKSPACE/deploy/daisy.conf root@$DAISY_IP:/home/daisy_install
-ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/opnfv.bin  install"
-rc=$?
-if [ $rc -ne 0 ]; then
-    echo "daisy install failed"
-    exit 1
-else
-    echo "daisy install successfully"
-fi
+    #wait for the daisy1 network start finished for execute trustme.sh
+    #here sleep 40 just needed in Dell blade server
+    #for E9000 blade server we only have to sleep 20
+    sleep 40
+}
 
-echo "====== generate known_hosts file in daisy vm ======"
-touch $WORKSPACE/known_hosts
-scp $WORKSPACE/known_hosts root@$DAISY_IP:/root/.ssh/
+function clean_up_daisy_vm_and_networks()
+{
+    echo "====== Clean up Daisy VM and networks ======"
+    clean_up_daisy_vm
+    if [ $IS_BARE == 0 ];then
+        clean_up_daisy_vnetworks
+    fi
+}
 
-echo "====== add relate config of kolla ======"
-ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/prepare.sh -n $NETWORK -b $IS_BARE"
+function clean_up_target_vms_and_networks()
+{
+    echo "====== Clean up all target VMs and networks ======"
+    if [ $IS_BARE == 0 ];then
+        clean_up_target_vms
+        clean_up_target_vnetworks
+    fi
+}
+
+function install_daisy()
+{
+    echo "====== install daisy ======"
+    $DEPLOY_PATH/trustme.sh $DAISY_IP $DAISY_PASSWD
+    ssh $SSH_PARAS $DAISY_IP "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE} ]]; then rm -fr ${REMOTE_SPACE}; fi"
+    scp -r $WORKSPACE root@$DAISY_IP:${REMOTE_SPACE}
+    ssh $SSH_PARAS $DAISY_IP "mkdir -p /home/daisy_install"
+    update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $DAISY_IP
+    scp $WORKSPACE/deploy/daisy.conf root@$DAISY_IP:/home/daisy_install
+    ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/opnfv.bin  install"
+    rc=$?
+    if [ $rc -ne 0 ]; then
+        echo "daisy install failed"
+        exit 1
+    else
+        echo "daisy install successfully"
+    fi
+
+    #TODO: Why need this?
+    echo "====== generate known_hosts file in daisy vm ======"
+    touch $WORKSPACE/known_hosts
+    scp $WORKSPACE/known_hosts root@$DAISY_IP:/root/.ssh/
+}
+
+function config_daisy()
+{
+    echo "====== add relate config for Daisy and Kolla ======"
+    ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/prepare.sh -n $NETWORK -b $IS_BARE"
+}
+
+clean_up_target_vms_and_networks
+
+#TODO: These steps shall be done only for the first time
+clean_up_daisy_vm_and_networks
+create_daisy_vm_and_networks
+install_daisy
+config_daisy
+
 
 echo "====== prepare cluster and pxe ======"
 ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --cluster 'yes'"
