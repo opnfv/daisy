@@ -28,9 +28,7 @@ daisy.conf file.Then put the right configured daisy.conf file in the
 
 3. "os_install_type" field just support "pxe" for now.
 
-4. Daisy now use pxe server to install the os, so "build_pxe" must set to "yes".
-   If the value in daisy.conf in your env of /home/daisy_install/ dir is "no",
-   you must change this field to "yes" manually before installing Daisy.
+4. Daisy now use pxe server to install the os, the "build_pxe" item must set to "no".
 
 5. "eth_name" field is the pxe server interface, and this field is required when
    the "build_pxe" field set to "yes".This should be set to the interface
