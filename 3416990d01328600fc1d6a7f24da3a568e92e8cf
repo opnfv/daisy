@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_bb5ce2ee",
+        "filename": "docs/release/installation/recovery.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-28T02:48:57Z",
+      "side": 1,
+      "message": "what about:\nfor i in `daisy cluster-list | awk -F \"|\" \u0027{print $2}\u0027 | sed -n \u00274p\u0027 | tr -d \" \"`;do daisy cluster-delete $i;done",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 37
+      },
+      "revId": "3416990d01328600fc1d6a7f24da3a568e92e8cf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_db59e6ff",
+        "filename": "docs/release/installation/recovery.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-28T02:48:57Z",
+      "side": 1,
+      "message": "what about use:\nfor i in `daisy host-list | awk -F \"|\" \u0027{print $2}\u0027| grep -o \"[^ ]\\+\\( \\+[^ ]\\+\\)*\"|tail -n +2`;do daisy host-delete $i;done",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 32
+      },
+      "revId": "3416990d01328600fc1d6a7f24da3a568e92e8cf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_1b734e81",
+        "filename": "docs/release/installation/recovery.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-08-28T02:48:57Z",
+      "side": 1,
+      "message": "source /root/daisyrc_admin\ndaisy uninstall \u003ccluster-id\u003e\ndaisy install \u003ccluster-id\u003e",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 5
+      },
+      "revId": "3416990d01328600fc1d6a7f24da3a568e92e8cf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
