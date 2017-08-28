@@ -16,4 +16,4 @@ OPNFV Daisy4nfv Installation Guide
    bmdeploy.rst
    vmdeploy.rst
    recovery.rst
-
+   upgrade.rst
