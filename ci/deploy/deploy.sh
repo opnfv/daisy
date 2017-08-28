@@ -62,6 +62,7 @@ POD_NAME=''
 TARGET_HOSTS_NUM=0
 DRY_RUN=0
 IS_BARE=1
+SKIP_DEPLOY_DAISY=0
 VM_MULTINODE=("computer01" "computer02" "controller02" "controller03" "controller01")
 VALID_DEPLOY_SCENARIO=("os-nosdn-nofeature-noha" "os-nosdn-nofeature-ha" "os-odl_l3-nofeature-noha"
                        "os-odl_l2-nofeature-noha" "os-odl_l3-nofeature-ha" "os-odl_l2-nofeature-ha"
@@ -103,6 +104,9 @@ do
             ;;
         s)
             DEPLOY_SCENARIO=${OPTARG}
+            ;;
+        S)
+            SKIP_DEPLOY_DAISY=1
             ;;
         h)
             usage
@@ -427,11 +431,12 @@ function config_daisy()
 
 clean_up_target_vms_and_networks
 
-#TODO: These steps shall be done only for the first time
-clean_up_daisy_vm_and_networks
-create_daisy_vm_and_networks
-install_daisy
-config_daisy
+if [ ! $SKIP_DEPLOY_DAISY -eq 1 ]; then
+    clean_up_daisy_vm_and_networks
+    create_daisy_vm_and_networks
+    install_daisy
+    config_daisy
+fi
 
 
 echo "====== prepare cluster and pxe ======"
