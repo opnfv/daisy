@@ -13,4 +13,4 @@ Release notes for Daisy4nfv
    :maxdepth: 2
 
    installerconfig.rst
-
+   kollaconfig.rst
