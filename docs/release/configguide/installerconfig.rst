@@ -10,7 +10,7 @@
 Abstract
 ========
 
-This document compiles the release notes for the D 2.0 release of
+This document compiles the release notes for the E 1.0 release of
 OPNFV when using Daisy as a deployment tool.
 
 
