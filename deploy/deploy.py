@@ -52,33 +52,30 @@ from environment import (
 
 
 class DaisyDeployment(object):
-    def __init__(self, lab_name, pod_name, deploy_file, net_file, bin_file,
-                 daisy_only, cleanup_only, remote_dir, work_dir, storage_dir,
-                 pxe_bridge, deploy_log, scenario):
-        self.lab_name = lab_name
-        self.pod_name = pod_name
+    def __init__(self, **kwargs):
+        self.lab_name = kwargs['lab_name']
+        self.pod_name = kwargs['pod_name']
+        self.src_deploy_file = kwargs['deploy_file']
+        self.net_file = kwargs['net_file']
+        self.bin_file = kwargs['bin_file']
+        self.daisy_only = kwargs['daisy_only']
+        self.cleanup_only = kwargs['cleanup_only']
+        self.remote_dir = kwargs['remote_dir']
+        self.work_dir = kwargs['work_dir']
+        self.storage_dir = kwargs['storage_dir']
+        self.pxe_bridge = kwargs['pxe_bridge']
+        self.deploy_log = kwargs['deploy_log']
+        self.scenario = kwargs['scenario']
 
-        self.src_deploy_file = deploy_file
-        self.scenario = scenario
-        self.deploy_struct = self._construct_final_deploy_conf(scenario)
-        self.deploy_file, self.deploy_file_name = self._construct_final_deploy_file(self.deploy_struct, work_dir)
+        self.deploy_struct = self._construct_final_deploy_conf(self.scenario)
+        self.deploy_file, self.deploy_file_name = self._construct_final_deploy_file(self.deploy_struct, self.work_dir)
 
-        if not cleanup_only:
-            self.net_file = net_file
-            self.net_file_name = os.path.basename(net_file)
-            with open(net_file) as yaml_file:
+        if not self.cleanup_only:
+            self.net_file_name = os.path.basename(self.net_file)
+            with open(self.net_file) as yaml_file:
                 self.net_struct = yaml.safe_load(yaml_file)
         else:
             self.net_struct = None
-
-        self.bin_file = bin_file
-        self.daisy_only = daisy_only
-        self.cleanup_only = cleanup_only
-        self.remote_dir = remote_dir
-        self.work_dir = work_dir
-        self.storage_dir = storage_dir
-        self.pxe_bridge = pxe_bridge
-        self.deploy_log = deploy_log
 
         result = deploy_schema_validate(self.deploy_struct)
         if result:
@@ -209,16 +206,17 @@ class DaisyDeployment(object):
 
 
 def config_arg_parser():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(prog='python %s' % __file__,
+                                     description='NOTE: You need ROOT privilege to run this script.')
 
-    parser.add_argument('-lab', dest='lab_name', action='store', nargs='?',
-                        default=None,
+    parser.add_argument('-lab', dest='lab_name', action='store',
+                        default=None, required=True,
                         help='Lab Name')
-    parser.add_argument('-pod', dest='pod_name', action='store', nargs='?',
-                        default=None,
+    parser.add_argument('-pod', dest='pod_name', action='store',
+                        default=None, required=True,
                         help='Pod Name')
 
-    parser.add_argument('-bin', dest='bin_file', action='store', nargs='?',
+    parser.add_argument('-bin', dest='bin_file', action='store',
                         default=path_join(WORKSPACE, 'opnfv.bin'),
                         help='OPNFV Daisy BIN File')
 
@@ -228,28 +226,25 @@ def config_arg_parser():
     parser.add_argument('-co', dest='cleanup_only', action='store_true',
                         default=False,
                         help='Cleanup VMs and Virtual Networks')
-    # parser.add_argument('-nd', dest='no_daisy', action='store_true',
-    #                     default=False,
-    #                     help='Do not install Daisy Server when it exists')
 
-    parser.add_argument('-rdir', dest='remote_dir', action='store', nargs='?',
+    parser.add_argument('-rdir', dest='remote_dir', action='store',
                         default='/home/daisy',
                         help='Code directory on Daisy Server')
 
-    parser.add_argument('-wdir', dest='work_dir', action='store', nargs='?',
+    parser.add_argument('-wdir', dest='work_dir', action='store',
                         default='/tmp/workdir',
                         help='Temporary working directory')
-    parser.add_argument('-sdir', dest='storage_dir', action='store', nargs='?',
+    parser.add_argument('-sdir', dest='storage_dir', action='store',
                         default='/home/qemu/vms',
                         help='Storage directory for VM images')
-    parser.add_argument('-B', dest='pxe_bridge', action='store', nargs='?',
+    parser.add_argument('-B', dest='pxe_bridge', action='store',
                         default='pxebr',
                         help='Linux Bridge for booting up the Daisy Server VM '
                              '[default: pxebr]')
-    parser.add_argument('-log', dest='deploy_log', action='store', nargs='?',
+    parser.add_argument('-log', dest='deploy_log', action='store',
                         default=path_join(WORKSPACE, 'deploy.log'),
-                        help='Path and name of the deployment log file')
-    parser.add_argument('-s', dest='scenario', action='store', nargs='?',
+                        help='Deployment log file')
+    parser.add_argument('-s', dest='scenario', action='store',
                         default='os-nosdn-nofeature-noha',
                         help='Deployment scenario')
     return parser
@@ -258,6 +253,8 @@ def config_arg_parser():
 def parse_arguments():
     parser = config_arg_parser()
     args = parser.parse_args()
+
+    check_sudo_privilege()
 
     save_log_to_file(args.deploy_log)
     LI(args)
@@ -294,7 +291,6 @@ def parse_arguments():
 
 
 def main():
-    check_sudo_privilege()
     kwargs = parse_arguments()
     deploy = DaisyDeployment(**kwargs)
     deploy.run()
