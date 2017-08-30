@@ -35,10 +35,20 @@ def conf_file_dir(data_root):
     return os.path.join(data_root, 'lab_conf')
 
 
+def clear_tmp_dir(path):
+    filelist = os.listdir(path)
+    for file in filelist:
+        file_path = os.path.join(path, file)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+    os.rmdir(path)
+
+
 def test__set_qemu_compute(kolla_conf_file_nov_path):
     _set_qemu_compute()
     exp_conf_file = os.path.join(kolla_conf_file_nov_path, 'nova-compute.conf')
     assert os.path.isfile(exp_conf_file)
+    clear_tmp_dir(kolla_conf_file_nov_path)
 
 
 def test__set_default_floating_pool(kolla_conf_file_nov_path, conf_file_dir):
@@ -46,6 +56,7 @@ def test__set_default_floating_pool(kolla_conf_file_nov_path, conf_file_dir):
     _set_default_floating_pool(network_conf_file)
     exp_conf_file = os.path.join(kolla_conf_file_nov_path, 'nova-api.conf')
     assert os.path.isfile(exp_conf_file)
+    clear_tmp_dir(kolla_conf_file_nov_path)
 
 
 def test__set_trusts_auth(kolla_conf_file_heat_dir):
@@ -53,3 +64,4 @@ def test__set_trusts_auth(kolla_conf_file_heat_dir):
     exp_conf_file_1 = os.path.join(kolla_conf_file_heat_dir, 'heat-api.conf')
     exp_conf_file_2 = os.path.join(kolla_conf_file_heat_dir, 'heat-engine.conf')
     assert (os.path.isfile(exp_conf_file_1) and os.path.isfile(exp_conf_file_2))
+    clear_tmp_dir(kolla_conf_file_heat_dir)
