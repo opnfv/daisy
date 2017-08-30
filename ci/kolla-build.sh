@@ -9,25 +9,70 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
-# Build OpenStack container images as well as extension images.
-# Parameters: $1 kolla git url, for example,
-#                 https://git.openstack.org/openstack/kolla
-#             $2 kolla branch, for example, stable/newton
-#             $3 kolla tag, for example, 3.0.2
-
 set -o errexit
 set -o nounset
 set -o pipefail
 
-KOLLA_GIT=$1
-KOLLA_BRANCH=$2
-KOLLA_TAG=$3
+KOLLA_GIT="https://github.com/huzhijiang/kolla.git"
+KOLLA_BRANCH="stable/ocata"
+KOLLA_TAG=
+EXT_TAG=
 KOLLA_GIT_VERSION=
 KOLLA_IMAGE_VERSION=
 KOLLA_GIT_DIR=/tmp/kolla-git
 REGISTRY_VOLUME_DIR=/tmp/registry
 BUILD_OUTPUT_DIR=/tmp/kolla-build-output
 REGISTRY_SERVER_NAME=daisy-registry
+
+function usage
+{
+cat << EOF
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+`basename $0`: Build Daisy4NFV's Kolla image package
+
+usage: `basename $0` [options]
+
+OPTIONS:
+  -l  Kolla git repo location
+  -b  Kolla git repo branch 
+  -t  Kolla git repo code tag(base version of image)
+  -e  user defined tag extension(extended version)
+
+Examples:
+sudo `basename $0` -l https://git.openstack.org/openstack/kolla
+                   -b stable/ocata
+                   -t 4.0.2
+                   -e 1
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+EOF
+}
+
+while getopts "l:b:t:e:h" OPTION
+do
+    case $OPTION in
+        l)
+            KOLLA_GIT=${OPTARG}
+            ;;
+        b)
+            KOLLA_BRANCH=${OPTARG}
+            ;;
+        t)
+            KOLLA_TAG=${OPTARG}
+            ;;
+        e)
+            EXT_TAG=${OPTARG}
+            ;;
+        h)
+            usage
+            exit 0
+            ;;
+        *)
+            echo "${OPTION} is not a valid argument"
+            usage
+            exit 1
+            ;;
+    esac
+done
 
 function pre_check {
     echo "Pre setup"
@@ -183,9 +228,14 @@ function update_kolla_code {
     popd
 }
 
+function config_kolla {
+    rm -rf /etc/kolla/kolla-build.conf
+    KOLLA_IMAGE_VERSION=$(KOLLA_IMAGE_VERSION).$(EXT_TAG)
+}
+
 function start_build {
     echo "Start to build Kolla image"
-    REGISTRY_PARAM="--registry 127.0.0.1:5000 --push"
+    REGISTRY_PARAM="--registry 127.0.0.1:5000 --push --tag $KOLLA_IMAGE_VERSION"
     pushd $KOLLA_GIT_DIR/kolla
 
     # Some of the images may be failed to built out but is OK
@@ -230,6 +280,7 @@ pre_check
 # Try to cleanup images of the last failed run, if any.
 cleanup_kolla_image
 update_kolla_code
+config_kolla
 cleanup_kolla_image
 
 # Make sure there is no garbage in the registry server.
