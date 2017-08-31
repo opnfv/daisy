@@ -22,6 +22,30 @@
       "revId": "592172a0d23d4939ea7c77f4579afa605804a1ef",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_81b524f0",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-08-31T01:22:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_bb969992",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 2
+      },
+      "revId": "592172a0d23d4939ea7c77f4579afa605804a1ef",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
