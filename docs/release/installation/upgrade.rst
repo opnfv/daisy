@@ -13,8 +13,9 @@ and have their own file packaging layout, Daisy requires user to
 always use Kolla image file built by Daisy team. Currently, it can be
 got from http://120.24.17.215/.
 
-2. Put new version file into /var/lib/daisy/kolla/, for example,
-/var/lib/daisy/kolla/kolla-image-ocata-170811155446.tgz
+2. Put new version file into /var/lib/daisy/versionfile/kolla/, for
+example:
+/var/lib/daisy/versionfile/kolla/kolla-image-ocata-170811155446.tgz
 
 3. Add version file to Daisy's version management database then get the
 version ID.
@@ -22,6 +23,7 @@ version ID.
 
 .. code-block:: console
 
+    [root@daisy ~]# source /root/daisyrc_admin
     [root@daisy ~]# daisy version-add kolla-image-ocata-170811155446.tgz kolla
     +-------------+--------------------------------------+
     | Property    | Value                                |
