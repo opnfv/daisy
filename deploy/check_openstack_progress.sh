@@ -56,7 +56,7 @@ while true; do
         cat /var/log/daisy/api.log |grep -v wsgi
         echo "----------------------------------------------------"
         echo "this is the kolla install log"
-        tail -n 200 /var/log/daisy/kolla_$cluster_id*
+        tail -n 5000 /var/log/daisy/kolla_$cluster_id*
         exit 1
     else
         # get 'Role_progress' column
