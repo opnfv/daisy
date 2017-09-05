@@ -25,6 +25,9 @@ cirros_ver="0.3.5"
 cirros_filename="cirros-${cirros_ver}-x86_64-disk.img"
 cirros_url=${cirros_server}/${cirros_ver}/${cirros_filename}
 
+target_sub_dir="setup/bin_temp"
+target_dir=${TOOLS_PATH}/${target_sub_dir}
+
 function check_or_download_file()
 {
     file_path=$1
@@ -79,10 +82,10 @@ check_or_download_file $CACHE_PATH $imageserver/${imagename} ${imageserver}/${im
 check_or_download_file $CACHE_PATH "http://daisycloud.org/static/files/registry-server.tar"
 check_or_download_file $CACHE_PATH ${cirros_url}
 
-cp $CACHE_PATH/${isoname} $TOOLS_PATH/setup/bin_temp/
-cp $CACHE_PATH/$imagename $TOOLS_PATH/setup/bin_temp/
-cp $CACHE_PATH/registry-server.tar $TOOLS_PATH/setup/bin_temp/
-cp $CACHE_PATH/${cirros_filename} $TOOLS_PATH/setup/bin_temp/
+cp $CACHE_PATH/${isoname} ${target_dir}/
+cp $CACHE_PATH/$imagename ${target_dir}/
+cp $CACHE_PATH/registry-server.tar ${target_dir}/
+cp $CACHE_PATH/${cirros_filename} ${target_dir}/
 
-cp $TOOLS_PATH/setup/install_interface_patch.sh $TOOLS_PATH/setup/bin_temp/
-chmod +x $TOOLS_PATH/setup/bin_temp/install_interface_patch.sh
+cp $TOOLS_PATH/setup/install_interface_patch.sh ${target_dir}/
+chmod +x ${target_dir}/install_interface_patch.sh
