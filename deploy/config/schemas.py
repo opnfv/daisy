@@ -75,8 +75,19 @@ deploy_schema = {
 
 
 def _validate(data, schema):
+    if data.get('adapter', 'libvirt') == 'ipmi':
+        hosts_schema['items']['required'].append('ipmi_ip')
+        hosts_schema['items']['required'].append('ipmi_user')
+        hosts_schema['items']['required'].append('ipmi_pass')
+
     v = Draft4Validator(schema, format_checker=FormatChecker())
     errors = sorted(v.iter_errors(data), key=lambda e: e.path)
+
+    if data.get('adapter', 'libvirt') == 'ipmi':
+        hosts_schema['items']['required'].remove('ipmi_ip')
+        hosts_schema['items']['required'].remove('ipmi_user')
+        hosts_schema['items']['required'].remove('ipmi_pass')
+
     return errors
 
 
