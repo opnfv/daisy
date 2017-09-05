@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_dec9bd79",
+        "filename": "deploy/config/schemas.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-09-05T13:24:11Z",
+      "side": 1,
+      "message": "why add and then remove?",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 59
+      },
+      "revId": "c05c3e8ed4631d2c826d9175f9c78052630996b2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
