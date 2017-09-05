@@ -23,7 +23,8 @@ def conf_file_dir(data_root):
 
 @pytest.mark.parametrize('deploy_file_name', [
     ('deploy_virtual1.yml'),
-    ('deploy_virtual_error.yml')])
+    ('deploy_virtual_error.yml'),
+    ('deploy_baremetal.yml')])
 def test_deploy_schema_validate(conf_file_dir, deploy_file_name):
     data = yaml.safe_load(open(os.path.join(conf_file_dir, deploy_file_name), 'r'))
     errors = deploy_schema_validate(data)
@@ -31,3 +32,5 @@ def test_deploy_schema_validate(conf_file_dir, deploy_file_name):
         assert errors == []
     elif deploy_file_name == 'deploy_virtual_error.yml':
         assert errors != []
+    elif deploy_file_name == 'deploy_baremetal.yml':
+        assert errors == []
