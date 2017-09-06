@@ -7,6 +7,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
+import copy
 from jsonschema import Draft4Validator, FormatChecker
 import sys
 import yaml
@@ -73,6 +74,10 @@ deploy_schema = {
     'required': ['hosts', 'daisy_passwd', 'daisy_gateway']
 }
 
+deploy_schema_bm = copy.deepcopy(deploy_schema)
+deploy_schema_bm['properties']['hosts']['items']['required'] = \
+    ['roles', 'ipmi_ip', 'ipmi_user', 'ipmi_pass']
+
 
 def _validate(data, schema):
     v = Draft4Validator(schema, format_checker=FormatChecker())
@@ -80,15 +85,11 @@ def _validate(data, schema):
     return errors
 
 
-def item_validate(data, schema_type):
-    if schema_type not in schema_mapping:
-        return str('Schema Type %s does not exist' % schema_type)
-    else:
-        return _validate(data, schema_mapping.get(schema_type))
-
-
 def deploy_schema_validate(data):
-    return _validate(data, deploy_schema)
+    if data.get('adapter', 'libvirt') == 'ipmi':
+        return _validate(data, deploy_schema_bm)
+    else:
+        return _validate(data, deploy_schema)
 
 
 def _main():

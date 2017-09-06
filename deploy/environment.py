@@ -147,17 +147,15 @@ class BareMetalEnvironment(DaisyEnvironmentBase):
                   disks=[self.daisy_server_info['image']])
 
     def reboot_nodes(self, boot_dev=None):
-        # TODO: add ipmi info into deploy.yml, or read from PDF
-        address = 106
         for node in self.deploy_struct['hosts']:
-            node['ipmiIp'] = '192.168.1.' + str(address)
-            address += 1
-            if address > 111:
-                err_exit('the ipmi address exceeds the range 106~110')
-            node['ipmiUser'] = 'zteroot'
-            node['ipmiPass'] = 'superuser'
-            ipmi_reboot_node(node['ipmiIp'], node['ipmiUser'],
-                             node['ipmiPass'], boot_source=boot_dev)
+            if 'ipmi_ip' not in node \
+                    or 'ipmi_user' not in node \
+                    or 'ipmi_pass' not in node:
+                err_exit('Missing ipmi information')
+            ipmi_reboot_node(node['ipmi_ip'],
+                             node['ipmi_user'],
+                             node['ipmi_pass'],
+                             boot_source=boot_dev)
 
     def deploy(self, deploy_file, net_file):
         self.server.prepare_cluster(deploy_file, net_file)
