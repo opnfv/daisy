@@ -46,6 +46,30 @@
       "revId": "c05c3e8ed4631d2c826d9175f9c78052630996b2",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_e46d109a",
+        "filename": "deploy/config/schemas.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-09-06T01:25:41Z",
+      "side": 1,
+      "message": "How about we define two hosts_schema? One for baremetal and the other for virtual? Then schema_mapping can be\n\nschema_mapping \u003d {\n    \u0027bmhosts\u0027: bm_hosts_schema,\n    \u0027vmhosts\u0027: vm_hosts_schema,\n}",
+      "parentUuid": "da33351e_c45e0c12",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 59
+      },
+      "revId": "c05c3e8ed4631d2c826d9175f9c78052630996b2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
