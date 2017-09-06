@@ -17,6 +17,9 @@ import time
 import os
 import ConfigParser
 
+from utils import err_exit
+
+
 daisy_version = 1.0
 daisyrc_path = "/root/daisyrc_admin"
 daisy_conf_path = "/home/daisy_install/daisy.conf"
@@ -199,10 +202,11 @@ def get_cluster():
     return cluster_info
 
 
-def add_hosts_interface(cluster_id, hosts_info, hosts_name, mac_address_map,
+def add_hosts_interface(cluster_id, hosts_info, mac_address_map,
                         host_interface_map,
                         vip, isbare):
-    for host_name, host in zip(hosts_name, hosts_info):
+    for host in hosts_info:
+        host_name = None
         host = host.to_dict()
         host['cluster'] = cluster_id
         if isbare:
@@ -213,10 +217,14 @@ def add_hosts_interface(cluster_id, hosts_info, hosts_name, mac_address_map,
             if interface_name in host_interface_map:
                 interface['assigned_networks'] = \
                     host_interface_map[interface_name]
-            if mac_address_map:
-                for nodename in mac_address_map:
-                    if interface['mac'] in mac_address_map[nodename]:
-                        host_name = nodename
+            for nodename in mac_address_map:
+                if interface['mac'] in mac_address_map[nodename]:
+                    host_name = nodename
+
+        if host_name is None:
+            err_exit('Failed to find host name by mac address map: %r' \
+                % mac_address_map)
+ 
         pathlist = os.listdir(iso_path)
         for filename in pathlist:
             if filename.endswith('iso'):
