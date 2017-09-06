@@ -17,6 +17,9 @@ import time
 import os
 import ConfigParser
 
+from utils import err_exit
+
+
 daisy_version = 1.0
 daisyrc_path = "/root/daisyrc_admin"
 daisy_conf_path = "/home/daisy_install/daisy.conf"
@@ -199,10 +202,11 @@ def get_cluster():
     return cluster_info
 
 
-def add_hosts_interface(cluster_id, hosts_info, hosts_name, mac_address_map,
+def add_hosts_interface(cluster_id, hosts_info, mac_address_map,
                         host_interface_map,
                         vip, isbare):
-    for host_name, host in zip(hosts_name, hosts_info):
+    for host in hosts_info:
+        dha_host_name = None
         host = host.to_dict()
         host['cluster'] = cluster_id
         if isbare:
@@ -213,10 +217,14 @@ def add_hosts_interface(cluster_id, hosts_info, hosts_name, mac_address_map,
             if interface_name in host_interface_map:
                 interface['assigned_networks'] = \
                     host_interface_map[interface_name]
-            if mac_address_map:
-                for nodename in mac_address_map:
-                    if interface['mac'] in mac_address_map[nodename]:
-                        host_name = nodename
+            for nodename in mac_address_map:
+                if interface['mac'] in mac_address_map[nodename]:
+                    dha_host_name = nodename
+
+        if dha_host_name is None:
+            err_exit('Failed to find host name by mac address map: %r'
+                     % mac_address_map)
+ 
         pathlist = os.listdir(iso_path)
         for filename in pathlist:
             if filename.endswith('iso'):
@@ -225,10 +233,10 @@ def add_hosts_interface(cluster_id, hosts_info, hosts_name, mac_address_map,
             print("do not have os iso file in /var/lib/daisy/kolla/.")
         client.hosts.update(host['id'], **host)
         print("update role...")
-        add_host_role(cluster_id, host['id'], host_name, host['name'], vip)
+        add_host_role(cluster_id, host['id'], dha_host_name, vip)
 
 
-def add_host_role(cluster_id, host_id, host_exp_name, host_real_name, vip):
+def add_host_role(cluster_id, host_id, dha_host_name, vip):
     role_meta = {'filters': {'cluster_id': cluster_id}}
     role_list_generator = client.roles.list(**role_meta)
     role_list = [role for role in role_list_generator]
@@ -236,18 +244,18 @@ def add_host_role(cluster_id, host_id, host_exp_name, host_real_name, vip):
                   role.name == "CONTROLLER_LB"][0]
     computer_role_id = [role.id for role in role_list if
                         role.name == "COMPUTER"][0]
-    if host_exp_name in ['all_in_one']:
+    if dha_host_name in ['all_in_one']:
         role_lb_update_meta = {'nodes': [host_id],
                                'cluster_id': cluster_id, 'vip': vip}
         client.roles.update(lb_role_id, **role_lb_update_meta)
         role_computer_update_meta = {'nodes': [host_id],
                                      'cluster_id': cluster_id}
         client.roles.update(computer_role_id, **role_computer_update_meta)
-    if host_exp_name in ['controller01', 'controller02', 'controller03']:
+    if dha_host_name in ['controller01', 'controller02', 'controller03']:
         role_lb_update_meta = {'nodes': [host_id],
                                'cluster_id': cluster_id, 'vip': vip}
         client.roles.update(lb_role_id, **role_lb_update_meta)
-    if host_exp_name in ['computer01', 'computer02', 'computer03', 'computer04']:
+    if dha_host_name in ['computer01', 'computer02', 'computer03', 'computer04']:
         role_computer_update_meta = {'nodes': [host_id],
                                      'cluster_id': cluster_id}
         client.roles.update(computer_role_id, **role_computer_update_meta)
