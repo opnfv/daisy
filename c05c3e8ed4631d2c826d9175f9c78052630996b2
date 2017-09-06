@@ -70,6 +70,30 @@
       "revId": "c05c3e8ed4631d2c826d9175f9c78052630996b2",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_043114a2",
+        "filename": "deploy/config/schemas.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-09-06T01:39:40Z",
+      "side": 1,
+      "message": "Thanks. I\u0027ll commit another version.",
+      "parentUuid": "da33351e_e46d109a",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 59
+      },
+      "revId": "c05c3e8ed4631d2c826d9175f9c78052630996b2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
