@@ -23,7 +23,7 @@ from deploy.utils import (
     ('exist_file')])
 def test_check_file_exists(tmpdir, test_file_name):
     try:
-        file_path = os.path.join(tmpdir.dirname, test_file_name)
+        file_path = os.path.join(tmpdir.dirname, tmpdir.basename, test_file_name)
         if test_file_name == 'exist_file':
             os.mknod(file_path)
         check_file_exists(file_path)
@@ -43,7 +43,7 @@ def test_check_file_exists(tmpdir, test_file_name):
     ('exe_file')])
 def test_make_file_executable(tmpdir, test_file_name):
     try:
-        file_path = os.path.join(tmpdir.dirname, test_file_name)
+        file_path = os.path.join(tmpdir.dirname, tmpdir.basename, test_file_name)
         if test_file_name == 'no_exe_file':
             os.mknod(file_path)
         if test_file_name == 'exe_file':
@@ -66,9 +66,10 @@ def test_make_file_executable(tmpdir, test_file_name):
     ('exist_dir')])
 def test_confirm_dir_exists(tmpdir, test_dir_name):
     if test_dir_name == 'no_exist_dir':
-        dir_path = os.path.join(tmpdir.dirname, 'no_exist_dir')
+        dir_path = os.path.join(tmpdir.dirname, tmpdir.basename, 'no_exist_dir')
     if test_dir_name == 'exist_dir':
-        dir_path = tmpdir.mkdir('exist_dir').dirname
+        tmpsubdir = tmpdir.mkdir('exist_dir')
+        dir_path = os.path.join(tmpsubdir.dirname, tmpsubdir.basename)
     confirm_dir_exists(dir_path)
     assert os.path.isdir(dir_path)
     tmpdir.remove()
