@@ -110,14 +110,14 @@ def openrc_conf_file_dir(data_root):
     ('globals.yml'), ('globals_odl.yml')])
 def test__config_kolla_admin_openrc(globals_file_name, openrc_conf_file_dir, tmpdir):
     src_globals_file_path = os.path.join(openrc_conf_file_dir, globals_file_name)
-    dst_globals_file_path = os.path.join(tmpdir.dirname, 'globals.yml')
+    dst_globals_file_path = os.path.join(tmpdir.dirname, tmpdir.basename, 'globals.yml')
     shutil.copyfile(src_globals_file_path, dst_globals_file_path)
 
     src_openrc_file_path = os.path.join(openrc_conf_file_dir, 'admin-openrc.sh')
-    dst_openrc_file_path = os.path.join(tmpdir.dirname, 'admin-openrc.sh')
+    dst_openrc_file_path = os.path.join(tmpdir.dirname, tmpdir.basename, 'admin-openrc.sh')
     shutil.copyfile(src_openrc_file_path, dst_openrc_file_path)
 
-    _config_kolla_admin_openrc(tmpdir.dirname)
+    _config_kolla_admin_openrc(os.path.join(tmpdir.dirname, tmpdir.basename))
     src_openrc_lines = open(src_openrc_file_path, 'r').readlines()
     dst_openrc_lines = open(dst_openrc_file_path, 'r').readlines()
     if globals_file_name == 'globals.yml':
