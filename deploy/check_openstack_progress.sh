@@ -48,15 +48,27 @@ while true; do
     openstack_install_active=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $13}' | grep -c "active" `
     openstack_install_failed=`daisy host-list --cluster-id $cluster_id | awk -F "|" '{print $13}' | grep -c "install-failed" `
     if [ $openstack_install_active -eq $hosts_num ]; then
-        echo "openstack installing successful ..."
+        echo "openstack installation succeded ..."
         break
     elif [ $openstack_install_failed -gt 0 ]; then
-        echo "openstack installing have failed..."
-        echo "this is the daisy api log"
+        echo "openstack installation failed ..."
+        echo "Show daisy api log as following ..."
         cat /var/log/daisy/api.log |grep -v wsgi
-        echo "----------------------------------------------------"
-        echo "this is the kolla install log"
-        tail -n 5000 /var/log/daisy/kolla_$cluster_id*
+
+        files=$(ls /var/log/daisy/kolla_$cluster_id* 2>/dev/null | wc -l)
+        if [ $files -ne 0 ]; then
+            echo "----------------------------------------------------"
+            echo "Show kolla installation log as following ..."
+            tail -n 5000 /var/log/daisy/kolla_$cluster_id*
+        else
+            prepare_files=$(ls /var/log/daisy/kolla_prepare_$cluster_id* 2>/dev/null | wc -l)
+            if [ $prepare_files -ne 0 ]; then
+                echo "----------------------------------------------------"
+                echo "Show kolla preparation log as following ..."
+                tail -n 5000 /var/log/daisy/kolla_prepare_$cluster_id*
+            fi
+        fi
+
         exit 1
     else
         # get 'Role_progress' column
