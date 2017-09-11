@@ -476,6 +476,31 @@ function get_mac_addresses_for_virtual()
 }
 
 
+function reboot_baremetal_node()
+{
+    ips=(`grep ipmi_ip $DHA_CONF | awk '{print $2}' | tr "\n" " " | tr -d "\'"`)
+    ip_num=${#ips[@]}
+    users=(`grep ipmi_user $DHA_CONF | awk '{print $2}' | tr "\n" " " | tr -d "\'"`)
+    user_num=${#users[@]}
+    passwds=(`grep ipmi_pass $DHA_CONF | awk '{print $2}' | tr "\n" " " | tr -d "\'"`)
+    pass_num=${#passwds[@]}
+
+    if [ $ip_num -ne $TARGET_HOSTS_NUM ]; then
+        echo "ERROR: IPMI information should be provided for each node !"
+        exit 1
+    fi
+
+    for ((i=0; i<$ip_num; i++)); do
+        if [ $TARGET_HOSTS_NUM -eq $user_num && $TARGET_HOSTS_NUM -eq $pass_num ] ; then
+            ipmitool -I lanplus -H ${ips[$i]} -U ${users[$i]} -P ${passwds[$i]} -R 1 chassis bootdev pxe
+            ipmitool -I lanplus -H ${ips[$i]} -U ${users[$i]} -P ${passwds[$i]} -R 1 chassis power reset
+        else
+            ipmitool -I lanplus -H ${ips[$i]} -R 1 chassis bootdev pxe
+            ipmitool -I lanplus -H ${ips[$i]} -R 1 chassis power reset
+        fi
+    done
+}
+
 echo "====== create and find node ======"
 if [ $IS_BARE == 0 ];then
     if [ $TARGET_HOSTS_NUM == 1 ];then
@@ -498,10 +523,7 @@ if [ $IS_BARE == 0 ];then
     sleep 20
     get_mac_addresses_for_virtual
 else
-    for i in $(seq 106 110); do
-        ipmitool -I lanplus -H 192.168.1.$i -U zteroot -P superuser -R 1 chassis bootdev pxe
-        ipmitool -I lanplus -H 192.168.1.$i -U zteroot -P superuser -R 1 chassis  power reset
-    done
+    reboot_baremetal_node
 fi
 
 echo "====== prepare host and pxe ======"
