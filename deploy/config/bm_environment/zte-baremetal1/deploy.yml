@@ -1,20 +1,35 @@
-adapter: ipmi
+adapter: 'ipmi'
 hosts:
 - name: 'controller01'
   roles:
     - 'CONTROLLER_LB'
+  ipmi_ip: '192.168.1.106'
+  ipmi_user: 'testuser'
+  ipmi_pass: 'testpass'
 - name: 'controller02'
   roles:
     - 'CONTROLLER_LB'
+  ipmi_ip: '192.168.1.107'
+  ipmi_user: 'testuser'
+  ipmi_pass: 'testpass'
 - name: 'controller03'
   roles:
     - 'CONTROLLER_LB'
+  ipmi_ip: '192.168.1.108'
+  ipmi_user: 'testuser'
+  ipmi_pass: 'testpass'
 - name: 'computer01'
   roles:
     - 'COMPUTER'
+  ipmi_ip: '192.168.1.109'
+  ipmi_user: 'testuser'
+  ipmi_pass: 'testpass'
 - name: 'computer02'
   roles:
     - 'COMPUTER'
+  ipmi_ip: '192.168.1.110'
+  ipmi_user: 'testuser'
+  ipmi_pass: 'testpass'
 disks:
   daisy: 50
 daisy_passwd: 'r00tme'
