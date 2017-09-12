@@ -22,6 +22,30 @@
       "revId": "ac4e12b6d4ef5173e8a644dcb2c413fbecfb7963",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_f22ae42a",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/deploy.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-09-12T01:32:45Z",
+      "side": 1,
+      "message": "No. This file is just an example. I think the user/password should not be exposed here, only can be saved in securedlab.",
+      "parentUuid": "da33351e_920438c1",
+      "range": {
+        "startLine": 6,
+        "startChar": 11,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "ac4e12b6d4ef5173e8a644dcb2c413fbecfb7963",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
