@@ -16,6 +16,24 @@
       "revId": "94d3957c5aba2db70d06929ac9538280a71c6641",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_522630cf",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 2651
+      },
+      "writtenOn": "2017-09-12T06:13:41Z",
+      "side": 1,
+      "message": "totally agree, too difficult to understand the strategy",
+      "parentUuid": "da33351e_f27144e1",
+      "revId": "94d3957c5aba2db70d06929ac9538280a71c6641",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
