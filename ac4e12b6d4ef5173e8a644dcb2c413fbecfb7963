@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_920438c1",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/deploy.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-09-12T01:27:02Z",
+      "side": 1,
+      "message": "So the ipmi_ips of our env has changed the range from \u0027106-110\u0027 to \u002711-15\u0027?",
+      "range": {
+        "startLine": 6,
+        "startChar": 11,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "ac4e12b6d4ef5173e8a644dcb2c413fbecfb7963",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
