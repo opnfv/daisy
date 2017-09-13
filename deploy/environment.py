@@ -135,7 +135,6 @@ class BareMetalEnvironment(DaisyEnvironmentBase):
 
     def create_daisy_server_vm(self):
         # TODO: refactor the structure of deploy.yml, add VM template param of Daisy Server
-        #       add self.pxe_bridge into the vm template
         if 'template' in self.deploy_struct:
             # get VM name of Daisy Server from the template
             template = self.deploy_struct['template']
@@ -144,7 +143,8 @@ class BareMetalEnvironment(DaisyEnvironmentBase):
 
         create_vm(template,
                   name=self.daisy_server_info['name'],
-                  disks=[self.daisy_server_info['image']])
+                  disks=[self.daisy_server_info['image']],
+                  physical_bridge=self.pxe_bridge)
 
     def reboot_nodes(self, boot_dev=None):
         for node in self.deploy_struct['hosts']:
@@ -203,7 +203,6 @@ class VirtualEnvironment(DaisyEnvironmentBase):
 
     def create_daisy_server_vm(self):
         # TODO: refactor the structure of deploy.yml, add VM template param of Daisy Server
-        #       add self.pxe_bridge into the vm template
         if 'template' in self.deploy_struct:
             # get VM name of Daisy Server from the template
             template = self.deploy_struct['template']
