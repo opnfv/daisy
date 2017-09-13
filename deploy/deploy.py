@@ -11,11 +11,11 @@
 # TODO:
 # [ ] 1. specify VM templates (Server, Controller & Compute) in deploy.yml
 # [ ] 2. specify network templates in deploy.yml
-# [ ] 3. specify adapter(ipmi, libvirt) in deploy.yml
-# [ ] 4. get ipmi user/password from PDF (Pod Descriptor File)
-# [ ] 5. get pxe bridge from jjb
-# [ ] 6. enlarge the vm size of Controller & Compute in deploy.yml
-# [ ] 7. support scenarios options and configuration
+# [x] 3. specify adapter(ipmi, libvirt) in deploy.yml
+# [x] 4. get ipmi user/password from PDF (Pod Descriptor File)
+# [x] 5. get pxe bridge from jjb
+# [x] 6. enlarge the vm size of Controller & Compute in deploy.yml
+# [x] 7. support scenarios options and configuration
 ##############################################################################
 
 import argparse
@@ -85,11 +85,11 @@ class DaisyDeployment(object):
         self.adapter = self._get_adapter_info()
         LI('The adapter is %s' % self.adapter)
 
-        # TODO: modify the jjb code to provide bridge name
+        # Virtual deployment always uses 'daisy1' as default bridge.
         if self.adapter == 'libvirt':
             self.pxe_bridge = 'daisy1'
-        else:
-            self.pxe_bridge = 'br7'
+
+        LI('Use %s as the bridge name in daisy deployment.' % self.pxe_bridge)
 
         self.daisy_server_info = self._get_daisy_server_info()
 
