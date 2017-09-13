@@ -365,6 +365,18 @@ function clean_up_target_vnetworks()
     done
 }
 
+function update_pxe_bridge()
+{
+    bridge_name=$(grep "<source * bridge" $BMDEPLOY_DAISY_SERVER_VM | awk -F "'" '{print $2}')
+    if [ $? -eq 0 ] && [ ${bridge_name} != ${BRIDGE} ] && [ ! -z ${bridge_name} ]; then
+        line=$(awk "(/<source * bridge/){print NR}" $BMDEPLOY_DAISY_SERVER_VM)
+        if [ $? -eq 0 ] && [ ! -z $line ]; then
+            echo "Use $BRIDGE to replace the bridge in $BMDEPLOY_DAISY_SERVER_VM"
+            sed -i "${line} c\      <source bridge=\'${BRIDGE}\'/>" $BMDEPLOY_DAISY_SERVER_VM
+        fi
+    fi
+}
+
 function create_daisy_vm_and_networks()
 {
     echo "====== Create Daisy VM ======"
@@ -372,6 +384,7 @@ function create_daisy_vm_and_networks()
     if [ $IS_BARE == 0 ];then
         create_node $VMDELOY_DAISY_SERVER_NET daisy1 $VMDEPLOY_DAISY_SERVER_VM daisy
     else
+        update_pxe_bridge
         virsh define $BMDEPLOY_DAISY_SERVER_VM
         virsh start daisy
     fi
