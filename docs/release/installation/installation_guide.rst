@@ -4,7 +4,7 @@
 Daisy4nfv configuration
 =======================
 
-This document provides guidelines on how to install and configure the Danube
+This document provides guidelines on how to install and configure the Euphrates
 release of OPNFV when using Daisy as a deployment tool including required
 software and hardware configurations.
 
@@ -17,7 +17,7 @@ networking and Unix/Linux administration.
 Prerequisites
 -------------
 
-Before starting the installation of the Danube release of OPNFV, some plannings
+Before starting the installation of the Euphrates release of OPNFV, some plannings
 must be done.
 
 
@@ -33,7 +33,7 @@ The daily build bin image can be retrieved via OPNFV artifact repository:
 
 http://artifacts.opnfv.org/daisy.html
 
-NOTE: Search the keyword "daisy/Danube" to locate the bin image.
+NOTE: Search the keyword "daisy/Euphrates" to locate the bin image.
 
 E.g.
 daisy/opnfv-gerrit-27155.bin
@@ -49,9 +49,9 @@ To retrieve the repository of Daisy on Jumphost use the following command:
 
 - git clone https://gerrit.opnfv.org/gerrit/daisy
 
-To get stable Danube release, you can use the following command:
+To get stable Euphrates release, you can use the following command:
 
-- git checkout danube.1.0
+- git checkout euphrates.1.0
 
 
 Setup Requirements
