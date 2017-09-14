@@ -80,3 +80,25 @@ def test_session(openrc_conf_file_dir):
     openrc = os.path.join(openrc_conf_file_dir, 'admin-openrc.sh')
     KeystoneClient = Keystoneauth(openrc)
     assert KeystoneClient.session
+
+
+@pytest.mark.parametrize('openrc_file_name, expected', [
+    (
+        'admin-openrc.sh',
+        {
+            'OS_PROJECT_DOMAIN_NAME': 'Default',
+            'OS_USER_DOMAIN_NAME': 'Default',
+            'OS_PROJECT_NAME': 'admin',
+            'OS_TENANT_NAME': 'admin',
+            'OS_USERNAME': 'admin',
+            'OS_PASSWORD': 'keystone',
+            'OS_AUTH_URL': 'http://10.20.11.11:35357/v3',
+            'OS_INTERFACE': 'internal',
+            'OS_IDENTITY_API_VERSION': '3'
+        }
+    )])
+def test__parse_openrc(openrc_conf_file_dir, openrc_file_name, expected):
+    openrc = os.path.join(openrc_conf_file_dir, openrc_file_name)
+    KeystoneClient = Keystoneauth(openrc)
+    ret_openrc_dict = KeystoneClient._parse_openrc()
+    assert expected == ret_openrc_dict
