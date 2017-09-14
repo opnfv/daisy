@@ -7,15 +7,32 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 import os
-
+import mock
 import pytest
 
+from deploy import utils
 from deploy.utils import (
+    err_exit,
+    check_sudo_privilege,
     check_file_exists,
     make_file_executable,
     confirm_dir_exists,
     check_scenario_valid
 )
+
+
+def test_err_exit():
+    message = 'test error msg!'
+    with pytest.raises(SystemExit):
+        err_exit(message)
+
+
+@mock.patch('deploy.utils.err_exit')
+@mock.patch('deploy.utils.os.getuid')
+def test_check_sudo_privilege(mock_getuid, mock_err_exit):
+    mock_getuid.return_value = 1
+    check_sudo_privilege()
+    utils.err_exit.assert_called_once_with('You need run this script with sudo privilege')
 
 
 @pytest.mark.parametrize('test_file_name', [
