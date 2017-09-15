@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_b7332013",
+        "filename": "tests/unit/test_environment.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-09-15T07:56:08Z",
+      "side": 1,
+      "message": "why not get these structs from configuration files in tests/data/lab_conf folder?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "759ee22af128b510677df1ce2dff8215ae2fe070",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
