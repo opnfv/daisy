@@ -553,10 +553,10 @@ sleep 10
 
 if [ $IS_BARE == 0 ];then
     if [ $TARGET_HOSTS_NUM == 1 ];then
-        virsh reboot all_in_one
+        virsh reset all_in_one
     else
         for ((i=0;i<${#VM_MULTINODE[@]};i++));do
-            virsh reboot ${VM_MULTINODE[$i]}
+            virsh reset ${VM_MULTINODE[$i]}
         done
     fi
 fi
