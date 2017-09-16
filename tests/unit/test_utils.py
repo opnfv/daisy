@@ -81,9 +81,8 @@ def test_confirm_dir_exists(tmpdir, test_dir_name):
 def test_check_scenario_valid(scenario):
     try:
         check_scenario_valid(scenario)
+        assert True
     except SystemExit:
-        if scenario == 'os-nosdn-nofeature-ha':
-            assert 0
+        assert scenario in ['os-odl-kvm-ha']
     else:
-        if scenario == 'os-odl-kvm-ha':
-            assert 0
+        assert scenario not in ['os-odl-kvm-ha']
