@@ -52,9 +52,9 @@ Software deliverables
 Documentation deliverables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- - OPNFV(Danube) Daisy4nfv installation instructions
+ - OPNFV(Euphrates) Daisy4nfv installation instructions
 
- - OPNFV(Danube) Daisy4nfv Release Notes
+ - OPNFV(Euphrates) Daisy4nfv Release Notes
 
 Version change
 --------------
@@ -70,7 +70,7 @@ upstream components supported with this release.
 
  - Openstack (Ocata release)
 
- - Opendaylight (Carbon release)
+ - Opendaylight (Carbon SR1)
 
 Reason for new version
 ----------------------
@@ -82,7 +82,7 @@ Feature additions
 | **JIRA REFERENCE**                   | **SLOGAN**                              |
 |                                      |                                         |
 +--------------------------------------+-----------------------------------------+
-|                                      | Support OpenDayLight Carbon             |
+|                                      | Support OpenDayLight Carbon SR1         |
 |                                      |                                         |
 +--------------------------------------+-----------------------------------------+
 |                                      | Support OpenStack Ocata                 |
@@ -127,10 +127,9 @@ Known issues
 +----------------------+-------------------------------+-----------------------+
 |                      |                               |                       |
 |                      |                               |                       |
-|                      |                               |                       |
 +----------------------+-------------------------------+-----------------------+
-|  All HA scenario     | Occasionally lose VIP         | Failed in testcase,   |
-|                      |                               | normal in usage       |
+|                      |                               |                       |
+|                      |                               |                       |
 +----------------------+-------------------------------+-----------------------+
 
 
