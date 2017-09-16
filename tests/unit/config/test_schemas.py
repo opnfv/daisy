@@ -21,16 +21,11 @@ def conf_file_dir(data_root):
     return os.path.join(data_root, 'lab_conf')
 
 
-@pytest.mark.parametrize('deploy_file_name', [
-    ('deploy_virtual1.yml'),
-    ('deploy_virtual_error.yml'),
-    ('deploy_baremetal.yml')])
-def test_deploy_schema_validate(conf_file_dir, deploy_file_name):
+@pytest.mark.parametrize('deploy_file_name, tell_result', [
+    ('deploy_virtual1.yml', lambda x: x == []),
+    ('deploy_virtual_error.yml', lambda x: x != []),
+    ('deploy_baremetal.yml', lambda x: x == [])])
+def test_deploy_schema_validate(conf_file_dir, deploy_file_name, tell_result):
     data = yaml.safe_load(open(os.path.join(conf_file_dir, deploy_file_name), 'r'))
     errors = deploy_schema_validate(data)
-    if deploy_file_name == 'deploy_virtual1.yml':
-        assert errors == []
-    elif deploy_file_name == 'deploy_virtual_error.yml':
-        assert errors != []
-    elif deploy_file_name == 'deploy_baremetal.yml':
-        assert errors == []
+    assert tell_result(errors)
