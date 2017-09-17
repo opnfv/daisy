@@ -175,9 +175,9 @@ BMDEPLOY_DAISY_SERVER_VM=$WORKSPACE/templates/physical_environment/vms/daisy.xml
 
 function update_dha_by_pdf()
 {
-    local pdf_yaml=securedlab/labs/$LAB_NAME/${POD_NAME}.yaml
-    local jinja2_template=securedlab/installers/daisy/pod_config.yaml.j2
-    local generate_config=securedlab/utils/generate_config.py
+    local pdf_yaml=$BASE_PATH/labs/$LAB_NAME/${POD_NAME}.yaml
+    local jinja2_template=$BASE_PATH/installers/daisy/pod_config.yaml.j2
+    local generate_config=$BASE_PATH/utils/generate_config.py
     if [ ! -f ${generate_config} ] || [ ! -f ${pdf_yaml} ] || [ ! -f ${jinja2_template} ]; then
         return
     fi
