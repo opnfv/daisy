@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_c639d0a5",
+        "filename": "tests/unit/test_utils.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 2651
+      },
+      "writtenOn": "2017-09-18T02:38:03Z",
+      "side": 1,
+      "message": "two inputs with three branches, which one corresponds to which one? which one is the normal condition? which one is the exception?\n\nFor testing raise, pytest.raise() is highly recommended\n\nAnd in python coding, it is recommended to leverage raise XXXException() instead of using sys.exit() everywhere.",
+      "revId": "77dc3d117a7c4c23b22f2d83ab8cb6258354d01e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
