@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_06e738ad",
+        "filename": "tests/unit/test_utils.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-09-18T07:03:06Z",
+      "side": 1,
+      "message": "Better to use pytest.raises like:\n    with pytest.raises(SystemExit):\n        err_exit(message)",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "c2e9e88bc5631e786f5049ba6dbc494e3866b751",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
