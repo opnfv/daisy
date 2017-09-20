@@ -9,6 +9,7 @@
 import os
 import mock
 import pytest
+import mock
 
 from deploy import utils
 from deploy.utils import (
@@ -93,14 +94,16 @@ def test_confirm_dir_exists(tmpdir, test_dir_name):
 
 
 @pytest.mark.parametrize('scenario', [
-    ('os-nosdn-nofeature-ha'),
+    ('os-nosdn-nofeature-ha')])
+@mock.patch("deploy.utils.err_exit")
+def test_check_scenario_supported(mock_err_exit, scenario):
+    check_scenario_valid(scenario)
+    mock_err_exit.assert_not_called()
+
+
+@pytest.mark.parametrize('scenario', [
     ('os-odl-kvm-ha')])
-def test_check_scenario_valid(scenario):
-    try:
-        check_scenario_valid(scenario)
-    except SystemExit:
-        if scenario == 'os-nosdn-nofeature-ha':
-            assert 0
-    else:
-        if scenario == 'os-odl-kvm-ha':
-            assert 0
+@mock.patch("deploy.utils.err_exit")
+def test_check_scenario_unsupported(mock_err_exit, scenario):
+    check_scenario_valid(scenario)
+    mock_err_exit.assert_called_once()

@@ -21,7 +21,7 @@ deploy.prepare.execute.KOLLA_CONF_PATH = '/tmp'
 
 
 @pytest.fixture(scope="module")
-def kolla_conf_file_nov_path():
+def kolla_conf_file_nova_path():
     return os.path.join(deploy.prepare.execute.KOLLA_CONF_PATH, 'nova')
 
 
@@ -44,19 +44,19 @@ def clear_tmp_dir(path):
     os.rmdir(path)
 
 
-def test__set_qemu_compute(kolla_conf_file_nov_path):
+def test__set_qemu_compute(kolla_conf_file_nova_path):
     _set_qemu_compute()
-    exp_conf_file = os.path.join(kolla_conf_file_nov_path, 'nova-compute.conf')
+    exp_conf_file = os.path.join(kolla_conf_file_nova_path, 'nova-compute.conf')
     assert os.path.isfile(exp_conf_file)
-    clear_tmp_dir(kolla_conf_file_nov_path)
+    clear_tmp_dir(kolla_conf_file_nova_path)
 
 
-def test__set_default_floating_pool(kolla_conf_file_nov_path, conf_file_dir):
+def test__set_default_floating_pool(kolla_conf_file_nova_path, conf_file_dir):
     network_conf_file = os.path.join(conf_file_dir, 'network_virtual1.yml')
     _set_default_floating_pool(network_conf_file)
-    exp_conf_file = os.path.join(kolla_conf_file_nov_path, 'nova-api.conf')
+    exp_conf_file = os.path.join(kolla_conf_file_nova_path, 'nova-api.conf')
     assert os.path.isfile(exp_conf_file)
-    clear_tmp_dir(kolla_conf_file_nov_path)
+    clear_tmp_dir(kolla_conf_file_nova_path)
 
 
 def test__set_trusts_auth(kolla_conf_file_heat_dir):
