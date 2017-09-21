@@ -102,3 +102,13 @@ def test__parse_openrc(openrc_conf_file_dir, openrc_file_name, expected):
     KeystoneClient = Keystoneauth(openrc)
     ret_openrc_dict = KeystoneClient._parse_openrc()
     assert expected == ret_openrc_dict
+
+
+@pytest.mark.parametrize('openrc_file_name', [
+    (
+        'admin-openrc.sh'
+    )])
+def test__get_auth(openrc_conf_file_dir, openrc_file_name,):
+    openrc = os.path.join(openrc_conf_file_dir, openrc_file_name)
+    KeystoneClient = Keystoneauth(openrc)
+    assert KeystoneClient._get_auth()
