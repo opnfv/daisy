@@ -59,20 +59,20 @@ def _config_external_subnet(ext_id, network_conf):
     }
 
 
-def _create_external_network(network_file):
+def _create_external_network(network_file, openrc=None):
     network_conf = NetworkConfig(network_file=network_file)
     ext_name = network_conf.ext_network_name
     physnet = network_conf.ext_mapping if hasattr(network_conf, 'ext_mapping') else 'physnet1'
-    neutronclient = neutron.Neutron()
+    neutronclient = neutron.Neutron(openrc=openrc)
     ext_id = neutronclient.create_network(ext_name,
                                           _config_external_network(ext_name, physnet))
     if ext_id:
         neutronclient.create_subnet(_config_external_subnet(ext_id, network_conf))
 
 
-def _create_flavor_m1_micro():
+def _create_flavor_m1_micro(openrc=None):
     name = 'm1.micro'
-    novaclient = nova.Nova()
+    novaclient = nova.Nova(openrc=openrc)
     if not novaclient.get_flavor_by_name(name):
         try:
             return novaclient.create_flavor(name, ram=64, vcpus=1, disk=0)
@@ -118,8 +118,8 @@ def _prepare_cirros():
     return img
 
 
-def _create_image_TestVM():
-    glanceclient = glance.Glance()
+def _create_image_TestVM(openrc=None):
+    glanceclient = glance.Glance(openrc=openrc)
     image = 'TestVM'
     if not glanceclient.get_by_name(image):
         try:
@@ -162,8 +162,8 @@ def _config_ssh_security_group_rule(security_group_id):
     return body
 
 
-def _create_security_group_rules():
-    neutronclient = neutron.Neutron()
+def _create_security_group_rules(openrc=None):
+    neutronclient = neutron.Neutron(openrc=openrc)
     try:
         security_group_name = 'default'
         security_group = neutronclient.get_security_group_by_name(security_group_name)
