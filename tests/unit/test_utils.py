@@ -7,7 +7,6 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 import os
-import mock
 import pytest
 import mock
 

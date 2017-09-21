@@ -9,12 +9,14 @@
 
 import os
 import pytest
-
+import mock
 import deploy.prepare.execute
 from deploy.prepare.execute import (
     _set_qemu_compute,
     _set_default_floating_pool,
-    _set_trusts_auth
+    _set_trusts_auth,
+    _make_dirs,
+    _write_conf_file
 )
 
 deploy.prepare.execute.KOLLA_CONF_PATH = '/tmp'
@@ -65,3 +67,29 @@ def test__set_trusts_auth(kolla_conf_file_heat_dir):
     exp_conf_file_2 = os.path.join(kolla_conf_file_heat_dir, 'heat-engine.conf')
     assert (os.path.isfile(exp_conf_file_1) and os.path.isfile(exp_conf_file_2))
     clear_tmp_dir(kolla_conf_file_heat_dir)
+
+
+@pytest.mark.parametrize('ret_isdir', [
+    (True),
+    (False)])
+@mock.patch('os.path.isdir')
+@mock.patch('os.makedirs')
+def test__make_dirs(mock_makedirs, mock_isdir, ret_isdir):
+    path = '/tmp/test'
+    mock_makedirs.return_value = True
+    mock_isdir.return_value = ret_isdir
+    _make_dirs(path)
+    if ret_isdir is False:
+        mock_makedirs.assert_called_once_with(path, mode=0744)
+    else:
+        mock_makedirs.assert_not_called()
+
+
+def test__write_conf_file(tmpdir):
+    conf_file = os.path.join(tmpdir.dirname, tmpdir.basename, 'test_conf')
+    conf = 'conf_key1 = value1'
+    _write_conf_file(conf_file, conf)
+    with open(conf_file) as f:
+        data = f.readline().rstrip('\n')
+    assert data == conf
+    tmpdir.remove()
