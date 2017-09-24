@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "da33351e_e1478bba",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-09-24T00:20:54Z",
+      "side": 1,
+      "message": "Thanks for the PS, but please see my comment at https://gerrit.opnfv.org/gerrit/#/c/42149/1/jjb/daisy4nfv/daisy-deploy.sh@22",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 61
+      },
+      "revId": "4b1c740c30238264e4c3bc2edcfa0bf57850a183",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_c6eb9011",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 1
