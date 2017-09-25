@@ -22,6 +22,30 @@
       "revId": "56975272e92efa3f5f6f719028dc147c1d90e9ce",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_bc492ab9",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-09-25T06:06:53Z",
+      "side": 1,
+      "message": "Sorry. This is for BM only. Code is right",
+      "parentUuid": "da33351e_01338f63",
+      "range": {
+        "startLine": 381,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 8
+      },
+      "revId": "56975272e92efa3f5f6f719028dc147c1d90e9ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
