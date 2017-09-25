@@ -26,6 +26,7 @@ OPTIONS:
   -B  PXE Bridge for booting Daisy Master, optional
   -d  Configuration yaml file of DHA, optional, will be deleted later
   -D  Dry-run, does not perform deployment, will be deleted later
+  -L  Securelab repo dir
   -l  LAB name, necessary
   -p  POD name, necessary
   -r  Remote workspace in target server, optional
@@ -76,7 +77,7 @@ VALID_DEPLOY_SCENARIO=("os-nosdn-nofeature-noha" "os-nosdn-nofeature-ha" "os-odl
 ############################################################################
 # BEGIN of main
 #
-while getopts "b:B:Dd:n:l:p:r:w:s:Sh" OPTION
+while getopts "b:B:Dd:n:L:l:p:r:w:s:Sh" OPTION
 do
     case $OPTION in
         b)
@@ -90,6 +91,9 @@ do
             ;;
         D)
             DRY_RUN=1
+            ;;
+        L)
+            SECURELABDIR=${OPTARG}
             ;;
         l)
             LAB_NAME=${OPTARG}
@@ -147,6 +151,8 @@ NETWORK=$REMOTE_SPACE/labs/$LAB_NAME/$POD_NAME/daisy/config/network.yml
 # set temporay workdir
 WORKDIR=${WORKDIR:-/tmp/workdir/daisy}
 
+SECURELABDIR=${SECURELABDIR:-./securedlab}
+
 [[ $POD_NAME =~ (virtual) ]] && IS_BARE=0
 
 # set extra ssh paramters
@@ -180,9 +186,9 @@ BMDEPLOY_DAISY_SERVER_VM=$WORKSPACE/templates/physical_environment/vms/daisy.xml
 
 function update_dha_by_pdf()
 {
-    local pdf_yaml=securedlab/labs/$LAB_NAME/${POD_NAME}.yaml
-    local jinja2_template=securedlab/installers/daisy/pod_config.yaml.j2
-    local generate_config=securedlab/utils/generate_config.py
+    local pdf_yaml=${SECURELABDIR}/labs/$LAB_NAME/${POD_NAME}.yaml
+    local jinja2_template=${SECURELABDIR}/installers/daisy/pod_config.yaml.j2
+    local generate_config=${SECURELABDIR}/utils/generate_config.py
     if [ ! -f ${generate_config} ] || [ ! -f ${pdf_yaml} ] || [ ! -f ${jinja2_template} ]; then
         return
     fi
