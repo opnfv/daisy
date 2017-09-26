@@ -165,7 +165,7 @@ ifconfig br7 10.20.7.1 netmask 255.255.255.0 up
 service network restart
 
 (7) Run the script deploy.sh in daisy/ci/deploy/ with command:
-sudo ./ci/deploy/deploy.sh -b ../daisy  -l zte -p pod2 -s os-nosdn-nofeature-noha
+sudo ./ci/deploy/deploy.sh -b ./ -S ./  -l zte -p pod2 -s os-nosdn-nofeature-noha
 
 (8) When deploy successfully,the floating ip of openstack is 10.20.7.11,
 the login account is "admin" and the password is "keystone"
