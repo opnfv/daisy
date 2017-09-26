@@ -22,11 +22,10 @@ usage: `basename $0` -d dha_conf -l lab_name -p pod_name
                      -r remote_workspace -w workdir
 
 OPTIONS:
-  -b  Base configuration path, necessary
+  -b  Base configuration absolute path, obsoleted
   -B  PXE Bridge for booting Daisy Master, optional
-  -d  Configuration yaml file of DHA, optional, will be deleted later
   -D  Dry-run, does not perform deployment, will be deleted later
-  -L  Securelab repo dir
+  -L  Securelab repo absolute path, optional
   -l  LAB name, necessary
   -p  POD name, necessary
   -r  Remote workspace in target server, optional
@@ -41,7 +40,6 @@ Deploys the Daisy4NFV on the indicated lab resource
 Examples:
 sudo `basename $0` -b base_path
                    -l zte -p pod2 -B pxebr
-                   -d ./deploy/config/vm_environment/zte-virtual1/deploy.yml
                    -r /opt/daisy -w /opt/daisy -s os-nosdn-nofeature-noha
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 EOF
@@ -77,7 +75,7 @@ VALID_DEPLOY_SCENARIO=("os-nosdn-nofeature-noha" "os-nosdn-nofeature-ha" "os-odl
 ############################################################################
 # BEGIN of main
 #
-while getopts "b:B:Dd:n:L:l:p:r:w:s:Sh" OPTION
+while getopts "b:B:Dn:L:l:p:r:w:s:Sh" OPTION
 do
     case $OPTION in
         b)
@@ -85,9 +83,6 @@ do
             ;;
         B)
             BRIDGE=${OPTARG}
-            ;;
-        d)
-            DHA_CONF=${OPTARG}
             ;;
         D)
             DRY_RUN=1
@@ -125,9 +120,11 @@ do
     esac
 done
 
-if [ -z $BASE_PATH ] || [ ! -d $BASE_PATH ] || [ -z LAB_NAME ] || [ -z $POD_NAME ] ; then
+SECURELABDIR=${SECURELABDIR:-${WORKSPACE}/securedlab}
+
+if [[ ! "$SECURELABDIR" = /* ]] || [ -z $LAB_NAME ] || [ -z $POD_NAME ] ; then
     echo """Please check
-    BASE_PATH: $BASE_PATH
+    SECURELABDIR: $SECURELABDIR
     LAB_NAME: $LAB_NAME
     POD_NAME: $POD_NAME
     """
@@ -140,10 +137,12 @@ DEPLOY_SCENARIO=${DEPLOY_SCENARIO:-"os-nosdn-nofeature-noha"}
 
 BRIDGE=${BRIDGE:-pxebr}
 
-# read parameters from lab configuration file
-DHA_CONF=$BASE_PATH/labs/$LAB_NAME/$POD_NAME/daisy/config/deploy.yml
+# these two config files (should be absolute path) should be copied to
+# daisy node and names as ${DHA} and ${NETWORK}, see below.
+DHA_CONF=$SECURELABDIR/labs/$LAB_NAME/$POD_NAME/daisy/config/deploy.yml
+NETWORK_CONF=$SECURELABDIR/labs/$LAB_NAME/$POD_NAME/daisy/config/network.yml
 
-# set work space in daisy master node
+# work space and config files' path(absolute) in daisy node
 REMOTE_SPACE=${REMOTE_SPACE:-/home/daisy}
 DHA=$REMOTE_SPACE/labs/$LAB_NAME/$POD_NAME/daisy/config/deploy.yml
 NETWORK=$REMOTE_SPACE/labs/$LAB_NAME/$POD_NAME/daisy/config/network.yml
@@ -151,7 +150,6 @@ NETWORK=$REMOTE_SPACE/labs/$LAB_NAME/$POD_NAME/daisy/config/network.yml
 # set temporay workdir
 WORKDIR=${WORKDIR:-/tmp/workdir/daisy}
 
-SECURELABDIR=${SECURELABDIR:-./securedlab}
 
 [[ $POD_NAME =~ (virtual) ]] && IS_BARE=0
 
@@ -184,11 +182,12 @@ done
 BMDEPLOY_DAISY_SERVER_NET=$WORKSPACE/templates/physical_environment/networks/daisy.xml
 BMDEPLOY_DAISY_SERVER_VM=$WORKSPACE/templates/physical_environment/vms/daisy.xml
 
+# Note: This function must be exectuted in ${SECURELABDIR}
 function update_dha_by_pdf()
 {
-    local pdf_yaml=${SECURELABDIR}/labs/$LAB_NAME/${POD_NAME}.yaml
-    local jinja2_template=${SECURELABDIR}/installers/daisy/pod_config.yaml.j2
-    local generate_config=${SECURELABDIR}/utils/generate_config.py
+    local pdf_yaml=labs/$LAB_NAME/${POD_NAME}.yaml
+    local jinja2_template=installers/daisy/pod_config.yaml.j2
+    local generate_config=utils/generate_config.py
     if [ ! -f ${generate_config} ] || [ ! -f ${pdf_yaml} ] || [ ! -f ${jinja2_template} ]; then
         return
     fi
@@ -214,11 +213,12 @@ function update_dha_by_pdf()
 }
 
 if [[ ! -z $INSTALLER_IP ]]; then
-    pushd ${WORKSPACE}
+    pushd ${SECURELABDIR}
     update_dha_by_pdf
     popd
 fi
 
+# read parameters from $DHA_CONF
 PARAS_FROM_DEPLOY=`python $WORKSPACE/deploy/get_conf.py --dha $DHA_CONF`
 TARGET_HOSTS_NUM=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 1`
 DAISY_IP=`echo $PARAS_FROM_DEPLOY | cut -d " " -f 2`
@@ -228,7 +228,6 @@ PARAS_IMAGE=${PARAS_FROM_DEPLOY#* * * }
 
 if [ $DRY_RUN -eq 1 ]; then
     echo """
-    BASE_PATH: $BASE_PATH
     LAB_NAME: $LAB_NAME
     POD_NAME: $POD_NAME
     IS_BARE: $IS_BARE
@@ -422,6 +421,8 @@ function install_daisy()
     $DEPLOY_PATH/trustme.sh $DAISY_IP $DAISY_PASSWD
     ssh $SSH_PARAS $DAISY_IP "if [[ -f ${REMOTE_SPACE} || -d ${REMOTE_SPACE} ]]; then rm -fr ${REMOTE_SPACE}; fi"
     scp -r $WORKSPACE root@$DAISY_IP:${REMOTE_SPACE}
+    scp -q ${DHA_CONF} root@$DAISY_IP:${DHA}
+    scp -q ${NETWORK_CONF} root@$DAISY_IP:${NETWORK}
     ssh $SSH_PARAS $DAISY_IP "mkdir -p /home/daisy_install"
     update_config $WORKSPACE/deploy/daisy.conf daisy_management_ip $DAISY_IP
     scp $WORKSPACE/deploy/daisy.conf root@$DAISY_IP:/home/daisy_install
@@ -487,6 +488,7 @@ function get_mac_addresses_for_virtual()
         done
     fi
 
+    # update DHA file in daisy node
     scp -q $tmpfile root@$DAISY_IP:$DHA
     rm $tmpfile
 }
