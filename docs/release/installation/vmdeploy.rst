@@ -166,7 +166,7 @@ If selinux is disabled on the host, please delete all xml files section of below
   </seclabel>
 
 (6) Run the script deploy.sh in daisy/ci/deploy/ with command:
-sudo ./ci/deploy/deploy.sh -b ./ -l zte -p virtual1 -s os-nosdn-nofeature-ha
+sudo ./ci/deploy/deploy.sh -b ./ -S ./ -l zte -p virtual1 -s os-nosdn-nofeature-ha
 
 Note:
 The value after -p parameter(virtual1) is get from labs/zte/virtual1/daisy/config/
