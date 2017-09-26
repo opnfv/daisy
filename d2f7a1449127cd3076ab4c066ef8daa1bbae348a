@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_73ea2cad",
+        "filename": "test.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2017-09-26T07:49:41Z",
+      "side": 1,
+      "message": "Why we need this file?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "d2f7a1449127cd3076ab4c066ef8daa1bbae348a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
