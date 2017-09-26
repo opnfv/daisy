@@ -197,7 +197,7 @@ class VirtualEnvironment(DaisyEnvironmentBase):
     def create_daisy_server_network(self):
         net_name = create_virtual_network(VMDEPLOY_DAISY_SERVER_NET)
         if net_name != self.pxe_bridge:
-            self.delete_virtual_network(VMDEPLOY_DAISY_SERVER_NET)
+            delete_virtual_network(VMDEPLOY_DAISY_SERVER_NET)
             err_exit('Network name %s is wrong, pxe bridge is %s' % (net_name, self.pxe_bridge))
         self._daisy_server_net = net_name
 
