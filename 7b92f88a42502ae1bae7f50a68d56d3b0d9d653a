@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_330c24ed",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-09-26T07:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_735a2c2b",
+      "range": {
+        "startLine": 21,
+        "startChar": 21,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "7b92f88a42502ae1bae7f50a68d56d3b0d9d653a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_d342183d",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_73122c0a",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-09-26T07:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_d342183d",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 73
+      },
+      "revId": "7b92f88a42502ae1bae7f50a68d56d3b0d9d653a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_d397b88e",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 10
@@ -59,6 +107,30 @@
       "writtenOn": "2017-09-26T06:39:42Z",
       "side": 1,
       "message": "The directory \"$REMOTE_SPACE/labs/$LAB_NAME/$POD_NAME/daisy/config/\" should be created on the Daisy VM before scp. Or we can redefine the files path.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 71
+      },
+      "revId": "7b92f88a42502ae1bae7f50a68d56d3b0d9d653a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_136ac080",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-09-26T07:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_d397b88e",
       "range": {
         "startLine": 147,
         "startChar": 0,
