@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_504f1e6b",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-09-26T02:15:41Z",
+      "side": 1,
+      "message": "this seems wrong when ${DHA_CONF} is a relative path?",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 29
+      },
+      "revId": "1ab9b2647ce43d247fc6b4473a14787804994bf0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
