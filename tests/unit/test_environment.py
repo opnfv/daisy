@@ -2,10 +2,13 @@ import os
 import copy
 import mock
 import yaml
+import pytest
 from deepdiff import DeepDiff
 
 from deploy.utils import WORKSPACE
 from deploy import environment
+from deploy import daisy_server
+from deploy.daisy_server import DaisyServer
 from deploy.environment import (
     DaisyEnvironmentBase,
     BareMetalEnvironment,
@@ -80,7 +83,18 @@ def test_delete_daisy_server_DaisyEnvironmentBase(tmpdir, mocker):
     tmpdir.remove()
 
 
-def test_create_daisy_server_image_DaisyEnvironmentBase(tmpdir, monkeypatch):
+@pytest.mark.parametrize('ret_run_shell, ret_access', [
+    (0, 1),
+    (1, 0)])
+@mock.patch('deploy.environment.os.access')
+@mock.patch('deploy.environment.os.remove')
+@mock.patch('deploy.environment.shutil.move')
+@mock.patch('deploy.environment.err_exit')
+@mock.patch('deploy.environment.run_shell')
+def test_create_daisy_server_image_DaisyEnvironmentBase(mock_run_shell, mock_err_exit,
+                                                        mock_move, mock_remove,
+                                                        mock_access, tmpdir,
+                                                        ret_run_shell, ret_access):
     work_dir = os.path.join(tmpdir.dirname, tmpdir.basename, work_dir_name)
     os.makedirs(work_dir, 0755)
     storage_dir = os.path.join(tmpdir.dirname, tmpdir.basename, storage_dir_name)
@@ -90,15 +104,40 @@ def test_create_daisy_server_image_DaisyEnvironmentBase(tmpdir, monkeypatch):
     DaisyEnvBaseInst = DaisyEnvironmentBase(
         deploy_struct, net_struct, adapter, pxe_bridge,
         daisy_server, work_dir, storage_dir, scenario)
+    mock_run_shell.return_value = ret_run_shell
+    mock_access.return_value = ret_access
+    mock_err_exit.return_value = 0
 
-    def create_server_image_sucess(cmd):
-        os.makedirs(os.path.join(work_dir, 'daisy'))
-        with open(os.path.join(work_dir, 'daisy', 'centos7.qcow2'), 'w') as f:
-            f.write('image-data')
-        return 0
-    monkeypatch.setattr(environment, 'run_shell', create_server_image_sucess)
     DaisyEnvBaseInst.create_daisy_server_image()
-    assert os.path.isfile(DaisyEnvBaseInst.daisy_server_info['image'])
+    if ret_run_shell:
+        mock_err_exit.assert_called_once_with('Failed to create Daisy Server image')
+    else:
+        if ret_access:
+            mock_remove.assert_called_once_with(DaisyEnvBaseInst.daisy_server_info['image'])
+        else:
+            mock_move.assert_called_once()
+    tmpdir.remove()
+
+
+@mock.patch.object(daisy_server.DaisyServer, 'connect')
+@mock.patch.object(daisy_server.DaisyServer, 'install_daisy')
+def test_install_daisy_DaisyEnvironmentBase(mock_install_daisy, mock_connect, tmpdir):
+    work_dir = os.path.join(tmpdir.dirname, tmpdir.basename, work_dir_name)
+    os.makedirs(work_dir, 0755)
+    storage_dir = os.path.join(tmpdir.dirname, tmpdir.basename, storage_dir_name)
+    os.makedirs(storage_dir, 0755)
+    daisy_server = copy.deepcopy(daisy_server_info)
+    daisy_server['image'] = os.path.join(storage_dir, daisy_server['image'])
+    remote_dir = '/home/daisy'
+    bin_file = os.path.join(tmpdir.dirname, tmpdir.basename, 'opnfv.bin')
+    deploy_file_name = 'final_deploy.yml'
+    net_file_name = 'network_baremetal.yml'
+    DaisyEnvBaseInst = DaisyEnvironmentBase(
+        deploy_struct, net_struct, adapter, pxe_bridge,
+        daisy_server, work_dir, storage_dir, scenario)
+    DaisyEnvBaseInst.install_daisy(remote_dir, bin_file, deploy_file_name, net_file_name)
+    mock_install_daisy.assert_called_once_with()
+    mock_connect.assert_called_once_with()
     tmpdir.remove()
 
 
@@ -153,18 +192,23 @@ def test_create_daisy_server_vm_BareMetalEnvironment(mocker, tmpdir):
     tmpdir.remove()
 
 
+@pytest.mark.parametrize('deploy_struct_info', [
+    (deploy_struct)])
+@mock.patch('deploy.environment.err_exit')
 @mock.patch('deploy.environment.ipmi_reboot_node')
-def test_reboot_nodes_BareMetalEnvironment(mock_ipmi_reboot_node, tmpdir):
+def test_reboot_nodes_BareMetalEnvironment(mock_ipmi_reboot_node, mock_err_exit,
+                                           deploy_struct_info, tmpdir):
     work_dir = os.path.join(tmpdir.dirname, tmpdir.basename, work_dir_name)
     storage_dir = os.path.join(tmpdir.dirname, tmpdir.basename, storage_dir_name)
     daisy_server = copy.deepcopy(daisy_server_info)
     daisy_server['image'] = os.path.join(storage_dir, daisy_server['image'])
     mock_ipmi_reboot_node.return_value = True
+    mock_err_exit.return_value = 0
     BareMetalEnvironmentInst = BareMetalEnvironment(
-        deploy_struct, net_struct, adapter, pxe_bridge,
+        deploy_struct_info, net_struct, adapter, pxe_bridge,
         daisy_server, work_dir, storage_dir, scenario)
     BareMetalEnvironmentInst.reboot_nodes()
-    assert environment.ipmi_reboot_node.call_count == 5
+    assert mock_ipmi_reboot_node.call_count == 5
     tmpdir.remove()
 
 
@@ -183,6 +227,49 @@ def test_create_daisy_server_BareMetalEnvironment(mock_create_daisy_server_vm, m
     BareMetalEnvironmentInst.create_daisy_server()
     BareMetalEnvironmentInst.create_daisy_server_image.assert_called_once_with()
     BareMetalEnvironmentInst.create_daisy_server_vm.assert_called_once_with()
+    tmpdir.remove()
+
+
+@mock.patch.object(daisy_server.DaisyServer, 'prepare_cluster')
+@mock.patch.object(environment.BareMetalEnvironment, 'reboot_nodes')
+@mock.patch.object(daisy_server.DaisyServer, 'prepare_host_and_pxe')
+@mock.patch.object(daisy_server.DaisyServer, 'check_os_installation')
+@mock.patch.object(daisy_server.DaisyServer, 'check_openstack_installation')
+@mock.patch.object(daisy_server.DaisyServer, 'post_deploy')
+def test_deploy_BareMetalEnvironment(mock_post_deploy, mock_check_openstack_installation,
+                                     mock_check_os_installation, mock_prepare_host_and_pxe,
+                                     mock_reboot_nodes, mock_prepare_cluster,
+                                     tmpdir):
+    work_dir = os.path.join(tmpdir.dirname, tmpdir.basename, work_dir_name)
+    storage_dir = os.path.join(tmpdir.dirname, tmpdir.basename, storage_dir_name)
+    daisy_server = copy.deepcopy(daisy_server_info)
+    daisy_server['image'] = os.path.join(storage_dir, daisy_server['image'])
+    deploy_file = os.path.join(get_conf_file_dir(), 'deploy_baremetal.yml')
+    net_file = os.path.join(get_conf_file_dir(), 'network_baremetal.yml')
+    remote_dir = '/home/daisy'
+    bin_file = os.path.join(tmpdir.dirname, tmpdir.basename, 'opnfv.bin')
+    deploy_file_name = 'final_deploy.yml'
+    net_file_name = 'network_baremetal.yml'
+    BareMetalEnvironmentInst = BareMetalEnvironment(
+        deploy_struct, net_struct, adapter, pxe_bridge,
+        daisy_server, work_dir, storage_dir, scenario)
+    BareMetalEnvironmentInst.server = DaisyServer(
+        daisy_server['name'],
+        daisy_server['address'],
+        daisy_server['password'],
+        remote_dir,
+        bin_file,
+        adapter,
+        scenario,
+        deploy_file_name,
+        net_file_name)
+    BareMetalEnvironmentInst.deploy(deploy_file, net_file)
+    mock_prepare_cluster.assert_called_once_with(deploy_file, net_file)
+    mock_reboot_nodes.assert_called_once_with(boot_dev='pxe')
+    mock_prepare_host_and_pxe.assert_called_once_with()
+    mock_check_os_installation.assert_called_once_with(len(BareMetalEnvironmentInst.deploy_struct['hosts']))
+    mock_check_openstack_installation.assert_called_once_with(len(BareMetalEnvironmentInst.deploy_struct['hosts']))
+    mock_post_deploy.assert_called_once_with()
     tmpdir.remove()
 
 
@@ -208,19 +295,67 @@ def test_create_VirtualEnvironment_instance(tmpdir):
     tmpdir.remove()
 
 
-@mock.patch('deploy.environment.create_virtual_network')
-def test_create_daisy_server_network_VirtualEnvironment(mock_create_virtual_network, tmpdir):
+@mock.patch.object(environment.VirtualEnvironment, 'check_nodes_template')
+def test_check_configuration_VirtualEnvironment(mock_check_nodes_template, tmpdir):
     work_dir = os.path.join(tmpdir.dirname, tmpdir.basename, work_dir_name)
     storage_dir = os.path.join(tmpdir.dirname, tmpdir.basename, storage_dir_name)
     daisy_server = copy.deepcopy(daisy_server_info)
     daisy_server['image'] = os.path.join(storage_dir, daisy_server['image'])
-    mock_create_virtual_network.return_value = pxe_bridge_virtual
+    VirtualEnvironment(
+        deploy_virtual_struct, net_struct, adapter_virtual, pxe_bridge_virtual,
+        daisy_server, work_dir, storage_dir, scenario)
+    mock_check_nodes_template.assert_called_once_with()
+    tmpdir.remove()
+
+
+deploy_virtual_invalid_struct = get_conf_info_from_file(get_conf_file_dir(), 'deploy_virtual_invalid_template.yml')
+
+
+@pytest.mark.parametrize('deploy_struct_info', [
+    (deploy_struct),
+    (deploy_virtual_struct),
+    (deploy_virtual_invalid_struct)])
+@mock.patch('deploy.environment.err_exit')
+def test_check_nodes_template_VirtualEnvironment(mock_err_exit, deploy_struct_info, tmpdir):
+    work_dir = os.path.join(tmpdir.dirname, tmpdir.basename, work_dir_name)
+    storage_dir = os.path.join(tmpdir.dirname, tmpdir.basename, storage_dir_name)
+    daisy_server = copy.deepcopy(daisy_server_info)
+    daisy_server['image'] = os.path.join(storage_dir, daisy_server['image'])
+    mock_err_exit.return_value = 0
+    VirtualEnvironment(
+        deploy_struct_info, net_struct, adapter_virtual, pxe_bridge_virtual,
+        daisy_server, work_dir, storage_dir, scenario)
+    if deploy_struct_info == deploy_struct:
+        mock_err_exit.assert_not_called()
+    elif deploy_struct_info == deploy_virtual_struct:
+        mock_err_exit.assert_not_called()
+    elif deploy_struct_info == deploy_virtual_invalid_struct:
+        assert mock_err_exit.call_count == 5
+    tmpdir.remove()
+
+
+@pytest.mark.parametrize('net_name', [
+    (pxe_bridge_virtual)])
+@mock.patch('deploy.environment.create_virtual_network')
+@mock.patch('deploy.environment.err_exit')
+def test_create_daisy_server_network_VirtualEnvironment(mock_err_exit, mock_create_virtual_network,
+                                                        net_name, tmpdir):
+    work_dir = os.path.join(tmpdir.dirname, tmpdir.basename, work_dir_name)
+    storage_dir = os.path.join(tmpdir.dirname, tmpdir.basename, storage_dir_name)
+    daisy_server = copy.deepcopy(daisy_server_info)
+    daisy_server['image'] = os.path.join(storage_dir, daisy_server['image'])
+    mock_create_virtual_network.return_value = net_name
+    mock_err_exit.return_value = 0
     VirtualEnvironmentInst = VirtualEnvironment(
         deploy_virtual_struct, net_struct, adapter_virtual, pxe_bridge_virtual,
         daisy_server, work_dir, storage_dir, scenario)
     VirtualEnvironmentInst.create_daisy_server_network()
-    environment.create_virtual_network.assert_called_once_with(VMDEPLOY_DAISY_SERVER_NET)
-    assert VirtualEnvironmentInst._daisy_server_net == pxe_bridge_virtual
+    mock_create_virtual_network.assert_called_once_with(VMDEPLOY_DAISY_SERVER_NET)
+    if net_name == pxe_bridge_virtual:
+        mock_err_exit.assert_not_called()
+        assert VirtualEnvironmentInst._daisy_server_net == pxe_bridge_virtual
+    elif net_name == pxe_bridge:
+        mock_err_exit.assert_called_once()
     tmpdir.remove()
 
 
