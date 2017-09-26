@@ -121,7 +121,7 @@ def test_create_DaisyDeployment_instance(mock_err_exit, mock_deploy_schema_valid
         assert (deploy.adapter == 'libvirt' and deploy.pxe_bridge == 'daisy1')
 
     else:
-        assert (deploy.adapter == 'ipmi' and deploy.pxe_bridge == 'br7')
+        assert (deploy.adapter == 'ipmi' and deploy.pxe_bridge == 'pxebr')
 
     expect_dasiy_info['image'] = os.path.join(kwargs['storage_dir'], expect_dasiy_info['image'])
     assert deploy.daisy_server_info == expect_dasiy_info

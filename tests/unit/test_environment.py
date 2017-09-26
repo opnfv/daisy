@@ -148,7 +148,8 @@ def test_create_daisy_server_vm_BareMetalEnvironment(mocker, tmpdir):
     BareMetalEnvironmentInst.create_daisy_server_vm()
     environment.create_vm.assert_called_once_with(BMDEPLOY_DAISY_SERVER_VM,
                                                   name=daisy_server['name'],
-                                                  disks=[daisy_server['image']])
+                                                  disks=[daisy_server['image']],
+                                                  physical_bridge=pxe_bridge)
     tmpdir.remove()
 
 
