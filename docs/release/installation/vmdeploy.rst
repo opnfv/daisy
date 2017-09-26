@@ -166,9 +166,10 @@ If selinux is disabled on the host, please delete all xml files section of below
   </seclabel>
 
 (6) Run the script deploy.sh in daisy/ci/deploy/ with command:
-sudo ./ci/deploy/deploy.sh -b ./ -l zte -p virtual1 -s os-nosdn-nofeature-ha
+sudo ./ci/deploy/deploy.sh -L $(cd ./;pwd) -l zte -p virtual1 -s os-nosdn-nofeature-ha
 
 Note:
+The value after -L should be a absolute path which points to the directory which contents labs/zte/virtual1/daisy/config directory.
 The value after -p parameter(virtual1) is get from labs/zte/virtual1/daisy/config/
 The value after -l parameter(zte) is get from labs/
 The value after -s "os-nosdn-nofeature-ha" used for deploy multinode openstack

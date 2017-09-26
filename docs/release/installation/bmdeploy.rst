@@ -165,7 +165,14 @@ ifconfig br7 10.20.7.1 netmask 255.255.255.0 up
 service network restart
 
 (7) Run the script deploy.sh in daisy/ci/deploy/ with command:
-sudo ./ci/deploy/deploy.sh -b ../daisy  -l zte -p pod2 -s os-nosdn-nofeature-noha
+sudo ./ci/deploy/deploy.sh -L $(cd ./;pwd) -l zte -p pod2 -s os-nosdn-nofeature-noha
+
+Note:
+The value after -L should be a absolute path which points to the directory which contents labs/zte/pod2/daisy/config directory.
+The value after -p parameter(pod2) comes from path "labs/zte/pod2"
+The value after -l parameter(zte) comes from path  "labs/zte"
+The value after -s "os-nosdn-nofeature-ha" used for deploy multinode openstack
+The value after -s "os-nosdn-nofeature-noha" used for deploy all-in-one openstack
 
 (8) When deploy successfully,the floating ip of openstack is 10.20.7.11,
 the login account is "admin" and the password is "keystone"
