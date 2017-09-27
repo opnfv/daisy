@@ -69,6 +69,24 @@ def modify_vm_disk_file(root, disks):
         devices.append(disk)
 
 
+def modify_vm_bridge(root, bridge):
+    devices = root.find('./devices')
+    for interface in devices.findall('interface'):
+        source = interface.find('source')
+        if interface.attrib.get('type', None) == 'bridge' \
+                and source is not None \
+                and source.attrib.get('bridge', None) == bridge:
+            # pxebr is already in the VM template
+            return
+
+    for interface in devices.findall('interface'):
+        devices.remove(interface)
+
+    interface = ET.Element('interface', attrib={'type': 'bridge'})
+    interface.append(ET.Element('source', attrib={'bridge': bridge}))
+    devices.append(interface)
+
+
 def create_virtual_disk(disk_file, size):
     LI('Create virtual disk file %s size %d GB' % (disk_file, size))
     cmd = 'qemu-img create -f qcow2 {disk_file} {size}G'.format(
@@ -79,16 +97,18 @@ def create_virtual_disk(disk_file, size):
         err_exit('Fail to create qemu image !')
 
 
-def create_vm(template, name=None, disks=None):
+def create_vm(template, name=None, disks=None, physical_bridge=None):
     LI('Begin to create VM %s' % template)
 
-    if name or disks:
+    if name or disks or physical_bridge:
         tree = ET.ElementTree(file=template)
         root = tree.getroot()
         if name:
             modify_vm_name(root, name)
         if disks:
             modify_vm_disk_file(root, disks)
+        if physical_bridge:
+            modify_vm_bridge(root, physical_bridge)
 
         temp_file = path_join(WORKSPACE, 'tmp.xml')
         tree.write(temp_file)
