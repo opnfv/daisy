@@ -15,7 +15,7 @@ rpm_output_dir=$rpm_build_dir/build_output
 tmp_rpm_build_dir=/home/cache/daisy4nfv
 
 DAISYCORE_REPO="https://git.openstack.org/openstack/daisycloud-core"
-DAISYCORE_TAG="stable/ocata"
+DAISYCORE_TAG=
 
 if [[ -d $tmp_rpm_build_dir ]]; then
     rm -fr $tmp_rpm_build_dir
