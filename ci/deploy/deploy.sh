@@ -462,6 +462,10 @@ fi
 
 echo "====== prepare cluster and pxe ======"
 ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py --dha $DHA --network $NETWORK --cluster 'yes'"
+if [ $? -ne 0 ]; then
+    echo "Failed to prepare cluster and pxe, exit!"
+    exit 1
+fi
 
 
 function get_mac_addresses_for_virtual()
@@ -549,6 +553,10 @@ fi
 
 echo "====== prepare host and pxe ======"
 ssh $SSH_PARAS $DAISY_IP "python ${REMOTE_SPACE}/deploy/tempest.py  --dha $DHA --network $NETWORK --host 'yes' --isbare $IS_BARE --scenario $DEPLOY_SCENARIO"
+if [ $? -ne 0 ]; then
+    echo "Failed to prepare host and pxe, exit!"
+    exit 1
+fi
 
 if [ $IS_BARE == 0 ];then
     echo "====== daisy virtual-deploy operating system and openstack ======"

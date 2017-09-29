@@ -138,6 +138,7 @@ def prepare_install():
 
     except Exception:
         print("Deploy failed!!!.%s." % traceback.format_exc())
+        sys.exit(1)
     else:
         print_bar("Everything is done!")
 
