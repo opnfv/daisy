@@ -5,6 +5,7 @@ ENV BRANCH=${BRANCH:-master}
 RUN yum -y update
 RUN yum -y install centos-release-openstack-ocata
 RUN yum -y install \
+  genisoimage \
   wget \
   coreutils \
   which \
