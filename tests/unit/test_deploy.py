@@ -16,7 +16,7 @@ from deploy.utils import WORKSPACE
 import mock
 sys.modules['libvirt'] = mock.Mock()
 
-from deploy import environment                          # noqa: ignore=E402
+from deploy import environment  # noqa: ignore=E402
 from deploy.deploy import (
     config_arg_parser,
     DaisyDeployment,
@@ -128,6 +128,66 @@ def test_create_DaisyDeployment_instance(mock_err_exit, mock_deploy_schema_valid
     tmpdir.remove()
 
 
+@pytest.mark.parametrize('kwargs, is_use_pdf, exp_deploy_file', [
+    (
+        {
+            'lab_name': 'zte',
+            'pod_name': 'virtual1',
+            'deploy_file': 'deploy_virtual1.yml',
+            'net_file': 'network_virtual1.yml',
+            'bin_file': 'opnfv.bin',
+            'daisy_only': False,
+            'cleanup_only': False,
+            'remote_dir': '/home/daisy',
+            'work_dir': 'workdir',
+            'storage_dir': 'vms',
+            'pxe_bridge': 'libvirt',
+            'deploy_log': 'deploy.log',
+            'scenario': 'os-nosdn-nofeature-ha'
+        }, False, 'deploy_vir1_nosdn-ha.yml'
+    ),
+    (
+        {
+            'lab_name': 'zte',
+            'pod_name': 'pod1',
+            'deploy_file': 'deploy_baremetal.yml',
+            'net_file': 'network_baremetal.yml',
+            'bin_file': 'opnfv.bin',
+            'daisy_only': False,
+            'cleanup_only': False,
+            'remote_dir': '/home/daisy',
+            'work_dir': 'workdir',
+            'storage_dir': 'vms',
+            'pxe_bridge': 'pxebr',
+            'deploy_log': 'deploy.log',
+            'scenario': 'os-odl-nofeature-ha'
+        }, True, 'deploy_bare_odl-ha.yml'
+    )])
+@mock.patch.object(DaisyDeployment, '_use_pod_descriptor_file')
+def test__construct_final_deploy_conf_in_DaisyDeployment(mock__use_pod_descriptor_file,
+                                                         conf_file_dir, tmpdir,
+                                                         kwargs, is_use_pdf, exp_deploy_file):
+    kwargs['deploy_file'] = os.path.join(conf_file_dir, kwargs['deploy_file'])
+    kwargs['net_file'] = os.path.join(conf_file_dir, kwargs['net_file'])
+    tmpdir.join(kwargs['bin_file']).write('testdata')
+    kwargs['bin_file'] = os.path.join(tmpdir.dirname, tmpdir.basename, kwargs['bin_file'])
+    kwargs['deploy_log'] = os.path.join(tmpdir.dirname, tmpdir.basename, kwargs['deploy_log'])
+    tmpsubdir = tmpdir.mkdir(kwargs['work_dir'])
+    kwargs['work_dir'] = os.path.join(tmpsubdir.dirname, tmpsubdir.basename)
+    tmpsubdir = tmpdir.mkdir(kwargs['storage_dir'])
+    kwargs['storage_dir'] = os.path.join(tmpsubdir.dirname, tmpsubdir.basename)
+    exp_deploy_file_path = os.path.join(conf_file_dir, exp_deploy_file)
+    pdf_deploy_file = None if not is_use_pdf else kwargs['deploy_file']
+
+    mock__use_pod_descriptor_file.return_value = pdf_deploy_file
+    daisy_deploy = DaisyDeployment(**kwargs)
+    mock__use_pod_descriptor_file.asser_called_once_with()
+    with open(exp_deploy_file_path) as yaml_file:
+        exp_deploy_struct = yaml.safe_load(yaml_file)
+    assert daisy_deploy.deploy_struct == exp_deploy_struct
+    tmpdir.remove()
+
+
 @pytest.mark.parametrize('kwargs', [
     (
         {
@@ -213,6 +273,8 @@ def test_run_in_DaisyDeployment(mock_deploy, mock_install_daisy,
     tmpdir.remove()
 
 
+@pytest.mark.parametrize('cleanup_only', [
+    (False), (True)])
 @mock.patch('deploy.deploy.argparse.ArgumentParser.parse_args')
 @mock.patch('deploy.deploy.check_sudo_privilege')
 @mock.patch('deploy.deploy.save_log_to_file')
@@ -223,7 +285,7 @@ def test_run_in_DaisyDeployment(mock_deploy, mock_install_daisy,
 def test_parse_arguments(mock_confirm_dir_exists, mock_make_file_executable,
                          mock_check_file_exists, mock_check_scenario_valid,
                          mock_save_log_to_file, mock_check_sudo_privilege,
-                         mock_parse_args, tmpdir):
+                         mock_parse_args, cleanup_only, tmpdir):
     class MockArg():
         def __init__(self, lab_name, pod_name, bin_file, daisy_only,
                      cleanup_only, remote_dir, work_dir, storage_dir, pxe_bridge,
@@ -245,7 +307,6 @@ def test_parse_arguments(mock_confirm_dir_exists, mock_make_file_executable,
     conf_base_dir = os.path.join(WORKSPACE, 'labs', 'zte', 'pod2')
     deploy_file = os.path.join(conf_base_dir, 'daisy/config/deploy.yml')
     net_file = os.path.join(conf_base_dir, 'daisy/config/network.yml')
-    cleanup_only = False
     expected = {
         'lab_name': 'zte',
         'pod_name': 'pod2',

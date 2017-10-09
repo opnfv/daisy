@@ -1,16 +1,79 @@
 import os
 import pytest
 import mock
+import paramiko
 
 from deploy import daisy_server
 from deploy.daisy_server import (
-    DaisyServer
+    DaisyServer,
+    log_from_stream,
+    log_scp
 )
+from deploy.utils import WORKSPACE
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="module")
 def conf_file_dir(data_root):
     return os.path.join(data_root, 'lab_conf')
+
+
+@pytest.fixture(scope="module")
+def common_test_file_dir(data_root):
+    return os.path.join(data_root, 'common')
+
+
+def ssh_test_file_dir():
+    return os.path.join(WORKSPACE, 'tests/data/common')
+
+
+def get_ssh_test_command_from_file(dir, file_name):
+    file_path = os.path.join(dir, file_name)
+    with open(file_path) as f:
+        return f.read()
+
+
+data1 = get_ssh_test_command_from_file(ssh_test_file_dir(), 'ssh_stream_data1.txt')
+res1 = None
+expected_ret1 = None
+res2 = 'test_res_commd'
+data2 = get_ssh_test_command_from_file(ssh_test_file_dir(), 'ssh_stream_data2.txt')
+expected_ret2 = 'test_ssh_cmd3'
+data3 = get_ssh_test_command_from_file(ssh_test_file_dir(), 'ssh_stream_data3.txt')
+
+
+@pytest.mark.parametrize('data, res, expected', [
+    (data1, res1, expected_ret1),
+    (data1, res2, expected_ret1),
+    (data2, res1, expected_ret2),
+    (data2, res2, expected_ret2),
+    (data3, res1, expected_ret1),
+    (data3, res2, expected_ret1)])
+def test_log_from_stream(data, res, expected):
+    def log_func(str):
+        print str
+    pre_val = daisy_server.BLOCK_SIZE
+    daisy_server.BLOCK_SIZE = 16
+    ret = log_from_stream(res, data, log_func)
+    daisy_server.BLOCK_SIZE = pre_val
+    assert expected == ret
+
+
+@pytest.mark.parametrize('filename, size, send', [
+    ('test_file_name', 1024, 1000),
+    ('test_file_name', 2048, 2048),
+    ('test_file_name_1234', 2097152, 2097152)])
+@mock.patch('deploy.daisy_server.LD')
+def test_log_scp(mock_LD, filename, size, send):
+    pre_val = daisy_server.LEN_OF_NAME_PART
+    daisy_server.LEN_OF_NAME_PART = 24
+    log_scp(filename, size, send)
+    daisy_server.LEN_OF_NAME_PART = pre_val
+    if size != send:
+        mock_LD.assert_not_called()
+    elif len(filename) <= 18:
+        mock_LD.assert_called_once()
+    else:
+        assert mock_LD.call_count == 2
 
 
 daisy_server_info = {
@@ -53,6 +116,239 @@ def test_create_DaisyServer_instance(tmpdir):
     tmpdir.remove()
 
 
+@mock.patch.object(daisy_server.paramiko.SSHClient, 'connect')
+@mock.patch.object(daisy_server.DaisyServer, 'ssh_run')
+def test_connect_DaisyServer(mock_ssh_run, mock_connect, tmpdir):
+    bin_file = os.path.join(tmpdir.dirname, tmpdir.basename, bin_file_name)
+    mock_connect.return_value = 0
+    DaisyServerInst = DaisyServer(daisy_server_info['name'],
+                                  daisy_server_info['address'],
+                                  daisy_server_info['password'],
+                                  remote_dir,
+                                  bin_file,
+                                  adapter,
+                                  scenario,
+                                  deploy_file_name,
+                                  net_file_name)
+    DaisyServerInst.connect()
+    mock_ssh_run.assert_called_once_with('ls -al', check=True)
+    tmpdir.remove()
+
+
+@mock.patch.object(daisy_server.paramiko.SSHClient, 'close')
+@mock.patch.object(daisy_server.paramiko.SSHClient, 'connect')
+@mock.patch.object(daisy_server.DaisyServer, 'ssh_run')
+def test_close_DaisyServer(mock_ssh_run, mock_connect,
+                           mock_close, tmpdir):
+    bin_file = os.path.join(tmpdir.dirname, tmpdir.basename, bin_file_name)
+    mock_connect.return_value = 0
+    mock_ssh_run.return_valule = 0
+    mock_close.return_value = 0
+    DaisyServerInst = DaisyServer(daisy_server_info['name'],
+                                  daisy_server_info['address'],
+                                  daisy_server_info['password'],
+                                  remote_dir,
+                                  bin_file,
+                                  adapter,
+                                  scenario,
+                                  deploy_file_name,
+                                  net_file_name)
+    DaisyServerInst.connect()
+    DaisyServerInst.close()
+    mock_close.assert_called_once_with()
+    tmpdir.remove()
+
+
+stdout1 = open(os.path.join(ssh_test_file_dir(), 'sim_stdout_file'))
+stdin1 = open(os.path.join(ssh_test_file_dir(), 'sim_stdout_file'))
+stderr1 = open(os.path.join(ssh_test_file_dir(), 'sim_stderr_file'))
+stderr2 = open(os.path.join(ssh_test_file_dir(), 'sim_stdout_file'))
+
+
+@pytest.mark.parametrize('stdout, stdin, stderr', [
+    (stdout1, stdin1, stderr1),
+    (stdout1, stdin1, stderr2)])
+@mock.patch('deploy.daisy_server.err_exit')
+@mock.patch.object(daisy_server.paramiko.SSHClient, 'connect')
+@mock.patch.object(daisy_server.paramiko.SSHClient, 'exec_command')
+@mock.patch.object(daisy_server.DaisyServer, 'ssh_run')
+def test_ssh_exec_cmd_DaisyServer(mock_ssh_run, mock_exec_command,
+                                  mock_connect, mock_err_exit,
+                                  stdout, stdin, stderr, tmpdir):
+    bin_file = os.path.join(tmpdir.dirname, tmpdir.basename, bin_file_name)
+    cmd = 'ls -l'
+    mock_connect.return_value = 0
+    mock_ssh_run.return_valule = 0
+    expect = 'stdout file data'
+    mock_exec_command.return_value = (stdin, stdout, stderr)
+    DaisyServerInst = DaisyServer(daisy_server_info['name'],
+                                  daisy_server_info['address'],
+                                  daisy_server_info['password'],
+                                  remote_dir,
+                                  bin_file,
+                                  adapter,
+                                  scenario,
+                                  deploy_file_name,
+                                  net_file_name)
+    DaisyServerInst.connect()
+    ret = DaisyServerInst.ssh_exec_cmd(cmd)
+    mock_exec_command.assert_called_once()
+    if stderr == stderr1:
+        if stdout == stdout1:
+            assert ret == expect
+    elif stderr == stderr2:
+        mock_err_exit.assert_called_once_with('SSH client error occurred')
+    tmpdir.remove()
+
+
+@pytest.mark.parametrize('check, is_recv_exit_status, expect', [
+    (False, 0, 0),
+    (True, 1, 1)])
+@mock.patch('deploy.daisy_server.err_exit')
+@mock.patch.object(daisy_server.paramiko.SSHClient, 'get_transport')
+def test_ssh_run_DaisyServer(mock_get_transport, mock_err_exit,
+                             check, is_recv_exit_status,
+                             expect, tmpdir):
+    class TestSession():
+
+        def __init__(self, is_recv_exit_status):
+            self.recv_data = 'recv_test_data'
+            self.recv_data_total_len = len(self.recv_data)
+            self.recv_data_read_index = 0
+            self.recv_err_data = 'recv_test_err_data'
+            self.recv_err_data_total_len = len(self.recv_err_data)
+            self.recv_err_data_read_index = 0
+            self.is_recv_exit_status = is_recv_exit_status
+            return None
+
+        def exec_command(self, cmd):
+            return 0
+
+        def recv_ready(self):
+            return True
+
+        def recv(self, size):
+            if self.recv_data_read_index < self.recv_data_total_len:
+                if size <= self.recv_data_total_len - self.recv_data_read_index:
+                    cur_index = self.recv_data_read_index
+                    self.recv_data_read_index += size
+                    return self.recv_data[cur_index:self.recv_data_read_index]
+                else:
+                    cur_index = self.recv_data_read_index
+                    self.recv_data_read_index = self.recv_data_total_len
+                    return self.recv_data[cur_index:]
+            else:
+                return None
+
+        def recv_stderr_ready(self):
+            return True
+
+        def recv_stderr(self, size):
+            if self.recv_err_data_read_index < self.recv_err_data_total_len:
+                if size <= self.recv_err_data_total_len - self.recv_err_data_read_index:
+                    cur_index = self.recv_err_data_read_index
+                    self.recv_err_data_read_index += size
+                    return self.recv_err_data[cur_index:self.recv_err_data_read_index]
+                else:
+                    cur_index = self.recv_err_data_read_index
+                    self.recv_err_data_read_index = self.recv_err_data_total_len
+                    return self.recv_err_data[cur_index:]
+            else:
+                return None
+
+        def exit_status_ready(self):
+            return True
+
+        def recv_exit_status(self):
+            return self.is_recv_exit_status
+
+    class TestTransport():
+        def __init__(self, is_recv_exit_status):
+            self.is_recv_exit_status = is_recv_exit_status
+
+        def set_keepalive(self, time):
+            self.time = time
+
+        def open_session(self):
+            return TestSession(is_recv_exit_status)
+
+    bin_file = os.path.join(tmpdir.dirname, tmpdir.basename, bin_file_name)
+    cmd = 'ls -l'
+    mock_get_transport.return_value = TestTransport(is_recv_exit_status)
+    DaisyServerInst = DaisyServer(daisy_server_info['name'],
+                                  daisy_server_info['address'],
+                                  daisy_server_info['password'],
+                                  remote_dir,
+                                  bin_file,
+                                  adapter,
+                                  scenario,
+                                  deploy_file_name,
+                                  net_file_name)
+    DaisyServerInst.ssh_client = paramiko.SSHClient()
+    DaisyServerInst.ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    ret = DaisyServerInst.ssh_run(cmd, check=check)
+    if check and is_recv_exit_status:
+        mock_err_exit.assert_called_once()
+    assert ret == expect
+    tmpdir.remove()
+
+
+@mock.patch.object(daisy_server.scp.SCPClient, 'get')
+@mock.patch.object(daisy_server.paramiko.SSHClient, 'get_transport')
+@mock.patch.object(daisy_server.paramiko.SSHClient, 'connect')
+@mock.patch.object(daisy_server.paramiko.SSHClient, 'exec_command')
+@mock.patch.object(daisy_server.DaisyServer, 'ssh_run')
+def test_scp_get_DaisyServer(mock_ssh_run, mock_exec_command,
+                             mock_connect, mock_get_transport,
+                             mock_get, tmpdir):
+    bin_file = os.path.join(tmpdir.dirname, tmpdir.basename, bin_file_name)
+    mock_connect.return_value = 0
+    mock_ssh_run.return_valule = 0
+    remote = '/remote_dir'
+    local = '.'
+    DaisyServerInst = DaisyServer(daisy_server_info['name'],
+                                  daisy_server_info['address'],
+                                  daisy_server_info['password'],
+                                  remote_dir,
+                                  bin_file,
+                                  adapter,
+                                  scenario,
+                                  deploy_file_name,
+                                  net_file_name)
+    DaisyServerInst.connect()
+    DaisyServerInst.scp_get(remote, local)
+    mock_get.assert_called_once_with(remote, local_path=local, recursive=True)
+    tmpdir.remove()
+
+
+@mock.patch.object(daisy_server.scp.SCPClient, 'put')
+@mock.patch.object(daisy_server.paramiko.SSHClient, 'get_transport')
+@mock.patch.object(daisy_server.paramiko.SSHClient, 'connect')
+@mock.patch.object(daisy_server.paramiko.SSHClient, 'exec_command')
+@mock.patch.object(daisy_server.DaisyServer, 'ssh_run')
+def test_scp_put_DaisyServer(mock_ssh_run, mock_exec_command,
+                             mock_connect, mock_get_transport,
+                             mock_put, tmpdir):
+    bin_file = os.path.join(tmpdir.dirname, tmpdir.basename, bin_file_name)
+    mock_connect.return_value = 0
+    mock_ssh_run.return_valule = 0
+    remote = '.'
+    local = '/tmp'
+    DaisyServerInst = DaisyServer(daisy_server_info['name'],
+                                  daisy_server_info['address'],
+                                  daisy_server_info['password'],
+                                  remote_dir,
+                                  bin_file,
+                                  adapter,
+                                  scenario,
+                                  deploy_file_name,
+                                  net_file_name)
+    DaisyServerInst.connect()
+    DaisyServerInst.scp_put(local, remote)
+    mock_put.assert_called_once_with(local, remote_path=remote, recursive=True)
+    tmpdir.remove()
+
+
 @mock.patch.object(daisy_server.DaisyServer, 'ssh_exec_cmd')
 def test_create_dir_DaisyServer(mock_ssh_exec_cmd, tmpdir):
     remote_dir_test = '/home/daisy/test'
@@ -91,6 +387,13 @@ def test_delete_dir_DaisyServer(mock_ssh_exec_cmd, tmpdir):
     tmpdir.remove()
 
 
+bin_file_path1 = os.path.join('/tmp', bin_file_name)
+bin_file_path2 = os.path.join(WORKSPACE, bin_file_name)
+
+
+@pytest.mark.parametrize('bin_file', [
+    (bin_file_path1),
+    (bin_file_path2)])
 @mock.patch.object(daisy_server.DaisyServer, 'delete_dir')
 @mock.patch.object(daisy_server.DaisyServer, 'scp_put')
 @mock.patch.object(daisy_server.DaisyServer, 'create_dir')
@@ -99,8 +402,8 @@ def test_prepare_files_DaisyServer(mock_update_config,
                                    mock_create_dir,
                                    mock_scp_put,
                                    mock_delete_dir,
+                                   bin_file,
                                    tmpdir):
-    bin_file = os.path.join(tmpdir.dirname, tmpdir.basename, bin_file_name)
     DaisyServerInst = DaisyServer(daisy_server_info['name'],
                                   daisy_server_info['address'],
                                   daisy_server_info['password'],
@@ -113,7 +416,10 @@ def test_prepare_files_DaisyServer(mock_update_config,
     DaisyServerInst.prepare_files()
     DaisyServerInst.delete_dir.assert_called_once_with(remote_dir)
     DaisyServerInst.create_dir.assert_called_once_with('/home/daisy_install')
-    assert DaisyServerInst.scp_put.call_count == 3
+    if bin_file == bin_file_path1:
+        assert DaisyServerInst.scp_put.call_count == 3
+    else:
+        assert DaisyServerInst.scp_put.call_count == 2
     tmpdir.remove()
 
 
@@ -138,10 +444,11 @@ def test_install_daisy_DaisyServer(mock_prepare_files, mock_ssh_run, tmpdir):
     tmpdir.remove()
 
 
+@pytest.mark.parametrize('adapter', [
+    ('libvirt'), ('ipmi')])
 @mock.patch.object(daisy_server.DaisyServer, 'ssh_run')
-def test_prepare_configurations_DaisyServer(mock_ssh_run, tmpdir):
+def test_prepare_configurations_DaisyServer(mock_ssh_run, adapter, tmpdir):
     bin_file = os.path.join(tmpdir.dirname, tmpdir.basename, bin_file_name)
-    adapter = 'libvirt'
     DaisyServerInst = DaisyServer(daisy_server_info['name'],
                                   daisy_server_info['address'],
                                   daisy_server_info['password'],
@@ -158,7 +465,10 @@ def test_prepare_configurations_DaisyServer(mock_ssh_run, tmpdir):
         net_file=os.path.join(remote_dir, net_file_name),
         is_bare=1 if adapter == 'ipmi' else 0)
     DaisyServerInst.prepare_configurations()
-    DaisyServerInst.ssh_run.assert_called_once_with(cmd)
+    if adapter == 'libvirt':
+        DaisyServerInst.ssh_run.assert_called_once_with(cmd)
+    else:
+        DaisyServerInst.ssh_run.assert_not_called()
     tmpdir.remove()
 
 
