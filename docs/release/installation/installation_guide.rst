@@ -21,24 +21,27 @@ Before starting the installation of the Euphrates release of OPNFV, some plannin
 must be done.
 
 
-Retrieve the installation bin image
+Retrieve the installation iso image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-First of all, the installation bin which includes packages of Daisy, OS,
+First of all, the installation iso which includes packages of Daisy, OS,
 OpenStack, and so on is needed for deploying your OPNFV environment.
 
-The stable release bin image can be retrieved via `OPNFV software download page <https://www.opnfv.org/software>`_
+The stable release iso image can be retrieved via `OPNFV software download page <https://www.opnfv.org/software>`_
 
-The daily build bin image can be retrieved via OPNFV artifact repository:
+The daily build iso image can be retrieved via OPNFV artifact repository:
 
 http://artifacts.opnfv.org/daisy.html
 
-NOTE: Search the keyword "daisy/Euphrates" to locate the bin image.
+NOTE: Search the keyword "daisy/Euphrates" to locate the iso image.
 
 E.g.
-daisy/opnfv-gerrit-27155.bin
+daisy/opnfv-2017-10-06_09-50-23.iso
 
-The git url and sha1 of bin image are recorded in properties files.
+Download the iso file, then mount it to a specified directory and get the
+opnfv-*.bin from that directory.
+
+The git url and sha512 checksum of iso image are recorded in properties files.
 According to these, the corresponding deployment scripts can be retrieved.
 
 
