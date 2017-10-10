@@ -10,3 +10,4 @@ keystoneauth1
 python-glanceclient
 python-neutronclient
 python-novaclient
+elementtree
