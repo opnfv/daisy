@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a3d3df0_f9723748",
+        "filename": "tests/unit/test_libvirt_utils.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-10-11T01:58:12Z",
+      "side": 1,
+      "message": "ok, it is more simple and elegant, it is done.",
+      "parentUuid": "9a3d3df0_28360f04",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 23
+      },
+      "revId": "b08b154d6bf108699ded7e42ba95a1f109d390bb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3d3df0_39bf7fd2",
         "filename": "tests/unit/test_libvirt_utils.py",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-11T00:40:41Z",
       "side": 1,
       "message": "disks \u003d [ disk for disk in devices.findall(\u0027disk\u0027) if disk.attrib[\u0027device\u0027] \u003d\u003d \u0027disk\u0027 ]\n    assert len(disks) \u003d\u003d len(disks_path)\n    disk \u003d disks[0]\n    assert disk.attrib[\u0027type\u0027] \u003d\u003d \u0027file\u0027\n    driver \u003d disk.find(\u0027driver\u0027)\n    assert driver.attrib[\u0027name\u0027] \u003d\u003d \u0027qemu\u0027 and driver.attrib[\u0027type\u0027] \u003d\u003d \u0027qcow2\u0027\n    target \u003d disk.find(\u0027target\u0027)\n    assert target.attrib[\u0027bus\u0027] \u003d\u003d \u0027ide\u0027\n    source \u003d disk.find(\u0027source\u0027)\n    assert disk_path \u003d\u003d source.attrib[\u0027file\u0027]",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "b08b154d6bf108699ded7e42ba95a1f109d390bb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_598fe323",
+        "filename": "tests/unit/test_libvirt_utils.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-10-11T01:58:12Z",
+      "side": 1,
+      "message": "ok, it is more simple and elegant, it is done.",
+      "parentUuid": "9a3d3df0_39bf7fd2",
       "range": {
         "startLine": 80,
         "startChar": 0,
