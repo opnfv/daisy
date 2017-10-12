@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_a1dd1545",
+        "filename": "docs/release/installation/functest.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-10-12T08:29:21Z",
+      "side": 1,
+      "message": "deploying?",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "437e2d776a2bcd9edd89565f06cc370fa5928220",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_a1b4f5f2",
+        "filename": "docs/release/installation/functest.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-10-12T08:29:21Z",
+      "side": 1,
+      "message": "line is too long, suggest to split into more short rows.",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 153
+      },
+      "revId": "437e2d776a2bcd9edd89565f06cc370fa5928220",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_41bfe9d0",
+        "filename": "docs/release/installation/functest.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 6569
+      },
+      "writtenOn": "2017-10-12T08:29:21Z",
+      "side": 1,
+      "message": "be run?",
+      "range": {
+        "startLine": 24,
+        "startChar": 68,
+        "endLine": 24,
+        "endChar": 71
+      },
+      "revId": "437e2d776a2bcd9edd89565f06cc370fa5928220",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
