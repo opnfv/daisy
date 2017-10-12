@@ -394,6 +394,7 @@ bin_file_path2 = os.path.join(WORKSPACE, bin_file_name)
 @pytest.mark.parametrize('bin_file', [
     (bin_file_path1),
     (bin_file_path2)])
+@mock.patch('deploy.daisy_server.time.sleep')
 @mock.patch.object(daisy_server.DaisyServer, 'delete_dir')
 @mock.patch.object(daisy_server.DaisyServer, 'scp_put')
 @mock.patch.object(daisy_server.DaisyServer, 'create_dir')
@@ -402,6 +403,7 @@ def test_prepare_files_DaisyServer(mock_update_config,
                                    mock_create_dir,
                                    mock_scp_put,
                                    mock_delete_dir,
+                                   mock_sleep,
                                    bin_file,
                                    tmpdir):
     DaisyServerInst = DaisyServer(daisy_server_info['name'],
