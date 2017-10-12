@@ -46,9 +46,9 @@ def network(network=None):
     if net_plane == "TENANT":
         net_plane = "physnet1"
     network.pop('name')
-    map = {}
-    map[net_plane] = network
-    return map
+    network_map = {}
+    network_map[net_plane] = network
+    return network_map
 
 
 @decorator_mk('interfaces')
@@ -58,8 +58,8 @@ def interface(interface=None):
         net_name = "physnet1"
     interface_name = interface.get('interface', '')
     map2 = {}
-    map = {'ip': '', 'name': net_name}
-    map2[interface_name] = [map]
+    interface_map = {'name': net_name}
+    map2[interface_name] = [interface_map]
     return map2
 
 
@@ -67,25 +67,25 @@ def interface(interface=None):
 def role(host=None):
     hostname = host.get('name', '')
     role = host.get('roles', '')
-    map = {}
-    map[hostname] = role
-    return map
+    role_map = {}
+    role_map[hostname] = role
+    return role_map
 
 
 @decorator_mk('hosts')
 def host(host=None):
     hostip = host.get('ip', [])
     passwd = host.get('password', [])
-    map = {}
-    map = {'ip': hostip, 'passwd': passwd}
-    return map
+    host_map = {}
+    host_map = {'ip': hostip, 'passwd': passwd}
+    return host_map
 
 
 @decorator_mk('hosts')
 def mac_address(host=None):
     mac_addresses = host.get('mac_addresses', [])
-    map = {host['name']: mac_addresses}
-    return map
+    mac_addr_map = {host['name']: mac_addresses}
+    return mac_addr_map
 
 
 def network_config_parse(network_data):
