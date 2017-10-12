@@ -18,3 +18,4 @@ OPNFV Daisy4nfv Installation Guide
    recovery.rst
    upgrade.rst
    build_kolla_image.rst
+   functest.rst
