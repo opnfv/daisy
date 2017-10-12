@@ -244,6 +244,7 @@ def test_create_daisy_server_BareMetalEnvironment(mock_create_daisy_server_vm, m
     tmpdir.remove()
 
 
+@mock.patch('deploy.environment.time.sleep')
 @mock.patch.object(daisy_server.DaisyServer, 'prepare_cluster')
 @mock.patch.object(environment.BareMetalEnvironment, 'reboot_nodes')
 @mock.patch.object(daisy_server.DaisyServer, 'prepare_host_and_pxe')
@@ -253,6 +254,7 @@ def test_create_daisy_server_BareMetalEnvironment(mock_create_daisy_server_vm, m
 def test_deploy_BareMetalEnvironment(mock_post_deploy, mock_check_openstack_installation,
                                      mock_check_os_installation, mock_prepare_host_and_pxe,
                                      mock_reboot_nodes, mock_prepare_cluster,
+                                     mock_sleep,
                                      tmpdir):
     work_dir = os.path.join(tmpdir.dirname, tmpdir.basename, work_dir_name)
     storage_dir = os.path.join(tmpdir.dirname, tmpdir.basename, storage_dir_name)
@@ -439,12 +441,14 @@ def test_create_virtual_node_VirtualEnvironment(mock_create_virtual_disk, mock_c
     tmpdir.remove()
 
 
+@mock.patch('deploy.environment.time.sleep')
 @mock.patch('deploy.environment.create_virtual_network')
 @mock.patch('deploy.environment.get_vm_mac_addresses')
 @mock.patch.object(environment.VirtualEnvironment, 'create_virtual_node')
 def test_create_nodes_VirtualEnvironment(mock_create_virtual_node,
                                          mock_get_vm_mac_addresses,
                                          mock_create_virtual_network,
+                                         mock_sleep,
                                          tmpdir):
     keepalived_net_name = 'daisy3'
     work_dir = os.path.join(tmpdir.dirname, tmpdir.basename, work_dir_name)
@@ -538,6 +542,7 @@ def test_delete_old_environment_VirtualEnvironment(mock_delete_daisy_server,
     tmpdir.remove()
 
 
+@mock.patch('deploy.environment.time.sleep')
 @mock.patch.object(environment.DaisyServer, 'post_deploy')
 @mock.patch.object(environment.DaisyServer, 'check_openstack_installation')
 @mock.patch.object(environment.DaisyServer, 'check_os_installation')
@@ -553,6 +558,7 @@ def test_deploy_VirtualEnvironment(mock_create_nodes, mock_reboot_nodes,
                                    mock_copy_new_deploy_config, mock_prepare_host_and_pxe,
                                    mock_install_virtual_nodes, mock_check_os_installation,
                                    mock_check_openstack_installation, mock_post_deploy,
+                                   mock_sleep,
                                    tmpdir):
     work_dir = os.path.join(tmpdir.dirname, tmpdir.basename, work_dir_name)
     storage_dir = os.path.join(tmpdir.dirname, tmpdir.basename, storage_dir_name)
