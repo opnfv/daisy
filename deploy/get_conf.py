@@ -58,7 +58,7 @@ def interface(interface=None):
         net_name = "physnet1"
     interface_name = interface.get('interface', '')
     map2 = {}
-    map = {'ip': '', 'name': net_name}
+    map = {'name': net_name}
     map2[interface_name] = [map]
     return map2
 
