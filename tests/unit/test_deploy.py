@@ -12,7 +12,6 @@ import os
 import sys
 import shutil
 import yaml
-from deploy.utils import WORKSPACE
 import mock
 sys.modules['libvirt'] = mock.Mock()
 
@@ -38,7 +37,7 @@ def conf_file_dir(data_root):
 @pytest.mark.parametrize('kwargs, check_err, expect_dasiy_info', [
     ({'lab_name': 'zte',
       'pod_name': 'virtual1',
-      'deploy_file': 'deploy_virtual1.yml',
+      'src_deploy_file': 'deploy_virtual1.yml',
       'net_file': 'network_virtual1.yml',
       'bin_file': 'opnfv.bin',
       'daisy_only': False,
@@ -58,7 +57,7 @@ def conf_file_dir(data_root):
       'disk_size': 50}),
     ({'lab_name': 'zte',
       'pod_name': 'pod1',
-      'deploy_file': 'deploy_baremetal.yml',
+      'src_deploy_file': 'deploy_baremetal.yml',
       'net_file': 'network_baremetal.yml',
       'bin_file': 'opnfv.bin',
       'daisy_only': False,
@@ -82,7 +81,7 @@ def test_create_DaisyDeployment_instance(mock_err_exit, mock_deploy_schema_valid
                                          kwargs, expect_dasiy_info,
                                          conf_file_dir, tmpdir,
                                          check_err):
-    kwargs['deploy_file'] = os.path.join(conf_file_dir, kwargs['deploy_file'])
+    kwargs['src_deploy_file'] = os.path.join(conf_file_dir, kwargs['src_deploy_file'])
     kwargs['net_file'] = os.path.join(conf_file_dir, kwargs['net_file'])
     tmpdir.join(kwargs['bin_file']).write('testdata')
     kwargs['bin_file'] = os.path.join(tmpdir.dirname, tmpdir.basename, kwargs['bin_file'])
@@ -97,7 +96,7 @@ def test_create_DaisyDeployment_instance(mock_err_exit, mock_deploy_schema_valid
     assert (deploy.lab_name, deploy.pod_name, deploy.src_deploy_file, deploy.net_file, deploy.bin_file,
             deploy.daisy_only, deploy.cleanup_only, deploy.remote_dir, deploy.work_dir, deploy.storage_dir,
             deploy.deploy_log, deploy.scenario) == \
-           (kwargs['lab_name'], kwargs['pod_name'], kwargs['deploy_file'], kwargs['net_file'],
+           (kwargs['lab_name'], kwargs['pod_name'], kwargs['src_deploy_file'], kwargs['net_file'],
             kwargs['bin_file'], kwargs['daisy_only'], kwargs['cleanup_only'], kwargs['remote_dir'],
             kwargs['work_dir'], kwargs['storage_dir'], kwargs['deploy_log'], kwargs['scenario'])
     if check_err:
@@ -117,7 +116,7 @@ def test_create_DaisyDeployment_instance(mock_err_exit, mock_deploy_schema_valid
     else:
         assert deploy.net_struct is None
 
-    if 'virtual' in kwargs['deploy_file']:
+    if 'virtual' in kwargs['src_deploy_file']:
         assert (deploy.adapter == 'libvirt' and deploy.pxe_bridge == 'daisy1')
 
     else:
@@ -133,7 +132,7 @@ def test_create_DaisyDeployment_instance(mock_err_exit, mock_deploy_schema_valid
         {
             'lab_name': 'zte',
             'pod_name': 'virtual1',
-            'deploy_file': 'deploy_virtual1.yml',
+            'src_deploy_file': 'deploy_virtual1.yml',
             'net_file': 'network_virtual1.yml',
             'bin_file': 'opnfv.bin',
             'daisy_only': False,
@@ -150,7 +149,7 @@ def test_create_DaisyDeployment_instance(mock_err_exit, mock_deploy_schema_valid
         {
             'lab_name': 'zte',
             'pod_name': 'pod1',
-            'deploy_file': 'deploy_baremetal.yml',
+            'src_deploy_file': 'deploy_baremetal.yml',
             'net_file': 'network_baremetal.yml',
             'bin_file': 'opnfv.bin',
             'daisy_only': False,
@@ -167,7 +166,7 @@ def test_create_DaisyDeployment_instance(mock_err_exit, mock_deploy_schema_valid
 def test__construct_final_deploy_conf_in_DaisyDeployment(mock__use_pod_descriptor_file,
                                                          conf_file_dir, tmpdir,
                                                          kwargs, is_use_pdf, exp_deploy_file):
-    kwargs['deploy_file'] = os.path.join(conf_file_dir, kwargs['deploy_file'])
+    kwargs['src_deploy_file'] = os.path.join(conf_file_dir, kwargs['src_deploy_file'])
     kwargs['net_file'] = os.path.join(conf_file_dir, kwargs['net_file'])
     tmpdir.join(kwargs['bin_file']).write('testdata')
     kwargs['bin_file'] = os.path.join(tmpdir.dirname, tmpdir.basename, kwargs['bin_file'])
@@ -177,7 +176,7 @@ def test__construct_final_deploy_conf_in_DaisyDeployment(mock__use_pod_descripto
     tmpsubdir = tmpdir.mkdir(kwargs['storage_dir'])
     kwargs['storage_dir'] = os.path.join(tmpsubdir.dirname, tmpsubdir.basename)
     exp_deploy_file_path = os.path.join(conf_file_dir, exp_deploy_file)
-    pdf_deploy_file = None if not is_use_pdf else kwargs['deploy_file']
+    pdf_deploy_file = None if not is_use_pdf else kwargs['src_deploy_file']
 
     mock__use_pod_descriptor_file.return_value = pdf_deploy_file
     daisy_deploy = DaisyDeployment(**kwargs)
@@ -193,7 +192,7 @@ def test__construct_final_deploy_conf_in_DaisyDeployment(mock__use_pod_descripto
         {
             'lab_name': 'zte',
             'pod_name': 'virtual1',
-            'deploy_file': 'deploy_baremetal.yml',
+            'src_deploy_file': 'deploy_baremetal.yml',
             'net_file': 'network_baremetal.yml',
             'bin_file': 'opnfv.bin',
             'daisy_only': False,
@@ -210,7 +209,7 @@ def test__construct_final_deploy_conf_in_DaisyDeployment(mock__use_pod_descripto
         {
             'lab_name': 'zte',
             'pod_name': 'pod1',
-            'deploy_file': 'deploy_baremetal.yml',
+            'src_deploy_file': 'deploy_baremetal.yml',
             'net_file': 'network_baremetal.yml',
             'bin_file': 'opnfv.bin',
             'daisy_only': False,
@@ -227,7 +226,7 @@ def test__construct_final_deploy_conf_in_DaisyDeployment(mock__use_pod_descripto
         {
             'lab_name': 'zte',
             'pod_name': 'pod1',
-            'deploy_file': 'deploy_baremetal.yml',
+            'src_deploy_file': 'deploy_baremetal.yml',
             'net_file': 'network_baremetal.yml',
             'bin_file': 'opnfv.bin',
             'daisy_only': True,
@@ -247,7 +246,7 @@ def test__construct_final_deploy_conf_in_DaisyDeployment(mock__use_pod_descripto
 def test_run_in_DaisyDeployment(mock_deploy, mock_install_daisy,
                                 mock_create_daisy_server, mock_delete_old_environment,
                                 conf_file_dir, tmpdir, kwargs):
-    kwargs['deploy_file'] = os.path.join(conf_file_dir, kwargs['deploy_file'])
+    kwargs['src_deploy_file'] = os.path.join(conf_file_dir, kwargs['src_deploy_file'])
     kwargs['net_file'] = os.path.join(conf_file_dir, kwargs['net_file'])
     tmpdir.join(kwargs['bin_file']).write('testdata')
     kwargs['bin_file'] = os.path.join(tmpdir.dirname, tmpdir.basename, kwargs['bin_file'])
@@ -287,9 +286,10 @@ def test_parse_arguments(mock_confirm_dir_exists, mock_make_file_executable,
                          mock_save_log_to_file, mock_check_sudo_privilege,
                          mock_parse_args, cleanup_only, tmpdir):
     class MockArg():
-        def __init__(self, lab_name, pod_name, bin_file, daisy_only,
+        def __init__(self, labs_dir, lab_name, pod_name, bin_file, daisy_only,
                      cleanup_only, remote_dir, work_dir, storage_dir, pxe_bridge,
                      deploy_log, scenario):
+            self.labs_dir = labs_dir
             self.lab_name = lab_name
             self.pod_name = pod_name
             self.bin_file = bin_file
@@ -304,13 +304,15 @@ def test_parse_arguments(mock_confirm_dir_exists, mock_make_file_executable,
 
     bin_file_path = os.path.join(tmpdir.dirname, tmpdir.basename, 'opnfv.bin')
     deploy_log_path = os.path.join(tmpdir.dirname, tmpdir.basename, 'deploy.log')
-    conf_base_dir = os.path.join(WORKSPACE, 'labs', 'zte', 'pod2')
+    labs_dir = '/var/tmp/securedlab'
+    conf_base_dir = os.path.join(labs_dir, 'labs', 'zte', 'pod2')
     deploy_file = os.path.join(conf_base_dir, 'daisy/config/deploy.yml')
     net_file = os.path.join(conf_base_dir, 'daisy/config/network.yml')
     expected = {
+        'labs_dir': labs_dir,
         'lab_name': 'zte',
         'pod_name': 'pod2',
-        'deploy_file': deploy_file,
+        'src_deploy_file': deploy_file,
         'net_file': net_file,
         'bin_file': bin_file_path,
         'daisy_only': False,
@@ -322,7 +324,7 @@ def test_parse_arguments(mock_confirm_dir_exists, mock_make_file_executable,
         'deploy_log': deploy_log_path,
         'scenario': 'os-nosdn-nofeature-noha'
     }
-    mockarg = MockArg('zte', 'pod2', bin_file_path, False, cleanup_only, '/home/daisy', '/tmp/workdir',
+    mockarg = MockArg('/var/tmp/securedlab', 'zte', 'pod2', bin_file_path, False, cleanup_only, '/home/daisy', '/tmp/workdir',
                       '/home/qemu/vms', 'pxebr', deploy_log_path, 'os-nosdn-nofeature-noha')
     mock_parse_args.return_value = mockarg
     ret = parse_arguments()
@@ -356,7 +358,7 @@ def test_main(mock_parse_arguments, mock_run, cleanup_only, tmpdir, conf_file_di
     kwargs = {
         'lab_name': 'zte',
         'pod_name': 'pod2',
-        'deploy_file': deploy_file,
+        'src_deploy_file': deploy_file,
         'net_file': net_file,
         'bin_file': bin_file_path,
         'daisy_only': False,

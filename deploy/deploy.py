@@ -53,19 +53,8 @@ from environment import (
 
 class DaisyDeployment(object):
     def __init__(self, **kwargs):
-        self.lab_name = kwargs['lab_name']
-        self.pod_name = kwargs['pod_name']
-        self.src_deploy_file = kwargs['deploy_file']
-        self.net_file = kwargs['net_file']
-        self.bin_file = kwargs['bin_file']
-        self.daisy_only = kwargs['daisy_only']
-        self.cleanup_only = kwargs['cleanup_only']
-        self.remote_dir = kwargs['remote_dir']
-        self.work_dir = kwargs['work_dir']
-        self.storage_dir = kwargs['storage_dir']
-        self.pxe_bridge = kwargs['pxe_bridge']
-        self.deploy_log = kwargs['deploy_log']
-        self.scenario = kwargs['scenario']
+        for key in kwargs:
+            self.__setattr__(key, kwargs[key])
 
         self.deploy_struct = self._construct_final_deploy_conf(self.scenario)
         self.deploy_file, self.deploy_file_name = self._construct_final_deploy_file(self.deploy_struct, self.work_dir)
@@ -130,8 +119,8 @@ class DaisyDeployment(object):
             LW('INSTALLER_IP is not provided. Use deploy.yml in POD configuration directory !')
             return None
 
-        pdf_yaml = path_join(WORKSPACE, 'labs', self.lab_name, self.pod_name + '.yaml')
-        template_file = path_join(WORKSPACE, 'securedlab/installers/daisy/pod_config.yaml.j2')
+        pdf_yaml = path_join(self.labs_dir, 'labs', self.lab_name, self.pod_name + '.yaml')
+        template_file = path_join(self.labs_dir, 'installers/daisy/pod_config.yaml.j2')
         if not os.access(pdf_yaml, os.R_OK) or not os.access(template_file, os.R_OK):
             LI('There is not a POD Descriptor File or an installer template file for this deployment.')
             LI('Use deploy.yml in POD configuration directory !')
@@ -207,7 +196,12 @@ class DaisyDeployment(object):
 
 def config_arg_parser():
     parser = argparse.ArgumentParser(prog='python %s' % __file__,
+                                     formatter_class=argparse.RawTextHelpFormatter,
                                      description='NOTE: You need ROOT privilege to run this script.')
+
+    parser.add_argument('-L', dest='labs_dir', action='store',
+                        default=None, required=True,
+                        help='Base directory to store the labs configuration')
 
     parser.add_argument('-lab', dest='lab_name', action='store',
                         default=None, required=True,
@@ -239,7 +233,7 @@ def config_arg_parser():
                         help='Storage directory for VM images')
     parser.add_argument('-B', dest='pxe_bridge', action='store',
                         default='pxebr',
-                        help='Linux Bridge for booting up the Daisy Server VM '
+                        help='Linux Bridge for booting up the Daisy Server VM\n'
                              '[default: pxebr]')
     parser.add_argument('-log', dest='deploy_log', action='store',
                         default=path_join(WORKSPACE, 'deploy.log'),
@@ -261,7 +255,7 @@ def parse_arguments():
 
     check_scenario_valid(args.scenario)
 
-    conf_base_dir = path_join(WORKSPACE, 'labs', args.lab_name, args.pod_name)
+    conf_base_dir = path_join(args.labs_dir, 'labs', args.lab_name, args.pod_name)
     deploy_file = path_join(conf_base_dir, 'daisy/config/deploy.yml')
     net_file = path_join(conf_base_dir, 'daisy/config/network.yml')
 
@@ -273,9 +267,10 @@ def parse_arguments():
     confirm_dir_exists(args.storage_dir)
 
     kwargs = {
+        'labs_dir': args.labs_dir,
         'lab_name': args.lab_name,
         'pod_name': args.pod_name,
-        'deploy_file': deploy_file,
+        'src_deploy_file': deploy_file,
         'net_file': net_file,
         'bin_file': args.bin_file,
         'daisy_only': args.daisy_only,
