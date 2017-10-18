@@ -49,8 +49,8 @@ data3 = get_ssh_test_command_from_file(ssh_test_file_dir(), 'ssh_stream_data3.tx
     (data3, res1, expected_ret1),
     (data3, res2, expected_ret1)])
 def test_log_from_stream(data, res, expected):
-    def log_func(str):
-        print str
+    def log_func(msg):
+        print(msg)
     pre_val = daisy_server.BLOCK_SIZE
     daisy_server.BLOCK_SIZE = 16
     ret = log_from_stream(res, data, log_func)
@@ -448,8 +448,9 @@ def test_install_daisy_DaisyServer(mock_prepare_files, mock_ssh_run, tmpdir):
 
 @pytest.mark.parametrize('adapter', [
     ('libvirt'), ('ipmi')])
+@mock.patch.object(daisy_server.DaisyServer, 'scp_put')
 @mock.patch.object(daisy_server.DaisyServer, 'ssh_run')
-def test_prepare_configurations_DaisyServer(mock_ssh_run, adapter, tmpdir):
+def test_prepare_configurations_DaisyServer(mock_ssh_run, mock_scp_put, adapter, tmpdir):
     bin_file = os.path.join(tmpdir.dirname, tmpdir.basename, bin_file_name)
     DaisyServerInst = DaisyServer(daisy_server_info['name'],
                                   daisy_server_info['address'],
@@ -461,25 +462,24 @@ def test_prepare_configurations_DaisyServer(mock_ssh_run, adapter, tmpdir):
                                   deploy_file_name,
                                   net_file_name)
     mock_ssh_run.return_value = 0
+    deploy_file = os.path.join(tmpdir.dirname, tmpdir.basename, deploy_file_name)
+    net_file = os.path.join(tmpdir.dirname, tmpdir.basename, net_file_name)
     cmd = 'export PYTHONPATH={python_path}; python {script} -nw {net_file} -b {is_bare}'.format(
         python_path=remote_dir,
         script=os.path.join(remote_dir, 'deploy/prepare/execute.py'),
         net_file=os.path.join(remote_dir, net_file_name),
         is_bare=1 if adapter == 'ipmi' else 0)
-    DaisyServerInst.prepare_configurations()
+    DaisyServerInst.prepare_configurations(deploy_file, net_file)
     if adapter == 'libvirt':
         DaisyServerInst.ssh_run.assert_called_once_with(cmd)
     else:
         DaisyServerInst.ssh_run.assert_not_called()
+    assert DaisyServerInst.scp_put.call_count == 2
     tmpdir.remove()
 
 
-@mock.patch.object(daisy_server.DaisyServer, 'scp_put')
-@mock.patch.object(daisy_server.DaisyServer, 'prepare_configurations')
 @mock.patch.object(daisy_server.DaisyServer, 'ssh_run')
-def test_prepare_cluster_DaisyServer(mock_scp_put,
-                                     mock_prepare_configurations,
-                                     mock_ssh_run,
+def test_prepare_cluster_DaisyServer(mock_ssh_run,
                                      tmpdir):
     bin_file = os.path.join(tmpdir.dirname, tmpdir.basename, bin_file_name)
     DaisyServerInst = DaisyServer(daisy_server_info['name'],
@@ -496,12 +496,8 @@ def test_prepare_cluster_DaisyServer(mock_scp_put,
         script=os.path.join(remote_dir, 'deploy/tempest.py'),
         deploy_file=os.path.join(remote_dir, deploy_file_name),
         net_file=os.path.join(remote_dir, net_file_name))
-    deploy_file = os.path.join(tmpdir.dirname, tmpdir.basename, deploy_file_name)
-    net_file = os.path.join(tmpdir.dirname, tmpdir.basename, net_file_name)
-    DaisyServerInst.prepare_cluster(deploy_file, net_file)
+    DaisyServerInst.prepare_cluster()
     DaisyServerInst.ssh_run.assert_called_once_with(cmd, check=True)
-    DaisyServerInst.prepare_configurations.assert_called_once_with()
-    assert DaisyServerInst.scp_put.call_count == 2
     tmpdir.remove()
 
 

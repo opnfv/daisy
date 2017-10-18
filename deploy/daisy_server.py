@@ -207,7 +207,11 @@ class DaisyServer(object):
         status = self.ssh_run('%s install' % path_join(self.remote_dir, 'opnfv.bin'))
         log_bar('Daisy installation completed ! status = %s' % status)
 
-    def prepare_configurations(self):
+    def prepare_configurations(self, deploy_file, net_file):
+        LI('Copy cluster configuration files to Daisy Server')
+        self.scp_put(deploy_file, path_join(self.remote_dir, self.deploy_file_name))
+        self.scp_put(net_file, path_join(self.remote_dir, self.net_file_name))
+
         if self.adapter != 'libvirt':
             return
         LI('Prepare some configuration files')
@@ -218,13 +222,7 @@ class DaisyServer(object):
             is_bare=1 if self.adapter == 'ipmi' else 0)
         self.ssh_run(cmd)
 
-    def prepare_cluster(self, deploy_file, net_file):
-        LI('Copy cluster configuration files to Daisy Server')
-        self.scp_put(deploy_file, path_join(self.remote_dir, self.deploy_file_name))
-        self.scp_put(net_file, path_join(self.remote_dir, self.net_file_name))
-
-        self.prepare_configurations()
-
+    def prepare_cluster(self):
         LI('Prepare cluster and PXE')
         cmd = "python {script} --dha {deploy_file} --network {net_file} --cluster \'yes\'".format(
             script=path_join(self.remote_dir, 'deploy/tempest.py'),

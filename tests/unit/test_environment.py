@@ -136,7 +136,8 @@ def test_install_daisy_DaisyEnvironmentBase(mock_install_daisy, mock_connect, tm
     DaisyEnvBaseInst = DaisyEnvironmentBase(
         deploy_struct, net_struct, adapter, pxe_bridge,
         daisy_server, work_dir, storage_dir, scenario)
-    DaisyEnvBaseInst.install_daisy(remote_dir, bin_file, deploy_file_name, net_file_name)
+    DaisyEnvBaseInst.connect_daisy_server(remote_dir, bin_file, deploy_file_name, net_file_name)
+    DaisyEnvBaseInst.install_daisy()
     mock_install_daisy.assert_called_once_with()
     mock_connect.assert_called_once_with()
     tmpdir.remove()
@@ -246,6 +247,7 @@ def test_create_daisy_server_BareMetalEnvironment(mock_create_daisy_server_vm, m
 
 @mock.patch('deploy.environment.time.sleep')
 @mock.patch.object(daisy_server.DaisyServer, 'prepare_cluster')
+@mock.patch.object(daisy_server.DaisyServer, 'prepare_configurations')
 @mock.patch.object(environment.BareMetalEnvironment, 'reboot_nodes')
 @mock.patch.object(daisy_server.DaisyServer, 'prepare_host_and_pxe')
 @mock.patch.object(daisy_server.DaisyServer, 'check_os_installation')
@@ -253,7 +255,8 @@ def test_create_daisy_server_BareMetalEnvironment(mock_create_daisy_server_vm, m
 @mock.patch.object(daisy_server.DaisyServer, 'post_deploy')
 def test_deploy_BareMetalEnvironment(mock_post_deploy, mock_check_openstack_installation,
                                      mock_check_os_installation, mock_prepare_host_and_pxe,
-                                     mock_reboot_nodes, mock_prepare_cluster,
+                                     mock_reboot_nodes, mock_prepare_configurations,
+                                     mock_prepare_cluster,
                                      mock_sleep,
                                      tmpdir):
     work_dir = os.path.join(tmpdir.dirname, tmpdir.basename, work_dir_name)
@@ -280,7 +283,8 @@ def test_deploy_BareMetalEnvironment(mock_post_deploy, mock_check_openstack_inst
         deploy_file_name,
         net_file_name)
     BareMetalEnvironmentInst.deploy(deploy_file, net_file)
-    mock_prepare_cluster.assert_called_once_with(deploy_file, net_file)
+    mock_prepare_configurations.assert_called_once_with(deploy_file, net_file)
+    mock_prepare_cluster.assert_called_once_with()
     mock_reboot_nodes.assert_called_once_with(boot_dev='pxe')
     mock_prepare_host_and_pxe.assert_called_once_with()
     mock_check_os_installation.assert_called_once_with(len(BareMetalEnvironmentInst.deploy_struct['hosts']))
@@ -537,7 +541,7 @@ def test_delete_old_environment_VirtualEnvironment(mock_delete_daisy_server,
         daisy_server, work_dir, storage_dir, scenario)
     VirtualEnvironmentInst.delete_old_environment()
     VirtualEnvironmentInst.delete_daisy_server.assert_called_once_with()
-    VirtualEnvironmentInst.delete_networks.assert_called_once_with()
+    VirtualEnvironmentInst.delete_networks.assert_called_once_with(skip_daisy=False)
     VirtualEnvironmentInst.delete_nodes.assert_called_once_with()
     tmpdir.remove()
 
@@ -550,11 +554,12 @@ def test_delete_old_environment_VirtualEnvironment(mock_delete_daisy_server,
 @mock.patch.object(environment.DaisyServer, 'prepare_host_and_pxe')
 @mock.patch.object(environment.DaisyServer, 'copy_new_deploy_config')
 @mock.patch.object(environment.DaisyServer, 'prepare_cluster')
+@mock.patch.object(environment.DaisyServer, 'prepare_configurations')
 @mock.patch.object(environment.VirtualEnvironment, '_post_deploy')
 @mock.patch.object(environment.VirtualEnvironment, 'reboot_nodes')
 @mock.patch.object(environment.VirtualEnvironment, 'create_nodes')
 def test_deploy_VirtualEnvironment(mock_create_nodes, mock_reboot_nodes,
-                                   mock__post_deploy, mock_prepare_cluster,
+                                   mock__post_deploy, mock_prepare_configurations, mock_prepare_cluster,
                                    mock_copy_new_deploy_config, mock_prepare_host_and_pxe,
                                    mock_install_virtual_nodes, mock_check_os_installation,
                                    mock_check_openstack_installation, mock_post_deploy,
@@ -587,6 +592,7 @@ def test_deploy_VirtualEnvironment(mock_create_nodes, mock_reboot_nodes,
     mock_create_nodes.assert_called_once()
     assert mock_reboot_nodes.call_count == 2
     mock__post_deploy.assert_called_once()
+    mock_prepare_configurations.assert_called_once()
     mock_prepare_cluster.assert_called_once()
     mock_copy_new_deploy_config.assert_called_once()
     mock_prepare_host_and_pxe.assert_called_once()

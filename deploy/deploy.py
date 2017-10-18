@@ -181,16 +181,24 @@ class DaisyDeployment(object):
         return final_deploy_file, final_deploy_file_name
 
     def run(self):
-        self.daisy_env.delete_old_environment()
+        self.daisy_env.delete_old_environment(skip_daisy=self.skip_daisy)
         if self.cleanup_only:
             return
-        self.daisy_env.create_daisy_server()
+
+        if self.skip_daisy:
+            self.daisy_env.connect_daisy_server(self.remote_dir, self.bin_file,
+                                                self.deploy_file_name, self.net_file_name)
+        else:
+            self.daisy_env.create_daisy_server()
+            self.daisy_env.connect_daisy_server(self.remote_dir, self.bin_file,
+                                                self.deploy_file_name, self.net_file_name)
+            self.daisy_env.install_daisy()
+
         if self.daisy_only:
             log_bar('Create Daisy Server successfully !')
             return
-        self.daisy_env.install_daisy(self.remote_dir, self.bin_file,
-                                     self.deploy_file_name, self.net_file_name)
-        self.daisy_env.deploy(self.deploy_file, self.net_file)
+
+        self.daisy_env.deploy(self.deploy_file, self.net_file, skip_preparation=self.skip_daisy)
         log_bar('Daisy deploy successfully !')
 
 
@@ -213,6 +221,10 @@ def config_arg_parser():
     parser.add_argument('-bin', dest='bin_file', action='store',
                         default=path_join(WORKSPACE, 'opnfv.bin'),
                         help='OPNFV Daisy BIN File')
+
+    parser.add_argument('-S', dest='skip_daisy', action='store_true',
+                        default=False,
+                        help='DO NOT install Daisy Server again')
 
     parser.add_argument('-do', dest='daisy_only', action='store_true',
                         default=False,
@@ -273,6 +285,7 @@ def parse_arguments():
         'src_deploy_file': deploy_file,
         'net_file': net_file,
         'bin_file': args.bin_file,
+        'skip_daisy': args.skip_daisy,
         'daisy_only': args.daisy_only,
         'cleanup_only': args.cleanup_only,
         'remote_dir': args.remote_dir,
