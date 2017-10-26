@@ -194,6 +194,9 @@ function pack_registry_data {
     tar czf kolla-image-$version-$datetag.tgz $REGISTRY_VOLUME_DIR \
         registry-$version-$datetag.version
     rm -rf registry-$version-$datetag.version
+
+    upload_image_to_opnfv kolla-image-$version-$datetag.tgz
+
     popd
 }
 
@@ -261,6 +264,43 @@ error_trap()
 
     exit $exitcode
 }
+
+importkey () {
+    # clone releng repository
+    echo "Cloning releng repository..."
+    [ -d releng ] && rm -rf releng
+    git clone https://gerrit.opnfv.org/gerrit/releng ./releng/ &> /dev/null
+    #this is where we import the siging key
+    if [ -f ./releng/utils/gpg_import_key.sh ]; then
+        source ./releng/utils/gpg_import_key.sh
+    fi
+}
+
+upload_image_to_opnfv () {
+    image=$1
+
+    gpg2 -vvv --batch --yes --no-tty \
+        --default-key opnfv-helpdesk@rt.linuxfoundation.org  \
+        --passphrase besteffort \
+        --detach-sig $image
+    gsutil cp $image.sig gs://$GS_URL/upstream/$image.sig
+    echo "image signature Upload Complete!"
+
+    echo "Uploading $INSTALLER_TYPE artifact. This could take some time..."
+    echo
+    gsutil cp $image gs://$GS_URL/upstream/$image
+    gsutil -m setmeta \
+        -h "Cache-Control:private, max-age=0, no-transform" \
+        gs://$GS_URL/upstream/$image
+
+    # check if we uploaded the file successfully to see if things are fine
+    gsutil ls gs://$GS_URL/upstream/$image
+    if [[ $? -ne 0 ]]; then
+        echo "Problem while uploading artifact!"
+        exit 1
+    fi
+}
+
 
 
 trap "error_trap" EXIT SIGTERM
