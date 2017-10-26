@@ -15,13 +15,12 @@ set -o pipefail
 
 KOLLA_GIT="https://github.com/huzhijiang/kolla.git"
 KOLLA_BRANCH="stable/ocata"
+OPNFV_JOB_NAME=
 KOLLA_TAG=
 EXT_TAG=
 KOLLA_GIT_VERSION=
 KOLLA_IMAGE_VERSION=
-KOLLA_GIT_DIR=/tmp/kolla-git
-REGISTRY_VOLUME_DIR=/tmp/registry
-BUILD_OUTPUT_DIR=/tmp/kolla-build-output
+WORK_DIR=/tmp
 REGISTRY_SERVER_NAME=daisy-registry
 
 function usage
@@ -35,19 +34,23 @@ usage: `basename $0` [options]
 OPTIONS:
   -l  Kolla git repo location
   -b  Kolla git repo branch
+  -j  OPNFV job name
   -t  Kolla git repo code tag(base version of image)
   -e  user defined tag extension(extended version)
+  -w  working directroy
 
 Examples:
 sudo `basename $0` -l https://git.openstack.org/openstack/kolla
                    -b stable/ocata
+                   -j daisy-docker-build-euphrates
                    -t 4.0.2
                    -e 1
+                   -w /tmp
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 EOF
 }
 
-while getopts "l:b:t:e:h" OPTION
+while getopts "l:b:j:t:e:h" OPTION
 do
     case $OPTION in
         l)
@@ -56,11 +59,17 @@ do
         b)
             KOLLA_BRANCH=${OPTARG}
             ;;
+        j)
+            OPNFV_JOB_NAME=${OPTARG}
+            ;;
         t)
             KOLLA_TAG=${OPTARG}
             ;;
         e)
             EXT_TAG=${OPTARG}
+            ;;
+        w)
+            WORK_DIR=${OPTARG}
             ;;
         h)
             usage
@@ -73,6 +82,22 @@ do
             ;;
     esac
 done
+
+KOLLA_GIT_DIR=$WORK_DIR/kolla-git
+REGISTRY_VOLUME_DIR=$WORK_DIR/registry
+BUILD_OUTPUT_DIR=$WORK_DIR/kolla-build-output
+
+# OPNFV_JOB_NAME overwrites KOLLA_BRANCH
+if [[ ! -z "$OPNFV_JOB_NAME" ]]; then
+    if [[ "$OPNFV_JOB_NAME" =~ "euphrates" ]]; then
+        KOLLA_BRANCH="stable/ocata"
+    elif [[ "$OPNFV_JOB_NAME" =~ "fraser" ]]; then
+        KOLLA_BRANCH="stable/pike"
+    else
+        # For master branch
+        KOLLA_BRANCH="stable/pike"
+fi
+
 
 function pre_check {
     echo "Pre setup"
@@ -194,6 +219,7 @@ function pack_registry_data {
     tar czf kolla-image-$version-$datetag.tgz $REGISTRY_VOLUME_DIR \
         registry-$version-$datetag.version
     rm -rf registry-$version-$datetag.version
+
     popd
 }
 
