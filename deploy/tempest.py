@@ -72,10 +72,6 @@ def get_endpoint(file_path):
     return daisy_endpoint
 
 
-daisy_endpoint = get_endpoint(daisyrc_path)
-client = daisy_client.Client(version=daisy_version, endpoint=daisy_endpoint)
-
-
 def prepare_install():
     global deployment_interface
     try:
@@ -95,7 +91,7 @@ def prepare_install():
             update_network(cluster_id, network_map)
             print("build pxe server to install os...")
             deployment_interface = get_configure_from_daisyconf("PXE", "eth_name")
-            build_pxe_for_discover(cluster_id)
+            build_pxe_for_discover(cluster_id, client, deployment_interface)
         elif conf['host'] and conf['host'] == 'yes':
             isbare = False if 'isbare' in conf and conf['isbare'] == 0 else True
             print("discover host...")
@@ -103,10 +99,10 @@ def prepare_install():
             time.sleep(10)
             print("update hosts interface...")
             hosts_info = get_hosts()
-            cluster_info = get_cluster()
+            cluster_info = get_cluster(client)
             cluster_id = cluster_info.id
             add_hosts_interface(cluster_id, hosts_info, mac_address_map,
-                                host_interface_map, vip, isbare)
+                                host_interface_map, vip, isbare, client)
             if len(hosts_name) == 1:
                 protocol_type = 'LVM'
                 service_name = 'cinder'
@@ -117,24 +113,24 @@ def prepare_install():
                 print('hosts_num is %s' % len(hosts_name))
                 protocol_type = None
             enable_cinder_backend(cluster_id, service_name,
-                                  ceph_disk_name, protocol_type)
+                                  ceph_disk_name, protocol_type, client)
 
             if 'scenario' in conf:
                 if 'odl_l3' in conf['scenario'] or \
                     'odl' in conf['scenario']:
-                    enable_opendaylight(cluster_id, 'odl_l3')
+                    enable_opendaylight(cluster_id, 'odl_l3', client)
                 elif 'odl_l2' in conf['scenario']:
-                    enable_opendaylight(cluster_id, 'odl_l2')
+                    enable_opendaylight(cluster_id, 'odl_l2', client)
 
             if not isbare:
-                install_os_for_vm_step1(cluster_id)
+                install_os_for_vm_step1(cluster_id, client)
             else:
                 print("daisy baremetal deploy start")
-                install_os_for_bm_oneshot(cluster_id)
+                install_os_for_bm_oneshot(cluster_id, client)
         elif conf['install'] and conf['install'] == 'yes':
-            cluster_info = get_cluster()
+            cluster_info = get_cluster(client)
             cluster_id = cluster_info.id
-            install_os_for_vm_step2(cluster_id)
+            install_os_for_vm_step2(cluster_id, client)
 
     except Exception:
         print("Deploy failed!!!.%s." % traceback.format_exc())
@@ -143,24 +139,24 @@ def prepare_install():
         print_bar("Everything is done!")
 
 
-def build_pxe_for_discover(cluster_id):
+def build_pxe_for_discover(cluster_id, client, deployment_interface):
     cluster_meta = {'cluster_id': cluster_id,
                     'deployment_interface': deployment_interface}
     client.install.install(**cluster_meta)
 
 
-def install_os_for_vm_step1(cluster_id):
+def install_os_for_vm_step1(cluster_id, client):
     cluster_meta = {'cluster_id': cluster_id,
                     'pxe_only': "true"}
     client.install.install(**cluster_meta)
 
 
-def install_os_for_bm_oneshot(cluster_id):
+def install_os_for_bm_oneshot(cluster_id, client):
     cluster_meta = {'cluster_id': cluster_id}
     client.install.install(**cluster_meta)
 
 
-def install_os_for_vm_step2(cluster_id):
+def install_os_for_vm_step2(cluster_id, client):
     cluster_meta = {'cluster_id': cluster_id,
                     'skip_pxe_ipmi': "true"}
     client.install.install(**cluster_meta)
@@ -176,7 +172,7 @@ def discover_host(hosts_name):
             time.sleep(10)
 
 
-def update_network(cluster_id, network_map):
+def update_network(cluster_id, network_map, client):
     network_meta = {'filters': {'cluster_id': cluster_id}}
     network_info_gernerator = client.networks.list(**network_meta)
     for net in network_info_gernerator:
@@ -187,7 +183,7 @@ def update_network(cluster_id, network_map):
             client.networks.update(network_id, **network_meta)
 
 
-def get_hosts():
+def get_hosts(client):
     hosts_list_generator = client.hosts.list()
     hosts_info = []
     for host in hosts_list_generator:
@@ -196,7 +192,7 @@ def get_hosts():
     return hosts_info
 
 
-def get_cluster():
+def get_cluster(client):
     cluster_list_generator = client.clusters.list()
     for cluster in cluster_list_generator:
         cluster_info = client.clusters.get(cluster.id)
@@ -205,7 +201,7 @@ def get_cluster():
 
 def add_hosts_interface(cluster_id, hosts_info, mac_address_map,
                         host_interface_map,
-                        vip, isbare):
+                        vip, isbare, client):
     for host in hosts_info:
         dha_host_name = None
         host = host.to_dict()
@@ -234,10 +230,10 @@ def add_hosts_interface(cluster_id, hosts_info, mac_address_map,
             print("do not have os iso file in /var/lib/daisy/kolla/.")
         client.hosts.update(host['id'], **host)
         print("update role...")
-        add_host_role(cluster_id, host['id'], dha_host_name, vip)
+        add_host_role(cluster_id, host['id'], dha_host_name, vip, client)
 
 
-def add_host_role(cluster_id, host_id, dha_host_name, vip):
+def add_host_role(cluster_id, host_id, dha_host_name, vip, client):
     role_meta = {'filters': {'cluster_id': cluster_id}}
     role_list_generator = client.roles.list(**role_meta)
     role_list = [role for role in role_list_generator]
@@ -262,7 +258,7 @@ def add_host_role(cluster_id, host_id, dha_host_name, vip):
         client.roles.update(computer_role_id, **role_computer_update_meta)
 
 
-def enable_cinder_backend(cluster_id, service_name, disk_name, protocol_type):
+def enable_cinder_backend(cluster_id, service_name, disk_name, protocol_type, client):
     role_meta = {'filters': {'cluster_id': cluster_id}}
     role_list_generator = client.roles.list(**role_meta)
     lb_role_id = [role.id for role in role_list_generator if
@@ -278,7 +274,7 @@ def enable_cinder_backend(cluster_id, service_name, disk_name, protocol_type):
         print e
 
 
-def enable_opendaylight(cluster_id, layer):
+def enable_opendaylight(cluster_id, layer, client):
     role_meta = {'filters': {'cluster_id': cluster_id}}
     role_list_generator = client.roles.list(**role_meta)
     lb_role_id = [role.id for role in role_list_generator if
@@ -303,4 +299,6 @@ def enable_opendaylight(cluster_id, layer):
 
 
 if __name__ == "__main__":
+    daisy_endpoint = get_endpoint(daisyrc_path)
+    client = daisy_client.Client(version=daisy_version, endpoint=daisy_endpoint)
     prepare_install()
