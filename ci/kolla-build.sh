@@ -44,7 +44,7 @@ sudo `basename $0` -l https://git.openstack.org/openstack/kolla
                    -b stable/ocata
                    -j daisy-docker-build-euphrates
                    -t 4.0.2
-                   -e 1
+                   -e .1
                    -w /tmp
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 EOF
@@ -255,7 +255,7 @@ function update_kolla_code {
 
 function config_kolla {
     rm -rf /etc/kolla/kolla-build.conf
-    KOLLA_IMAGE_VERSION="${KOLLA_IMAGE_VERSION}.${EXT_TAG}"
+    KOLLA_IMAGE_VERSION="${KOLLA_IMAGE_VERSION}${EXT_TAG}"
 }
 
 function start_build {
