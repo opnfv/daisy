@@ -42,9 +42,11 @@ from utils import (
 
 CREATE_QCOW2_PATH = path_join(WORKSPACE, 'tools')
 
-VMDEPLOY_DAISY_SERVER_NET = path_join(WORKSPACE, 'templates/virtual_environment/networks/daisy.xml')
-VMDEPLOY_TARGET_NODE_NET = path_join(WORKSPACE, 'templates/virtual_environment/networks/external.xml')
-VMDEPLOY_TARGET_KEEPALIVED_NET = path_join(WORKSPACE, 'templates/virtual_environment/networks/keepalived.xml')
+VIRT_NET_TEMPLATE_PATH = path_join(WORKSPACE, 'templates/virtual_environment/networks')
+VMDEPLOY_DAISY_SERVER_NET = path_join(VIRT_NET_TEMPLATE_PATH, 'daisy.xml')
+VMDEPLOY_TARGET_NODE_NET = path_join(VIRT_NET_TEMPLATE_PATH, 'external.xml')
+VMDEPLOY_TARGET_KEEPALIVED_NET = path_join(VIRT_NET_TEMPLATE_PATH, 'keepalived.xml')
+
 VMDEPLOY_DAISY_SERVER_VM = path_join(WORKSPACE, 'templates/virtual_environment/vms/daisy.xml')
 
 BMDEPLOY_DAISY_SERVER_VM = path_join(WORKSPACE, 'templates/physical_environment/vms/daisy.xml')
@@ -52,7 +54,6 @@ BMDEPLOY_DAISY_SERVER_VM = path_join(WORKSPACE, 'templates/physical_environment/
 ALL_IN_ONE_TEMPLATE = path_join(WORKSPACE, 'templates/virtual_environment/vms/all_in_one.xml')
 CONTROLLER_TEMPLATE = path_join(WORKSPACE, 'templates/virtual_environment/vms/controller.xml')
 COMPUTE_TEMPLATE = path_join(WORKSPACE, 'templates/virtual_environment/vms/computer.xml')
-VIRT_NET_TEMPLATE_PATH = path_join(WORKSPACE, 'templates/virtual_environment/networks')
 
 
 class DaisyEnvironment(object):
@@ -109,7 +110,7 @@ class DaisyEnvironmentBase(object):
         shutil.move(image, self.daisy_server_info['image'])
         LI('Daisy Server image is created %s' % self.daisy_server_info['image'])
 
-    def install_daisy(self, remote_dir, bin_file, deploy_file_name, net_file_name):
+    def connect_daisy_server(self, remote_dir, bin_file, deploy_file_name, net_file_name):
         self.server = DaisyServer(self.daisy_server_info['name'],
                                   self.daisy_server_info['address'],
                                   self.daisy_server_info['password'],
@@ -120,14 +121,19 @@ class DaisyEnvironmentBase(object):
                                   deploy_file_name,
                                   net_file_name)
         self.server.connect()
+
+    def install_daisy(self):
         self.server.install_daisy()
 
 
 class BareMetalEnvironment(DaisyEnvironmentBase):
-    def delete_old_environment(self):
-        LW('Begin to delete old environment !')
-        self.delete_daisy_server()
-        LW('Old environment cleanup finished !')
+    def delete_old_environment(self, skip_daisy=False):
+        if skip_daisy:
+            LI('Skip deletion of old daisy server VM')
+        else:
+            LW('Begin to delete old environment !')
+            self.delete_daisy_server()
+            LW('Old environment cleanup finished !')
 
     def create_daisy_server(self):
         self.create_daisy_server_image()
@@ -157,8 +163,10 @@ class BareMetalEnvironment(DaisyEnvironmentBase):
                              node['ipmi_pass'],
                              boot_source=boot_dev)
 
-    def deploy(self, deploy_file, net_file):
-        self.server.prepare_cluster(deploy_file, net_file)
+    def deploy(self, deploy_file, net_file, skip_preparation=False):
+        if not skip_preparation:
+            self.server.prepare_configurations(deploy_file, net_file)
+        self.server.prepare_cluster()
         self.reboot_nodes(boot_dev='pxe')
         self.server.prepare_host_and_pxe()
 
@@ -274,7 +282,7 @@ class VirtualEnvironment(DaisyEnvironmentBase):
         for host in self.deploy_struct['hosts']:
             delete_vm_and_disk(host['name'])
 
-    def delete_networks(self):
+    def delete_networks(self, skip_daisy=False):
         if 'virtNetTemplatePath' in self.deploy_struct:
             path = self.deploy_struct['virtNetTemplatePath']
         else:
@@ -284,19 +292,26 @@ class VirtualEnvironment(DaisyEnvironmentBase):
             LW('Cannot find the virtual network template path %s' % path)
             return
         for f in os.listdir(path):
+            if not (skip_daisy and f == 'daisy.xml'):
                 f = path_join(path, f)
                 if os.path.isfile(f):
                     delete_virtual_network(f)
 
-    def delete_old_environment(self):
+    def delete_old_environment(self, skip_daisy=False):
         LW('Begin to delete old environment !')
         self.delete_nodes()
-        self.delete_daisy_server()
-        self.delete_networks()
+
+        if skip_daisy:
+            LI('Skip deletion of old daisy server VM and network')
+        else:
+            self.delete_daisy_server()
+        self.delete_networks(skip_daisy=skip_daisy)
         LW('Old environment cleanup finished !')
 
-    def deploy(self, deploy_file, net_file):
-        self.server.prepare_cluster(deploy_file, net_file)
+    def deploy(self, deploy_file, net_file, skip_preparation=False):
+        if not skip_preparation:
+            self.server.prepare_configurations(deploy_file, net_file)
+        self.server.prepare_cluster()
         self.create_nodes()
         self.server.copy_new_deploy_config(self.deploy_struct)
         self.server.prepare_host_and_pxe()

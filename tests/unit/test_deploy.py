@@ -195,6 +195,7 @@ def test__construct_final_deploy_conf_in_DaisyDeployment(mock__use_pod_descripto
             'src_deploy_file': 'deploy_baremetal.yml',
             'net_file': 'network_baremetal.yml',
             'bin_file': 'opnfv.bin',
+            'skip_daisy': False,
             'daisy_only': False,
             'cleanup_only': False,
             'remote_dir': '/home/daisy',
@@ -212,6 +213,7 @@ def test__construct_final_deploy_conf_in_DaisyDeployment(mock__use_pod_descripto
             'src_deploy_file': 'deploy_baremetal.yml',
             'net_file': 'network_baremetal.yml',
             'bin_file': 'opnfv.bin',
+            'skip_daisy': False,
             'daisy_only': False,
             'cleanup_only': True,
             'remote_dir': '/home/daisy',
@@ -229,6 +231,7 @@ def test__construct_final_deploy_conf_in_DaisyDeployment(mock__use_pod_descripto
             'src_deploy_file': 'deploy_baremetal.yml',
             'net_file': 'network_baremetal.yml',
             'bin_file': 'opnfv.bin',
+            'skip_daisy': False,
             'daisy_only': True,
             'cleanup_only': False,
             'remote_dir': '/home/daisy',
@@ -242,8 +245,9 @@ def test__construct_final_deploy_conf_in_DaisyDeployment(mock__use_pod_descripto
 @mock.patch.object(environment.BareMetalEnvironment, 'delete_old_environment')
 @mock.patch.object(environment.BareMetalEnvironment, 'create_daisy_server')
 @mock.patch.object(environment.BareMetalEnvironment, 'install_daisy')
+@mock.patch.object(environment.BareMetalEnvironment, 'connect_daisy_server')
 @mock.patch.object(environment.BareMetalEnvironment, 'deploy')
-def test_run_in_DaisyDeployment(mock_deploy, mock_install_daisy,
+def test_run_in_DaisyDeployment(mock_deploy, mock_connect_daisy_server, mock_install_daisy,
                                 mock_create_daisy_server, mock_delete_old_environment,
                                 conf_file_dir, tmpdir, kwargs):
     kwargs['src_deploy_file'] = os.path.join(conf_file_dir, kwargs['src_deploy_file'])
@@ -261,12 +265,16 @@ def test_run_in_DaisyDeployment(mock_deploy, mock_install_daisy,
     if daisy_deploy.cleanup_only is False:
         mock_create_daisy_server.assert_called_once_with()
         if daisy_deploy.daisy_only is False:
-            mock_deploy.assert_called_once_with(daisy_deploy.deploy_file, daisy_deploy.net_file)
-            mock_install_daisy.assert_called_once_with(daisy_deploy.remote_dir, daisy_deploy.bin_file,
-                                                       daisy_deploy.deploy_file_name, daisy_deploy.net_file_name)
+            mock_deploy.assert_called_once_with(daisy_deploy.deploy_file,
+                                                daisy_deploy.net_file,
+                                                skip_preparation=False)
+            mock_connect_daisy_server.assert_called_once_with(daisy_deploy.remote_dir,
+                                                              daisy_deploy.bin_file,
+                                                              daisy_deploy.deploy_file_name,
+                                                              daisy_deploy.net_file_name)
+            mock_install_daisy.assert_called_once_with()
         else:
             mock_deploy.assert_not_called()
-            mock_install_daisy.assert_not_called()
     else:
         mock_create_daisy_server.assert_not_called()
     tmpdir.remove()
@@ -286,13 +294,14 @@ def test_parse_arguments(mock_confirm_dir_exists, mock_make_file_executable,
                          mock_save_log_to_file, mock_check_sudo_privilege,
                          mock_parse_args, cleanup_only, tmpdir):
     class MockArg():
-        def __init__(self, labs_dir, lab_name, pod_name, bin_file, daisy_only,
+        def __init__(self, labs_dir, lab_name, pod_name, bin_file, skip_daisy, daisy_only,
                      cleanup_only, remote_dir, work_dir, storage_dir, pxe_bridge,
                      deploy_log, scenario):
             self.labs_dir = labs_dir
             self.lab_name = lab_name
             self.pod_name = pod_name
             self.bin_file = bin_file
+            self.skip_daisy = skip_daisy
             self.daisy_only = daisy_only
             self.cleanup_only = cleanup_only
             self.remote_dir = remote_dir
@@ -315,6 +324,7 @@ def test_parse_arguments(mock_confirm_dir_exists, mock_make_file_executable,
         'src_deploy_file': deploy_file,
         'net_file': net_file,
         'bin_file': bin_file_path,
+        'skip_daisy': False,
         'daisy_only': False,
         'cleanup_only': cleanup_only,
         'remote_dir': '/home/daisy',
@@ -324,7 +334,7 @@ def test_parse_arguments(mock_confirm_dir_exists, mock_make_file_executable,
         'deploy_log': deploy_log_path,
         'scenario': 'os-nosdn-nofeature-noha'
     }
-    mockarg = MockArg('/var/tmp/securedlab', 'zte', 'pod2', bin_file_path, False, cleanup_only, '/home/daisy', '/tmp/workdir',
+    mockarg = MockArg('/var/tmp/securedlab', 'zte', 'pod2', bin_file_path, False, False, cleanup_only, '/home/daisy', '/tmp/workdir',
                       '/home/qemu/vms', 'pxebr', deploy_log_path, 'os-nosdn-nofeature-noha')
     mock_parse_args.return_value = mockarg
     ret = parse_arguments()
