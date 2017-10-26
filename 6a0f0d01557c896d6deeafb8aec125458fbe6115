@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_4d0ff730",
+        "filename": "code/install_interface_patch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-10-26T07:31:06Z",
+      "side": 1,
+      "message": "does it has to be changed into https?",
+      "range": {
+        "startLine": 13,
+        "startChar": 13,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "6a0f0d01557c896d6deeafb8aec125458fbe6115",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
