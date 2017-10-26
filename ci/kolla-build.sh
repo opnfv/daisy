@@ -15,6 +15,7 @@ set -o pipefail
 
 KOLLA_GIT="https://github.com/huzhijiang/kolla.git"
 KOLLA_BRANCH="stable/ocata"
+OPNFV_JOB_NAME=
 KOLLA_TAG=
 EXT_TAG=
 KOLLA_GIT_VERSION=
@@ -35,19 +36,21 @@ usage: `basename $0` [options]
 OPTIONS:
   -l  Kolla git repo location
   -b  Kolla git repo branch
+  -j  OPNFV job name
   -t  Kolla git repo code tag(base version of image)
   -e  user defined tag extension(extended version)
 
 Examples:
 sudo `basename $0` -l https://git.openstack.org/openstack/kolla
                    -b stable/ocata
+                   -j daisy-docker-build-euphrates
                    -t 4.0.2
                    -e 1
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 EOF
 }
 
-while getopts "l:b:t:e:h" OPTION
+while getopts "l:b:j:t:e:h" OPTION
 do
     case $OPTION in
         l)
@@ -55,6 +58,9 @@ do
             ;;
         b)
             KOLLA_BRANCH=${OPTARG}
+            ;;
+        j)
+            OPNFV_JOB_NAME=${OPTARG}
             ;;
         t)
             KOLLA_TAG=${OPTARG}
@@ -73,6 +79,18 @@ do
             ;;
     esac
 done
+
+# OPNFV_JOB_NAME overwrites KOLLA_BRANCH
+if [[ ! -z "$OPNFV_JOB_NAME" ]]; then
+    if [[ "$OPNFV_JOB_NAME" =~ "euphrates" ]]; then
+        KOLLA_BRANCH="stable/ocata"
+    elif [[ "$OPNFV_JOB_NAME" =~ "fraser" ]]; then
+        KOLLA_BRANCH="stable/pike"
+    else
+        # For master branch
+        KOLLA_BRANCH="stable/pike"
+fi
+
 
 function pre_check {
     echo "Pre setup"
@@ -194,6 +212,9 @@ function pack_registry_data {
     tar czf kolla-image-$version-$datetag.tgz $REGISTRY_VOLUME_DIR \
         registry-$version-$datetag.version
     rm -rf registry-$version-$datetag.version
+
+    upload_image_to_opnfv kolla-image-$version-$datetag.tgz
+
     popd
 }
 
@@ -260,6 +281,44 @@ error_trap()
     echo "Image build failed with $exitcode"
 
     exit $exitcode
+}
+
+importkey () {
+    # clone releng repository
+    echo "Cloning releng repository..."
+    [ -d releng ] && rm -rf releng
+    git clone https://gerrit.opnfv.org/gerrit/releng ./releng/ &> /dev/null
+    #this is where we import the siging key
+    if [ -f ./releng/utils/gpg_import_key.sh ]; then
+        source ./releng/utils/gpg_import_key.sh
+    fi
+}
+
+upload_image_to_opnfv () {
+    image=$1
+
+    importkey
+
+    gpg2 -vvv --batch --yes --no-tty \
+        --default-key opnfv-helpdesk@rt.linuxfoundation.org  \
+        --passphrase besteffort \
+        --detach-sig $image
+    gsutil cp $image.sig gs://$GS_URL/upstream/$image.sig
+    echo "Image signature upload complete!"
+
+    echo "Uploading $INSTALLER_TYPE artifact. This could take some time..."
+    echo
+    gsutil cp $image gs://$GS_URL/upstream/$image
+    gsutil -m setmeta \
+        -h "Cache-Control:private, max-age=0, no-transform" \
+        gs://$GS_URL/upstream/$image
+
+    # check if we uploaded the file successfully to see if things are fine
+    gsutil ls gs://$GS_URL/upstream/$image
+    if [[ $? -ne 0 ]]; then
+        echo "Problem while uploading artifact!"
+        exit 1
+    fi
 }
 
 
