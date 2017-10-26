@@ -76,9 +76,59 @@ function check_or_download_file()
     popd > /dev/null
 }
 
+function check_or_download_file_sha512sum()
+{
+    file_path=$1
+    file_url=$2
+    file_name=$(basename $2)
+    if [ $# -eq 3 ]; then  sha512sum_url=$3; else sha512sum_url=""; fi
+
+    pushd $file_path  >/dev/null
+
+    count=0
+    MAX_DOWNLOAD_TIMES=2
+    while [ $count -lt ${MAX_DOWNLOAD_TIMES} ]; do
+        count=$[count + 1]
+
+        if [ ! -f ${file_name} ]; then
+            echo "Begin to download ${file_name}"
+            wget --progress=dot:giga ${file_url}
+        fi
+
+        if [ ! -z ${sha512sum_url} ]; then
+            rm -f $(basename ${sha512sum_url})
+            wget ${sha512sum_url}
+            sha512sum -c $(basename ${sha512sum_url})
+            if [ $? -ne 0 ]; then
+                echo "sha512sum check failed !"
+                rm -f ${file_name}
+            else
+                echo "sha512sum_url check succeeded !"
+                count=${MAX_DOWNLOAD_TIMES}
+            fi
+        else
+            wget --spider $file_url -o tmp_filesize
+            origin_size=$(cat tmp_filesize | grep Length | awk '{print $2}')
+            rm tmp_filesize
+            local_size=$(stat -c %s ${file_path}/${file_name} | tr -d '\n')
+            if [ ${local_size} -ne ${origin_size} ]; then
+                echo "The local ${file_name} is incomplete."
+                rm -f ${file_name}
+            else
+                echo "File ${file_path}/${file_name} is ok."
+                count=${MAX_DOWNLOAD_TIMES}
+            fi
+        fi
+    done
+
+    popd > /dev/null
+}
+
+
+
 if [ ! -d $CACHE_PATH ]; then mkdir -p $CACHE_PATH ; fi
 check_or_download_file $CACHE_PATH $isourl
-check_or_download_file $CACHE_PATH $imageserver/${imagename} ${imageserver}/${imagename}.md5
+check_or_download_file_sha512sum $CACHE_PATH $imageserver/${imagename} ${imageserver}/${imagename}.sha512sum
 check_or_download_file $CACHE_PATH "http://daisycloud.org/static/files/registry-server.tar"
 check_or_download_file $CACHE_PATH ${cirros_url}
 
