@@ -14,7 +14,7 @@ CACHE_PATH=/home/cache
 
 imagebranch="ocata"
 imageversion="170811155446"
-imageserver="http://120.24.17.215"
+imageserver="http://artifacts.opnfv.org/daisy/upstream"
 imagename="kolla-image-$imagebranch-$imageversion.tgz"
 
 isoname="CentOS-7-x86_64-Minimal-1611.iso"

@@ -11,7 +11,7 @@ update OpenStack minor version as the follows:
 Since Daisy's Kolla images are build by meeting the OPNFV requirements
 and have their own file packaging layout, Daisy requires user to
 always use Kolla image file built by Daisy team. Currently, it can be
-got from http://120.24.17.215/, or please
+got from http://artifacts.opnfv.org/daisy/upstream, or please
 see :ref:`this chapter <daisy-build-kolla-image>`
 for how to build your own image.
 
