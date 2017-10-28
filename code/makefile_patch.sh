@@ -95,7 +95,7 @@ function check_or_download_file_sha512sum()
             wget --progress=dot:giga ${file_url}
         fi
 
-        if [ ! -z ${sha512sum_url_url} ]; then
+        if [ ! -z ${sha512sum_url} ]; then
             rm -f $(basename ${sha512sum_url})
             wget ${sha512sum_url}
             sha512sum -c $(basename ${sha512sum_url})
