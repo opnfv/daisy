@@ -52,9 +52,9 @@ def parse(conf, args):
 
 
 def print_bar(msg):
-    print ("--------------------------------------------")
-    print (msg)
-    print ("--------------------------------------------")
+    print("--------------------------------------------")
+    print(msg)
+    print("--------------------------------------------")
 
 
 def get_configure_from_daisyconf(section, key):
@@ -72,7 +72,7 @@ def get_endpoint(file_path):
     return daisy_endpoint
 
 
-def prepare_install():
+def prepare_install(client):
     global deployment_interface
     try:
         print("get config...")
@@ -88,17 +88,17 @@ def prepare_install():
             cluster_id = clusters_info.id
             print("cluster_id=%s." % cluster_id)
             print("update network...")
-            update_network(cluster_id, network_map)
+            update_network(cluster_id, network_map, client)
             print("build pxe server to install os...")
             deployment_interface = get_configure_from_daisyconf("PXE", "eth_name")
             build_pxe_for_discover(cluster_id, client, deployment_interface)
         elif conf['host'] and conf['host'] == 'yes':
             isbare = False if 'isbare' in conf and conf['isbare'] == 0 else True
             print("discover host...")
-            discover_host(hosts_name)
+            discover_host(hosts_name, client)
             time.sleep(10)
             print("update hosts interface...")
-            hosts_info = get_hosts()
+            hosts_info = get_hosts(client)
             cluster_info = get_cluster(client)
             cluster_id = cluster_info.id
             add_hosts_interface(cluster_id, hosts_info, mac_address_map,
@@ -162,9 +162,9 @@ def install_os_for_vm_step2(cluster_id, client):
     client.install.install(**cluster_meta)
 
 
-def discover_host(hosts_name):
+def discover_host(hosts_name, client):
     while True:
-        hosts_info = get_hosts()
+        hosts_info = get_hosts(client)
         if len(hosts_info) == len(hosts_name):
             print('discover hosts success!')
             break
@@ -271,7 +271,7 @@ def enable_cinder_backend(cluster_id, service_name, disk_name, protocol_type, cl
     try:
         client.disk_array.service_disk_add(**service_disk_meta)
     except Exception as e:
-        print e
+        print(e)
 
 
 def enable_opendaylight(cluster_id, layer, client):
@@ -295,10 +295,10 @@ def enable_opendaylight(cluster_id, layer, client):
     try:
         client.roles.update(lb_role_id, **neutron_backend_info)
     except Exception as e:
-        print e
+        print(e)
 
 
 if __name__ == "__main__":
     daisy_endpoint = get_endpoint(daisyrc_path)
     client = daisy_client.Client(version=daisy_version, endpoint=daisy_endpoint)
-    prepare_install()
+    prepare_install(client)

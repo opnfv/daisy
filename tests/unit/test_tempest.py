@@ -121,7 +121,8 @@ def test_install_os_for_vm_step2():
 def test_discover_host(mock_get_hosts, mock_sleep):
     hosts_name = ['computer01', 'computer02', 'controller01', 'controller02', 'controller03']
     mock_get_hosts.return_value = hosts_name
-    discover_host(hosts_name)
+    client = StubTestClient()
+    discover_host(hosts_name, client)
     mock_sleep.assert_not_called()
 
 
