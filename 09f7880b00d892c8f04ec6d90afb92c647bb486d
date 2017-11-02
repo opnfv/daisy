@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_564ae480",
+        "filename": "ci/kolla-build-vm.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-11-02T10:42:50Z",
+      "side": 1,
+      "message": "need crudini",
+      "revId": "09f7880b00d892c8f04ec6d90afb92c647bb486d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
