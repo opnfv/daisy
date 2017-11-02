@@ -166,6 +166,7 @@ function pre_check {
 
     yum install -y gcc
     yum install -y python-devel
+    yum install -y crudini
 
     # Some packages must be installed by pip.
     # TODO: Check version of packages installed by pip just like what we do for RPM above.
@@ -282,15 +283,44 @@ function config_kolla {
     KOLLA_IMAGE_VERSION="${KOLLA_IMAGE_VERSION}${EXT_TAG}"
 }
 
+function config_kolla_with_dpdksource {
+#    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  DEFAULT debug true
+#    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  DEFAULT threads 1
+    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  profiles opnfvb "ceilometer, neutron, openvswitch, nova-, cron, kolla-toolbox, fluentd, aodh, mongodb, horizon, heat, cinder, glance, ceph, keystone, rabbitmq, mariadb, memcached, keepalived, haproxy, opendaylight, tgtd, iscsi"
+    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  DEFAULT profile opnfvb
+
+    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  ovsdpdk-plugin-ovs type git
+    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  ovsdpdk-plugin-ovs location https://github.com/openvswitch/ovs.git
+    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  ovsdpdk-plugin-ovs reference v2.7.0
+
+    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  ovsdpdk-plugin-dpdk type git
+    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  ovsdpdk-plugin-dpdk location http://dpdk.org/git/dpdk
+    #crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  ovsdpdk-plugin-dpdk reference v17.02
+    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  ovsdpdk-plugin-dpdk reference v16.11
+
+    mkdir -p /etc/kolla/
+    rm -rf /etc/kolla/kolla-build.conf
+    cp $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf /etc/kolla/
+    KOLLA_IMAGE_VERSION="${KOLLA_IMAGE_VERSION}${EXT_TAG}"
+}
+
+
 function start_build {
     echo "Start to build Kolla image"
-    REGISTRY_PARAM="--registry 127.0.0.1:5000 --push --tag $KOLLA_IMAGE_VERSION"
     pushd $KOLLA_GIT_DIR/kolla
 
     # Some of the images may be failed to built out but is OK
     # so we use "|| true" here.
     # TODO: We can impl. some checks to see if the images that
     # we really care are built successfully.
+    echo "=============================OpenStack & ODL build from binary=============================="
+
+    REGISTRY_PARAM="--registry 127.0.0.1:5000 --push --tag $KOLLA_IMAGE_VERSION"
+    tools/build.py $REGISTRY_PARAM || true;
+
+    echo "=============================DPDK build from source=============================="
+
+    REGISTRY_PARAM="--registry 127.0.0.1:5000 --push --tag $KOLLA_IMAGE_VERSION --template-override contrib/template-override/ovs-dpdk.j2 -t source dpdk"
     tools/build.py $REGISTRY_PARAM || true;
     popd
 }
@@ -318,7 +348,7 @@ pre_check
 # Try to cleanup images of the last failed run, if any.
 cleanup_kolla_image
 update_kolla_code
-config_kolla
+config_kolla_with_dpdksource
 cleanup_kolla_image
 
 # Make sure there is no garbage in the registry server.
