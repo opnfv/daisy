@@ -285,7 +285,9 @@ function config_kolla {
 
 function config_kolla_with_dpdksource {
 #    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  DEFAULT debug true
-#    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  DEFAULT threads 1
+    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  DEFAULT threads 2
+    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  DEFAULT retries 10
+
     crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  profiles opnfvb "ceilometer, neutron, openvswitch, nova-, cron, kolla-toolbox, fluentd, aodh, mongodb, horizon, heat, cinder, glance, ceph, keystone, rabbitmq, mariadb, memcached, keepalived, haproxy, opendaylight, tgtd, iscsi"
     crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  DEFAULT profile opnfvb
 
