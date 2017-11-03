@@ -94,6 +94,7 @@ def prepare_install(client):
             build_pxe_for_discover(cluster_id, client, deployment_interface)
         elif conf['host'] and conf['host'] == 'yes':
             isbare = False if 'isbare' in conf and conf['isbare'] == 0 else True
+            enable_dpdk = True if 'scenario' in conf and ovs_dpdk in conf['scenario'] else False
             print("discover host...")
             discover_host(hosts_name, client)
             time.sleep(10)
@@ -101,8 +102,8 @@ def prepare_install(client):
             hosts_info = get_hosts(client)
             cluster_info = get_cluster(client)
             cluster_id = cluster_info.id
-            add_hosts_interface(cluster_id, hosts_info, mac_address_map,
-                                host_interface_map, vip, isbare, client)
+            update_hosts_interface(cluster_id, hosts_info, mac_address_map,
+                                host_interface_map, vip, isbare, client, enable_dpdk)
             if len(hosts_name) == 1:
                 protocol_type = 'LVM'
                 service_name = 'cinder'
@@ -199,9 +200,9 @@ def get_cluster(client):
     return cluster_info
 
 
-def add_hosts_interface(cluster_id, hosts_info, mac_address_map,
-                        host_interface_map,
-                        vip, isbare, client):
+def update_hosts_interface(cluster_id, hosts_info, mac_address_map,
+                           host_interface_map, vip,
+                           isbare, client, enable_dpdk):
     for host in hosts_info:
         dha_host_name = None
         host = host.to_dict()
@@ -214,6 +215,11 @@ def add_hosts_interface(cluster_id, hosts_info, mac_address_map,
             if interface_name in host_interface_map:
                 interface['assigned_networks'] = \
                     host_interface_map[interface_name]
+                if enable_dpdk:
+                    for assigned_network in interface['assigned_networks']:
+                        if assigned_network['name'] == 'physnet1'
+                            interface['vswitch_type'] = 'dvs'
+                            break
             for nodename in mac_address_map:
                 if interface['mac'] in mac_address_map[nodename]:
                     dha_host_name = nodename
@@ -228,7 +234,11 @@ def add_hosts_interface(cluster_id, hosts_info, mac_address_map,
                 host['os_version'] = iso_path + filename
         if host['os_version'] == iso_path:
             print("do not have os iso file in /var/lib/daisy/kolla/.")
+        if enable_dpdk:
+            host[hugepages] = '20'
+            host[hugepagesize] = '1G'
         client.hosts.update(host['id'], **host)
+        hosts_info = self.get_hosts()
         print("update role...")
         add_host_role(cluster_id, host['id'], dha_host_name, vip, client)
 
