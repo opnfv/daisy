@@ -34,7 +34,7 @@ from deploy.tempest import (
     update_network,
     get_hosts,
     get_cluster,
-    add_hosts_interface,
+    update_hosts_interface,
     add_host_role,
     enable_cinder_backend,
     enable_opendaylight
@@ -173,7 +173,7 @@ def test_get_cluster():
 
 @pytest.mark.parametrize('isbare', [
     (False), (True)])
-def test_add_hosts_interface(isbare, tmpdir):
+def test_update_hosts_interface(isbare, tmpdir):
     res_old_val = deploy.tempest.iso_path
     deploy.tempest.iso_path = os.path.join(tmpdir.dirname, tmpdir.basename) + '/'
     iso_file_path = os.path.join(deploy.tempest.iso_path, 'test_os.iso')
@@ -206,9 +206,9 @@ def test_add_hosts_interface(isbare, tmpdir):
                  {'ip': '', 'name': 'physnet1'}],
         'ens9': [{'ip': '', 'name': 'HEARTBEAT'}]}
     vip = '10.20.11.11'
-    add_hosts_interface(1, hosts_info, mac_address_map,
+    update_hosts_interface(1, hosts_info, mac_address_map,
                         host_interface_map,
-                        vip, isbare, client)
+                        vip, isbare, client, True)
     deploy.tempest.iso_path = res_old_val
     if isbare:
         assert client.hosts.get(host_id1).metadata == {
@@ -217,6 +217,8 @@ def test_add_hosts_interface(isbare, tmpdir):
             'ipmi_user': 'zteroot', 'ipmi_passwd': 'superuser',
             'interfaces': [{'name': 'ens8', 'mac': '11:11:11:11:11:11',
                             'assigned_networks': [{'ip': '', 'name': 'EXTERNAL'}]}],
+            'hugepagesize': '1G',
+            'hugepages': '20',
         }
         assert client.hosts.get(host_id2).metadata == {
             'id': host_id2, 'name': 'controller02', 'cluster_id': cluster_id,
@@ -227,7 +229,10 @@ def test_add_hosts_interface(isbare, tmpdir):
                                 {'ip': '', 'name': 'MANAGEMENT'},
                                 {'ip': '', 'name': 'PUBLICAPI'},
                                 {'ip': '', 'name': 'STORAGE'},
-                                {'ip': '', 'name': 'physnet1'}]}],
+                                {'ip': '', 'name': 'physnet1'}],
+                            'vswitch_type': 'dvs'}],
+            'hugepagesize': '1G',
+            'hugepages': '20',
         }
         assert client.hosts.get(host_id3).metadata == {
             'id': host_id3, 'name': 'computer01', 'cluster_id': cluster_id,
@@ -235,6 +240,8 @@ def test_add_hosts_interface(isbare, tmpdir):
             'ipmi_user': 'zteroot', 'ipmi_passwd': 'superuser',
             'interfaces': [{'name': 'ens9', 'mac': '33:33:33:33:33:33',
                             'assigned_networks': [{'ip': '', 'name': 'HEARTBEAT'}]}],
+            'hugepagesize': '1G',
+            'hugepages': '20',
         }
     else:
         assert client.hosts.get(host_id1).metadata == {
@@ -242,6 +249,8 @@ def test_add_hosts_interface(isbare, tmpdir):
             'cluster': cluster_id, 'os_version': iso_file_path,
             'interfaces': [{'name': 'ens8', 'mac': '11:11:11:11:11:11',
                             'assigned_networks': [{'ip': '', 'name': 'EXTERNAL'}]}],
+            'hugepagesize': '1G',
+            'hugepages': '20',
         }
         assert client.hosts.get(host_id2).metadata == {
             'id': host_id2, 'name': 'controller02', 'cluster_id': cluster_id,
@@ -251,13 +260,18 @@ def test_add_hosts_interface(isbare, tmpdir):
                                 {'ip': '', 'name': 'MANAGEMENT'},
                                 {'ip': '', 'name': 'PUBLICAPI'},
                                 {'ip': '', 'name': 'STORAGE'},
-                                {'ip': '', 'name': 'physnet1'}]}],
+                                {'ip': '', 'name': 'physnet1'}],
+                            'vswitch_type': 'dvs'}],
+            'hugepagesize': '1G',
+            'hugepages': '20',
         }
         assert client.hosts.get(host_id3).metadata == {
             'id': host_id3, 'name': 'computer01', 'cluster_id': cluster_id,
             'cluster': cluster_id, 'os_version': iso_file_path,
             'interfaces': [{'name': 'ens9', 'mac': '33:33:33:33:33:33',
                             'assigned_networks': [{'ip': '', 'name': 'HEARTBEAT'}]}],
+            'hugepagesize': '1G',
+            'hugepages': '20',
         }
     tmpdir.remove()
 
