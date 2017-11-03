@@ -64,7 +64,8 @@ SKIP_DEPLOY_DAISY=0
 VM_MULTINODE=("computer01" "computer02" "controller02" "controller03" "controller01")
 VALID_DEPLOY_SCENARIO=("os-nosdn-nofeature-noha" "os-nosdn-nofeature-ha" "os-odl_l3-nofeature-noha"
                        "os-odl_l2-nofeature-noha" "os-odl_l3-nofeature-ha" "os-odl_l2-nofeature-ha"
-                       "os-odl-nofeature-noha" "os-odl-nofeature-ha")
+                       "os-odl-nofeature-noha" "os-odl-nofeature-ha"
+                       "os-nosdn-ovs_dpdk-noha" "os-nosdn-ovs_dpdk-ha")
 
 #
 # END of variables to customize
