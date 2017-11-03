@@ -32,6 +32,7 @@ OPTIONS:
   -h  Print this message and exit
   -s  Deployment scenario
   -S  Skip recreate Daisy VM during deployment
+  -n  network config file path
 
 Description:
 Deploys the Daisy4NFV on the indicated lab resource
@@ -64,7 +65,7 @@ SKIP_DEPLOY_DAISY=0
 VM_MULTINODE=("computer01" "computer02" "controller02" "controller03" "controller01")
 VALID_DEPLOY_SCENARIO=("os-nosdn-nofeature-noha" "os-nosdn-nofeature-ha" "os-odl_l3-nofeature-noha"
                        "os-odl_l2-nofeature-noha" "os-odl_l3-nofeature-ha" "os-odl_l2-nofeature-ha"
-                       "os-odl-nofeature-noha" "os-odl-nofeature-ha")
+                       "os-odl-nofeature-noha" "os-odl-nofeature-ha" "os-nosdn-ovs_dpdk-ha")
 
 #
 # END of variables to customize
@@ -106,6 +107,9 @@ do
         S)
             SKIP_DEPLOY_DAISY=1
             ;;
+        n)  
+            NETWORK=${OPTARG}
+            ;;
         h)
             usage
             exit 0
@@ -138,7 +142,7 @@ BRIDGE=${BRIDGE:-pxebr}
 # these two config files (should be absolute path) should be copied to
 # daisy node and names as ${DHA} and ${NETWORK}, see below.
 DHA_CONF=$SECURELABDIR/labs/$LAB_NAME/$POD_NAME/daisy/config/deploy.yml
-NETWORK_CONF=$SECURELABDIR/labs/$LAB_NAME/$POD_NAME/daisy/config/network.yml
+NETWORK_CONF=${NETWORK:-$SECURELABDIR/labs/$LAB_NAME/$POD_NAME/daisy/config/network.yml}
 
 # work space and config files' path(absolute) in daisy node
 REMOTE_SPACE=${REMOTE_SPACE:-/home/daisy}
