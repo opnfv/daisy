@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_1b88781e",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-11-04T02:35:30Z",
+      "side": 1,
+      "message": "Please get config file from securelab dir, no need to add new parameter",
+      "revId": "f0cd794aba415d333c7d477522f8a22c503a516c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_7b7c2421",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-11-04T02:35:30Z",
+      "side": 1,
+      "message": "host_info is not used anywhere?",
+      "revId": "f0cd794aba415d333c7d477522f8a22c503a516c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
