@@ -58,7 +58,7 @@ class NetworkConfig(object):
     def _parse_interfaces(self, interfaces):
         for interface in interfaces:
             self._setattr(interface['name'],
-                          'iterface',
+                          'interface',
                           interface['interface'])
 
     def _setattr(self, network_type, field, value):

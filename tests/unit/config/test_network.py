@@ -78,7 +78,7 @@ def test_create_NetworkConf_instance(conf_file_dir, network_file_name, metadatas
     for interface in interfaces:
         name = interface['name']
         mapname = type2name[name]
-        interface_name = '{}_{}'.format(mapname, 'iterface')
+        interface_name = '{}_{}'.format(mapname, 'interface')
         assert getattr(NetworkConfClient, interface_name) == interface['interface']
 
     assert getattr(NetworkConfClient, 'internal_vip') == internal_vip
