@@ -311,19 +311,15 @@ function start_build {
     echo "Start to build Kolla image"
     pushd $KOLLA_GIT_DIR/kolla
 
-    # Some of the images may be failed to built out but is OK
-    # so we use "|| true" here.
-    # TODO: We can impl. some checks to see if the images that
-    # we really care are built successfully.
     echo "=============================OpenStack & ODL build from binary=============================="
 
     REGISTRY_PARAM="--registry 127.0.0.1:5000 --push --tag $KOLLA_IMAGE_VERSION"
-    tools/build.py $REGISTRY_PARAM || true;
+    tools/build.py $REGISTRY_PARAM;
 
     echo "=============================DPDK build from source=============================="
 
     REGISTRY_PARAM="--registry 127.0.0.1:5000 --push --tag $KOLLA_IMAGE_VERSION --template-override contrib/template-override/ovs-dpdk.j2 -t source dpdk"
-    tools/build.py $REGISTRY_PARAM || true;
+    tools/build.py $REGISTRY_PARAM;
     popd
 }
 
@@ -339,7 +335,9 @@ error_trap()
     fi
 
     echo "Image build failed with $exitcode"
-
+    cleanup_kolla_image
+    cleanup_registry_server
+    cleanup_registry_data
     exit $exitcode
 }
 
@@ -361,6 +359,3 @@ start_registry_server
 start_build
 cleanup_kolla_image
 pack_registry_data
-
-# TODO: Upload to OPNFV artifacts repo.
-
