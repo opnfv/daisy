@@ -73,7 +73,7 @@ count=0
 while true; do
     if [ $count -gt $maxcount ]; then
         echo "It took too long to install openstack, exit."
-        dump_log $cluster_id
+        dump_log_for_cluster $cluster_id
         exit 1
     fi
     count=$[count + 1]
@@ -86,7 +86,7 @@ while true; do
         break
     elif [ $openstack_install_failed -gt 0 ]; then
         echo "openstack installation failed ..."
-        dump_log $cluster_id
+        dump_log_for_cluster $cluster_id
         exit 1
     else
         # get 'Role_progress' column
