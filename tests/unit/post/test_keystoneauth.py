@@ -32,7 +32,7 @@ def test_create_Keystoneauth_instance(openrc, expected):
             'OS_PROJECT_DOMAIN_NAME': 'Default',
             'OS_PROJECT_NAME': 'admin',
             'OS_INTERFACE': 'internal',
-            'OS_IDENTITY_API_VERSION': 'region_name'
+            'OS_IDENTITY_API_VERSION': '3'
         },
         {
             'username': 'admin',
@@ -52,8 +52,7 @@ def test_create_Keystoneauth_instance(openrc, expected):
             'OS_USER_DOMAIN_NAME': 'Default',
             'OS_PROJECT_DOMAIN_NAME': 'Default',
             'OS_PROJECT_NAME': 'admin',
-            'OS_ENDPOINT_TYPE': 'Default',
-            'OS_REGION_NAME': 'Default'
+            'OS_ENDPOINT_TYPE': 'Default'
         },
         {
             'username': 'admin',
@@ -63,8 +62,7 @@ def test_create_Keystoneauth_instance(openrc, expected):
             'user_domain_name': 'Default',
             'project_domain_name': 'Default',
             'project_name': 'admin',
-            'endpoint_type': 'Default',
-            'region_name': 'Default'
+            'endpoint_type': 'Default'
         }
     )])
 def test__parse_credentials_in_Keystoneauth(raws, expected):
