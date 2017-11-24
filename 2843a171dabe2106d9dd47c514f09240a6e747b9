@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_73c6ec4a",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/network_dpdk.yml",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2017-11-24T02:14:20Z",
+      "side": 1,
+      "message": "temp -1.\n\nAlex is working on network.yml template https://gerrit.opnfv.org/gerrit/#/c/47573/\n\nCould you please take a look at his PS and check if your network_dpdk.yml can be generated automatically by his template?\nThanks!",
+      "revId": "2843a171dabe2106d9dd47c514f09240a6e747b9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
