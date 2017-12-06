@@ -35,11 +35,11 @@ E.g. OpenStack only deployment roles setting
     hosts:
       - name: host1
         roles:
-          - controller
+          - CONTROLLER_LB
 
       - name: host2
         roles:
-          - compute
+          - COMPUTER
 
 NOTE:
 For B/M, Daisy uses MAC address defined in deploy.yml to map discovered nodes to node items definition in deploy.yml,
@@ -155,7 +155,7 @@ deploy/config/vm_environment/zte-virtual1/network.yml to
 labs/zte/virtual1/daisy/config dir.
 
 Note:
-zte-virtual1 config file deploy openstack with five nodes(3 lb nodes and 2 computer nodes),
+zte-virtual1 config files deploy openstack with five nodes(3 lb nodes and 2 computer nodes),
 if you want to deploy an all-in-one openstack, change the zte-virtual1 to zte-virtual2
 
 Note:
@@ -169,11 +169,11 @@ If selinux is disabled on the host, please delete all xml files section of below
 sudo ./ci/deploy/deploy.sh -L $(cd ./;pwd) -l zte -p virtual1 -s os-nosdn-nofeature-ha
 
 Note:
-The value after -L should be a absolute path which points to the directory which contents labs/zte/virtual1/daisy/config directory.
-The value after -p parameter(virtual1) is get from labs/zte/virtual1/daisy/config/
-The value after -l parameter(zte) is get from labs/
-The value after -s "os-nosdn-nofeature-ha" used for deploy multinode openstack
-The value after -s "os-nosdn-nofeature-noha" used for deploy all-in-one openstack
+The value after -L should be an absolute path which points to the directory which includes labs/zte/virtual1/daisy/config directory.
+The value after -p parameter(virtual1) is got from labs/zte/virtual1/daisy/config/
+The value after -l parameter(zte) is got from labs/
+The value after -s "os-nosdn-nofeature-ha" used for deploying multinode openstack
+The value after -s "os-nosdn-nofeature-noha" used for deploying all-in-one openstack
 
-(7) When deploy successfully,the floating ip of openstack is 10.20.11.11,
+(7) When deployed successfully,the floating ip of openstack is 10.20.11.11,
 the login account is "admin" and the password is "keystone"

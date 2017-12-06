@@ -23,15 +23,15 @@ virtual deployment(in the jump host):
 
 
 
-If command failed because of Daisy VM creation error, then redo above command
-will restart whole deployment which includes rebuild the daisy VM image and
-restart Daisy VM.
+If command failed because of Daisy VM creation error, then redoing above command
+will restart whole deployment which includes rebuilding the daisy VM image and
+restarting Daisy VM.
 
 
 2. Recovery Level 1
 -------------------
 
-If Daisy VM was created successfully, but bugs was encountered in Daisy code
+If Daisy VM was created successfully, but bugs were encountered in Daisy code
 or software of target OS which prevent deployment from being done, in this case,
 the user or the developer does not want to recreate the Daisy VM again during
 next deployment process but just to modify some pieces of code in it. To achieve
@@ -77,4 +77,4 @@ Daisy deployment command as follows(in the Daisy VM):
 
 
 
-This basically do kolla-ansible destroy and kolla-asnible deploy.
+This basically does kolla-ansible destruction and kolla-asnible deployment.
