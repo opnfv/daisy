@@ -26,10 +26,10 @@ Release Data
 | **Project**                          | Daisy4nfv                            |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
-| **Repo/tag**                         | Daisy4nfv/Euphrates.1.0              |
+| **Repo/tag**                         | Daisy4nfv/opnfv-5.1.0                |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
-| **Release designation**              | Euphrates.1.0                        |
+| **Release designation**              | opnfv-5.1.0                          |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
 | **Release date**                     |                                      |
@@ -45,7 +45,7 @@ Deliverables
 Software deliverables
 ~~~~~~~~~~~~~~~~~~~~~
 
- - Daisy4nfv/Euphrates.1.0 ISO, please get it from `OPNFV software download page <https://www.opnfv.org/software/>`_
+ - Daisy4nfv/opnfv-5.1.0 ISO, please get it from `OPNFV software download page <https://www.opnfv.org/software/>`_
 
 .. _document-label:
 
