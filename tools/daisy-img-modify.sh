@@ -186,6 +186,12 @@ setup() {
 
     chroot $mountdir df -h
     cp $cmd $mountdir/$(basename $cmd)
+
+    if [ -h /etc/localtime ]; then
+        export localtime_file=$(ls -l /etc/localtime | grep "^l" | awk '{print $11}')
+    elif [ -f /etc/localtime ]; then
+        cp /etc/loccaltime $mountdir/etc/
+    fi
 }
 
 # modify image running a script using in a chrooted environment
