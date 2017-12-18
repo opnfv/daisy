@@ -16,7 +16,7 @@ You can write your own name/roles reference into it.
         - name -- Host name for deployment node after installation.
 
         - roles -- Components deployed. CONTROLLER_LB is for Controller,
-COMPUTER is for Compute role. Currently only these two role is supported.
+COMPUTER is for Compute role. Currently only these two roles are supported.
 The first CONTROLLER_LB is also used for ODL controller. 3 hosts in
 inventory will be chosen to setup the Ceph storage cluster.
 
@@ -171,8 +171,8 @@ Note:
 The value after -L should be a absolute path which points to the directory which contents labs/zte/pod2/daisy/config directory.
 The value after -p parameter(pod2) comes from path "labs/zte/pod2"
 The value after -l parameter(zte) comes from path  "labs/zte"
-The value after -s "os-nosdn-nofeature-ha" used for deploy multinode openstack
-The value after -s "os-nosdn-nofeature-noha" used for deploy all-in-one openstack
+The value after -s "os-nosdn-nofeature-ha" used for deploying multinode openstack
+The value after -s "os-nosdn-nofeature-noha" used for deploying all-in-one openstack
 
-(8) When deploy successfully,the floating ip of openstack is 10.20.7.11,
+(8) When deployed successfully,the floating ip of openstack is 10.20.7.11,
 the login account is "admin" and the password is "keystone"
