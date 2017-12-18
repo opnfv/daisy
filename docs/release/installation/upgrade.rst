@@ -8,7 +8,7 @@ Thanks for the Kolla's kolla-ansible upgrade function, Daisy enable to
 update OpenStack minor version as the follows:
 
 1. Get new version file only from Daisy team.
-Since Daisy's Kolla images are build by meeting the OPNFV requirements
+Since Daisy's Kolla images are built by meeting the OPNFV requirements
 and have their own file packaging layout, Daisy requires user to
 always use Kolla image file built by Daisy team. Currently, it can be
 got from http://artifacts.opnfv.org/daisy/upstream, or please
@@ -60,8 +60,7 @@ version ID.
 
 
 
-5. Issuing update command passing cluster ID and version ID
-
+5. Issue update command passing cluster ID and version ID
 
 
 .. code-block:: console

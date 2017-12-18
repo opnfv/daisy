@@ -54,7 +54,7 @@ To retrieve the repository of Daisy on Jumphost use the following command:
 
 To get stable Euphrates release, you can use the following command:
 
-- git checkout opnfv-5.1.0
+- git checkout euphrates.1.0
 
 
 Setup Requirements
