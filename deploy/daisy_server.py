@@ -201,11 +201,17 @@ class DaisyServer(object):
             LI('Copy opnfv.bin to Daisy Server')
             self.scp_put(self.bin_file, path_join(self.remote_dir, 'opnfv.bin'))
 
+    def prepare_ssh_known_hosts(self):
+        LI('Prepare /root/.ssh/known_hosts file on Daisy Server')
+        cmd = 'touch /root/.ssh/known_hosts && chmod 600 /root/.ssh/known_hosts'
+        self.ssh_run(cmd)
+
     def install_daisy(self):
         self.prepare_files()
         LI('Begin to install Daisy')
         status = self.ssh_run('%s install' % path_join(self.remote_dir, 'opnfv.bin'))
         log_bar('Daisy installation completed ! status = %s' % status)
+        self.prepare_ssh_known_hosts()
 
     def prepare_configurations(self, deploy_file, net_file):
         LI('Copy cluster configuration files to Daisy Server')

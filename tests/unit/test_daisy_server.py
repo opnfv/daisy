@@ -426,8 +426,27 @@ def test_prepare_files_DaisyServer(mock_update_config,
 
 
 @mock.patch.object(daisy_server.DaisyServer, 'ssh_run')
+def test_prepare_known_hosts(mock_ssh_run, tmpdir):
+    bin_file = os.path.join(tmpdir.dirname, tmpdir.basename, bin_file_name)
+    DaisyServerInst = DaisyServer(daisy_server_info['name'],
+                                  daisy_server_info['address'],
+                                  daisy_server_info['password'],
+                                  remote_dir,
+                                  bin_file,
+                                  adapter,
+                                  scenario,
+                                  deploy_file_name,
+                                  net_file_name)
+    mock_ssh_run.return_value = 0
+    DaisyServerInst.prepare_ssh_known_hosts()
+    DaisyServerInst.ssh_run.assert_called_once()
+    tmpdir.remove()
+
+
+@mock.patch.object(daisy_server.DaisyServer, 'ssh_run')
 @mock.patch.object(daisy_server.DaisyServer, 'prepare_files')
-def test_install_daisy_DaisyServer(mock_prepare_files, mock_ssh_run, tmpdir):
+@mock.patch.object(daisy_server.DaisyServer, 'prepare_ssh_known_hosts')
+def test_install_daisy_DaisyServer(mock_prepare_known_hosts, mock_prepare_files, mock_ssh_run, tmpdir):
     bin_file = os.path.join(tmpdir.dirname, tmpdir.basename, bin_file_name)
     DaisyServerInst = DaisyServer(daisy_server_info['name'],
                                   daisy_server_info['address'],
@@ -443,6 +462,7 @@ def test_install_daisy_DaisyServer(mock_prepare_files, mock_ssh_run, tmpdir):
     DaisyServerInst.install_daisy()
     DaisyServerInst.ssh_run.assert_called_once_with(cmd)
     DaisyServerInst.prepare_files.assert_called_once_with()
+    DaisyServerInst.prepare_ssh_known_hosts.assert_called_once_with()
     tmpdir.remove()
 
 

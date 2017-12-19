@@ -438,10 +438,11 @@ function install_daisy()
         echo "daisy install successfully"
     fi
 
-    #TODO: Why need this?
+    # required by daisycloud-core daisy/api/backends/osinstall/pxe/install.py
     echo "====== generate known_hosts file in daisy vm ======"
     touch $WORKSPACE/known_hosts
     scp $WORKSPACE/known_hosts root@$DAISY_IP:/root/.ssh/
+    rm -f $WORKSPACE/known_hosts
 }
 
 function config_daisy()
