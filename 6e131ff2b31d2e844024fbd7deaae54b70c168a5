@@ -22,6 +22,30 @@
       "revId": "6e131ff2b31d2e844024fbd7deaae54b70c168a5",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_75285ee2",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2017-12-22T06:40:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3d3df0_55943a42",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 32
+      },
+      "revId": "6e131ff2b31d2e844024fbd7deaae54b70c168a5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
