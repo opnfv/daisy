@@ -20,8 +20,8 @@ from deploy.utils import err_exit
 def _config_kolla_admin_openrc(kolla_config_path):
     with open('%s/globals.yml' % kolla_config_path, 'r') as f:
         kolla_config = yaml.safe_load(f.read())
-    if kolla_config.get('opendaylight_leader_ip_address'):
-        sdn_controller_ip = kolla_config.get('opendaylight_leader_ip_address')
+    if kolla_config.get('kolla_internal_vip_address'):
+        sdn_controller_ip = kolla_config.get('kolla_internal_vip_address')
         openrc_file = file('%s/admin-openrc.sh' % kolla_config_path, 'a')
         sdn_ctl_ip = 'export SDN_CONTROLLER_IP=' + sdn_controller_ip + '\n'
         openrc_file.write(sdn_ctl_ip)

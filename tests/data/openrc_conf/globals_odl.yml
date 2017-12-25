@@ -10,4 +10,3 @@ neutron_external_interface: ens8
 openstack_release: 4.0.2
 storage_interface: ens3
 tunnel_interface: ens3
-opendaylight_leader_ip_address: 10.20.7.3
