@@ -63,3 +63,8 @@ cat << EOF > /etc/cloud/cloud.cfg.d/default.cfg
 disable_root: False
 ssh_pwauth: True
 EOF
+
+cd /etc
+if [ ! -z $localtime_file ] && [ -f $localtime_file ]; then
+    ln -s -f $localtime_file /etc/localtime
+fi
