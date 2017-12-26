@@ -58,6 +58,12 @@ host_name=daisy
 echo ${host_name} > /etc/hostname
 sed -i "/^127.0.0.1/s/ localhost / ${host_name} localhost /g" /etc/hosts
 
+# required by daisycloud-core daisy/api/backends/osinstall/pxe/install.py
+# This can be removed when upstream fix it.
+mkdir -p -m 700 /root/.ssh
+touch /root/.ssh/known_hosts
+chmod 600 /root/.ssh/known_hosts
+
 # Allow console access via pwd
 cat << EOF > /etc/cloud/cloud.cfg.d/default.cfg
 disable_root: False

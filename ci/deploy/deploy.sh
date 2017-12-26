@@ -437,11 +437,6 @@ function install_daisy()
     else
         echo "daisy install successfully"
     fi
-
-    #TODO: Why need this?
-    echo "====== generate known_hosts file in daisy vm ======"
-    touch $WORKSPACE/known_hosts
-    scp $WORKSPACE/known_hosts root@$DAISY_IP:/root/.ssh/
 }
 
 function config_daisy()
