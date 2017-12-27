@@ -9,7 +9,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 imagebranch="pike"
-imageversion="171124170521"
+imageversion="171226232545"
 imageserver="http://artifacts.opnfv.org/daisy/upstream"
 imagedir="/var/lib/daisy/versionfile/kolla"
 imagename="kolla-image-$imagebranch-$imageversion.tgz"
