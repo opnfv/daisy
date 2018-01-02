@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_79121058",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-01-02T08:20:28Z",
+      "side": 1,
+      "message": "Why noha?",
+      "range": {
+        "startLine": 67,
+        "startChar": 88,
+        "endLine": 67,
+        "endChar": 92
+      },
+      "revId": "9e26be9603963f53499cf45acd4227151155b857",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_b9181876",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-01-02T08:20:28Z",
+      "side": 1,
+      "message": "Because securedlab will be retired and there isn\u0027t network_dpdk.yml in pharos repo, we should use pharos instead securedlab and generate network_dpdk.yml by the templates in pharos.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 117
+      },
+      "revId": "9e26be9603963f53499cf45acd4227151155b857",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_f906201c",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/network_dpdk.yml",
+        "patchSetId": 18
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-01-02T08:20:28Z",
+      "side": 1,
+      "message": "Corporation",
+      "range": {
+        "startLine": 2,
+        "startChar": 25,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "9e26be9603963f53499cf45acd4227151155b857",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_390d2838",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/network_dpdk.yml",
+        "patchSetId": 18
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-01-02T08:20:28Z",
+      "side": 1,
+      "message": "STORAGE",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "9e26be9603963f53499cf45acd4227151155b857",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_99155442",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/network_dpdk.yml",
+        "patchSetId": 18
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-01-02T08:20:28Z",
+      "side": 1,
+      "message": "delete it since EXTERNAL and TENANT share the same interface",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "9e26be9603963f53499cf45acd4227151155b857",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
