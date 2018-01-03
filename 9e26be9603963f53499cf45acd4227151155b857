@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "9a3d3df0_94b23b92",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/network_dpdk.yml",
+        "patchSetId": 18
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2018-01-03T03:35:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3d3df0_f906201c",
+      "range": {
+        "startLine": 2,
+        "startChar": 25,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "9e26be9603963f53499cf45acd4227151155b857",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3d3df0_390d2838",
         "filename": "deploy/config/bm_environment/zte-baremetal1/network_dpdk.yml",
         "patchSetId": 18
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "9a3d3df0_d4a84322",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/network_dpdk.yml",
+        "patchSetId": 18
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2018-01-03T03:35:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3d3df0_390d2838",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "9e26be9603963f53499cf45acd4227151155b857",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3d3df0_99155442",
         "filename": "deploy/config/bm_environment/zte-baremetal1/network_dpdk.yml",
         "patchSetId": 18
@@ -105,6 +153,30 @@
       "writtenOn": "2018-01-02T08:20:28Z",
       "side": 1,
       "message": "delete it since EXTERNAL and TENANT share the same interface",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "9e26be9603963f53499cf45acd4227151155b857",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_b4a5bf48",
+        "filename": "deploy/config/bm_environment/zte-baremetal1/network_dpdk.yml",
+        "patchSetId": 18
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2018-01-03T03:35:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3d3df0_99155442",
       "range": {
         "startLine": 16,
         "startChar": 0,
