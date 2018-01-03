@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a3d3df0_afec4af4",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2018-01-03T07:14:15Z",
+      "side": 1,
+      "message": "I only have three nodes,one controller,two computer",
+      "parentUuid": "9a3d3df0_79121058",
+      "range": {
+        "startLine": 67,
+        "startChar": 88,
+        "endLine": 67,
+        "endChar": 92
+      },
+      "revId": "9e26be9603963f53499cf45acd4227151155b857",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3d3df0_b9181876",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 18
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-02T08:20:28Z",
       "side": 1,
       "message": "Because securedlab will be retired and there isn\u0027t network_dpdk.yml in pharos repo, we should use pharos instead securedlab and generate network_dpdk.yml by the templates in pharos.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 117
+      },
+      "revId": "9e26be9603963f53499cf45acd4227151155b857",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_efc13255",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 3913
+      },
+      "writtenOn": "2018-01-03T07:14:15Z",
+      "side": 1,
+      "message": "If you hava modify it, inform me,thanks!",
+      "parentUuid": "9a3d3df0_b9181876",
       "range": {
         "startLine": 142,
         "startChar": 0,
