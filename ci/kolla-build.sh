@@ -129,15 +129,16 @@ function build_kolla_image_in_daisy_vm()
     ssh $SSH_PARAS $DAISY_IP "${REMOTE_SPACE}/ci/kolla-build-vm.sh $VM_PARAMS"
     rc=$?
     if [ $rc -ne 0 ]; then
-        echo "daisy install failed"
+        echo "image build failed"
         exit 1
     else
-        echo "daisy install successfully"
+        echo "image build successfully"
     fi
 
     rm -rf $BUILD_OUTPUT_DIR
-    mkdir -p $BUILD_OUTPUT_DIR
     scp -r root@$DAISY_IP:$BUILD_OUTPUT_DIR $WORK_DIR
+    realuser=$(who am i | awk '{print $1}')
+    chown -R $realuser:$realuser $WORK_DIR
 }
 
 trap "error_trap" EXIT SIGTERM
