@@ -20,7 +20,12 @@ KOLLA_TAG=
 EXT_TAG=
 KOLLA_GIT_VERSION=
 KOLLA_IMAGE_VERSION=
-WORK_DIR=/tmp
+
+SCRIPT_PATH=$(readlink -f $(dirname $0))
+WORKSPACE=$(cd ${SCRIPT_PATH}/..; pwd)
+
+WORK_DIR=$WORKSPACE
+
 REGISTRY_SERVER_NAME=daisy-registry
 
 function usage
@@ -45,7 +50,7 @@ sudo `basename $0` -l https://git.openstack.org/openstack/kolla
                    -j daisy-docker-build-euphrates
                    -t 4.0.2
                    -e .1
-                   -w /tmp
+                   -w /path/to/the/working/dir
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 EOF
 }
@@ -220,8 +225,8 @@ function cleanup_kolla_image {
 function start_registry_server {
     echo "Starting registry server"
     sudo docker run -d -p 5000:5000 --restart=always \
-        -e REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/tmp/registry \
-        -v $REGISTRY_VOLUME_DIR:/tmp/registry \
+        -e REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/home/registry \
+        -v $REGISTRY_VOLUME_DIR:/home/registry \
         --name $REGISTRY_SERVER_NAME registry:2
 }
 
