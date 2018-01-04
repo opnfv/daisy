@@ -31,7 +31,10 @@ error_trap()
     exit $exitcode
 }
 
-WORK_DIR=/tmp
+SCRIPT_PATH=$(readlink -f $(dirname $0))
+WORKSPACE=$(cd ${SCRIPT_PATH}/..; pwd)
+
+WORK_DIR=$WORKSPACE
 while getopts "l:b:j:t:e:w:h" OPTION
 do
     #Only get what we need
@@ -46,8 +49,6 @@ BUILD_OUTPUT_DIR=$WORK_DIR/kolla-build-output
 
 ############Builder VM operations################
 
-SCRIPT_PATH=$(readlink -f $(dirname $0))
-WORKSPACE=$(cd ${SCRIPT_PATH}/..; pwd)
 DEPLOY_PATH=$WORKSPACE/deploy
 
 # VM configurations
@@ -64,7 +65,7 @@ PARAS_IMAGE=${PARAS_FROM_DEPLOY#* * * }
 # qcow2 image modifier location
 CREATE_QCOW2_PATH=$WORKSPACE/tools
 # temp storage for qcow2 image modifier
-IMWORKDIR=${IMWORKDIR:-/tmp/workdir/daisy}
+IMWORKDIR=${IMWORKDIR:-$WORKSPACE/img}
 
 # set extra ssh paramters
 SSH_PARAS="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
@@ -137,7 +138,8 @@ function build_kolla_image_in_daisy_vm()
 
     rm -rf $BUILD_OUTPUT_DIR
     scp -r root@$DAISY_IP:$BUILD_OUTPUT_DIR $WORK_DIR
-    chown -R jenkins:jenkins $WORK_DIR
+    realuser=$(who am i | awk '{print $1}')
+    chown -R $realuser:$realuser $WORK_DIR
 }
 
 trap "error_trap" EXIT SIGTERM
