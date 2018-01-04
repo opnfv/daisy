@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_ee4f7332",
+        "filename": "ci/kolla-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-01-04T07:03:04Z",
+      "side": 1,
+      "message": "We can get the user with $(who am i | awk \u0027{print $1}\u0027)",
+      "range": {
+        "startLine": 140,
+        "startChar": 13,
+        "endLine": 140,
+        "endChar": 20
+      },
+      "revId": "81f2026c89455971396f2ed35fa3b7963571bafe",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
