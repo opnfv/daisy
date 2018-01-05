@@ -183,19 +183,16 @@ def test_ipmi_reboot_node(mock_getstatusoutput, mock_err_exit,
 
 
 @pytest.mark.parametrize('cmd, check, expect', [
-    ('cd /home', False, 0),
-    ('cd /home', True, 0),
+    ('ls /home', False, 0),
+    ('ls /home', True, 0),
     ('test_command', False, 127),
     ('test_command', True, 127)])
-@mock.patch('deploy.utils.err_exit')
-def test_run_shell(mock_err_exit, cmd, check, expect):
-    ret = run_shell(cmd, check=check)
-    if check:
-        if cmd == 'cd /home':
-            mock_err_exit.assert_not_called()
-        elif cmd == 'test_command':
-            mock_err_exit.assert_called_once()
-    assert ret == expect
+def test_run_shell(cmd, check, expect):
+    try:
+        ret = run_shell(cmd, check=check)
+        assert ret == expect
+    except OSError:
+        assert cmd == 'test_command'
 
 
 @pytest.mark.parametrize('scenario', [

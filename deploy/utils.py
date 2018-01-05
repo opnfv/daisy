@@ -124,10 +124,9 @@ def ipmi_reboot_node(host, user, passwd, boot_source=None):
 
 
 def run_shell(cmd, check=False):
-    process = subprocess.Popen(cmd,
+    process = subprocess.Popen(cmd.split(),
                                stdout=subprocess.PIPE,
-                               stderr=subprocess.PIPE,
-                               shell=True)
+                               stderr=subprocess.PIPE)
     while process.poll() is None:
         LD(process.stdout.readline().strip())
 
