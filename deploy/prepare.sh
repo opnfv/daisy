@@ -36,7 +36,7 @@ EOF
 
 NETWORK_CONF=''
 
-while getopts "n:b:h" OPTION
+while getopts "n:b:dt:h" OPTION
 do
     case $OPTION in
         n)
@@ -44,6 +44,9 @@ do
             ;;
         b)
             IS_BARE=${OPTARG}
+            ;;
+        dr)
+            RUN_DOCTOR=${OPTARG}
             ;;
         h)
             usage
@@ -57,4 +60,4 @@ do
     esac
 done
 
-python $PYTHONPATH/deploy/prepare/execute.py -nw $NETWORK_CONF -b $IS_BARE
+python $PYTHONPATH/deploy/prepare/execute.py -nw $NETWORK_CONF -b $IS_BARE -dr $RUN_DOCTOR
