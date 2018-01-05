@@ -12,6 +12,7 @@ import os
 from deploy.config.network import NetworkConfig
 
 KOLLA_CONF_PATH = '/etc/kolla/config'
+DOCTOR_EXTRA_FILE = '/home/kolla_install/kolla-ansible/ansible/roles/ceilometer/templates/event_pipeline.yaml.j2'
 
 
 def _make_dirs(path):
@@ -59,6 +60,11 @@ def _set_trusts_auth():
            'trusts_delegated_roles =\n'
 
 
+def _config_doctor_extra_configuration():
+    with open(DOCTOR_EXTRA_FILE, 'a') as fp:
+        fp.write('          - notifier://?topic=alarm.all\n')
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-nw', '--network-file',
@@ -69,10 +75,17 @@ def main():
                         type=str,
                         required=True,
                         help='0 for virtual, 1 for baremetal')
+    parser.add_argument('-dr', '--run-doctor',
+                        type=str,
+                        required=True,
+                        help='1 for run doctor, other do not run doctor')
     args = parser.parse_args()
 
     if args.is_baremetal == '0':
         _set_qemu_compute()
+
+    if args.run_doctor == '1':
+        _config_doctor_extra_configuration()
 
     _set_default_floating_pool(args.network_file)
     _set_trusts_auth()
