@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_34324a5f",
+        "filename": "deploy/prepare/execute.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-01-05T07:55:59Z",
+      "side": 1,
+      "message": "DOCTOR",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "5f6a90d2a93f584d2070652d196719b1787c1e23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_d4403ea7",
+        "filename": "deploy/prepare/execute.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-01-05T07:55:59Z",
+      "side": 1,
+      "message": "It\u0027s a variable, not a string. Please remove the quotation marks.",
+      "range": {
+        "startLine": 64,
+        "startChar": 14,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "5f6a90d2a93f584d2070652d196719b1787c1e23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_54142e9f",
+        "filename": "deploy/prepare/execute.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-01-05T07:55:59Z",
+      "side": 1,
+      "message": "I think boolean is enough. Although This can work.",
+      "range": {
+        "startLine": 79,
+        "startChar": 24,
+        "endLine": 79,
+        "endChar": 32
+      },
+      "revId": "5f6a90d2a93f584d2070652d196719b1787c1e23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
