@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9a3d3df0_3467ea4e",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2018-01-05T08:03:10Z",
+      "side": 1,
+      "message": "Please show us the caller\u0027s code that when and where this parameter will be used.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "5f6a90d2a93f584d2070652d196719b1787c1e23",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3d3df0_34324a5f",
         "filename": "deploy/prepare/execute.py",
         "patchSetId": 7
