@@ -118,7 +118,7 @@ do
     esac
 done
 
-SECURELABDIR=${SECURELABDIR:-${WORKSPACE}/securedlab}
+SECURELABDIR=${SECURELABDIR:-${WORKSPACE}/pharos}
 
 if [[ ! "$SECURELABDIR" = /* ]] || [ -z $LAB_NAME ] || [ -z $POD_NAME ] ; then
     echo """Please check
@@ -184,14 +184,20 @@ BMDEPLOY_DAISY_SERVER_VM=$WORKSPACE/templates/physical_environment/vms/daisy.xml
 function update_dha_by_pdf()
 {
     local pdf_yaml=labs/$LAB_NAME/${POD_NAME}.yaml
-    local jinja2_template=installers/daisy/pod_config.yaml.j2
-    local generate_config=utils/generate_config.py
-    if [ ! -f ${generate_config} ] || [ ! -f ${pdf_yaml} ] || [ ! -f ${jinja2_template} ]; then
+    local pod_template=config/installers/daisy/pod_config.yaml.j2
+    local generate_config=config/utils/generate_config.py
+    if [[ $DEPLOY_SCENARIO =~ (dpdk) ]]; then
+        local network_template=config/installers/daisy/network-dpdk.yaml.j2
+    else
+        local network_template=config/installers/daisy/network.yaml.j2
+    fi
+    if [ ! -f ${generate_config} ] || [ ! -f ${pdf_yaml} ] || [ ! -f ${pod_template} ] || [ ! -f ${network_template} ] ; then
+        echo "Template files donot exist in ${SECURELABDIR}."
         return
     fi
 
     local tmpfile=$(mktemp XXXXXXXX.yml)
-    python ${generate_config} -j ${jinja2_template} -y ${pdf_yaml} > ${tmpfile}
+    python ${generate_config} -j ${pod_template} -y ${pdf_yaml} > ${tmpfile}
     if [ $? -ne 0 ]; then
         echo "Cannot generate config from POD Descriptor File, use original deploy.yml !"
         return
@@ -207,6 +213,14 @@ function update_dha_by_pdf()
     fi
     cp ${tmpfile} ${DHA_CONF}
     echo "====== Update deploy.yml from POD Descriptor File ======"
+
+    python ${generate_config} -j ${network_template} -y ${pdf_yaml} > ${tmpfile}
+    if [ $? -ne 0 ]; then
+        echo "Cannot generate network configuration from PDF and IDF!"
+        return
+    fi
+    cp ${tmpfile} ${NETWORK_CONF}
+    echo "====== Update $(basename ${NETWORK_CONF}) from POD Descriptor File ======"
     rm -f $tmpfile
 }
 
