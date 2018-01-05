@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_34c1aa54",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 22
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2018-01-05T06:39:45Z",
+      "side": 1,
+      "message": "ha",
+      "range": {
+        "startLine": 68,
+        "startChar": 67,
+        "endLine": 68,
+        "endChar": 71
+      },
+      "revId": "0416f20bd84c2f515d737aa92b2383fae9909240",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
