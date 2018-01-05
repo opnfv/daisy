@@ -13,7 +13,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-KOLLA_GIT="https://github.com/huzhijiang/kolla.git"
+KOLLA_GIT="https://git.openstack.org/openstack/kolla"
 KOLLA_BRANCH="stable/ocata"
 OPNFV_JOB_NAME=
 KOLLA_TAG=
@@ -259,13 +259,17 @@ function update_kolla_code {
     mkdir -p $KOLLA_GIT_DIR
 
     pushd $KOLLA_GIT_DIR
-    git clone $KOLLA_GIT
+    git clone https://git.openstack.org/openstack/kolla 
     pushd $KOLLA_GIT_DIR/kolla
     git checkout $KOLLA_BRANCH
 
     if [[ ! -z "$KOLLA_TAG" ]]; then
         git checkout $KOLLA_TAG
     fi
+
+    # Apply patches for openstack/kolla project
+    cp $WORKSPACE/ci/kolla_patches/*.patch ./
+    git apply *.patch
 
     KOLLA_GIT_VERSION=$(git log -1 --pretty="%H")
     tox -e genconfig
