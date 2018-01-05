@@ -23,6 +23,7 @@ usage: `basename $0` -n network_config_file
 OPTIONS:
   -n  network configuration path, necessary
   -b  0 for virtual, 1 for baremetal
+  -d  1 for run doctor, other do not
   -h  Print this message and exit
 
 Description:
@@ -36,7 +37,7 @@ EOF
 
 NETWORK_CONF=''
 
-while getopts "n:b:h" OPTION
+while getopts "n:b:d:h" OPTION
 do
     case $OPTION in
         n)
@@ -44,6 +45,9 @@ do
             ;;
         b)
             IS_BARE=${OPTARG}
+            ;;
+        d)
+            RUN_DOCTOR=${OPTARG}
             ;;
         h)
             usage
@@ -57,4 +61,4 @@ do
     esac
 done
 
-python $PYTHONPATH/deploy/prepare/execute.py -nw $NETWORK_CONF -b $IS_BARE
+python $PYTHONPATH/deploy/prepare/execute.py -nw $NETWORK_CONF -b $IS_BARE -d $RUN_DOCTOR

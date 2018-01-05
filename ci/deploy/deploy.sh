@@ -73,7 +73,7 @@ VALID_DEPLOY_SCENARIO=("os-nosdn-nofeature-noha" "os-nosdn-nofeature-ha" "os-odl
 ############################################################################
 # BEGIN of main
 #
-while getopts "b:B:Dn:L:l:p:r:w:s:Sh" OPTION
+while getopts "b:B:Dn:L:l:p:r:w:s:d:Sh" OPTION
 do
     case $OPTION in
         b)
@@ -106,6 +106,9 @@ do
         S)
             SKIP_DEPLOY_DAISY=1
             ;;
+        d)
+            RUN_DOCTOR=${OPTARG}
+            ;;
         h)
             usage
             exit 0
@@ -132,6 +135,8 @@ if [[ ! "$SECURELABDIR" = /* ]] || [ -z $LAB_NAME ] || [ -z $POD_NAME ] ; then
 fi
 
 DEPLOY_SCENARIO=${DEPLOY_SCENARIO:-"os-nosdn-nofeature-noha"}
+
+RUN_DOCTOR=$(RUN_DOCTOR:-"0")
 
 BRIDGE=${BRIDGE:-pxebr}
 
@@ -456,7 +461,7 @@ function install_daisy()
 function config_daisy()
 {
     echo "====== add relate config for Daisy and Kolla ======"
-    ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/prepare.sh -n $NETWORK -b $IS_BARE"
+    ssh $SSH_PARAS $DAISY_IP "bash $REMOTE_SPACE/deploy/prepare.sh -n $NETWORK -b $IS_BARE -d $RUN_DOCTOR"
 }
 
 clean_up_target_vms_and_networks
