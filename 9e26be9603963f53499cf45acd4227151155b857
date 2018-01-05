@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9a3d3df0_31cedc2e",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2018-01-05T02:04:22Z",
+      "side": 1,
+      "message": "zte-pod9 currently have 3 nodes (1 control, 2 compute). And we would like to let dpdk scenario run on zte-pod9 first because some offline tests have been done before hand only on this POD.\n\nBut  I think there is no harm for you to also add os-nosdn-ovs_dpdk-ha here. What do you think?",
+      "parentUuid": "9a3d3df0_afec4af4",
+      "range": {
+        "startLine": 67,
+        "startChar": 88,
+        "endLine": 67,
+        "endChar": 92
+      },
+      "revId": "9e26be9603963f53499cf45acd4227151155b857",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3d3df0_b9181876",
         "filename": "ci/deploy/deploy.sh",
         "patchSetId": 18
