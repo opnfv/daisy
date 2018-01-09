@@ -16,6 +16,24 @@
       "revId": "ef7ce0b8c457cf9831d9556572ab13d7d4c660f6",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_d7a79ba5",
+        "filename": "deploy/check_openstack_progress.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2018-01-09T02:48:02Z",
+      "side": 0,
+      "message": "I think a better way to check the progress is to modify this script into python,and we can call the daisyclient to check the value of key \u0027role-status\u0027 in dict \u0027host-detail\u0027 info.\nI can upload another patch to change this, thank you for your advice.",
+      "parentUuid": "9a3d3df0_7797af3a",
+      "revId": "ef7ce0b8c457cf9831d9556572ab13d7d4c660f6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
