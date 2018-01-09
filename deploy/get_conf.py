@@ -125,6 +125,8 @@ def get_yml_para(dha_file):
     controller_node_size = disks.get("controller", 0)
     compute_node_size = disks.get("compute", 0)
     daisy_passwd = data.get("daisy_passwd", "")
+    if not daisy_passwd:
+        daisy_passwd = "r00tme"
     daisy_ip = data.get("daisy_ip", "")
     daisy_gateway = data.get("daisy_gateway", "")
     daisy_target_node = data.get("hosts", "")
@@ -140,9 +142,9 @@ def get_conf_from_deploy():
     daisyserver_size, controller_node_size, compute_node_size,\
         daisy_passwd, daisy_ip, daisy_gateway,\
         hosts_num = get_yml_para(conf['dha'])
-    print "{hosts_num} {ip} {passwd} -s {size} -g {gateway}".format(
+    print "{hosts_num} {ip} {daisy_passwd} -s {size} -g {gateway}".format(
         hosts_num=hosts_num,
-        passwd=daisy_passwd,
+        daisy_passwd=daisy_passwd,
         size=daisyserver_size,
         ip=daisy_ip,
         gateway=daisy_gateway)
