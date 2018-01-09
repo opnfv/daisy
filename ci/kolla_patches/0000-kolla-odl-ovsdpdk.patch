@@ -1,0 +1,88 @@
+diff --git a/contrib/template-override/ovs-dpdk.j2 b/contrib/template-override/ovs-dpdk.j2
+index 7dea1b7..2bc6c5e 100644
+--- a/contrib/template-override/ovs-dpdk.j2
++++ b/contrib/template-override/ovs-dpdk.j2
+@@ -46,6 +46,9 @@
+
+ {{ macros.install_packages(ovs_dpdk_packages | customizable("packages")) }}
+
++RUN mkdir -p /lib/modules/$(uname -r)
++RUN ln -s /usr/src/kernels/$(uname -r) /lib/modules/$(uname -r)/build
++
+ ADD plugins-archive /
+ RUN ln -s /plugins/ovsdpdk-plugin-ovs-archive-*/ /ovs \
+     && ln -s /plugins/ovsdpdk-plugin-dpdk-archive-*/ /dpdk
+@@ -64,7 +67,7 @@ WORKDIR "/dpdk/build"
+                            "s/CONFIG_RTE_BUILD_SHARED_LIB=.*$/CONFIG_RTE_BUILD_SHARED_LIB=n/"])
+ }}
+
+-RUN make -j $(nproc) EXTRA_CFLAGS='-O2 -fPIC' \
++RUN make -j $(nproc) EXTRA_CFLAGS='-O2 -fPIC -Wno-maybe-uninitialized' \
+     && make install
+ WORKDIR /ovs
+ RUN ./boot.sh \
+diff --git a/docker/base/grafana.repo b/docker/base/grafana.repo
+index dc8d30b..58fee69 100644
+--- a/docker/base/grafana.repo
++++ b/docker/base/grafana.repo
+@@ -2,6 +2,6 @@
+ name=grafana
+ baseurl=https://packagecloud.io/grafana/stable/el/7/$basearch
+ repo_gpgcheck=1
+-enabled=1
++enabled=0
+ gpgcheck=1
+ gpgkey=https://packagecloud.io/gpg.key https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
+diff --git a/docker/base/opendaylight.repo b/docker/base/opendaylight.repo
+index 8c0c299..a78b119 100644
+--- a/docker/base/opendaylight.repo
++++ b/docker/base/opendaylight.repo
+@@ -1,5 +1,5 @@
+ [opendaylight]
+ name=CentOS CBS OpenDaylight Release Repository
+-baseurl=http://cbs.centos.org/repos/nfv7-opendaylight-6-release/x86_64/os/
++baseurl=http://cbs.centos.org/repos/nfv7-opendaylight-6-candidate/x86_64/os/
+ enabled=1
+ gpgcheck=0
+diff --git a/docker/neutron/neutron-bgp-dragent/Dockerfile.j2 b/docker/neutron/neutron-bgp-dragent/Dockerfile.j2
+deleted file mode 100644
+index a43d3d7..0000000
+--- a/docker/neutron/neutron-bgp-dragent/Dockerfile.j2
++++ /dev/null
+@@ -1,36 +0,0 @@
+-FROM {{ namespace }}/{{ image_prefix }}neutron-base:{{ tag }}
+-LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build_date }}"
+-
+-{% block neutron_bgp_dragent_header %}{% endblock %}
+-
+-{% import "macros.j2" as macros with context %}
+-
+-{% if install_type == 'binary' %}
+-    {% if base_distro in ['centos', 'oraclelinux', 'rhel']  %}
+-RUN echo '{{ install_type }} not yet available for {{ base_distro }}' \
+-    && /bin/false
+-    {% elif base_distro in ['ubuntu', 'debian'] %}
+-        {% set neutron_bgp_dragent_packages = [
+-            'neutron-bgp-dragent'
+-        ] %}
+-    {% endif %}
+-
+-{{ macros.install_packages(neutron_bgp_dragent_packages | customizable("packages")) }}
+-
+-{% elif install_type == 'source'  %}
+-
+-ADD neutron-bgp-dragent-archive /neutron-bgp-dragent-source
+-
+-    {% set neutron_bgp_dragent_pip_packages = [
+-        '/neutron_dynamic_routing'
+-    ] %}
+-
+-RUN ln -s neutron-bgp-dragent-source/* neutron_dynamic_routing \
+-    && {{ macros.install_pip(neutron_bgp_dragent_pip_packages | customizable("pip_packages")) }}
+-
+-{% endif %}
+-
+-{% block neutron_bgp_dragent_footer %}{% endblock %}
+-{% block footer %}{% endblock %}
+-
+-USER neutron

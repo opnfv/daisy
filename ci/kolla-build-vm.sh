@@ -13,7 +13,6 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-KOLLA_GIT="https://github.com/huzhijiang/kolla.git"
 KOLLA_BRANCH="stable/ocata"
 OPNFV_JOB_NAME=
 KOLLA_TAG=
@@ -37,7 +36,6 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 usage: `basename $0` [options]
 
 OPTIONS:
-  -l  Kolla git repo location
   -b  Kolla git repo branch
   -j  OPNFV job name
   -t  Kolla git repo code tag(base version of image)
@@ -45,8 +43,7 @@ OPTIONS:
   -w  working directroy
 
 Examples:
-sudo `basename $0` -l https://git.openstack.org/openstack/kolla
-                   -b stable/ocata
+sudo `basename $0` -b stable/ocata
                    -j daisy-docker-build-euphrates
                    -t 4.0.2
                    -e .1
@@ -55,12 +52,9 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 EOF
 }
 
-while getopts "l:b:j:t:e:w:h" OPTION
+while getopts "b:j:t:e:w:h" OPTION
 do
     case $OPTION in
-        l)
-            KOLLA_GIT=${OPTARG}
-            ;;
         b)
             KOLLA_BRANCH=${OPTARG}
             ;;
@@ -259,13 +253,17 @@ function update_kolla_code {
     mkdir -p $KOLLA_GIT_DIR
 
     pushd $KOLLA_GIT_DIR
-    git clone $KOLLA_GIT
+    git clone https://git.openstack.org/openstack/kolla
     pushd $KOLLA_GIT_DIR/kolla
     git checkout $KOLLA_BRANCH
 
     if [[ ! -z "$KOLLA_TAG" ]]; then
         git checkout $KOLLA_TAG
     fi
+
+    # Apply patches for openstack/kolla project
+    cp $WORKSPACE/ci/kolla_patches/*.patch ./
+    git apply *.patch
 
     KOLLA_GIT_VERSION=$(git log -1 --pretty="%H")
     tox -e genconfig
