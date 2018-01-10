@@ -487,20 +487,20 @@ function get_mac_addresses_for_virtual()
             name=${VM_MULTINODE[$i]}
             macs=$(virsh dumpxml $name | grep "<mac" | awk -F "'" '{print $2}' | tr "\n" " ")
             line=$(awk "BEGIN{}(/name/&&/$name/){print NR}" $tmpfile)
-            sed -i "${line}a\  mac_addresses:" $tmpfile
+            sed -i "${line}a\    mac_addresses:" $tmpfile
             for mac in $macs; do
                 line=$[ line + 1 ]
-                sed -i "${line}a\    - \'$mac\'" $tmpfile
+                sed -i "${line}a\      - \'$mac\'" $tmpfile
             done
         done
     else
         name="all_in_one"
         macs=$(virsh dumpxml $name | grep "<mac" | awk -F "'" '{print $2}' | tr "\n" " ")
         line=$(awk "BEGIN{}(/name/&&/$name/){print NR}" $tmpfile)
-        sed -i "${line}a\  mac_addresses:" $tmpfile
+        sed -i "${line}a\    mac_addresses:" $tmpfile
         for mac in $macs; do
             line=$[ line + 1 ]
-            sed -i "${line}a\    - \'$mac\'" $tmpfile
+            sed -i "${line}a\      - \'$mac\'" $tmpfile
         done
     fi
 
