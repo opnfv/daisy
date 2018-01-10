@@ -34,6 +34,24 @@
       "revId": "ef7ce0b8c457cf9831d9556572ab13d7d4c660f6",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_23da094c",
+        "filename": "deploy/check_openstack_progress.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2018-01-10T08:17:26Z",
+      "side": 0,
+      "message": "I suggest this time is OK since this is the only place where daisy host-list is needed as a API.\n\nBut for future, since API MUST be stable and compatible for the current users no matter it is good or bad designed, we can not do things like this. If another column is needed like wenjuan said, we need to make a new API or let the user to provide a new parameter for the current API.  What do you think?",
+      "parentUuid": "9a3d3df0_d7a79ba5",
+      "revId": "ef7ce0b8c457cf9831d9556572ab13d7d4c660f6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
