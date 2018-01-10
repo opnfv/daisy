@@ -391,6 +391,17 @@ function update_pxe_bridge()
     fi
 }
 
+function update_image_dir()
+{
+    image_file=$(grep "<source * file" $BMDEPLOY_DAISY_SERVER_VM | awk -F "'" '{print $2}') || True
+    image_dir=${image_file%/*}
+    if [ ${image_dir} ] && [ ${image_dir} != ${WORKDIR} ] && [ ! -z ${image_dir} ]; then
+        echo "Use $WORKDIR to replace the source file in $BMDEPLOY_DAISY_SERVER_VM"
+        WORKDIR_TMP=${WORKDIR//'/'/'\/'}
+        sed -i -e "/source * file/{s/source.*$/source file=\'$WORKDIR_TMP\/centos7.qcow2\'\/>/;}" $BMDEPLOY_DAISY_SERVER_VM
+    fi
+}
+
 function create_daisy_vm_and_networks()
 {
     echo "====== Create Daisy VM ======"
@@ -399,6 +410,7 @@ function create_daisy_vm_and_networks()
         create_node $VMDELOY_DAISY_SERVER_NET daisy1 $VMDEPLOY_DAISY_SERVER_VM daisy
     else
         update_pxe_bridge
+        update_image_dir
         virsh define $BMDEPLOY_DAISY_SERVER_VM
         virsh start daisy
     fi
