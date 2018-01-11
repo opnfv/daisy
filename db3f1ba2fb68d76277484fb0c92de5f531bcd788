@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_dd55f5fa",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-01-11T09:26:04Z",
+      "side": 1,
+      "message": "A suggestion to avoid placing image in /tmp :\nHOMEDIR\u003d$(sudo -u $(who am i | awk \u0027{print $1}\u0027) -i eval \u0027echo $HOME\u0027)\nWORKDIR\u003d${WORKDIR:-$HOMEDIR/opnfv/cache/daisy}",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 38
+      },
+      "revId": "db3f1ba2fb68d76277484fb0c92de5f531bcd788",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
