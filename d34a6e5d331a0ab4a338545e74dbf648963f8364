@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_03d0a0f4",
+        "filename": "deploy/prepare/execute.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-01-12T05:57:35Z",
+      "side": 1,
+      "message": "Please keep consistent with the input param in prepare.sh",
+      "range": {
+        "startLine": 78,
+        "startChar": 25,
+        "endLine": 78,
+        "endChar": 28
+      },
+      "revId": "d34a6e5d331a0ab4a338545e74dbf648963f8364",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
