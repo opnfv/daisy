@@ -13,7 +13,7 @@ TOOLS_PATH=$1
 CACHE_PATH=/home/cache
 
 imagebranch="pike"
-imageversion="180110175058"
+imageversion="180113131526"
 imageserver="http://artifacts.opnfv.org/daisy/upstream"
 imagename="kolla-image-$imagebranch-$imageversion.tgz"
 
