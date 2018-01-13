@@ -1,10 +1,10 @@
 adapter: libvirt
 hosts:
-- name: 'all_in_one'
-  roles:
-    - 'CONTROLLER_LB'
-    - 'COMPUTER'
-  template: 'templates/virtual_environment/vms/all_in_one.xml'
+  - name: 'all_in_one'
+    roles:
+      - 'CONTROLLER_LB'
+      - 'COMPUTER'
+    template: 'templates/virtual_environment/vms/all_in_one.xml'
 disks:
   daisy: 50
   controller: 110
