@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a3d3df0_d21e7c5e",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2018-01-15T02:43:55Z",
+      "side": 1,
+      "message": "Agree,but before run doctor test, we need to pass this parameter to ci tu tell the env to run this command.May be an extra parameter should be added into releng code to enable doctor.",
+      "parentUuid": "9a3d3df0_acb9e17a",
+      "range": {
+        "startLine": 139,
+        "startChar": 25,
+        "endLine": 139,
+        "endChar": 28
+      },
+      "revId": "f493310505710fcfa01afab3007216a996c820b6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3d3df0_ccb42584",
         "filename": "deploy/prepare/execute.py",
         "patchSetId": 11
@@ -36,6 +60,24 @@
       "writtenOn": "2018-01-14T00:48:38Z",
       "side": 1,
       "message": "why choose to use an absolute path file? or a short path to store?\nIs this file used in Daisy or in OpenStack env?",
+      "revId": "f493310505710fcfa01afab3007216a996c820b6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_722df094",
+        "filename": "deploy/prepare/execute.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2018-01-15T02:43:55Z",
+      "side": 1,
+      "message": "This is the task of doctor,and doctor project need an extra parameter to enable the \"alarm\" component to run test.\nIn order to add this parameter, we need to add extra value in the yaml in event_pipeline.yaml.j2 template file which is in the code of kolla-ansible.",
+      "parentUuid": "9a3d3df0_ccb42584",
       "revId": "f493310505710fcfa01afab3007216a996c820b6",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
