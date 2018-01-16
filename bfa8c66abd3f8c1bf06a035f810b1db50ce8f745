@@ -22,6 +22,30 @@
       "revId": "bfa8c66abd3f8c1bf06a035f810b1db50ce8f745",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_e9f6368e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2018-01-16T03:06:04Z",
+      "side": 1,
+      "message": "Thank you for reminding me, Alex.\nHave changed this.",
+      "parentUuid": "9a3d3df0_29713e44",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "bfa8c66abd3f8c1bf06a035f810b1db50ce8f745",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
