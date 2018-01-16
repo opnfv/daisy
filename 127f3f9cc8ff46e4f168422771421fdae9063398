@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_292ade8f",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 26
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2018-01-16T07:31:35Z",
+      "side": 1,
+      "message": "Maybe move this \u0027if\u0027 statement ahead of \u0027for\u0027 statement will be better for speeding up the execute of this function?",
+      "range": {
+        "startLine": 218,
+        "startChar": 16,
+        "endLine": 218,
+        "endChar": 31
+      },
+      "revId": "127f3f9cc8ff46e4f168422771421fdae9063398",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
