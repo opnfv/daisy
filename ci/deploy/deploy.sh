@@ -211,6 +211,7 @@ function update_dha_by_pdf()
         rm $tmpfile
         return
     fi
+    test -d $(dirname ${DHA_CONF}) || mkdir -p $(dirname ${DHA_CONF})
     cp ${tmpfile} ${DHA_CONF}
     echo "====== Update deploy.yml from POD Descriptor File ======"
 
@@ -219,6 +220,7 @@ function update_dha_by_pdf()
         echo "Cannot generate network configuration from PDF and IDF!"
         return
     fi
+    test -d $(dirname ${NETWORK_CONF}) || mkdir -p $(dirname ${NETWORK_CONF})
     cp ${tmpfile} ${NETWORK_CONF}
     echo "====== Update $(basename ${NETWORK_CONF}) from POD Descriptor File ======"
     rm -f $tmpfile
