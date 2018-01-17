@@ -46,6 +46,30 @@
       "revId": "127f3f9cc8ff46e4f168422771421fdae9063398",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_1f4468b5",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 26
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2018-01-17T01:03:30Z",
+      "side": 1,
+      "message": "What I want to express is if the \u0027if enable_dpdk\u0027 statement locate here,we should do the judgement everytime in the \"for interface in host[\u0027interfaces\u0027]\"",
+      "parentUuid": "9a3d3df0_49048217",
+      "range": {
+        "startLine": 218,
+        "startChar": 16,
+        "endLine": 218,
+        "endChar": 31
+      },
+      "revId": "127f3f9cc8ff46e4f168422771421fdae9063398",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
