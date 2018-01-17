@@ -22,6 +22,76 @@
       "revId": "db3f1ba2fb68d76277484fb0c92de5f531bcd788",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_fa3b92ce",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2018-01-17T06:58:49Z",
+      "side": 1,
+      "message": "+1\n\nthe anteater will check \"/tmp\" sub-directory",
+      "parentUuid": "9a3d3df0_dd55f5fa",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 38
+      },
+      "revId": "db3f1ba2fb68d76277484fb0c92de5f531bcd788",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_da384ed5",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2018-01-17T06:58:49Z",
+      "side": 1,
+      "message": "not useful",
+      "range": {
+        "startLine": 398,
+        "startChar": 58,
+        "endLine": 398,
+        "endChar": 82
+      },
+      "revId": "db3f1ba2fb68d76277484fb0c92de5f531bcd788",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_9a5a4628",
+        "filename": "ci/deploy/deploy.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2018-01-17T06:58:49Z",
+      "side": 1,
+      "message": "you can use different delimiters to avoid \\/, for example:\nsed -e \"s/this/that/\" \u003d\u003e sed -d \"s|this|that|\"\n\nin this function:\nsed -i -e \"/source * file/{s|source.*$/source file\u003d\\\u0027$WORKDIR_TMP|centos7.qcow2\\\u0027/\u003e|;}\"",
+      "range": {
+        "startLine": 400,
+        "startChar": 8,
+        "endLine": 401,
+        "endChar": 97
+      },
+      "revId": "db3f1ba2fb68d76277484fb0c92de5f531bcd788",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
