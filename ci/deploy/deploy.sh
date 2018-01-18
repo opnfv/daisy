@@ -186,11 +186,7 @@ function update_dha_by_pdf()
     local pdf_yaml=labs/$LAB_NAME/${POD_NAME}.yaml
     local pod_template=config/installers/daisy/pod_config.yaml.j2
     local generate_config=config/utils/generate_config.py
-    if [[ $DEPLOY_SCENARIO =~ (dpdk) ]]; then
-        local network_template=config/installers/daisy/network-dpdk.yaml.j2
-    else
-        local network_template=config/installers/daisy/network.yaml.j2
-    fi
+    local network_template=config/installers/daisy/network.yaml.j2
     if [ ! -f ${generate_config} ] || [ ! -f ${pdf_yaml} ] || [ ! -f ${pod_template} ] || [ ! -f ${network_template} ] ; then
         echo "Template files donot exist in ${SECURELABDIR}."
         return
