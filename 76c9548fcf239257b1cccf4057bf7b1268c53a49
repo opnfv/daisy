@@ -163,6 +163,30 @@
       "revId": "76c9548fcf239257b1cccf4057bf7b1268c53a49",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_c77a3687",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3903
+      },
+      "writtenOn": "2018-01-19T07:23:56Z",
+      "side": 1,
+      "message": "daisy host-update $host_id --ipmi-user zteroot --ipmi-passwd superuser  \u003e /dev/null  2\u003e\u00261",
+      "parentUuid": "dabed58f_b2ff0f34",
+      "range": {
+        "startLine": 52,
+        "startChar": 47,
+        "endLine": 52,
+        "endChar": 78
+      },
+      "revId": "76c9548fcf239257b1cccf4057bf7b1268c53a49",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
