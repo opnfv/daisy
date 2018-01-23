@@ -177,7 +177,13 @@ setup() {
     sleep 2
     dmsetup ls
     fdisk -l /dev/${loopdevice:0:5} || true
-    mount /dev/mapper/$loopdevice $mountdir
+
+    if [ "xfs" = "$(blkid -o value -s TYPE /dev/mapper/$loopdevice)" ]; then
+        mountopts="-o nouuid"
+    else
+        mountopts=""
+    fi
+    mount $mountopts /dev/mapper/$loopdevice $mountdir
     mount -t proc none ${mountdir}/proc
 
     if [[ -n $img_size ]]; then
