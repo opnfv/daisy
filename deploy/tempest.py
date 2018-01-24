@@ -164,13 +164,16 @@ def install_os_for_vm_step2(cluster_id, client):
 
 
 def discover_host(hosts_name, client):
-    while True:
+    retry = 90
+    while retry:
         hosts_info = get_hosts(client)
         if len(hosts_info) == len(hosts_name):
             print('discover hosts success!')
-            break
+            return
         else:
             time.sleep(10)
+            retry = retry - 1
+    err_exit('Failed to discover hosts')
 
 
 def update_network(cluster_id, network_map, client):
