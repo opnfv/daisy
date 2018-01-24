@@ -3,9 +3,9 @@ index 7dea1b7..2bc6c5e 100644
 --- a/contrib/template-override/ovs-dpdk.j2
 +++ b/contrib/template-override/ovs-dpdk.j2
 @@ -46,6 +46,9 @@
-
+ 
  {{ macros.install_packages(ovs_dpdk_packages | customizable("packages")) }}
-
+ 
 +RUN mkdir -p /lib/modules/$(uname -r)
 +RUN ln -s /usr/src/kernels/$(uname -r) /lib/modules/$(uname -r)/build
 +
@@ -15,7 +15,7 @@ index 7dea1b7..2bc6c5e 100644
 @@ -64,7 +67,7 @@ WORKDIR "/dpdk/build"
                             "s/CONFIG_RTE_BUILD_SHARED_LIB=.*$/CONFIG_RTE_BUILD_SHARED_LIB=n/"])
  }}
-
+ 
 -RUN make -j $(nproc) EXTRA_CFLAGS='-O2 -fPIC' \
 +RUN make -j $(nproc) EXTRA_CFLAGS='-O2 -fPIC -Wno-maybe-uninitialized' \
      && make install
@@ -86,3 +86,101 @@ index a43d3d7..0000000
 -{% block footer %}{% endblock %}
 -
 -USER neutron
+diff --git a/docker/neutron/neutron-server-opendaylight/0d741cb.diff b/docker/neutron/neutron-server-opendaylight/0d741cb.diff
+new file mode 100644
+index 0000000..36e79a1
+--- /dev/null
++++ b/docker/neutron/neutron-server-opendaylight/0d741cb.diff
+@@ -0,0 +1,44 @@
++diff --git a/networking_odl/common/callback.py b/networking_odl/common/callback.py
++index d669d21..d2de1ab 100644
++--- a/networking_odl/common/callback.py
+++++ b/networking_odl/common/callback.py
++@@ -19,6 +19,7 @@
++ from neutron_lib.callbacks import registry
++ from neutron_lib.callbacks import resources
++ from oslo_log import log as logging
+++from oslo_utils import excutils
++ 
++ from networking_odl.common import constants as odl_const
++ 
++@@ -88,8 +89,15 @@
++ 
++         copy_kwargs = kwargs.copy()
++         copy_kwargs.pop('context')
++-        callback(context, odl_ops, odl_res_type, res_id, odl_res_dict,
++-                 **copy_kwargs)
+++        try:
+++            callback(context, odl_ops, odl_res_type, res_id, odl_res_dict,
+++                     **copy_kwargs)
+++        except Exception:
+++            # In case of precommit, neutron registry notification caller
+++            # doesn't log its exception. In networking-odl case, we don't
+++            # normally throw exception. So log it here for debug
+++            with excutils.save_and_reraise_exception():
+++                LOG.exception("exceptions in callback")
++ 
++     def sg_callback_precommit(self, resource, event, trigger, **kwargs):
++         self._sg_callback(self._precommit, resource, event, trigger, **kwargs)
++diff --git a/networking_odl/db/db.py b/networking_odl/db/db.py
++index 0e62013..9b96a0a 100644
++--- a/networking_odl/db/db.py
+++++ b/networking_odl/db/db.py
++@@ -51,7 +51,8 @@
++         models.OpenDaylightJournal.operation == odl_const.ODL_DELETE
++     ).all()
++ 
++-    return (row for row in rows if parent_id in row.data)
+++    return (row for row in rows
+++            if row.data is not None and parent_id in row.data)
++ 
++ 
++ def get_all_db_rows(session):
+diff --git a/docker/neutron/neutron-server-opendaylight/Dockerfile.j2 b/docker/neutron/neutron-server-opendaylight/Dockerfile.j2
+index 354596f..5b17ecc 100644
+--- a/docker/neutron/neutron-server-opendaylight/Dockerfile.j2
++++ b/docker/neutron/neutron-server-opendaylight/Dockerfile.j2
+@@ -9,6 +9,7 @@ USER root
+ 
+ {% if install_type == 'binary' %}
+     {% set neutron_server_opendaylight_packages = [
++        'patch',
+         'python-networking-odl',
+         'python-networking-bgpvpn',
+         'python-networking-l2gw'
+@@ -16,6 +17,10 @@ USER root
+ 
+ {{ macros.install_packages(neutron_server_opendaylight_packages | customizable("packages")) }}
+ 
++# Please see https://review.openstack.org/#/c/533706/
++COPY 0d741cb.diff /tmp/
++RUN patch -d /usr/lib/python2.7/site-packages/ -p1 < /tmp/0d741cb.diff
++
+ {% elif install_type == 'source' %}
+ 
+ ADD plugins-archive /
+diff --git a/docker/opendaylight/Dockerfile.j2 b/docker/opendaylight/Dockerfile.j2
+index 8a005b3..e54e4c9 100644
+--- a/docker/opendaylight/Dockerfile.j2
++++ b/docker/opendaylight/Dockerfile.j2
+@@ -8,19 +8,7 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
+ {{ macros.configure_user(name='odl') }}
+ 
+ {% block opendaylight_install %}
+-
+-{% set opendaylight_packages = ['opendaylight'] %}
+-{% if base_distro in ['debian', 'ubuntu'] %}
+-# NOTE(egonzalez): ODL fails to install in debian family images with
+-# existing odl user. First install odl and then allow usage of
+-# install_packages macro for custom configs.
+-    {% block debian_opendaylight_install_fix_block %}
+-        {{ macros.debian_opendaylight_existing_user_fix() }}
+-    {% endblock %}
+-{% endif %}
+-
+-{{ macros.install_packages(opendaylight_packages | customizable("packages")) }}
+-
++RUN yum install -y https://nexus.opendaylight.org/content/repositories/opendaylight-carbon-epel-7-x86_64-devel/org/opendaylight/integration-packaging/opendaylight/6.3.0-0.1.20180108snap438.el7.noarch/opendaylight-6.3.0-0.1.20180108snap438.el7.noarch.rpm
+ {% endblock %}
+ 
+ COPY extend_start.sh /usr/local/bin/kolla_extend_start
