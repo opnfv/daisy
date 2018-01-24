@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_9044dd4a",
+        "filename": "deploy/tempest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 5833
+      },
+      "writtenOn": "2018-01-24T01:28:12Z",
+      "side": 1,
+      "message": "Are 10 mins enough for all types of baremetal rebooting?",
+      "range": {
+        "startLine": 167,
+        "startChar": 12,
+        "endLine": 167,
+        "endChar": 14
+      },
+      "revId": "370b1f1ddcf6fa0e4d53366779f73c074d3259ae",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
