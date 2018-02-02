@@ -1,0 +1,56 @@
+---
+project: 'Daisy4nfv (daisy)'
+project_creation_date: '2016-07-14'
+project_category: ''
+lifecycle_state: 'Incubation'
+project_lead: &opnfv_daisy_ptl
+    name: 'Zhijiang Hu'
+    email: 'hu.zhijiang@zte.com.cn'
+    id: 'huzhj'
+    company: 'zte.com.cn'
+    timezone: 'UTC+08:00'
+primary_contact: *opnfv_daisy_ptl
+issue_tracking:
+    type: 'jira'
+    url: 'https://jira.opnfv.org/projects/daisy'
+    key: 'daisy'
+mailing_list:
+    type: 'mailman2'
+    url: 'opnfv-tech-discuss@lists.opnfv.org'
+    tag: '[daisy]'
+realtime_discussion:
+    type: irc
+    server: 'freenode.net'
+    channel: '#opnfv-daisy'
+meetings:
+    - type: 'irc'
+      agenda: 'https://wiki.opnfv.org/display/DAIS/Meetings'
+      url: 'https://wiki.opnfv.org/display/DAIS/Meetings'
+      server: 'freenode.net'
+      channel: '#openstack-meeting'
+      repeats: 'weekly'
+      time: 'Fri 8:00 UTC'
+repositories:
+    - 'daisy'
+committers:
+    - <<: *opnfv_daisy_ptl
+    - name: 'Alex Yang'
+      email: 'yangyang1@zte.com.cn'
+      company: 'zte.com.cn'
+      id: 'yangzte'
+    - name: 'Jianfei Zhang'
+      email: 'jianfei.zhang@nokia.com'
+      company: 'nokia.com'
+      id: 'Jianfei'
+    - name: 'Jun Zhong'
+      email: 'zhong.jun@zte.com.cn'
+      company: 'zte.com.cn'
+      id: 'zhongjun'
+    - name: 'zhou ya'
+      email: 'zhou.ya@zte.com.cn'
+      company: 'zte.com.cn'
+      id: 'zhouya'
+tsc:
+    # yamllint disable rule:line-length
+    approval: 'http://meetbot.opnfv.org/meetings/opnfv-meeting/2016/opnfv-meeting.2016-06-14-13.59.html'
+    # yamllint enable rule:line-length
