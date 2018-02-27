@@ -26,16 +26,16 @@ Release Data
 | **Project**                          | Daisy4nfv                            |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
-| **Repo/tag**                         | Daisy4nfv/Euphrates.1.0              |
+| **Repo/tag**                         | daisy/opnfv-6.0                      |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
-| **Release designation**              | Euphrates.1.0                        |
+| **Release designation**              | opnfv-6.0                            |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
 | **Release date**                     |                                      |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
-| **Purpose of the delivery**          | OPNFV Euphrates release              |
+| **Purpose of the delivery**          | OPNFV Fraser release                 |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
 
@@ -45,16 +45,16 @@ Deliverables
 Software deliverables
 ~~~~~~~~~~~~~~~~~~~~~
 
- - Daisy4nfv/Euphrates.1.0 ISO, please get it from `OPNFV software download page <https://www.opnfv.org/software/>`_
+ - Daisy4NFV/opnfv-6.0 ISO, please get it from `OPNFV software download page <https://www.opnfv.org/software/>`_
 
 .. _document-label:
 
 Documentation deliverables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- - OPNFV(Euphrates) Daisy4nfv installation instructions
+ - OPNFV(Fraser) Daisy4nfv installation instructions
 
- - OPNFV(Euphrates) Daisy4nfv Release Notes
+ - OPNFV(Fraser) Daisy4nfv Release Notes
 
 Version change
 --------------
@@ -63,14 +63,14 @@ Version change
 Module version change
 ~~~~~~~~~~~~~~~~~~~~~
 
-This is the Euphrates release of Daisy4nfv as a deployment toolchain in OPNFV, the following
+This is the Fraser release of Daisy4nfv as a deployment toolchain in OPNFV, the following
 upstream components supported with this release.
 
- - Centos 7.3
+ - Centos 7.4
 
- - Openstack (Ocata release)
+ - Openstack (Pike release)
 
- - Opendaylight (Carbon SR1)
+ - Opendaylight (Carbon SR3)
 
 Reason for new version
 ----------------------
@@ -82,10 +82,13 @@ Feature additions
 | **JIRA REFERENCE**                   | **SLOGAN**                              |
 |                                      |                                         |
 +--------------------------------------+-----------------------------------------+
-|                                      | Support OpenDayLight Carbon SR1         |
+|                                      | Support OpenDayLight Carbon SR3         |
 |                                      |                                         |
 +--------------------------------------+-----------------------------------------+
-|                                      | Support OpenStack Ocata                 |
+|                                      | Support OpenStack Pike                  |
+|                                      |                                         |
++--------------------------------------+-----------------------------------------+
+|                                      | Support OVS+DPDK                        |
 |                                      |                                         |
 +--------------------------------------+-----------------------------------------+
 

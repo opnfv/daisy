@@ -4,7 +4,7 @@
 Abstract
 ========
 
-This document describes how to install the Euphrates release of OPNFV when using
+This document describes how to install the Fraser release of OPNFV when using
 Daisy4nfv as a deployment tool covering it's limitations, dependencies and
 required resources.
 

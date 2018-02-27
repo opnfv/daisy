@@ -4,7 +4,7 @@
 Daisy4nfv configuration
 =======================
 
-This document provides guidelines on how to install and configure the Euphrates
+This document provides guidelines on how to install and configure the Fraser
 release of OPNFV when using Daisy as a deployment tool including required
 software and hardware configurations.
 
@@ -17,7 +17,7 @@ networking and Unix/Linux administration.
 Prerequisites
 -------------
 
-Before starting the installation of the Euphrates release of OPNFV, some plannings
+Before starting the installation of the Fraser release of OPNFV, some plannings
 must be done.
 
 
@@ -33,7 +33,7 @@ The daily build iso image can be retrieved via OPNFV artifact repository:
 
 http://artifacts.opnfv.org/daisy.html
 
-NOTE: Search the keyword "daisy/Euphrates" to locate the iso image.
+NOTE: Search the keyword "daisy/Fraser" to locate the iso image.
 
 E.g.
 daisy/opnfv-2017-10-06_09-50-23.iso
@@ -52,9 +52,9 @@ To retrieve the repository of Daisy on Jumphost use the following command:
 
 - git clone https://gerrit.opnfv.org/gerrit/daisy
 
-To get stable Euphrates release, you can use the following command:
+To get stable Fraser release, you can use the following command:
 
-- git checkout euphrates.1.0
+- git checkout opnfv.6.0
 
 
 Setup Requirements
