@@ -56,7 +56,7 @@ openstack server create --image ${IMAGE_NAME} --flavor m1.micro \
     --nic net-id=${DEMO_NET_ID} demo1
 
 # Wait for guest ready to accept FIP, seems need it.
-sleep 10
+sleep 30
 
 openstack server add floating ip demo1 ${DEMO_FIP}
 
