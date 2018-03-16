@@ -30,6 +30,8 @@ class Keystoneauth(object):
     def _parse_openrc(self):
 
         def parse_line(creds, line):
+            if line.startswith('#') or "=" not in line:
+                return creds
             var = line.rstrip('"\n').replace('export ', '').split("=")
             # The two next lines should be modified as soon as rc_file
             # conforms with common rules. Be aware that it could induce

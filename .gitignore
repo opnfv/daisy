@@ -9,7 +9,7 @@
 __pycache__/
 *.py[cod]
 *.confc
-
+.pytest_cache/
 # C extensions
 *.so
 
