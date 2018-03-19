@@ -1,5 +1,5 @@
 ##############################################################################
-# Copyright (c) 2017 ZTE Coreporation and others.
+# Copyright (c) 2017 ZTE Corporation and others.
 # feng.xiaowei@zte.com.cn
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Apache License, Version 2.0
@@ -30,6 +30,8 @@ class Keystoneauth(object):
     def _parse_openrc(self):
 
         def parse_line(creds, line):
+            if line.startswith('#') or "=" not in line:
+                return creds
             var = line.rstrip('"\n').replace('export ', '').split("=")
             # The two next lines should be modified as soon as rc_file
             # conforms with common rules. Be aware that it could induce
