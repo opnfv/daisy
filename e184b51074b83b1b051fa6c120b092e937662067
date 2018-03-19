@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a3f45e8_83e9b482",
+        "filename": "docs/release/scenarios/os-nosdn-nofeature-ha/os-nosdn-nofeature-ha.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-19T02:26:07Z",
+      "side": 1,
+      "message": "delete this line or add the corporation name",
+      "range": {
+        "startLine": 3,
+        "startChar": 3,
+        "endLine": 3,
+        "endChar": 40
+      },
+      "revId": "e184b51074b83b1b051fa6c120b092e937662067",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_63ec6890",
+        "filename": "docs/release/scenarios/os-nosdn-ovs_dpdk-noha/os-nosdn-ovs_dpdk-noha.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-19T02:26:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 3,
+        "startChar": 7,
+        "endLine": 3,
+        "endChar": 40
+      },
+      "revId": "e184b51074b83b1b051fa6c120b092e937662067",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_03fda43a",
+        "filename": "docs/release/scenarios/os-nosdn-ovs_dpdk-noha/os-nosdn-ovs_dpdk-noha.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-19T02:26:07Z",
+      "side": 1,
+      "message": "red tail",
+      "range": {
+        "startLine": 50,
+        "startChar": 16,
+        "endLine": 50,
+        "endChar": 18
+      },
+      "revId": "e184b51074b83b1b051fa6c120b092e937662067",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_e3f7d857",
+        "filename": "docs/release/scenarios/os-odl-nofeature-ha/os-odl-nofeature-ha.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-19T02:26:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 40
+      },
+      "revId": "e184b51074b83b1b051fa6c120b092e937662067",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_43968cf1",
+        "filename": "docs/release/scenarios/os-odl-nofeature-ha/os-odl-nofeature-ha.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-19T02:26:07Z",
+      "side": 1,
+      "message": "red tail",
+      "range": {
+        "startLine": 29,
+        "startChar": 69,
+        "endLine": 29,
+        "endChar": 70
+      },
+      "revId": "e184b51074b83b1b051fa6c120b092e937662067",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
