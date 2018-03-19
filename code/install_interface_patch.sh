@@ -17,9 +17,16 @@ mkdir -p $imagedir
 if [ ! -e "$imagedir/$imagename" ];then
     cp $imagename $imagedir
 fi
+
 if [ ! -e "$imagedir/registry-server.tar" ];then
     cp registry-server.tar $imagedir
+else
+    # For daisy node
+    docker pull registry:2
+    # For other nodes
+    docker save registry:2 > $imagedir/registry-server.tar 
 fi
+
 cp CentOS*.iso /var/lib/daisy/kolla
 
 mkdir -p /var/lib/daisy/images/
