@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a3f45e8_83fff466",
+        "filename": "code/jasmine/autogen.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-19T01:15:02Z",
+      "side": 1,
+      "message": "Corporation",
+      "range": {
+        "startLine": 3,
+        "startChar": 25,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "47a0e9652de853a049298cbcd01820207560f3a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_e3d6b8f0",
+        "filename": "deploy/check_os_progress.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-19T01:15:02Z",
+      "side": 1,
+      "message": "Corporation",
+      "range": {
+        "startLine": 3,
+        "startChar": 25,
+        "endLine": 3,
+        "endChar": 37
+      },
+      "revId": "47a0e9652de853a049298cbcd01820207560f3a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_4305ec78",
+        "filename": "deploy/post/keystoneauth.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-19T01:15:02Z",
+      "side": 1,
+      "message": "Corporation",
+      "range": {
+        "startLine": 2,
+        "startChar": 25,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "47a0e9652de853a049298cbcd01820207560f3a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_2308a090",
+        "filename": "deploy/trustme.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-19T01:15:02Z",
+      "side": 1,
+      "message": "Corporation",
+      "range": {
+        "startLine": 3,
+        "startChar": 25,
+        "endLine": 3,
+        "endChar": 37
+      },
+      "revId": "47a0e9652de853a049298cbcd01820207560f3a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_6302a870",
+        "filename": "setup.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-19T01:15:02Z",
+      "side": 1,
+      "message": "Corporation",
+      "range": {
+        "startLine": 4,
+        "startChar": 25,
+        "endLine": 4,
+        "endChar": 29
+      },
+      "revId": "47a0e9652de853a049298cbcd01820207560f3a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_c3f8dc7e",
+        "filename": "tests/data/openrc_conf/admin-openrc.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-19T01:15:02Z",
+      "side": 1,
+      "message": "Corporation",
+      "range": {
+        "startLine": 2,
+        "startChar": 25,
+        "endLine": 2,
+        "endChar": 29
+      },
+      "revId": "47a0e9652de853a049298cbcd01820207560f3a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_a3f3109e",
+        "filename": "tests/unit/test_daisy_server.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-19T01:15:02Z",
+      "side": 1,
+      "message": "Corporation",
+      "range": {
+        "startLine": 2,
+        "startChar": 25,
+        "endLine": 2,
+        "endChar": 29
+      },
+      "revId": "47a0e9652de853a049298cbcd01820207560f3a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_03f3e49e",
+        "filename": "tests/unit/test_environment.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-19T01:15:02Z",
+      "side": 1,
+      "message": "Corporation",
+      "range": {
+        "startLine": 2,
+        "startChar": 25,
+        "endLine": 2,
+        "endChar": 29
+      },
+      "revId": "47a0e9652de853a049298cbcd01820207560f3a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_e3ed18b9",
+        "filename": "tests/unit/test_placeholder.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-19T01:15:02Z",
+      "side": 1,
+      "message": "Corporation",
+      "range": {
+        "startLine": 2,
+        "startChar": 25,
+        "endLine": 2,
+        "endChar": 29
+      },
+      "revId": "47a0e9652de853a049298cbcd01820207560f3a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
