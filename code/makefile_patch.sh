@@ -129,12 +129,10 @@ function check_or_download_file_sha512sum()
 if [ ! -d $CACHE_PATH ]; then mkdir -p $CACHE_PATH ; fi
 check_or_download_file $CACHE_PATH $isourl
 check_or_download_file_sha512sum $CACHE_PATH $imageserver/${imagename} ${imageserver}/${imagename}.sha512sum
-check_or_download_file $CACHE_PATH "http://daisycloud.org/static/files/registry-server.tar"
 check_or_download_file $CACHE_PATH ${cirros_url}
 
 cp $CACHE_PATH/${isoname} ${target_dir}/
 cp $CACHE_PATH/$imagename ${target_dir}/
-cp $CACHE_PATH/registry-server.tar ${target_dir}/
 cp $CACHE_PATH/${cirros_filename} ${target_dir}/
 
 cp $TOOLS_PATH/setup/install_interface_patch.sh ${target_dir}/
