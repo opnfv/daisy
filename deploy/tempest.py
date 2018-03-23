@@ -238,7 +238,7 @@ def update_hosts_interface(cluster_id, hosts_info, mac_address_map,
         if host['os_version'] == iso_path:
             print("do not have os iso file in /var/lib/daisy/kolla/.")
         if enable_dpdk:
-            host['hugepages'] = '20'
+            host['hugepages'] = '80'
             host['hugepagesize'] = '1G'
         client.hosts.update(host['id'], **host)
         host_info = client.hosts.get(host['id']).to_dict()
