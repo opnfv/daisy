@@ -78,3 +78,89 @@ Daisy deployment command as follows(in the Daisy VM):
 
 
 This basically does kolla-ansible destruction and kolla-asnible deployment.
+
+4. Recovery Level 3
+-------------------
+
+If previous deployment was failed during kolla deploy, but the kolla
+configuration file (/etc/kolla/globals.yml) is present. Or if previous
+deployment was successful but the default configration is not what you want
+and it is OK for you to destroy the OPNFV soware stack and re-deploy it
+again. you can try recovery level 3.
+
+For example, in order to use external iSCSI storage, you are about to deploy
+iSCSI cinder backend which is not enabled by default. First, cleanup the
+previous deployment.
+
+ssh into daisy node, then do:
+
+
+.. code-block:: console
+
+    [root@daisy daisy]# source /etc/kolla/admin-openrc.sh
+    [root@daisy daisy]# openstack server delete <all vms you created>
+
+
+
+
+Note: /etc/kolla/admin-openrc.sh may not have existed if previous
+deployment was failed during kolla deploy.
+
+
+.. code-block:: console
+
+    [root@daisy daisy]# cd /home/kolla_install/kolla-ansible/
+    [root@daisy kolla-ansible]# ./tools/kolla-ansible destroy -i ./ansible/inventory/multinode --yes-i-really-really-mean-it
+
+
+
+
+Then, edit /etc/kolla/globals.yml and append the follwoing line:
+
+
+.. code-block:: console
+
+    enable_cinder_backend_iscsi: "yes"
+    enable_cinder_backend_lvm: "no"
+
+
+
+
+Then, re-deploy again:
+
+
+.. code-block:: console
+
+
+    [root@daisy kolla-ansible]# ./tools/kolla-ansible prechecks -i ./ansible/inventory/multinode
+    [root@daisy kolla-ansible]# ./tools/kolla-ansible deploy -i ./ansible/inventory/multinode
+
+
+
+
+After successfully deploying, issue the following command to generate
+/etc/kolla/admin-openrc.sh file.
+
+
+.. code-block:: console
+
+
+    [root@daisy kolla-ansible]# ./tools/kolla-ansible post-deploy -i ./ansible/inventory/multinode
+
+
+
+
+Finally, issue the following command to create necessary resources, and your
+enviroment are ready for running OPNFV functest.
+
+
+.. code-block:: console
+
+
+    [root@daisy kolla-ansible]# cd /home/daisy
+    [root@daisy daisy]# ./deploy/post.sh -n /home/daisy/labs/zte/virtual1/daisy/config/network.yml
+
+
+
+
+Note: "zte/virtual1" in above path may vary in your environment.
