@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a3f45e8_d35ed811",
+        "filename": "docs/release/installation/recovery.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-29T07:33:53Z",
+      "side": 1,
+      "message": "software?",
+      "range": {
+        "startLine": 88,
+        "startChar": 42,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "264cf1dcfbb39549e3cdb8bc5e465791523fd805",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_339d7cbd",
+        "filename": "docs/release/installation/recovery.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-29T07:33:53Z",
+      "side": 1,
+      "message": "you -\u003e You",
+      "range": {
+        "startLine": 89,
+        "startChar": 7,
+        "endLine": 89,
+        "endChar": 10
+      },
+      "revId": "264cf1dcfbb39549e3cdb8bc5e465791523fd805",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_73a7040d",
+        "filename": "docs/release/installation/recovery.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-29T07:33:53Z",
+      "side": 1,
+      "message": "too long",
+      "revId": "264cf1dcfbb39549e3cdb8bc5e465791523fd805",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_d3b53832",
+        "filename": "docs/release/installation/recovery.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 3195
+      },
+      "writtenOn": "2018-03-29T07:33:53Z",
+      "side": 1,
+      "message": "environment",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 10
+      },
+      "revId": "264cf1dcfbb39549e3cdb8bc5e465791523fd805",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
