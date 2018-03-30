@@ -218,7 +218,7 @@ def test_update_hosts_interface(isbare, tmpdir):
             'interfaces': [{'name': 'ens8', 'mac': '11:11:11:11:11:11',
                             'assigned_networks': [{'ip': '', 'name': 'EXTERNAL'}]}],
             'hugepagesize': '1G',
-            'hugepages': '20',
+            'hugepages': '80',
         }
         assert client.hosts.get(host_id2).metadata == {
             'id': host_id2, 'name': 'controller02', 'cluster_id': cluster_id,
@@ -232,7 +232,7 @@ def test_update_hosts_interface(isbare, tmpdir):
                                 {'ip': '', 'name': 'physnet1'}],
                             'vswitch_type': 'dvs'}],
             'hugepagesize': '1G',
-            'hugepages': '20',
+            'hugepages': '80',
         }
         assert client.hosts.get(host_id3).metadata == {
             'id': host_id3, 'name': 'computer01', 'cluster_id': cluster_id,
@@ -241,7 +241,7 @@ def test_update_hosts_interface(isbare, tmpdir):
             'interfaces': [{'name': 'ens9', 'mac': '33:33:33:33:33:33',
                             'assigned_networks': [{'ip': '', 'name': 'HEARTBEAT'}]}],
             'hugepagesize': '1G',
-            'hugepages': '20',
+            'hugepages': '80',
         }
     else:
         assert client.hosts.get(host_id1).metadata == {
@@ -250,7 +250,7 @@ def test_update_hosts_interface(isbare, tmpdir):
             'interfaces': [{'name': 'ens8', 'mac': '11:11:11:11:11:11',
                             'assigned_networks': [{'ip': '', 'name': 'EXTERNAL'}]}],
             'hugepagesize': '1G',
-            'hugepages': '20',
+            'hugepages': '80',
         }
         assert client.hosts.get(host_id2).metadata == {
             'id': host_id2, 'name': 'controller02', 'cluster_id': cluster_id,
@@ -263,7 +263,7 @@ def test_update_hosts_interface(isbare, tmpdir):
                                 {'ip': '', 'name': 'physnet1'}],
                             'vswitch_type': 'dvs'}],
             'hugepagesize': '1G',
-            'hugepages': '20',
+            'hugepages': '80',
         }
         assert client.hosts.get(host_id3).metadata == {
             'id': host_id3, 'name': 'computer01', 'cluster_id': cluster_id,
@@ -271,7 +271,7 @@ def test_update_hosts_interface(isbare, tmpdir):
             'interfaces': [{'name': 'ens9', 'mac': '33:33:33:33:33:33',
                             'assigned_networks': [{'ip': '', 'name': 'HEARTBEAT'}]}],
             'hugepagesize': '1G',
-            'hugepages': '20',
+            'hugepages': '80',
         }
     tmpdir.remove()
 
