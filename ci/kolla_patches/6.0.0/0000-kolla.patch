@@ -1,0 +1,104 @@
+diff --git a/contrib/template-override/ovs-dpdk.j2 b/contrib/template-override/ovs-dpdk.j2
+index 4252002..3a2a20a 100644
+--- a/contrib/template-override/ovs-dpdk.j2
++++ b/contrib/template-override/ovs-dpdk.j2
+@@ -69,7 +69,7 @@ WORKDIR "/dpdk/build"
+                            "s/CONFIG_RTE_BUILD_SHARED_LIB=.*$/CONFIG_RTE_BUILD_SHARED_LIB=n/"])
+ }}
+ 
+-RUN make -j $(nproc) EXTRA_CFLAGS='-O2 -fPIC' \
++RUN make -j $(nproc) EXTRA_CFLAGS='-O2 -fPIC -Wno-maybe-uninitialized' \
+     && make install
+ WORKDIR /ovs
+ RUN ./boot.sh \
+diff --git a/docker/base/grafana.repo b/docker/base/grafana.repo
+index dc8d30b..58fee69 100644
+--- a/docker/base/grafana.repo
++++ b/docker/base/grafana.repo
+@@ -2,6 +2,6 @@
+ name=grafana
+ baseurl=https://packagecloud.io/grafana/stable/el/7/$basearch
+ repo_gpgcheck=1
+-enabled=1
++enabled=0
+ gpgcheck=1
+ gpgkey=https://packagecloud.io/gpg.key https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
+diff --git a/docker/neutron/neutron-bgp-dragent/Dockerfile.j2 b/docker/neutron/neutron-bgp-dragent/Dockerfile.j2
+deleted file mode 100644
+index a43d3d7..0000000
+--- a/docker/neutron/neutron-bgp-dragent/Dockerfile.j2
++++ /dev/null
+@@ -1,36 +0,0 @@
+-FROM {{ namespace }}/{{ image_prefix }}neutron-base:{{ tag }}
+-LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build_date }}"
+-
+-{% block neutron_bgp_dragent_header %}{% endblock %}
+-
+-{% import "macros.j2" as macros with context %}
+-
+-{% if install_type == 'binary' %}
+-    {% if base_distro in ['centos', 'oraclelinux', 'rhel']  %}
+-RUN echo '{{ install_type }} not yet available for {{ base_distro }}' \
+-    && /bin/false
+-    {% elif base_distro in ['ubuntu', 'debian'] %}
+-        {% set neutron_bgp_dragent_packages = [
+-            'neutron-bgp-dragent'
+-        ] %}
+-    {% endif %}
+-
+-{{ macros.install_packages(neutron_bgp_dragent_packages | customizable("packages")) }}
+-
+-{% elif install_type == 'source'  %}
+-
+-ADD neutron-bgp-dragent-archive /neutron-bgp-dragent-source
+-
+-    {% set neutron_bgp_dragent_pip_packages = [
+-        '/neutron_dynamic_routing'
+-    ] %}
+-
+-RUN ln -s neutron-bgp-dragent-source/* neutron_dynamic_routing \
+-    && {{ macros.install_pip(neutron_bgp_dragent_pip_packages | customizable("pip_packages")) }}
+-
+-{% endif %}
+-
+-{% block neutron_bgp_dragent_footer %}{% endblock %}
+-{% block footer %}{% endblock %}
+-
+-USER neutron
+diff --git a/docker/opendaylight/Dockerfile.j2 b/docker/opendaylight/Dockerfile.j2
+index 8a005b3..29d2d2f 100644
+--- a/docker/opendaylight/Dockerfile.j2
++++ b/docker/opendaylight/Dockerfile.j2
+@@ -8,19 +8,7 @@ LABEL maintainer="{{ maintainer }}" name="{{ image_name }}" build-date="{{ build
+ {{ macros.configure_user(name='odl') }}
+ 
+ {% block opendaylight_install %}
+-
+-{% set opendaylight_packages = ['opendaylight'] %}
+-{% if base_distro in ['debian', 'ubuntu'] %}
+-# NOTE(egonzalez): ODL fails to install in debian family images with
+-# existing odl user. First install odl and then allow usage of
+-# install_packages macro for custom configs.
+-    {% block debian_opendaylight_install_fix_block %}
+-        {{ macros.debian_opendaylight_existing_user_fix() }}
+-    {% endblock %}
+-{% endif %}
+-
+-{{ macros.install_packages(opendaylight_packages | customizable("packages")) }}
+-
++RUN yum install -y https://nexus.opendaylight.org/content/repositories/opendaylight-carbon-epel-7-x86_64-devel/org/opendaylight/integration-packaging/opendaylight/6.4.0-0.1.20180330snap193.el7.noarch/opendaylight-6.4.0-0.1.20180330snap193.el7.noarch.rpm
+ {% endblock %}
+ 
+ COPY extend_start.sh /usr/local/bin/kolla_extend_start
+diff --git a/kolla/image/build.py b/kolla/image/build.py
+index 5ba551f..2a8a3d3 100755
+--- a/kolla/image/build.py
++++ b/kolla/image/build.py
+@@ -99,7 +99,6 @@ SKIPPED_IMAGES = {
+         "zun-base",
+     ],
+     'centos+source': [
+-        "ovsdpdk",
+         # TODO(jeffrey4l): remove tripleo-ui when following bug is fixed
+         # https://bugs.launchpad.net/tripleo/+bug/1744215
+         "tripleo-ui"
