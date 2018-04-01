@@ -13,12 +13,11 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-KOLLA_BRANCH="stable/ocata"
+KOLLA_BRANCH="stable/queens"
 OPNFV_JOB_NAME=
-KOLLA_TAG=
 EXT_TAG=
 KOLLA_GIT_VERSION=
-KOLLA_IMAGE_VERSION=
+KOLLA_IMAGE_VERSION=6.0.0
 
 SCRIPT_PATH=$(readlink -f $(dirname $0))
 WORKSPACE=$(cd ${SCRIPT_PATH}/..; pwd)
@@ -38,21 +37,19 @@ usage: `basename $0` [options]
 OPTIONS:
   -b  Kolla git repo branch
   -j  OPNFV job name
-  -t  Kolla git repo code tag(base version of image)
   -e  user defined tag extension(extended version)
   -w  working directroy
 
 Examples:
 sudo `basename $0` -b stable/ocata
                    -j daisy-docker-build-euphrates
-                   -t 4.0.2
                    -e .1
                    -w /path/to/the/working/dir
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 EOF
 }
 
-while getopts "b:j:t:e:w:h" OPTION
+while getopts "b:j:e:w:h" OPTION
 do
     case $OPTION in
         b)
@@ -60,9 +57,6 @@ do
             ;;
         j)
             OPNFV_JOB_NAME=${OPTARG}
-            ;;
-        t)
-            KOLLA_TAG=${OPTARG}
             ;;
         e)
             EXT_TAG=${OPTARG}
@@ -101,12 +95,14 @@ fi
 function pre_check {
     echo "Pre setup"
     if [ $KOLLA_BRANCH == "stable/mitaka" ] ; then
+        KOLLA_IMAGE_VERSION=2.0.0
         yum install -y epel-release centos-release-openstack-mitaka
         RPM_REQUIRES="python-docker-py:1.6 python-pbr:1.6 python-jinja2:2.8 \
             python-gitdb:0.6.4 GitPython:1.0.1 python-six:1.9.0 \
             python2-oslo-config:3.7.0 python-beautifulsoup4:4.4.1 \
             python2-setuptools:16.0.0 python2-crypto:2.6 docker-engine:1.12"
     elif [ $KOLLA_BRANCH == "stable/newton" ] ; then
+        KOLLA_IMAGE_VERSION=3.0.0
         yum install -y epel-release centos-release-openstack-newton
         RPM_REQUIRES="python-docker-py:1.6 python-pbr:1.6 python-jinja2:2.8 \
             python-gitdb:0.6.4 GitPython:1.0.1 python-six:1.9.0 \
@@ -114,6 +110,7 @@ function pre_check {
             python2-setuptools:16.0.0 python2-crypto:2.6 docker-engine:1.12 \
             centos-release-openstack-newton:1 epel-release:7"
     elif [ $KOLLA_BRANCH == "stable/ocata" ] ; then
+        KOLLA_IMAGE_VERSION=4.0.0
         yum install -y epel-release centos-release-openstack-ocata
         yum update -y
         yum install -y python-docker-py python2-pbr python-jinja2 \
@@ -126,6 +123,7 @@ function pre_check {
             python2-setuptools:22.0.0 python2-crypto:2.6 docker:1.12 \
             centos-release-openstack-ocata:1 epel-release:7"
     elif [ $KOLLA_BRANCH == "stable/pike" ] ; then
+        KOLLA_IMAGE_VERSION=5.0.0
         yum install -y epel-release centos-release-openstack-pike
         yum update -y
         yum install -y python2-docker python2-pbr python2-jinja2 \
@@ -137,6 +135,19 @@ function pre_check {
             python2-oslo-config:3.22.0 python-netaddr:0.7.18 \
             python2-setuptools:22.0.0 python2-crypto:2.6 docker:1.12 \
             centos-release-openstack-pike:1 epel-release:7"
+    elif [ $KOLLA_BRANCH == "stable/queens" ] ; then
+        KOLLA_IMAGE_VERSION=6.0.0
+        yum install -y epel-release centos-release-openstack-queens
+        yum update -y
+        yum install -y python2-docker python2-pbr python2-jinja2 \
+            python-gitdb GitPython python2-six \
+            python2-oslo-config python2-netaddr \
+            python2-setuptools python2-crypto docker
+        RPM_REQUIRES="python2-docker:2.4.2 python2-pbr:3.1.1 python2-jinja2:2.8 \
+            python-gitdb:0.6.4 GitPython:1.0.1 python2-six:1.10.0 \
+            python2-oslo-config:4.6.0 python2-netaddr:0.7.18 \
+            python2-setuptools:22.0.0 python2-crypto:2.6 docker-engine:1.12 \
+            centos-release-openstack-queens:1 epel-release:7"
     else
         exit 1
     fi
@@ -176,7 +187,7 @@ function pre_check {
     pip install tox
 
     # Just make sure docker is working.
-    service docker restart
+    /usr/bin/systemctl restart docker
 }
 
 function cleanup_registry_server {
@@ -300,8 +311,7 @@ function config_kolla_with_dpdksource {
 
     crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  ovsdpdk-plugin-dpdk type git
     crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  ovsdpdk-plugin-dpdk location http://dpdk.org/git/dpdk
-    #crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  ovsdpdk-plugin-dpdk reference v17.02
-    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  ovsdpdk-plugin-dpdk reference v16.11
+    crudini --set $KOLLA_GIT_DIR/kolla/etc/kolla/kolla-build.conf  ovsdpdk-plugin-dpdk reference v17.02
 
     mkdir -p /etc/kolla/
     rm -rf /etc/kolla/kolla-build.conf
@@ -360,5 +370,6 @@ cleanup_registry_data
 start_registry_server
 
 start_build
-cleanup_kolla_image
+cleanup_registry_server
 pack_registry_data
+cleanup_kolla_image
