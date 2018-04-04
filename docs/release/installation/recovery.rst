@@ -82,11 +82,10 @@ This basically does kolla-ansible destruction and kolla-asnible deployment.
 4. Recovery Level 3
 -------------------
 
-If previous deployment was failed during kolla deploy, but the kolla
-configuration file (/etc/kolla/globals.yml) is present, or if previous
-deployment was successful but the default configration is not what you want
-and it is OK for you to destroy the OPNFV software stack and re-deploy it
-again, then you can try recovery level 3.
+If previous deployment was failed during kolla-ansible deploy(you can confirm
+it by checking /var/log/daisy/api.log) or if previous deployment was successful
+but the default configration is not what you want and it is OK for you to destroy
+the OPNFV software stack and re-deploy it again, then you can try recovery level 3.
 
 For example, in order to use external iSCSI storage, you are about to deploy
 iSCSI cinder backend which is not enabled by default. First, cleanup the
