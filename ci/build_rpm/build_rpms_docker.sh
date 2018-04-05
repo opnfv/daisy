@@ -34,7 +34,7 @@ do
     cnt=$[cnt + 1]
     echo -e "\n\n\n*** Starting build attempt # $cnt"
 
-    git clone https://git.openstack.org/openstack/daisycloud-core --branch stable/pike --depth 1
+    git clone https://git.openstack.org/openstack/daisycloud-core --depth 1
 
     cp $rpm_build_dir/code/makefile_patch.sh daisycloud-core/tools/setup
     cp $rpm_build_dir/code/install_interface_patch.sh daisycloud-core/tools/setup

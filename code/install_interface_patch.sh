@@ -8,8 +8,8 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-imagebranch="pike"
-imageversion="180124134113"
+imagebranch="queens"
+imageversion="180401110925"
 imageserver="http://artifacts.opnfv.org/daisy/upstream"
 imagedir="/var/lib/daisy/versionfile/kolla"
 imagename="kolla-image-$imagebranch-$imageversion.tgz"
