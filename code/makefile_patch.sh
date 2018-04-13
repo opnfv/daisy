@@ -17,7 +17,7 @@ imageversion="180410142414"
 imageserver="http://artifacts.opnfv.org/daisy/upstream"
 imagename="kolla-image-$imagebranch-$imageversion.tgz"
 
-isoname="CentOS-7-x86_64-Minimal-1611.iso"
+isoname="CentOS-7-x86_64-Minimal-1802-01.iso"
 isourl="http://buildlogs.centos.org/rolling/7/isos/x86_64/${isoname}"
 
 cirros_server="http://download.cirros-cloud.net"
