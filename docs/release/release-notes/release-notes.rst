@@ -10,8 +10,8 @@
 Abstract
 ========
 
-This document covers features, limitations and required system resources of
-OPNFV E 1.0 release when using Daisy4nfv as a deployment tool.
+This document covers features, limitations and required system resources for the
+OPNFV Fraser release when using Daisy4nfv as a deployment tool.
 
 Introduction
 ============
