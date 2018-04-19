@@ -35,6 +35,7 @@ from deploy.tempest import (
     get_hosts,
     get_cluster,
     update_hosts_interface,
+    get_hugepages,
     add_host_role,
     enable_cinder_backend,
     enable_opendaylight
@@ -173,7 +174,9 @@ def test_get_cluster():
 
 @pytest.mark.parametrize('isbare', [
     (False), (True)])
-def test_update_hosts_interface(isbare, tmpdir):
+@mock.patch('deploy.tempest.get_hugepages')
+def test_update_hosts_interface(mock_get_hugepages, isbare, tmpdir):
+    mock_get_hugepages.return_value = 80
     res_old_val = deploy.tempest.iso_path
     deploy.tempest.iso_path = os.path.join(tmpdir.dirname, tmpdir.basename) + '/'
     iso_file_path = os.path.join(deploy.tempest.iso_path, 'test_os.iso')
@@ -274,6 +277,17 @@ def test_update_hosts_interface(isbare, tmpdir):
             'hugepages': '80',
         }
     tmpdir.remove()
+
+
+@pytest.mark.parametrize('host, exp', [
+    ({'memory': {'total': '       65938504 kB'}}, 38),
+    ({'memory': {'total': '       131644068 kB'}}, 76),
+    ({'memory': {'total': '       100 gB'}}, 60),
+    ({'memory': {'total': '       102400 mB'}}, 60),
+    ({'memory': {'total': '       107374182400 B'}}, 60),
+    ({'memory': {'total': '       107374182400'}}, 60)])
+def test_get_hugepages(host, exp):
+    assert get_hugepages(host) == exp
 
 
 @pytest.mark.parametrize('dha_host_name, cluster_id, host_id, vip, exp', [
