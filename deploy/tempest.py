@@ -238,7 +238,7 @@ def update_hosts_interface(cluster_id, hosts_info, mac_address_map,
         if host['os_version'] == iso_path:
             print("do not have os iso file in /var/lib/daisy/kolla/.")
         if enable_dpdk:
-            host['hugepages'] = '80'
+            host['hugepages'] = str(get_hugepages(host))
             host['hugepagesize'] = '1G'
         client.hosts.update(host['id'], **host)
         host_info = client.hosts.get(host['id']).to_dict()
@@ -247,6 +247,26 @@ def update_hosts_interface(cluster_id, hosts_info, mac_address_map,
             client.hosts.update(host['id'], **host_isolcpus)
         print("update role...")
         add_host_role(cluster_id, host['id'], dha_host_name, vip, client)
+
+
+def get_hugepages(host):
+    total_str = str(host['memory']['total'])
+    total = int(filter(str.isdigit, total_str))
+    unit = filter(str.isalpha, total_str).lower()
+
+    if unit == 'kb':
+        total = total / 1024 / 1024
+    elif unit == 'mb':
+        total = total / 1024
+    elif unit == 'gb':
+        pass
+    elif unit == 'b' or unit == '':
+        total = total / 1024 / 1024 / 1024
+    num = total * 6 / 10
+    if num % 2 != 0:
+        num = num + 1
+
+    return num
 
 
 def add_host_role(cluster_id, host_id, dha_host_name, vip, client):
