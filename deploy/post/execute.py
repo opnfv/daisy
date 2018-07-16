@@ -21,10 +21,20 @@ def _config_kolla_admin_openrc(kolla_config_path):
     with open('%s/globals.yml' % kolla_config_path, 'r') as f:
         kolla_config = yaml.safe_load(f.read())
     if kolla_config.get('enable_opendaylight', None) == 'yes':
-        sdn_controller_ip = kolla_config.get('kolla_internal_vip_address')
         openrc_file = file('%s/admin-openrc.sh' % kolla_config_path, 'a')
-        sdn_ctl_ip = 'export SDN_CONTROLLER_IP=' + sdn_controller_ip + '\n'
-        openrc_file.write(sdn_ctl_ip)
+
+        v = kolla_config.get('kolla_internal_vip_address')
+        line = 'export SDN_CONTROLLER_IP=' + v + '\n'
+        openrc_file.write(line)
+
+        v = kolla_config.get('opendaylight_haproxy_restconf_port_backup')
+        line = 'export SDN_CONTROLLER_WEBPORT=' + v + '\n'
+        openrc_file.write(line)
+
+        v = kolla_config.get('opendaylight_haproxy_restconf_port')
+        line = 'export SDN_CONTROLLER_RESTCONFPORT=' + v + '\n'
+        openrc_file.write(line)
+
         openrc_file.close()
 
 
