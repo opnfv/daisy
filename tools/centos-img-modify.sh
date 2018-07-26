@@ -74,3 +74,6 @@ cd /etc
 if [ ! -z $localtime_file ] && [ -f $localtime_file ]; then
     ln -s -f $localtime_file /etc/localtime
 fi
+
+# https://review.openstack.org/#/c/568180/
+test -e /etc/yum/vars/contentdir || echo centos > /etc/yum/vars/contentdir
