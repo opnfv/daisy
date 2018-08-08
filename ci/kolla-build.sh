@@ -108,6 +108,7 @@ function create_daisy_vm_and_networks()
 {
     echo "====== Create Daisy VM ======"
     $CREATE_QCOW2_PATH/daisy-img-modify.sh -c $CREATE_QCOW2_PATH/centos-img-modify.sh -w $IMWORKDIR -a $DAISY_IP $PARAS_IMAGE
+    sed -i -e "/source * file/{s|source.*$|source file=\'$IMWORKDIR\/centos7.qcow2\'\/>|;}" $VMDEPLOY_DAISY_SERVER_VM
 
     virsh net-define $VMDELOY_DAISY_SERVER_NET
     virsh net-start daisy1 
