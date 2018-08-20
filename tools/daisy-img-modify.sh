@@ -99,7 +99,10 @@ raw_imgfile="${workdir}/centos7.raw"
 
 # download and checksum base image, conditionally if local copy is outdated
 download() {
-    test -d $workdir || mkdir -p $workdir
+    test -d $workdir || {
+        mkdir -p $workdir
+        test -z $SUDO_USER || chown -R $SUDO_USER:$SUDO_USER $workdir
+    }
     cd $workdir
     rm -f sha256sum.txt
     wget $sha256sum_url
