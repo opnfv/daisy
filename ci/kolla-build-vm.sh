@@ -186,6 +186,8 @@ function pre_check {
     yum install -y python2-pip
     pip install tox
 
+    # SELinux is not supported with the overlay2 graph driver on this kernel.
+    sed -i 's/--selinux-enabled /--selinux-enabled=false /g' /etc/sysconfig/docker || true
     # Just make sure docker is working.
     /usr/bin/systemctl restart docker
 }
