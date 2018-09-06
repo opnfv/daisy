@@ -11,3 +11,5 @@ neutron_external_interface: ens8
 openstack_release: 4.0.2
 storage_interface: ens3
 tunnel_interface: ens3
+opendaylight_haproxy_restconf_port: '8087'
+opendaylight_haproxy_restconf_port_backup: '8181'

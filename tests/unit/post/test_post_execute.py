@@ -169,9 +169,12 @@ def test__config_kolla_admin_openrc(globals_file_name, openrc_conf_file_dir, tmp
     elif globals_file_name == 'globals_odl.yml':
         diff = DeepDiff(src_openrc_lines, dst_openrc_lines, ignore_order=True)
         assert len(diff) == 1 and diff.get('iterable_item_added') is not None
-        assert len(diff['iterable_item_added']) == 1
-        for val in diff['iterable_item_added'].values():
-            assert 'export SDN_CONTROLLER_IP' in val
+        assert len(diff['iterable_item_added']) == 3
+        diffvals = ','.join(diff['iterable_item_added'].values())
+        assert 'export SDN_CONTROLLER_IP' in diffvals
+        assert 'export SDN_CONTROLLER_WEBPORT=' in diffvals
+        assert 'export SDN_CONTROLLER_RESTCONFPORT=' in diffvals
+
     tmpdir.remove()
 
 
