@@ -8,7 +8,7 @@ OPNFV Daisy4nfv Installation Guide
 **********************************
 
 .. toctree::
-      :numbered:
+   :numbered:
    :maxdepth: 4
 
    introduction.rst
