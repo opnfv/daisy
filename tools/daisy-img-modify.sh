@@ -165,8 +165,8 @@ resize() {
     kpartx -av $raw_imgfile
     sleep 2
     dmsetup ls
-    fdisk -l /dev/${loopdevice:0:5} || true
-    growpart /dev/${loopdevice:0:5} 1
+    fdisk -l /dev/${loopdevice:0:-2} || true
+    growpart /dev/${loopdevice:0:-2} 1
     dmsetup clear $loopdevice
     kpartx -dv $raw_imgfile || eliminate
 }
@@ -179,7 +179,7 @@ setup() {
     kpartx -av $raw_imgfile
     sleep 2
     dmsetup ls
-    fdisk -l /dev/${loopdevice:0:5} || true
+    fdisk -l /dev/${loopdevice:0:-2} || true
 
     if [ "xfs" = "$(blkid -o value -s TYPE /dev/mapper/$loopdevice)" ]; then
         mountopts="-o nouuid"
