@@ -1,7 +1,6 @@
 # Normal for all project
 *~
 .*.sw?
-/docs_build/
 /docs_output/
 /releng/
 
@@ -48,7 +47,6 @@ coverage.xml
 *.log
 
 # Sphinx documentation
-docs/_build/
 
 # PyBuilder
 target/
@@ -63,3 +61,4 @@ target/
 # PyCharm
 .idea/
 
+docs/_build/*
